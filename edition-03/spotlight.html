@@ -1375,7 +1375,7 @@ kbd {
       <div class="sidebar-header">Thielson</div>
 
       <div class="sidebar-item" onclick="goTo(4)" id="si-4">
-        <span class="sidebar-icon">⚡</span> respostas-automaticas.service.ts
+        <span class="sidebar-icon">⚡</span> protocolo-importacao.service.ts
       </div>
       <div class="sidebar-item" onclick="goTo(8)" id="si-8">
         <span class="sidebar-icon">📸</span> overview-thielson.md
@@ -1475,7 +1475,7 @@ kbd {
             &nbsp;&nbsp;<span class="prop">topics</span>: [<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"ATER Digital + IA"</span>,<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Dashboard Carbono"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Otimização N+1"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Importação de Protocolo (dry-run)"</span>,<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Mastra AI + RAG"</span><br>
             &nbsp;&nbsp;]<br>
             }
@@ -1533,7 +1533,7 @@ kbd {
             <div class="tl-time">07:00 – 11:00 · Thielson · 4min</div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
               <span class="badge badge-teal">Spotlight 2</span>
-              <span style="font-size:16px; color:var(--text)">Otimização Respostas Automáticas — de 100+ para 1</span>
+              <span style="font-size:16px; color:var(--text)">Importação de Protocolo — preview com diff antes de aplicar</span>
             </div>
           </div>
         </div>
@@ -1800,38 +1800,35 @@ kbd {
       <div class="slide-title">// spotlight 2 — Thielson — 4 min ⏱</div>
       <div class="flex-row mb-8">
         <span class="badge badge-teal">⚡ feature</span>
-        <span class="badge badge-green">#12029</span>
-        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">respostas-automaticas.service.ts</span>
+        <span class="badge badge-green">#11843</span>
+        <span class="badge badge-green">#11762</span>
+        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">protocolo-importacao.service.ts</span>
       </div>
-      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Respostas Automáticas — de <span>100+ chamadas</span> para 1</div>
+      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Importação de Protocolo — <span>preview com diff</span> antes de aplicar</div>
 
       <div class="grid-2" style="gap:16px; flex:1">
         <div style="display:flex; flex-direction:column; gap:12px">
           <div class="card card-accent-coral">
             <div class="section-label" style="color:var(--coral)">❌ problema</div>
             <div style="font-size:16px; color:var(--text2); line-height:1.7">
-              Ao editar uma pergunta com muitas respostas automáticas, o front fazia uma chamada ao backend para CADA item. Perguntas com 100+ respostas disparavam 100+ requests — tela travava, UX degradada, risco de timeout.
+              Importar um Protocolo modifica temas, subtemas, perguntas, importâncias e respostas automáticas em cascata. O usuário aplicava sem saber o impacto — risco de excluir ou alterar conteúdo sem perceber, sem como reverter.
             </div>
           </div>
 
           <div class="card card-accent-teal">
-            <div class="section-label" style="color:var(--teal)">✓ solução</div>
-            <div style="display:flex; flex-direction:column; gap:6px; font-size:16px; color:var(--text2)">
+            <div class="section-label" style="color:var(--teal)">✓ solução em 2 etapas</div>
+            <div style="display:flex; flex-direction:column; gap:8px; font-size:16px; color:var(--text2)">
               <div style="display:flex; gap:8px; align-items:flex-start">
-                <span style="color:var(--teal); font-family:var(--font-mono)">→</span>
-                <span>Refatorado para uma única chamada inicial que traz todos os itens</span>
+                <span style="color:var(--teal); font-family:var(--font-mono)">#11762</span>
+                <span>Importação/Exportação do Protocolo passou a tratar respostas automáticas no mesmo fluxo (base do que vem depois).</span>
+              </div>
+              <div style="display:flex; gap:8px; align-items:flex-start">
+                <span style="color:var(--teal); font-family:var(--font-mono)">#11843</span>
+                <span>Dry-run: backend monta resumo de <strong style="color:var(--text)">inserções, atualizações, exclusões, avisos e erros</strong> e cacheia o plano em Redis com lock para evitar confirmação duplicada.</span>
               </div>
               <div style="display:flex; gap:8px; align-items:flex-start">
                 <span style="color:var(--teal); font-family:var(--font-mono)">→</span>
-                <span>Chamadas individuais só ao adicionar ou editar um item específico</span>
-              </div>
-              <div style="display:flex; gap:8px; align-items:flex-start">
-                <span style="color:var(--teal); font-family:var(--font-mono)">→</span>
-                <span>Adicionado contador visual para gestão</span>
-              </div>
-              <div style="display:flex; gap:8px; align-items:flex-start">
-                <span style="color:var(--teal); font-family:var(--font-mono)">→</span>
-                <span>Filtro de perguntas inativas otimizado</span>
+                <span>Front exibe o preview com filtros (pergunta/tema/subtema), breadcrumb do caminho e diff "antes × depois" para perguntas editadas.</span>
               </div>
             </div>
           </div>
@@ -1839,34 +1836,37 @@ kbd {
           <div class="card card-accent-teal">
             <div class="section-label" style="color:var(--teal)">📈 resultado</div>
             <div style="font-size:16px; color:var(--text2); line-height:1.7">
-              De 100+ chamadas HTTP para 1 no carregamento. Tela responsiva mesmo com centenas de respostas configuradas.
+              Usuário vê exatamente o que vai mudar antes de confirmar. Service de importação dividido em responsabilidades menores. Cache + lock garante que confirmar 2× não duplica registros.
             </div>
           </div>
         </div>
 
         <div class="code-block" style="height:fit-content">
-          <div class="code-block-header">⚡ respostas-automaticas.service.ts</div>
+          <div class="code-block-header">⚡ protocolo-importacao.service.ts</div>
           <div class="code-body">
-            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12</div>
+            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16</div>
             <div class="code-lines">
-              <span class="cmt">// ANTES: N+1 requests</span><br>
-              <span class="kw">for</span> (<span class="kw">const</span> <span class="prop">item</span> <span class="kw">of</span> <span class="prop">selectedItems</span>) {<br>
-              &nbsp;&nbsp;<span class="kw">await</span> <span class="prop">http</span>.<span class="fn">get</span>(<span class="str">`/api/items/${item.id}`</span>)<br>
-              &nbsp;&nbsp;<span class="cmt">// 100 perguntas = 100 requests</span><br>
-              }<br><br>
-              <span class="cmt">// DEPOIS: 1 request</span><br>
-              <span class="kw">const</span> <span class="prop">allItems</span> = <span class="kw">await</span> <span class="prop">http</span>.<span class="fn">get</span>(<br>
-              &nbsp;&nbsp;<span class="str">`/api/items/batch`</span>,<br>
-              &nbsp;&nbsp;{ <span class="prop">ids</span>: <span class="prop">selectedItems</span>.<span class="fn">map</span>(<span class="prop">i</span> =&gt; <span class="prop">i</span>.<span class="prop">id</span>) }<br>
-              )<br>
-              <span class="cmt">// 100 perguntas = 1 request</span>
+              <span class="cmt">// 1. dry-run: monta plano sem persistir</span><br>
+              <span class="kw">const</span> <span class="prop">plano</span> = <span class="kw">await</span> <span class="prop">this</span>.<span class="fn">previewImpacto</span>(<span class="prop">arquivo</span>)<br>
+              <span class="cmt">// → { inserts, updates, deletes, avisos, erros }</span><br><br>
+              <span class="cmt">// 2. cache em Redis com lock + TTL</span><br>
+              <span class="kw">await</span> <span class="prop">redis</span>.<span class="fn">setEx</span>(<br>
+              &nbsp;&nbsp;<span class="str">`import:${userId}:${planoId}`</span>,<br>
+              &nbsp;&nbsp;<span class="prop">TTL_PREVIEW</span>,<br>
+              &nbsp;&nbsp;<span class="fn">JSON</span>.<span class="fn">stringify</span>(<span class="prop">plano</span>)<br>
+              )<br><br>
+              <span class="cmt">// 3. usuário aprova → aplica com lock</span><br>
+              <span class="kw">await</span> <span class="prop">this</span>.<span class="fn">withLock</span>(<span class="prop">planoId</span>, <span class="kw">async</span> () =&gt; {<br>
+              &nbsp;&nbsp;<span class="kw">return</span> <span class="prop">this</span>.<span class="fn">aplicarPlano</span>(<span class="prop">plano</span>)<br>
+              })<br>
+              <span class="cmt">// → idempotente: 2 confirmações = 1 efeito</span>
             </div>
           </div>
         </div>
       </div>
 
       <div style="margin-top:14px; padding:10px 14px; background:var(--amber-bg); border:1px solid #78350f; border-radius:var(--radius); font-family:var(--font-mono); font-size:14px; color:var(--amber)">
-        🎬 Network tab antes/depois
+        🎬 Tela do preview ao vivo — diff de pergunta editada + filtros · screenshot backup
       </div>
     </div>
 
@@ -2094,46 +2094,22 @@ kbd {
       <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Entregas em <span>destaque</span> — Thielson</div>
 
       <div class="overview-grid">
-        <div class="overview-card" onclick="openScreenshot('11762','Importação/Exportação de Protocolo com respostas automáticas')">
-          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
-          <div class="overview-card-id">#11762</div>
-          <div class="overview-card-title">Importação/Exportação de Protocolo com respostas automáticas</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('12020','Rate limit Resend no envio em massa de e-mails')">
-          <div class="overview-card-badge"><span class="badge badge-red" style="font-size:11px; padding:2px 8px">fix</span></div>
-          <div class="overview-card-id">#12020</div>
-          <div class="overview-card-title">Rate limit Resend no envio em massa de e-mails</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
         <div class="overview-card" onclick="openScreenshot('12007','Labels configuráveis dos Comparativos na tabela de pontuação')">
           <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
           <div class="overview-card-id">#12007</div>
-          <div class="overview-card-title">Labels configuráveis dos Comparativos na tabela de pontuação</div>
+          <div class="overview-card-title">Labels configuráveis dos Comparativos refletidos na coluna Indicador da tabela de pontuação</div>
           <div class="overview-card-hint">📷 clique para ver screenshot</div>
         </div>
-        <div class="overview-card" onclick="openScreenshot('12006','Accordion de relatórios não expande ao filtrar')">
-          <div class="overview-card-badge"><span class="badge badge-red" style="font-size:11px; padding:2px 8px">fix</span></div>
-          <div class="overview-card-id">#12006</div>
-          <div class="overview-card-title">Accordion de relatórios não expande ao filtrar</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('12040','Migração de respostas após reestruturação multiselect')">
-          <div class="overview-card-badge"><span class="badge badge-blue" style="font-size:11px; padding:2px 8px">ref</span></div>
-          <div class="overview-card-id">#12040</div>
-          <div class="overview-card-title">Migração de respostas após reestruturação multiselect</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('12029','Respostas Automáticas: contador + otimização de chamadas')">
+        <div class="overview-card" onclick="openScreenshot('12046','Status Entregue Parcialmente no Histórico de Envio de Links')">
           <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
-          <div class="overview-card-id">#12029</div>
-          <div class="overview-card-title">Respostas Automáticas: contador + otimização de chamadas</div>
+          <div class="overview-card-id">#12046</div>
+          <div class="overview-card-title">Status "Entregue Parcialmente" no Histórico — detalhamento de erros por contato (e-mail/WhatsApp/telefone) via webhook do Resend</div>
           <div class="overview-card-hint">📷 clique para ver screenshot</div>
         </div>
-        <div class="overview-card" onclick="openScreenshot('12058','Fix procedure dashboard formulário')">
-          <div class="overview-card-badge"><span class="badge badge-red" style="font-size:11px; padding:2px 8px">fix</span></div>
-          <div class="overview-card-id">#12058</div>
-          <div class="overview-card-title">Fix procedure dashboard formulário</div>
+        <div class="overview-card" onclick="openScreenshot('12099','Filtro de certificadoras no cadastro de Endpoint Web (CMS)')">
+          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
+          <div class="overview-card-id">#12099</div>
+          <div class="overview-card-title">Filtro de certificadoras no cadastro de Endpoint Web (CMS) — guards no front + tabelas de relacionamento</div>
           <div class="overview-card-hint">📷 clique para ver screenshot</div>
         </div>
       </div>
@@ -2503,15 +2479,17 @@ const KPI_CARDS = [
   { id:'#12166', type:'feat', title:'Revisar Indicadores Carbono', who:'Ronaldo' },
   { id:'#12167', type:'fix',  title:'Corrigir URLs de anexos com container antigo e SAS expirado', who:'Ronaldo' },
   { id:'#12183', type:'feat', title:'Melhorias no dashboard Carbono', who:'Ronaldo' },
-  { id:'#12185', type:'fix',  title:'Evitar múltiplas chamadas duplicadas à API ao abrir grupos', who:'Ronaldo' },
   { id:'#12219', type:'feat', title:'Preview de imagem no hover sobre nome do relatório', who:'Ronaldo' },
-  { id:'#11737', type:'feat', title:'Vínculo de Técnico por Propriedade no Cadastro de Usuário', who:'Ronaldo' },
   { id:'#12179', type:'feat', title:'Vincular propriedades aos técnicos', who:'Ronaldo' },
   { id:'#12228', type:'feat', title:'Duplicar Formulário', who:'Ronaldo' },
   { id:'#12225', type:'feat', title:'Configuração de mensagem de lembrete em templates de envio', who:'Ronaldo' },
   { id:'#12238', type:'fix',  title:'Alterar Descrição do campo Bioma', who:'Ronaldo' },
   { id:'#12104', type:'test', title:'Testar filtro por certificadora nos endpoints', who:'Ronaldo' },
   { id:'#11960', type:'test', title:'Verificar inclusão de index.html no zip de exportação', who:'Ronaldo' },
+  { id:'#12163', type:'feat', title:'Inverter regra de Impressão (CMS)', who:'Ronaldo' },
+  { id:'#12096', type:'feat', title:'Procedure de cálculo de desempenho por subtema', who:'Ronaldo' },
+  { id:'#12161', type:'fix',  title:'Ranking de Desempenho Regional não ordenado pela pontuação', who:'Ronaldo' },
+  { id:'#12211', type:'fix',  title:'Erro para buscar dados do CAR', who:'Ronaldo' },
 
   // === THIELSON ===
   { id:'#11762', type:'feat', title:'Importação e Exportação do Protocolo com respostas automáticas', who:'Thielson' },
@@ -2524,10 +2502,7 @@ const KPI_CARDS = [
   { id:'#12060', type:'fix',  title:'Corrigir edição de layout do form dinâmico', who:'Thielson' },
   { id:'#12046', type:'feat', title:'Status Entregue Parcialmente no Histórico de Envio de Links', who:'Thielson' },
   { id:'#11951', type:'fix',  title:'Overview index.html do relatório de atendimento técnico', who:'Thielson' },
-  { id:'#12005', type:'fix',  title:'Vínculo de CAR já importado não atualiza sicar_imovel_id', who:'Thielson' },
-  { id:'#12089', type:'fix',  title:'Campos numéricos da pergunta Anexo enviados como string', who:'Thielson' },
   { id:'#12099', type:'feat', title:'Filtro de certificadoras no cadastro de Endpoint Web (CMS)', who:'Thielson' },
-  { id:'#12096', type:'feat', title:'Procedure de cálculo de desempenho por subtema', who:'Thielson' },
   { id:'#12082', type:'fix',  title:'Exclusão indevida de campos no modal Dados da Exportação', who:'Thielson' },
   { id:'#11843', type:'feat', title:'Preview de impacto antes da importação de Protocolo (dry-run)', who:'Thielson' },
   { id:'#12136', type:'feat', title:'Exibir protocolo vinculado no dropdown de Importância', who:'Thielson' },
@@ -2538,14 +2513,15 @@ const KPI_CARDS = [
   { id:'#12157', type:'feat', title:'Migração tela Lactação (Checkmilk)', who:'Thielson' },
   { id:'#12158', type:'feat', title:'Migração tela Pesagem (Checkmilk)', who:'Thielson' },
   { id:'#12159', type:'feat', title:'Migração tela Qualidade (Checkmilk)', who:'Thielson' },
-  { id:'#12161', type:'fix',  title:'Ranking de Desempenho Regional não ordenado pela pontuação', who:'Thielson' },
-  { id:'#12163', type:'feat', title:'Inverter regra de Impressão (CMS)', who:'Thielson' },
-  { id:'#12211', type:'fix',  title:'Erro para buscar dados do CAR', who:'Thielson' },
+  { id:'#12185', type:'fix',  title:'Evitar múltiplas chamadas duplicadas à API ao abrir grupos', who:'Thielson' },
+  { id:'#11737', type:'feat', title:'Vínculo de Técnico por Propriedade no Cadastro de Usuário', who:'Thielson' },
+  { id:'#12178', type:'feat', title:'Referência a outras perguntas no Valor das Regras de Validação', who:'Thielson' },
 
   // === BRUNO ===
   { id:'#11494', type:'feat', title:'Landing Pages Dinâmicas por Projeto + Blog + Deploy K8s', who:'Bruno' },
   { id:'#11734', type:'feat', title:'Criar opção Possui Validação em perguntas', who:'Bruno' },
-  { id:'#12178', type:'feat', title:'Referência a outras perguntas no Valor das Regras de Validação', who:'Bruno' },
+  { id:'#12005', type:'fix',  title:'Vínculo de CAR já importado não atualiza sicar_imovel_id', who:'Bruno' },
+  { id:'#12089', type:'fix',  title:'Campos numéricos da pergunta Anexo enviados como string', who:'Bruno' },
   { id:'ATER-1', type:'feat', title:'ATER Digital — Setup do zero (RAG Python + API NestJS + Web React)', who:'Bruno' },
   { id:'ATER-2', type:'feat', title:'ATER — RAG com Docling + pgvector + sentence-transformers', who:'Bruno' },
   { id:'ATER-3', type:'feat', title:'ATER — Agente Mastra AI com classificação + auto-reflexão', who:'Bruno' },
@@ -2755,7 +2731,7 @@ let cur = 0;
 
 const labels = [
   'README.md','agenda.ts','stats.json',
-  'ater-digital.config.ts','respostas-automaticas.service.ts','carbon-dashboard.component.ts',
+  'ater-digital.config.ts','protocolo-importacao.service.ts','carbon-dashboard.component.ts',
   'overview-bruno.md','agro-orchestrator.agent.ts','overview-thielson.md','overview-ronaldo.md',
   'wins.log','roadmap.todo','exit.ts'
 ];
@@ -3006,7 +2982,9 @@ const SLIDE_ACTIONS = {
     { id: 'ss-11734', label: '📷 #11734 — Validação', action: 'openScreenshot', params: { cardId: '11734', title: 'Opção Possui Validação' } }
   ],
   8: [ // overview-thielson.md
-    { id: 'ss-12029', label: '📷 #12029 — Respostas Automáticas', action: 'openScreenshot', params: { cardId: '12029', title: 'Respostas Automáticas — contador e otimização' } }
+    { id: 'ss-12007', label: '📷 #12007 — Labels Comparativos', action: 'openScreenshot', params: { cardId: '12007', title: 'Labels configuráveis dos Comparativos na tabela de pontuação' } },
+    { id: 'ss-12046', label: '📷 #12046 — Entregue Parcialmente', action: 'openScreenshot', params: { cardId: '12046', title: 'Status Entregue Parcialmente no Histórico de Envio' } },
+    { id: 'ss-12099', label: '📷 #12099 — Filtro de Certificadoras', action: 'openScreenshot', params: { cardId: '12099', title: 'Filtro de certificadoras no cadastro de Endpoint Web (CMS)' } }
   ],
   9: [ // overview-ronaldo.md
     { id: 'ss-12062', label: '📷 #12062 — Dashboard Carbono', action: 'openScreenshot', params: { cardId: '12062', title: 'Dashboard Carbono — KPIs' } }
