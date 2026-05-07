@@ -547,15 +547,17 @@ const DATA = {
       { id:'#12166', type:'feat', title:'Revisar Indicadores Carbono', desc:'Revisão e ajustes nos indicadores apresentados no dashboard, com validação por Iohan e Ricardo.' },
       { id:'#12167', type:'fix',  title:'Corrigir URLs de anexos com container antigo e SAS expirado', desc:'Correção de URLs em resposta_item_metadata apontando para container antigo ou com SAS expirado.' },
       { id:'#12183', type:'feat', title:'Melhorias no dashboard Carbono', desc:'Iteração final do dashboard com refinos de layout, performance e conteúdo após validação dos stakeholders.' },
-      { id:'#12185', type:'fix',  title:'Evitar múltiplas chamadas duplicadas à API ao abrir grupos', desc:'Evitar chamadas duplicadas à API ao abrir grupos no formulário de auto-atendimento.' },
       { id:'#12219', type:'feat', title:'Preview de imagem no hover sobre o nome do relatório', desc:'Hover sobre o nome do relatório passa a exibir um preview da imagem associada.' },
-      { id:'#11737', type:'feat', title:'Vínculo de Técnico por Propriedade no Cadastro de Usuário', desc:'Permitir vincular técnicos responsáveis a propriedades direto pelo cadastro de usuário.' },
       { id:'#12179', type:'feat', title:'Vincular propriedades aos técnicos', desc:'Tela complementar para vínculo no sentido inverso — propriedades atribuídas a um técnico.' },
       { id:'#12228', type:'feat', title:'Duplicar Formulário', desc:'Funcionalidade para duplicar um formulário existente com toda sua estrutura.' },
       { id:'#12225', type:'feat', title:'Configuração de mensagem de lembrete em templates de envio', desc:'Templates de envio (e-mail e WhatsApp) passam a suportar configuração de mensagem de lembrete.' },
       { id:'#12238', type:'fix',  title:'Alterar Descrição do campo Bioma', desc:'Pequeno ajuste de copy na descrição do campo Bioma no cadastro.' },
       { id:'#12104', type:'test', title:'Testar filtro por certificadora nos endpoints', desc:'Validação manual do filtro por certificadora nos endpoints — aprovado.' },
-      { id:'#11960', type:'test', title:'Verificar inclusão de index.html no zip de exportação', desc:'Validação manual da inclusão do index.html no ZIP do Relatório de Atendimento Técnico — aprovado.' }
+      { id:'#11960', type:'test', title:'Verificar inclusão de index.html no zip de exportação', desc:'Validação manual da inclusão do index.html no ZIP do Relatório de Atendimento Técnico — aprovado.' },
+      { id:'#12163', type:'feat', title:'Inverter regra de Impressão (CMS)', desc:'Inversão do comportamento padrão da regra de impressão no CMS.' },
+      { id:'#12096', type:'feat', title:'Procedure de cálculo de desempenho por subtema', desc:'Nova procedure consolidando cálculo de desempenho por subtema, usada nos rankings.' },
+      { id:'#12161', type:'fix',  title:'Ranking de Desempenho Regional não ordenado pela pontuação', desc:'Ordenação do Ranking Regional corrigida para considerar a pontuação como chave principal.' },
+      { id:'#12211', type:'fix',  title:'Erro para buscar dados do CAR', desc:'Correção no serviço de busca de dados do CAR via integração externa.' }
     ]
   },
   br: {
@@ -566,7 +568,8 @@ const DATA = {
     cards: [
       { id:'#11494', type:'feat', title:'Landing Pages Dinâmicas por Projeto + Blog + Deploy K8s', desc:'Pipelines e manifests Kubernetes para dev/homolog/prod, blog com destaque, footer dinâmico, seção de aplicativos, Node 24 e Biome.' },
       { id:'#11734', type:'feat', title:'Criar opção "Possui Validação" em perguntas', desc:'Refatoração do formulário para validar apenas tipos suportados, com getter e método reutilizável. UI de validação livre migrada de inline para SCSS.' },
-      { id:'#12178', type:'feat', title:'Referência a outras perguntas no campo Valor das Regras de Validação', desc:'Permitir que o campo Valor de uma Regra de Validação referencie a resposta de outra pergunta do formulário.' },
+      { id:'#12005', type:'fix',  title:'Vínculo de CAR já importado não atualiza sicar_imovel_id', desc:'Atualização do sicar_imovel_id corrigida no fluxo de vinculação de CAR já importado.' },
+      { id:'#12089', type:'fix',  title:'Campos numéricos da pergunta tipo Anexo enviados como string', desc:'Conversão correta dos campos numéricos da pergunta Anexo no payload de salvamento.' },
       { id:'ATER-1', type:'feat', title:'ATER Digital — Setup do zero (RAG Python + API NestJS + Web React)', desc:'Monorepo Turbo com 3 apps: serviço RAG (FastAPI/Docling), API (NestJS/Drizzle), Web (React/Vite/TanStack/shadcn). Docker Compose com Postgres, Redis e MinIO.' },
       { id:'ATER-2', type:'feat', title:'ATER — RAG com Docling + pgvector + sentence-transformers', desc:'Pipeline de ingestão de documentos com Docling, embeddings via sentence-transformers e busca semântica em pgvector — sem serviço vetorial separado.' },
       { id:'ATER-3', type:'feat', title:'ATER — Agente Mastra AI com classificação + auto-reflexão', desc:'Agente orquestrado pelo Mastra AI com tools tipadas (Zod): classify, ragSearch e selfReflect. Reduz alucinação em contexto agrícola.' },
@@ -595,10 +598,7 @@ const DATA = {
       { id:'#12060', type:'fix',  title:'Corrigir edição de layout do form dinâmico', desc:'Correção de inconsistências na edição de layout do formulário dinâmico.' },
       { id:'#12046', type:'feat', title:'Status "Entregue Parcialmente" e detalhamento por e-mail no Histórico', desc:'Novo status visível no Histórico de Envio de Links e detalhamento por e-mail.' },
       { id:'#11951', type:'fix',  title:'Overview index.html do relatório de atendimento técnico', desc:'Correção de problemas com o overview (index.html) do Relatório de Atendimento Técnico.' },
-      { id:'#12005', type:'fix',  title:'Vínculo de CAR já importado não atualiza sicar_imovel_id', desc:'Atualização do sicar_imovel_id corrigida no fluxo de vinculação de CAR já importado.' },
-      { id:'#12089', type:'fix',  title:'Campos numéricos da pergunta tipo Anexo enviados como string', desc:'Conversão correta dos campos numéricos da pergunta Anexo no payload de salvamento.' },
       { id:'#12099', type:'feat', title:'Filtro de certificadoras no cadastro de Endpoint Web (CMS)', desc:'Filtro por certificadora adicionado no cadastro de Endpoint Web no CMS.' },
-      { id:'#12096', type:'feat', title:'Procedure de cálculo de desempenho por subtema', desc:'Nova procedure consolidando cálculo de desempenho por subtema, usada nos rankings.' },
       { id:'#12082', type:'fix',  title:'Exclusão indevida de campos no modal Dados da Exportação', desc:'Correção da aba Campos no modal Dados da Exportação (CMS) que removia campos indevidamente ao salvar.' },
       { id:'#11843', type:'feat', title:'Preview de impacto antes da importação de Protocolo (dry-run)', desc:'Tela de preview com diff de impacto e aprovação do usuário antes de aplicar a importação de protocolo.' },
       { id:'#12136', type:'feat', title:'Exibir protocolo vinculado no dropdown de Importância', desc:'Dropdown de Importância em Gerenciamento de Programas passa a mostrar o protocolo vinculado.' },
@@ -609,9 +609,9 @@ const DATA = {
       { id:'#12157', type:'feat', title:'Migração da tela de Lactação (Checkmilk)', desc:'Migração da tela de Lactação no contexto de unificação Checkmilk.' },
       { id:'#12158', type:'feat', title:'Migração da tela de Pesagem (Checkmilk)', desc:'Migração da tela de Pesagem no contexto de unificação Checkmilk.' },
       { id:'#12159', type:'feat', title:'Migração da tela de Qualidade (Checkmilk)', desc:'Migração da tela de Qualidade do leite no contexto de unificação Checkmilk.' },
-      { id:'#12161', type:'fix',  title:'Ranking de Desempenho Regional não ordenado pela pontuação', desc:'Ordenação do Ranking Regional corrigida para considerar a pontuação como chave principal.' },
-      { id:'#12163', type:'feat', title:'Inverter regra de Impressão (CMS)', desc:'Inversão do comportamento padrão da regra de impressão no CMS.' },
-      { id:'#12211', type:'fix',  title:'Erro para buscar dados do CAR', desc:'Correção no serviço de busca de dados do CAR via integração externa.' }
+      { id:'#12185', type:'fix',  title:'Evitar múltiplas chamadas duplicadas à API ao abrir grupos', desc:'Evitar chamadas duplicadas à API ao abrir grupos no formulário de auto-atendimento.' },
+      { id:'#11737', type:'feat', title:'Vínculo de Técnico por Propriedade no Cadastro de Usuário', desc:'Permitir vincular técnicos responsáveis a propriedades direto pelo cadastro de usuário.' },
+      { id:'#12178', type:'feat', title:'Referência a outras perguntas no campo Valor das Regras de Validação', desc:'Permitir que o campo Valor de uma Regra de Validação referencie a resposta de outra pergunta do formulário.' }
     ]
   }
 };
