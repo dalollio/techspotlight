@@ -24,7 +24,7 @@ cada 3 semanas nas sextas-feiras.
 │   ├── assets/                 # Screenshots referenciados no deck
 │   └── resumo/                 # Resumos intermediários do período
 │
-├── edition-03/                 # Apresentação de 24/04/2026 (em construção)
+├── edition-03/                 # Apresentação de 08/05/2026 (em construção)
 │   ├── spotlight.html
 │   ├── standup_periodo.txt
 │   └── resumo/

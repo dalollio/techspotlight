@@ -1,0 +1,198 @@
+================================================================================
+TECH SPOTLIGHT #04 — STANDUPS DO PERIODO
+Periodo: 04/05 - 22/05/2026
+Apresentacao: 22/05/2026
+================================================================================
+
+Standup (04/05/2026)
+--------------------------------------------------------------------------------
+
+📆 (Start of week meeting)
+
+
+RONALDO
+📌 agrotrace-v3
+
+🚧 In Progress:
+➜ #12226 - [FEAT] Botões de lembrete por e-mail e WhatsApp na grade de formulários pendentes
+    ➜ Implementação da funcionalidade de envio de lembretes para FormAtendimentoToken 
+    ➜ Configuração de lembrete para a tarefa #12225.
+    ➜ Correção da URL da API CMS no ambiente de desenvolvimento.
+
+☎️ Com Ricardo, Bruno e Carlos sobre construção de solução de dados da fazenda com whatsapp
+☎️ Com Bruno e Elias sobre integração do whatsapp com dados de fazenda
+☎️ Com Thielson, sobre problemas com dump do banco local
+☎️ Com Thielson e iohan sobre problema na exibição de dashboard formulario
+
+
+THIELSON
+📆 Start of week meeting
+
+🚧 In Progress:
+➜ #12212 - Modificações tabelas Checkmilk
+      ➜  (progresso feito) Modificado tabelas após alinhamento com matheus
+                  ➜  adicionado status_produtivo e escore em pec_animal (tava faltando)
+                  ➜  adicionado exibirTodasCertificadoras em pec_caracteristicas_certificadora (tava faltando)
+                  ➜  removido pec_tipo_producao (vai ser usado form dinamico)
+                  ➜  adicionado tabela pec_tipo_criacao_certificadora, para dizer com quais tipos de criacao cada certificadora ira trabalhar
+      ➜  (progresso feito) Adicionado, cadastros de tipo_criacao, raca, categorias e características no frontend do cms (componentes de listagem, dropdowns, formularios, rotas)
+
+☎️ Com Matheus alinhando fluxo de reprodução do PEC
+☎️ Com Ronaldo sobre problemas com dump do banco local
+☎️ Com Ronaldo e iohan sobre problema na exibição de dashboard formulario
+BRUNO
+📌 ATER-DIGITAL
+
+✅ Done:
+➜ Desenvolvimento de Funcionalidades
+    ➜ Retry de RAG falho: implementação do botão 'Tentar enviar outro arquivo' para limpar state local e possibilitar retry.
+    ➜ Supersede automático: detecção de falha em KS antiga e permissão de passar supersedesId automático.
+
+🚧 (In Progress):
+    ➜ Ajudando Elias na integração do whatsapp com dados da api do Rural shape (usando typebot e evolution api)
+
+☎️ Com Ronaldo e Elias sobre integração do whatsapp com dados de fazenda
+☎️ Com Iohan e Lucas sobre servidor do Ater Digital está offline 
+☎️ Com Ronaldo, Carlos e Ricardo sobre construção de solução de dados da fazenda com whatsapp
+
+
+
+
+================================================================================
+
+Standup (05/05/2026)
+--------------------------------------------------------------------------------
+RONALDO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12226 - [FEAT] Botões de lembrete por e-mail e WhatsApp na grade de formulários pendentes
+
+🚧 In Progress:
+➜ #12239 - Nova Coluna - CAR Estadual
+    ➜ Implementação de cadastro de novo CAR estadual
+    ➜ Implementação de integração com o RuralShape para identificar o número do car federal
+    ➜ Modificado implementação para ApiKey
+
+☎️ Com Bruno e Iohan sobre fix nas variaveis de ambiente do agrotrace e deploy
+☎️ Com Gustavo, sobre fontes com negrito no jasper
+☎️ Com Iohan, Indicadores de sustentabilidade e integrações com prodes e ibama
+☎️ Com Brenda, dúvidas sobre a gamificação no Agrotrace
+
+
+THIELSON
+📌 agrotrace-v3
+
+🚧 In Progress:
+➜ #12212 - Modificacoes PEC / Checkmilk
+      ➜  (progresso feito) Ajustadas tabelas e regras do PEC apos novos alinhamentos
+            ➜  movidos atributos de sexo e reprodutor para categoria
+            ➜  ajustado suporte de itens em lista nas características dos animais
+            ➜  atualizados seeds e entidades relacionadas a categoria, animal e características
+      ➜  (progresso feito) Evoluído fluxo de reprodução animal no web
+            ➜  adicionados formulários para animal, diagnostico, IATF e semen
+            ➜  adicionados dropdowns para animal, categoria, raça, tipo de criação, protocolos, inseminação e estoque de semen
+            ➜  ajustadas abas, filtros e componentes de reprodução animal para usar os novos componentes
+      ➜  (progresso feito) Ajustado fluxo de controle e estoque de semen
+            ➜  adicionados modelos e services no web-common para semen, diagnostico, IATF e animal
+            ➜  criado controller de estoque de semen no backend
+            ➜  ajustados services do backend para buscas e selecoes usadas pelos novos dropdowns
+
+☎️ Com Matheus alinhando fluxo de reprodução do PEC
+BRUNO
+📌 agrotrace-v3
+
+✅ Done:
+➜ Landing Page e Blog
+    ➜ Implementação de indicadores dinâmicos integrados à procedure getIndicadoresHome e atualização do layout da seção de estatísticas.
+    ➜ Centralização da gestão de variáveis de ambiente com Zod e implementação de logging de erros para o cliente de API.
+    ➜ Ajustes de infraestrutura nos configmaps de deploy e correção de links do LinkedIn no rodapé.
+
+🚧 (In Progress):
+➜ #11801 - [FEAT] - Telas de cadastro padrão do CMS: janelas arrastáveis, tiling e multi-registro
+    ➜ Sistema de Modais Tiling
+        ➜ Desenvolvimento do TilingModalService e componentes de container para suporte a janelas arrastáveis e layout split-screen no CMS.
+
+---
+
+📌 ATER-DIGITAL
+
+✅ Done:
+➜ Integração Evolution API
+    ➜ Implementação de captura de eventos de webhook, persistência de sessões de bot e validação de usuários parciais via Typebot.
+    ➜ Refinamento da lógica de idempotência e parser de webhooks.
+➜ Chat e IA
+    ➜ Implementação de ações inline no chat (botões de navegação) e reforço de segurança na validação de acesso a missões e fazendas.
+    ➜ Atualização de componentes de UI (Carousel, AssistantActionButton) e melhorias na inferência de categorias de documentos.
+➜ Ajustes de Infraestrutura e Segurança
+    ➜ Correção de validação de CORS para requisições sem origem e desativação de preloading de links no sidebar administrativo.
+
+---
+☎️ Com Elias implementando fluxo de dados com typebot, whatsapp, rural shape e dados climático
+☎️ Com Ricardo, Matheus, Iohan e Brenda sobre pendência de indicadores na landing page
+☎️ Com Ronaldo e Iohan sobre fix nas variaveis de ambiente do agrotrace e deploy
+☎️ Com Matheus finalizando pendências da landing page
+
+
+
+================================================================================
+
+Standup (06/05/2026)
+--------------------------------------------------------------------------------
+📆 (Planing Web)
+
+RONALDO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12239 - Nova Coluna - CAR Estadual
+    ➜ Implementação de cadastro de novo CAR estadual
+    ➜ Implementação de integração com o RuralShape para identificar o número do car federal
+    ➜ Modificado implementação para ApiKey
+
+➜ #12193 - INTEGRAÇÂO BASE PRODES - RURALSHAPE
+    ➜ Atualização do modelo PropriedadeCar para incluir novas propriedades para rastreamento de datas de pesquisa para Sicar, Prodes, Ibama e Deter.
+    ➜ Melhoria do SicarService com novas interfaces e métodos para importação de camadas, incluindo o tratamento de opções e resultados de importação.
+
+☎️ Com Iohan e Ricardo - Análise ambiental
+☎️ Com Thielson, sobre estrutura da tabela animal (PEC)
+BRUNO
+📌 agrotrace-v3
+✅ Done:
+➜ Sistema de Logo: Implementado mecanismo para exibir logotipo específico na seção de rodapé das landing pages. Atualizado o componente FooterProjectPanel para usar a nova lógica de resolução de logotipo.
+  ➜ Atualizado o Dockerfile.prod para incluir AZURE_STORAGE_PUBLIC_CONTAINER_NAME como argumento de build.
+
+📌 ATER-DIGITAL
+✅ Done:
+➜ Integração Typebot: Implementado módulo de integração com Typebot, permitindo comunicação segura via chaves API. Introduzido perfil de agente typebot para experiência de usuário mais leve e menos intrusiva.
+  ➜ Otimizado gerenciamento de sessões no módulo de integração Typebot, reutilizando sessões ativas existentes em vez de criar novas.
+➜ Refatoração do Módulo de Mensagem: Removido o tratamento de webhook do Evolution e substituído por integração dedicada do Producer Typebot. Introduzido repositório ProducerWhatsappIdentity e caso de uso GetProducerTypebotContext para lidar com identificação e contexto do produtor via Typebot.
+
+---
+☎️ Com Elias integrando sobre add funcs de cadastro de user do wapp, cadastro de fazenda via wapp e listagem de fazenda
+☎️ Com Matheus sobre correção de container de imagens publico da api e ocultação dinâmica de indicadores
+☎️ Com Iohan sobre correção no container público de arquivos do Azure, logs da api do Agrotrace e acesso a landing page usando subdominios por projeto
+☎️ Com Brenda sobre adicionar logo no footer da landing page
+THIELSON
+🚧 In Progress:
+➜ #12212 - Modificacoes PEC / Checkmilk
+        ➜  (progresso feito) Otimização do esquema de banco de dados e modelos PEC
+              ➜  simplificadas relações many-to-many para características, tipos de criação e justificativas
+              ➜  removidas entidades intermediárias e services redundantes no web-common
+              ➜  implementados getters de labels amigáveis para enums de animais e diagnósticos
+        ➜  (progresso feito) Refinamento do cadastro de características
+              ➜  adicionado suporte a múltiplas categorias no registro de características
+              ➜  centralizado gerenciamento de certificadoras nos modelos principais (características e tipos de criação)
+              ➜  ajustados formulários e lógica de validação no CMS para os novos modelos simplificados
+        ➜  (progresso feito) Evolução do fluxo de justificativas e reprodução
+              ➜  implementado sistema de justificativas para os processos de reprodução
+              ➜  migrados e refinados componentes de justificativa do web para o CMS
+              ➜  melhorada a lógica de atualização de sêmen e animais nos formulários de diagnóstico reprodutivo
+
+☎️ Com Matheus alinhando fluxo de reprodução do PEC
+
+
+
+
+================================================================================
+

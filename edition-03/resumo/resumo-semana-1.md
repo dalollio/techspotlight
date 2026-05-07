@@ -47,7 +47,7 @@
 - **Por que:** Projeto novo com stack moderna (Mastra AI, RAG, pgvector, Gemini)
 - **Historia:** Monorepo com 3 apps (RAG Python, API NestJS, Web React), agente de IA que classifica consultas agricolas, busca em base de conhecimento e retorna respostas estruturadas
 - **Demo:** Chat fazendo consulta agricola ao vivo
-- **Risco:** Projeto pode evoluir muito ate 24/04 — esperar mais dados
+- **Risco:** Projeto pode evoluir muito ate 08/05 — esperar mais dados
 
 ### 2. Dashboard Carbono — KPIs e drill-down por tema (Ronaldo) ***
 - **Por que:** Dashboard analitico com consulta performatica, graficos e drill-down

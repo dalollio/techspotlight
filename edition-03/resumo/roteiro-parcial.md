@@ -1,5 +1,5 @@
 # TECH SPOTLIGHT #03 — WEB TEAM
-> Periodo: 02/04 - 23/04/2026 | Apresentacao: 24/04/2026
+> Periodo: 06/04 - 30/04/2026 | Apresentacao: 08/05/2026
 > Apresentadores: Ronaldo, Bruno, Thielson
 >
 > STATUS: PARCIAL (3 de ~15 dias coletados)

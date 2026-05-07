@@ -1,7 +1,7 @@
 ================================================================================
 TECH SPOTLIGHT #03 — STANDUPS DO PERIODO
-Periodo: 02/04 - 23/04/2026
-Apresentacao: 24/04/2026
+Periodo: 06/04 - 30/04/2026
+Apresentacao: 08/05/2026
 ================================================================================
 
 Standup (06/04/2026)
@@ -220,3 +220,980 @@ Calls:
 - Com Elias sobre validacao de pergunta
 - Com Iohan sobre problemas no deploy (env vars + migrations)
 - Com Ronaldo e Thielson apresentando evolucao do agro assistant
+
+
+================================================================================
+
+Standup (09/04/2026)
+RONALDO
+✅ Done:
+➜ #12027 - [FEAT] Exportação de relatório em Excel — Envio de Links com Erro
+➜ #12032 - [FIX] Dropdown Lista expande além da largura definida ao selecionar item com texto longo
+➜ #12062 - [FEAT] Dashboard Carbono — painel analítico com temas prioritários, KPIs, gráficos e drill-down por tema
+➜ #12070 - [FIX] Campo Elegível no CAR não salva.
+
+☎️ Com Thielson, sobre erros nas migrations
+☎️ Com Iohan e Hielson, problemas com conflitos e encerrar sprint
+☎️ Com Iohan, ajustes relatórios de respostas dos formulários
+☎️ Com Ricardo, sobre dashboard do Carbono
+☎️ Com Thielson, alinhando atividade #12046 e futuras atividades
+
+
+BRUNO
+📆 (Follow up -> Ater Digital)
+
+📌 Agro assistant
+
+🚧 In Progress:
+➜ Tela de chat (streaming + integração com agente)
+➜ Tela de gerenciamento de fazenda e culturas
+
+✅ Done:
+➜ RAG / Search
+   ➜ DI no FastAPI + docs com Scalar
+   ➜ Cancelamento de requests (client disconnect)
+   ➜ Migração para Groq (melhor performance)
+   ➜ Tool de clima + testes + ajustes de concorrência
+➜ AI
+   ➜ Migração de SYSTEM_PROMPT → workspace skills
+   ➜ Criação/refatoração das skills (SKILL.md)
+   ➜ Logging de tool calls + ajustes de build/paths
+➜ Auth / API
+   ➜ Better Auth (sign-in/up)
+   ➜ Roles (assignRole + /roles/me)
+   ➜ Auto-role producer + CORS
+➜ Web
+   ➜ Onboarding produtor + validações (TanStack Form)
+   ➜ Layout com roles (admin/produtor)
+   ➜ Upload S3 + ingestão de knowledge
+   ➜ Profile do produtor
+➜ Chat UI
+   ➜ Base do chat com streaming
+   ➜ Markdown + componentes (Message, Input, etc)
+   ➜ Suggestions, header, message bubble
+
+☎️ Com Elias sobre dúvida na implementação do tipo de pergunta anexo no mobile
+THIELSON
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12060 - Corrigir edição de layout do form dinamico
+      ➜ Investigando e corrigido problemas para salvar o layout do dashboard formulario (alterado procedures, e front end)
+
+🚧 In Progress:
+➜ #12046 - [FEAT] Exibir status "Entregue Parcialmente" e detalhamento por e-mail no Histórico de Envio de Links
+      ➜ (progresso feito) - Criado nova entidade (form-envio-contato) para poder ter erros de envio para cada contato de uma mesma propriedade
+      ➜ Implementando logica no back para preencher o form-envio-contato com o web-hook do resend
+      ➜ Alterando o front para melhorar o ux  o usuario para indentificar melhor os erros por contato
+
+☎️ Com Gustavo sobre erros ao salvar layout do form dinamico
+☎️ Com Iohan sobre problemas de commit na sprint
+☎️ Com Iohan e Ronaldo sobre fechamento da sprint
+☎️ Com Ronaldo alinhando atividade #12046 e futuras atividades
+
+
+
+================================================================================
+
+Standup (10/04/2026)
+📆 Web Spotlight
+
+RONALDO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12074 - [FIX] Relatórios e Exportações não carregam na tela de Resultados
+    ➜ A lógica de validação do parâmetro 'IS_PUBLIC' foi atualizada para aceitar a string 'true' (case-insensitive) e o valor padrão foi ajustado para 'false'.(não estava carregando nenhum relatório)
+➜ #12073 - [FIX] Erro 500 ao carregar permissões no modal de Endpoint Web
+    ➜ corrigido o endpoint /permissao/select-item
+➜ #12076 - [FIX] Ajustes de layout e conteúdo no Dashboard Carbono
+    ➜ Correções de acentuação
+    ➜ Ajuste no card de Retenção de Carbono
+    ➜ Substituição de KPI na seção KPIs Gerais
+    ➜ Filtro por safra
+    ➜ Modal de atendimentos
+    ➜ Verificações gerais de regressão
+
+☎️ Com Web, sobre chat, validação e evolução do agro assistant
+☎️ Com Iohan, sobre visualizações de relatórios - envios de correção e cherry pick  ok
+☎️ Com Iohan, sobre criação de campos exportação - relatórios
+☎️ Com Thayse, sobre erro em ranking do perfil público e sobre index.html no RAT
+☎️ Com Gustavo, sobre em dash do Carbono + Ajuste em gerar relatorios 
+☎️ Com Brenda, sobre dados do Agrotrace para inserção na apresentação
+
+THIELSON
+📌 agrotrace-v3
+
+✅ Done:
+➜ Investigado e Corrigido problemas para buscar dados dashboard formulário
+➜ #11951 - Corrigido problemas com overview (index.html) do relatório de atendimento tecnico
+➜ #12046 - [FEAT] Exibir status "Entregue Parcialmente" e detalhamento por e-mail no Histórico de Envio de Links
+      ➜ Implementado logica no back para preencher o form-envio-contato com o web-hook do resend
+      ➜ Alterado o front para melhorar o ux  o usuário para indentificar melhor os erros por contato
+☎️ Com Gustavo sobre erros ao buscar dados de dashboard formulario
+
+BRUNO
+📌 agro assistant
+
+✅ Done:
+➜ Chat
+     ➜ UI completa (composer, streaming, auto-scroll, fullscreen)
+     ➜ Integração com AI SDK v6 e ajustes de envio/stream
+     ➜ Histórico com threads + drawer + rotas /chat e /chat/:id
+     ➜ Listagem de threads + histórico de mensagens corrigido
+➜ Rotas & Auth
+    ➜ Reorganização de rotas + guards centralizados
+    ➜ Redirect pós-login + ajustes admin/onboarding
+    ➜ Reset de senha com email + melhorias nas telas
+    ➜ Listagem, detalhe e CRUD de culturas
+    ➜ Melhorias de UI + seletor de localização
+    ➜ Endpoint + banner dinâmico com animações e cache
+➜ UI/UX
+    ➜ Transições mobile, melhorias em dashboard, perfil e auth
+    ➜ Animações e ajustes gerais de layout
+➜ Conhecimento
+    ➜ Detalhes + download com URL assinada
+➜ Infra
+    ➜ Ajustes orval, imports e PWA
+
+☎️ Alinhamentos com web sobre chat, validação e evolução do agro assistant
+
+
+
+================================================================================
+
+Standup (13/04/2026)
+📆 (Start of week meeting)
+
+RONALDO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12088 - [FEAT] Radar de Temas por Estado — Adicionar série com valor geral consolidado
+    ➜ O título do gráfico de radar foi atualizado para 'Score por Tema'.
+    ➜ A lógica de geração de dados do gráfico de radar foi simplificada, removendo a condicional que diferenciava entre score por tema e temas por estado.
+    ➜ Refatoração da lógica de geração do gráfico radar em 'carbono-dashboard.component.ts', eliminando a complexidade de lidar com múltiplos estados e reduzindo código duplicado.
+
+➜ #12097 - [FIX] Checkboxes em filtros dinâmicos enviam undefined em vez de false quando não são tocados
+    ➜ O valor padrão para campos do tipo 'checkbox-solo' foi definido como 'false' quando não possuem valor padrão especificado.
+    ➜ Esta alteração evita comportamentos inesperados no formulário dinâmico.
+    ➜ Adicionada verificação em 'dynamic-form.component.ts' para garantir consistência no comportamento do componente.
+
+➜ #12094 - Adiciona substituição de URLs de anexos com SAS no QueResposta
+    ➜ Adicionada lógica para substituir URLs de anexos por URLs com parâmetros SAS no serviço QueResposta.
+    ➜ O método replaceAnexosUrlsSas foi adicionado ao QueRespostaService para processar URLs de anexos, adicionando o parâmetro SAS à URL base de cada anexo.
+
+☎️ Com Thielson, nova validação por contato no envio de links (#12046)
+☎️ Com Bruno, sobre resolver problema de cadastro do pergunta Anexo e Imagem
+☎️ Com Thayse, sobre erro para gerar relatório de atendimento técnico e erro para abrir anexo
+☎️ Com Gustavo, sobre nova procedure para agrupar indicadores por subtema e pontuação
+☎️ Com Elias, sobre vinculo do usuario (técnico) com a propriedade
+BRUNO
+📌 agro-assistant
+
+🚧 (In Progress):
+➜ Migração para Azure Blob Storage e embeddings Gemini
+    ➜ Armazenamento e Embeddings
+        ➜ Migrado armazenamento de S3/MinIO para Azure Blob Storage; embeddings atualizados de 1024 para 1536 dimensões, exigindo reindexação completa
+        ➜ Embedder reescrito de SentenceTransformer para Pydantic AI Gemini com chunking dedicado
+    ➜ Infraestrutura K3s
+        ➜ Adicionados builds Docker multi-stage, manifestos Kubernetes e modo provider para serviços RAG
+    ➜ Busca Híbrida
+        ➜ Implementada busca textual com tsvector, índice GIN e trigger auto-populado para busca full-text em português
+
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12005 - [FIX] Vínculo de CAR já importado não atualiza sicar_imovel_id na propriedade
+    ➜ Integração CAR/Sicar
+        ➜ Ajustado o vínculo de CAR para atualizar corretamente o sicar_imovel_id durante operações de salvamento, atualização e importação em lote nos serviços de propriedade e importação.
+➜ #12089 - [FIX] Campos numéricos da pergunta tipo Anexo enviados como string ao salvar
+    ➜ Formulários de Pergunta
+        ➜ Implementada sanitização para converter campos numéricos (qtdMinima, qtdMaxima, tamanhoMaximoMb) para tipos numéricos ou null, e atualizados os componentes de formulário para utilizar p-inputNumber.
+
+☎️ Com Iohan sobre Storage do Azure e problemas de setar cookies no novo dominio do agrotrace
+☎️ Com Gustavo sobre liberar permissões para Google Meet
+☎️ Com Ronaldo e Elias sobre resolver problema de cadastro do pergunta Anexo e Imagem
+THIELSON
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12099 - [FEAT] Filtro de certificadoras no cadastro de Endpoint Web (CMS)
+      ➜ Adicionado tabelas para relacionamento de endpoints com certificadora permitidas e certificadoras excluidas. Adicionado novo campo 'exibirTodasCertificadoras' no endpoint
+      ➜ Alterado cadastro de endpoints para ter seleção de certificadoras semelhante ao que é feito com exportação
+      ➜ Alterado guards no front para alem de verificar permissao verificar se a certificadora tem acesso ao endpoint
+➜ #12046 - [FEAT] Exibir status "Entregue Parcialmente" e detalhamento por e-mail no Histórico de Envio de Links
+      ➜ Melhorado visualização de quais contatos deram erro no front
+      ➜ Adicionado logica no backend para envios via whatsapp e telefone
+      ➜ Testa e corrigido erros nos fluxo
+
+☎️ Com Ronaldo nova validação por contato no envio de links (#12046)
+
+
+================================================================================
+
+Standup (14/04/2026)
+RONALDO
+
+📌 Agrotrace-v3
+
+✅ Done:
+➜ #12105 - [FIX] Importação em massa de propriedades SICAR falha com 401 por ausência do header x-system-platform
+    ➜ Adição do cabeçalho 'x-system-platform' com o valor 'AGRO' nas requisições para o serviço SICAR.
+    ➜ Correção do erro 401 que impedia a importação em massa de propriedades SICAR devido à ausência do cabeçalho necessário.
+➜ #12096 - [FEAT] Criar procedure para calculo de desempenho por subtema
+    ➜ Semelhante ao que fizemos com os Princípios, fizemos novos calculos agrupados por Subtema.
+
+☎️ Com Iohan, sobre situação sobre sincronismos
+☎️ Com Thielson e Bruno, sobre sincronização de parametros de campos na exportação do CMS
+☎️ Com Gustavo, sobre procedure desenvolvida para o relatório de Carbono
+
+
+THIELSON
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12099 - [FEAT] Filtro de certificadoras no cadastro de Endpoint Web (CMS)
+      ➜ Separado picklist de certificadoras em tabs
+➜ #12082 - [FIX] Exclusão indevida de campos ao salvar modal Dados da Exportação — aba Campos (CMS)
+      ➜ Corrigido cadastro de exportação para evitar exclusão de campos ao salvar
+      ➜ Melhorado carregamento de campos ao scrollar
+
+🚧 In Progress:
+➜ #11843 - [FEAT] Preview de impacto antes da importação de Protocolo (dry-run com aprovação do usuário)
+      ➜ Planejando melhor forma de implementar o preview
+
+☎️ Com Web sobre sync de campos no cadastro de exportação
+BRUNO
+📌 Agro assistant
+
+🚧 In Progress:
+➜ Evolução do fluxo de onboarding (fazenda → talhão → culturas)
+➜ Refinamentos na UX do mapa e wizard de perfil do talhão
+➜ Upload de arquivos da fazenda como fonte de conhecimento pelo produtor
+
+✅ Done:
+➜ AgroAPI / Admin
+   ➜ Correção de erros TS + uso de hook gerado (Orval)
+   ➜ Endpoint de status de sync + exibição no admin
+
+➜ Backend
+   ➜ Introdução de talhões (plots) com polígono e área calculada
+   ➜ Refatoração farms → plots → crops
+   ➜ Metadata agronômica separada (plot vs crop)
+   ➜ CRUD completo de plots + use cases + controller
+   ➜ Atualização de working memory e agent skills
+   ➜ Migrations + ajustes de schema (JSONB metadata)
+
+➜ Frontend
+   ➜ PlotMapEditor com Leaflet + fullscreen nativo
+   ➜ AgronomicProfileForm + wizard de perfil do talhão (4 etapas)
+   ➜ Reestruturação da página de fazenda (hierarquia por talhão)
+   ➜ Onboarding completo com validações e metadata
+   ➜ Badge de completude + melhorias de UX (animações, forms, sugestões)
+
+➜ Fixes
+   ➜ Correções de TS (backend/web) pós-refactor
+   ➜ Ajustes OpenAPI/Orval compatibilidade
+   ➜ Fixes no mapa fullscreen e interações com drawer
+   ➜ Correção de leitura de metadata (plot vs crop)
+   ➜ Melhorias em formulários (disease suggestions, inputs, etc)
+
+☎️  Com Thielson e Ronaldo sobre sincronização de parametros de campos na exportação do CMS
+
+================================================================================
+
+Standup (15/04/2026)
+RONALDO
+
+📌 Agrotrace-v3
+
+🚧 In Progress:
+➜ #12124 - [FEAT] Dashboard "Carbono — KPI" com visualização consolidada de indicadores do formulário de carbono
+    ➜ Criando consulta para reunir os dados de forma agrupada conforme planilha
+    ➜ Montando KPI por assunto
+
+☎️ Com Iohan, sobre dados do SICAR no MT
+
+
+THIELSON
+
+📌 agrotrace-v3
+
+🚧 In Progress:
+➜ #11843 - [FEAT] Preview de impacto antes da importação de Protocolo (dry-run com aprovação do usuário)
+      ➜ (progresso feito) - Criado fluxo de preview com endpoints para gerar e confirmar importação, cacheando o plano em Redis com controle de expiração e lock para evitar confirmação duplicada
+      ➜ (progresso feito) - Estruturado o dry-run da importação para montar resumo de inserções, atualizações, exclusões, avisos e erros, além de adaptar o front para exibir esse preview antes da confirmação
+      ➜ Melhorando service de importação para dividir responsabilidades em mais services, incluindo estrutura de preview/cache para reduzir o tamanho do fluxo principal
+      ➜ Ajustando identificação do que foi adicionado, editado e excluído no preview, pois ainda esta apontando mais alterações do que deveria 
+BRUNO
+📌 ATER-DIGITAL
+
+✅ Done:
+➜ Integração de Histórico de Conversas
+    ➜ Interface de Chat
+        ➜ Implementado componente ConversationHistory para exibir histórico de mensagens entre produtor e IA no detalhe do agendamento técnico.
+        ➜ Adicionada animação de transição e carregamento dinâmico de textos com RotatingText.
+        ➜ Refinada formatação Markdown nativa nas mensagens e ajuste de layout do card de escalonamento.
+➜ Gestão de Agendamentos e Google Calendar
+    ➜ Integração Google Meet
+        ➜ Implementada criação e cancelamento automático de eventos no Google Calendar via MeetService.
+        ➜ Ajustada inclusão de técnicos como convidados e exibição correta do link do Meet.
+        ➜ Adicionada lógica para ignorar horários passados na busca de slots disponíveis.
+➜ Pipeline de Dados e RAG
+    ➜ Processamento de Laudos
+        ➜ Criado endpoint /tools/prepare-laudos para conversão de Excel para Markdown anonimizado.
+        ➜ Desenvolvido script prepare-laudo-data.py para ingestão de dados de laudos BIODIESEL 2025.
+        ➜ Atualizadas listas de pragas, doenças e plantas daninhas com dados reais de campo.
+➜ Infraestrutura e Testes
+    ➜ Qualidade de Código
+        ➜ Alcançada cobertura total de testes unitários (223 testes) cobrindo todos os módulos (consentimento, técnico, consulta, agendamento, produtor, conhecimento e chat).
+        ➜ Corrigidas migrações Drizzle (0020-0022) e implementado script migrate.ts.
+        ➜ Ajustes de segurança e permissões de upload para produtores.
+        ➜ Correções de bugs em updatePlot e estabilização de componentes Leaflet no editor de mapas.
+
+☎️ Com Ricardo sobre atualização de permissões no admin do Google para lidar com agendamentos
+☎️ Com Thielson sobre uso da skill superpowers
+
+================================================================================
+
+Standup (16/04/2026)
+RONALDO
+
+📌 Agrotrace-v3
+
+🚧 In Progress:
+➜ #12124 - [FEAT] Dashboard "Carbono — KPI" com visualização consolidada de indicadores do formulário de carbono
+    ➜ Refinando cada KPI
+    ➜ Adicionando tabelas dos itens que comporam o KPI  (validar amanha)
+
+☎️ Com Iohan, sobre problemas com container de blobs
+☎️ Com Thielson, sobre atividade 11843
+☎️ Com Iohan, entendendo a demanda do Aprosoja (querem consumir o CAR Estadual e não Federal)
+
+
+THIELSON
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11843 - [FEAT] Preview de impacto antes da importação de Protocolo (dry-run com aprovação do usuário)
+      ➜ (progresso feito) - Melhorando service de importação para dividir responsabilidades em mais services, incluindo estrutura de preview/cache para reduzir o tamanho do fluxo principal
+      ➜ (progresso feito) - Ajustando identificação do que foi adicionado, editado e excluído no preview, pois ainda esta apontando mais alterações do que deveria
+      ➜ (progresso feito) - Melhorado ux do preview, facilitar a identificação das perguntas, itens, importâncias e etc. Adicionado filtragem para poder ver somente pergunta, temas, subtemas e etc. Adicionado visualização de 'breadcrumb' para saber o caminho de perguntas 'Questionario > Tema > Subtema'. Adicionado visualização do conteúdo da pergunta. Adicionado comparativo para perguntas editadas 'antes e depois' com identificação dos campos alterados.
+      ➜ (progresso feito) - Corrigido erros ao criar protocolos novos a partir da importação
+
+☎️ Com Ronaldo sobre atividade 11843
+BRUNO
+📌 ATER-DIGITAL
+
+✅ Done:
+➜ Infraestrutura de Build: Otimizou a build do Dockerfile para a aplicação rag, adicionou limpeza de disco e pruning do Docker ao pipeline do Azure, e atualizou o gerenciador de pacotes bun para a versão 1.3.12.
+  ➜ Atualizou o arquivo azure-pipelines.yml para incluir a limpeza de disco e o pruning do Docker.
+  ➜ Modificou o comando uv sync no Dockerfile da aplicação rag para excluir a instalação do projeto e tornar a build mais rápida.
+  ➜ Atualizou o arquivo bun.lock e o package.json para refletir a nova versão do bun.
+➜ Especificações da API: Atualizou a especificação OpenAPI para refletir as mudanças mais recentes na API, incluindo endpoints relacionados a usuários, sessões, contas e uploads.
+  ➜ Alterou o arquivo openapi.json para incluir as novas especificações da API.
+➜ Integração com o Gmail: Substituiu o serviço de e-mail Resend pelo Gmail, atualizando o esquema de ambiente, o módulo de e-mail e as configurações do Kubernetes para usar a autenticação por senha do aplicativo do Gmail.
+  ➜ Removendo as chaves de API obsoletas do OpenAI e do Anthropic.
+➜ Renomeação do Projeto: Renomeou o projeto de agro-assistant para ater-digital, atualizando todas as referências no código, configurações, manifestos do Kubernetes, templates de e-mail e documentação.
+
+☎️ Com Iohan sobre infra do Ater-digital
+☎️ Com Thayse sobre problema no cadastro de pergunta anexo
+
+================================================================================
+
+Standup (17/04/2026)
+📅 Tech Spotlight D&D - Design & Devops
+
+RONALDO
+
+📌 Agrotrace-v3
+
+✅ Done:
+➜ #12124 - [FEAT] Dashboard "Carbono — KPI" com visualização consolidada de indicadores do formulário de carbono
+    ➜ Refinando cada KPI
+    ➜ Adicionando tabelas dos itens que comporam o KPI
+
+➜ #12073 - [FIX] Erro 500 ao carregar permissões no modal de Endpoint Web
+
+➜ #12104 - Test | Testar filtro por certificadora nos endpoints (ok)
+➜ #11960 - Test | verificar inclusao de index.html no zip de exportacao (ok)
+
+Geral: Pesquisando possibilidades de integração com SICAR estadual.
+
+☎️ Com Thielson, testando preview de alterações na importacao de protocolo e alinhando atividades
+
+THIELSON
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12138 - Adicionar verificação de tipo de array no registro
+      ➜ Adicionando novo campo 'tipo_array'  (string ou number) no cadastro de registro, alterado a logica no cadastro de registro e de registro certificadora para que quando for um numero salve o array com itens sem aspas
+➜ #12136 - [FEAT] Exibir protocolo vinculado no dropdown de Importância em Gerenciamento de Programas
+      ➜ Alterado método getSelectItem do service na api para retornar o nome do protocolo a qual a importância pertence
+      ➜ Alterado dropdown de pergunta importância para exibir o nome do protocolo
+
+🚧 In Progress:
+➜ #12137 - [[FEAT] Campo de busca de perguntas no cadastro de Questionário
+      ➜ Adicionando forma de buscar/filtrar uma pergunta no cadastro de questionario, (algo semelhante ao que é feito na pagina de relatorios)
+
+
+☎️ Com Ronaldo testando preview de alterações na importacao de protocolo e alinhando atividades
+BRUNO
+📌 ATER-DIGITAL
+
+✅ Done:
+➜ Atualização do Dockerfile do RAG
+    ➜ RAG Build
+        ➜ Simplificado PATH, removido /root/.local/bin e revertido commit para consistência.
+➜ Correção do router nas ferramentas do RAG
+    ➜ RAG API
+        ➜ Removido atributo .router que causava erro de importação.
+➜ Unificação do tratamento de anexos nas AI Tools
+    ➜ AI Tools
+        ➜ Criada resolveAttachmentForModel, refatorados analyze-image e transcribe-audio, adicionado downloadObject ao storage.
+➜ Ajuste da URL de autenticação no ConfigMap
+    ➜ Infra Config
+        ➜ Removido sufixo /auth de BETTER_AUTH_URL.
+➜ Inclusão de config e migrations do Drizzle na imagem server-migrate
+    ➜ Server Migration Image
+        ➜ Copiados drizzle.config.ts e migrations, evitando falha no Job K3s.
+➜ Permissão de mensagem inicial com anexos no chat
+    ➜ Chat Attachments
+        ➜ Armazenamento temporário em sessionStorage e inclusão no payload inicial.
+➜ Melhorias no CI Pipeline
+    ➜ CI Pipeline
+        ➜ Reordenação da instalação do Bun; correção da chave de cache do venv Python.
+        ➜ Migração para buildx com cache de registro ACR.
+        ➜ Caching de dependências Bun e uv.
+➜ Migração de importação para chat.schemas
+    ➜ Chat Schemas
+        ➜ Atualizado import em chat-ui-message-stream.ts.
+➜ Atualização dos testes de embedding e chunking do RAG
+    ➜ RAG Tests
+        ➜ Ajustados parâmetros de modelo, batch size e chunking; uso de imports dinâmicos.
+➜ Refatoração dos DTOs de chat
+    ➜ Chat DTOs
+        ➜ Movidos schemas, limpeza de imports e formatação unificada.
+➜ Atualização das factories de testes de agendamento
+    ➜ Scheduling Tests
+        ➜ Incluídos calendarEventId e emails de técnicos; excluídos arquivos de teste do build.
+---
+☎️ Com Iohan sobre problemas no ambiente de deploy do Ater Digital
+
+================================================================================
+
+Standup (20/04/2026)
+📆 (Start of week meeting)
+
+RONALDO
+
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12144 - Buscar dados do CAR - Novo Cadastro de Propriedade
+    ➜ Implementada a lógica de salvamento otimista para as entradas do CAR.
+    ➜ Atualizadas as mensagens de erro relacionadas à funcionalidade de propriedade-car.
+
+🚧 In Progress:
+➜ #12161 - [FIX] Ranking de Desempenho Regional não está ordenado pela pontuação
+
+☎️ Com Thielson sobre atividades do chekmilk
+
+THIELSON
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12139 - [FIX] Modal "Dados da resposta" em Diagnósticos abre oversized e ancorada à direita
+      ➜ Corrigido largura do modal de cadastro de resposta dentro do diganostico
+➜ #12137 - [FEAT] Campo de busca de perguntas no cadastro de Questionário
+      ➜ Adicionado forma de buscar/filtrar uma pergunta no cadastro de questionario, (algo semelhante ao que é feito na pagina de relatorios)
+
+🚧 In Progress:
+➜ #12156, #12157, #12158, #12159 - Migrando telas do checkmilk (lote leite, lactação, pesgem, qualidade do leit)
+      ➜ (progresso feito) Mapeado tabelas
+BRUNO
+📌 ATER-DIGITAL
+
+🚧 In Progress:
+➜ Otimizando parsing de documentos para evitar menos recurso
+
+✅ Done:
+ ➜ Serviço AgroAPI e Ingestão RAG
+        ➜ Validação antecipada de credenciais no sync_service, desativação de OCR no reader e ajuste do comando docling‑tools no Dockerfile.
+        ➜ Pré‑download de artefatos Docling (modelos layout e tableformer) no build Docker, caminho de cache configurado no reader e token seguro no pipeline CI.
+➜ Autenticação e CORS
+        ➜ Cookies seguros com atributos httpOnly, secure, sameSite e suporte a subdomínios, configuráveis por ambiente.
+        ➜ Inclusão de origem HTTP nas permissões CORS, função buildAllowedCorsOrigins e parsing robusto de origens com testes.
+        ➜ ConfigMap atualizado para origem HTTP em desenvolvimento.
+➜ Endpoint de health anônimo
+    ➜ Saúde do Servidor
+        ➜ Criação do HealthController com @AllowAnonymous e registro no AppModule, permitindo acesso público ao endpoint de health.
+➜ Seleção de plot no chat
+    ➜ Chat – Seleção de Plot
+        ➜ UI nova para escolha de plot (drawer, componentes), DTOs e schemas atualizados, e agente orquestrador adaptado ao plot selecionado.
+➜ Refatoração de consultas Infra
+    ➜ Infra – Queries Otimizadas
+        ➜ Substituição de consultas Drizzle por selects e joins explícitos em repositórios de auth, roles, farms, plots, produtor, agendamento e técnico.
+➜ Configurações do servidor NestJS
+    ➜ Servidor – Configurações NestJS
+        ➜ Bootstrap ajustado para NestExpressApplication e desativação de ETags, melhor integração com Express e controle de cache.
+➜ Limpeza de logs de debug no producer
+    ➜ Producer Profile
+        ➜ Remoção de console.log no ProducerProfileController, reduzindo saída desnecessária em produção.
+
+☎️ Com Iohan verificando e ajustando problemas de deploy do Ater Digital
+
+================================================================================
+
+Standup (22/04/2026)
+RONALDO
+
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12163 - Inverter regra de Impressão - CMS
+     ➜ Por padrão será marcado como imprimir.
+
+➜ #12167 - [FIX] Corrigir URLs de anexos em resposta_item_metadata com container antigo e SAS token expirado
+     ➜ Com a troca do container dos anexos para v3, foi necessário ajustar alguns locais onde tinha sido inputado fixo o nome do container.
+
+
+🚧 In Progress:
+➜ #12161 - [FIX] Ranking de Desempenho Regional não está ordenado pela pontuação
+
+➜ #12166 - Revisar Indicadores - Carbono
+     ➜ Refazendo o dashboard com uma visão mais de comparação à duas safras
+
+☎️ Com Iohan, KPIS e Indicadores Carbono
+
+
+
+📌 agrotrace-v3
+
+✅ Done:
+➜  Criado skills para fluxo completo de crud (agro-add-navigation, agro-create-form e agro-create-list) e adicionado skill que orquestra as outras  agro-add-crud.
+➜  Migrando telas do checkmilk (lote leite, lactação, pesgem, qualidade do leit)
+      ➜ #12156 - Tela de Lote de Leite
+            ➜ (progresso feito) Adicionado CRUD, incluindo migrations, modulo no backend, pagina de listagem no front, modal de cadastro e model no front,
+      ➜ #12157 - Tela de Lactação
+            ➜ (progresso feito) Adicionado CRUD, incluindo migrations, modulo no backend, pagina de listagem no front, modal de cadastro e model no front
+
+🚧 In Progress:
+➜  Migrando telas do checkmilk (lote leite, lactação, pesagem, qualidade do leit)
+      ➜ #12158 - Tela de Pesagem
+            ➜ (progresso feito) Adicionado CRUD, incluindo migrations, modulo no backend, pagina de listagem no front, modal de cadastro e model no front
+            ➜ Analisando e adicionando regras de negocio especificas da tela
+      ➜ #12159 - Tela de Qualidade
+            ➜ (progresso feito) Adicionado CRUD, incluindo migrations, modulo no backend, pagina de listagem no front, modal de cadastro e model no front
+            ➜ Analisando e adicionando regras de negocio especificas da tela
+BRUNO
+📆 (Follow up - Ater Digital)
+
+📌 ATER-DIGITAL
+
+✅ Done:
+➜ Sistema de Diary: Implementado use-cases para criar, listar e verificar a frescura de entradas de diário, além de implementação de repositório de DiaryEntry com Drizzle.
+  ➜ Implementação de schema para field_diary_entries com geotag e payload polimórfico.
+  ➜ Padronização de formatação de código e imports em módulos.
+➜ Mensagens: Implementado módulo de mensagens HTTP, use-cases para registro, mensagens recebidas, preferências e listagem de canais, além de adaptações para Evolution e WebPush.
+  ➜ Implementação de MessagingRouter com fallback por prioridade.
+➜ Web: Implementado cliente WebPush, hook e UI para configuração de notificações por push, além de service worker personalizado com handlers para notificações.
+  ➜ Otimização de carga de imagens agro com cache em tempo de execução.
+  ➜ Adicionado toggle de tema à barra de navegação.
+
+🚧 (In Progress):
+➜ Otimizações e Refatorações: Otimização de modelos Docling, switch para imagens base da AWS ECR, e melhorias em diagnósticos de inicialização e build tags.
+
+
+☎️ Com Ricardo, Iohan e Lucas sobre problemas relacionados a infra do Ater Digital
+
+
+================================================================================
+
+Standup (23/04/2026)
+RONALDO
+
+📌 agrotrace-v3
+
+🚧 In Progress:
+➜ #12166 - Revisar Indicadores - Carbono
+     ➜ Modificando todos os gráficos, já com feedback da Priscila
+     ➜ Unificando os dois dashboads existentes (Diagnósticos e Formulários Dinamico), em um dashboard só
+     ➜ Trazendo a muito mais à ideia de comparar uma safra com outra para ver a evolução
+
+☎️ Com Iohan, Validação Dashboards Carbono
+☎️ Com Gustavo, sobre planning
+☎️ Com Thayse, sobre nova regra de validação para Laudo
+☎️ Com Bruno, sobre add validação com perguntas referenciadas
+☎️ Com Thayse, sobre vínculo de propriedade com os técnicos
+
+THIELSON
+📌 agrotrace-v3
+
+✅ Done:
+➜  Migrando telas do checkmilk (lote leite, lactação, pesgem, qualidade do leit)
+      ➜ #12157 - Tela de Lactação
+            ➜ adicionado logica de negocio especifica da tela no backend
+
+🚧 In Progress:
+➜  Migrando telas do checkmilk (lote leite, lactação, pesagem, qualidade do leit)
+      ➜ #12158 - Tela de Pesagem & #12159 - Tela de Qualidade
+            ➜ (progresso feito) adicionado regras de negocio especificas das telas no backend e no front
+            ➜ testando e validando fluxos de cadastro
+BRUNO
+📌 ATER-DIGITAL
+
+✅ Done:
+➜ Implementação de Assinaturas e Gestão de Técnicos
+    ➜ Desenvolvi o fluxo de auto-assinatura para produtores e reatribuição de técnicos via admin, incluindo endpoints de API e lógica de auto-atribuição baseada na carga de trabalho.
+    ➜ Refatorei o modelo de dados para suportar assinaturas sem técnico primário imediato e implementei a interface administrativa para gestão de planos e carteira de técnicos.
+➜ Sistema de Upload via Presigned URL
+    ➜ Migrei os uploads de anexos de chat e avatares para o padrão de URLs pré-assinadas, removendo handlers multipart legados e otimizando a segurança e performance.
+➜ Dashboard de Revisão Semanal e Alertas
+    ➜ Implementei o serviço de cálculo de alertas (semáforo) e a revisão semanal para técnicos, permitindo a visualização de produtores por nível de urgência.
+➜ Módulo de Planos de Ação
+    ➜ Criei a estrutura completa de planos de ação, incluindo builder com gravação de áudio, visualizador para produtores e integração com missões.
+➜ Sistema de Missões e Agendamentos
+    ➜ Implementei o fluxo completo de missões (geração semanal, expiração, resposta e ad-hoc) com suporte a cron jobs e processamento via BullMQ.
+➜ Melhorias de UX e Interface
+    ➜ Refinei a interface de pontos de coleta, visualização de rebanho e navegação mobile, aplicando padrões de design premium e melhorando a responsividade dos componentes.
+
+🚧 (In Progress):
+➜ Integração de IA e Orquestração
+    ➜ Evolução do agente orquestrador com novas ferramentas de verificação de dados de ciclo (check_cycle_data) e criação de missões ad-hoc para coleta de dados faltantes.
+
+☎️ Com Ricardo sobre avanço do Ater Digital
+☎️ Com Lucas sobre mudanças na pipeline do Ater Digital
+☎️ Com Ronaldo sobre add validação com perguntas referenciadas
+☎️ Com Brenda sobre design do Ater Digital
+
+================================================================================
+
+Standup (24/04/2026)
+📅 Tech Spotlight Mobile
+📆 Planning Web
+
+RONALDO
+
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12166 - Revisar Indicadores - Carbono
+     ➜ Trazendo a muito mais à ideia de comparar uma safra com outra para ver a evolução
+     ➜ Solicitações da Priscila
+
+➜ #12183 - Melhorias no dashboard Carbono
+     ➜ Novas solicitações pela Juliana
+
+☎️ Com Brenda, sobre funcionalidade do Agrotrace.
+☎️ Com Iohan, Problemas e migração api Evolution (nova versão e novo servidor)
+☎️ Com Iohan, Verificar dashboards carbono
+☎️ Com Iohan, Bruno , Lucas - Erros de rotas select-for-form  (identificamos várias chamadas no mesmo endpoint
+☎️ Com Thielson, testando e validando telas de lactação 'Produção de Leite'
+☎️ Com Bruno e Thielson, sobre mostrando andamento do Ater Digital e fluxo de análise de PR
+☎️ Com Lucas, sobre imagem atrasada do container de dev (novo ambiente) 
+
+THIELSON
+📌 agrotrace-v3
+
+✅ Done:
+➜  Migrando telas do checkmilk (lote leite, lactação, pesagem, qualidade do leit)
+      ➜ #12158 - Tela de Pesagem & #12159 - Tela de Qualidade
+            ➜ testado e validado fluxos de cadastro
+            ➜ melhorado visualização na listagem de pesagem (form de cadastro)
+            ➜ Adicionado exibição de campos corretos na listagem de itens cadastrados
+      ➜ #12156 - Tela de Lote
+            ➜ Corrigido o cadastro (erro na data)
+            ➜ Adicionado exibição de campos corretos na listagem de itens cadastrados
+➜ #12185 - [FIX] Evitar múltiplas chamadas duplicadas à API ao abrir grupos no formulário de auto-atendimento
+
+☎️ Com Ronaldo testando e validando telas de lactação 'Produção de Leite'
+BRUNO
+📌 agrotrace-v3
+✅ Done:
+➜ Adicionado acesso público a endpoints em blog posts, categorias, landing pages e controllers de newsletter
+    ➜ Conteúdo do Site
+        ➜ Adicionado decorator @Public() a endpoints GET para garantir acesso público
+
+📌 ATER-DIGITAL
+✅ Done:
+➜ Implementado sistema de escalonamento de especialistas com múltiplos pontos de entrada
+    ➜ Especialista
+        ➜ Adicionado botão de escalonamento em página de consultas
+        ➜ Implementado formulário de pré-consulta com seleção de categoria e gravidade
+    ➜ Resolução de Consulta
+        ➜ Implementado banner de resolução de consulta com confirmação de resolução
+➜ Implementação de funcionalidades de auditoria e selo de auditoria
+    ➜ Auditoria
+        ➜ Implementado endpoint para exportar selo de auditoria
+        ➜ Implementado componente para exibir histórico de selos de auditoria
+☎️ Com Lucas sobre deploy do Ater Digital com pipelines separadas
+☎️ Com Ronaldo e Thielson mostrando andamento do Ater Digital e fluxo de análise de PR
+☎️ Com Ricardo, Iohan, Lucas e Matheus sobre publicação da landing page no novo ambiente
+
+
+================================================================================
+
+Standup (27/04/2026)
+📆 (Start of week meeting)
+
+RONALDO
+
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12219 - [FEAT] Preview de imagem no hover sobre o nome do relatório
+    ➜ Funcionalidades Principais Implementadas:
+        ➜ Implementação da funcionalidade de preview de imagem para relatórios.
+        ➜ Adição de suporte para upload e visualização de imagens em miniatura no CMS e interfaces web.
+        ➜ Melhorias na interface do usuário para previews ao passar o mouse e uploads de arquivos.
+        ➜ Inclusão de migração de banco de dados para a coluna preview_anexo_id.
+        ➜ Atualização de relações de entidade e repositório.
+
+➜ #12211 - Erro para buscar dados do CAR
+         ➜ Refatoração do cliente RuralShape para migrar a autenticação de Bearer tokens para session cookies.
+        ➜ Atualização de interceptadores de requisição, lógica de retry e tratamento de credenciais.
+        ➜ Alinhamento com o endpoint da API e estrutura de resposta atualizados.
+
+☎️ Com Brenda, sobre dúvidas sobre o escopo do sistema do Agro
+☎️ Com Iohan, sobre variáveis de ambiente na integração do CAR
+BRUNO
+📌 agrotrace-v3
+✅ Done:
+➜ Implementação do sistema de landing pages com endpoint de API para fetch de landing pages ativas
+  ➜ Sistema de Landing Pages
+    ➜ Adicionado endpoint de API para fetch de landing pages ativas
+    ➜ Implementado database migration para backfill de landing pages padrão para certificadoras
+    ➜ Atualizado frontend do lp-blog para fetch e exibir landing pages agrupadas na página inicial
+
+📌 ATER-DIGITAL
+✅ Done:
+➜ Implementação de plano gratuito e tier_min em mission_templates
+  ➜ Mission Templates
+    ➜ Adicionado plano gratuito e tier_min em mission_templates
+    ➜ Atualizado schema de mission_templates
+➜ Regeneração do cliente orval para mission templates e diary freshness
+  ➜ API e Diagramas
+    ➜ Regenerado cliente orval para refletir mudanças recentes no servidor
+    ➜ Atualizados diagramas de fluxo para incluir plano gratuito e paywalls
+
+🚧 (In Progress):
+➜ Desenvolvimento de funcionalidades de grupo e benchmark
+  ➜ Grupos e Benchmark
+    ➜ Implementação de funcionalidades de grupo e benchmark
+    ➜ Desenvolvimento de componentes de UI para grupos e benchmark
+
+☎️ Com Iohan sobre dúvidas relacionadas a envio de lembretes no Agrotrace
+THIELSON
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11737 - [FEAT] Vínculo de Técnico por Propriedade no Cadastro de Usuário
+      ➜ adicionado picklist para seleção de tecnicos no cadastro de propriedade (foi usado a tabela ja existente de 'tecnico_propriedade')
+➜ #12178 - [FEAT] Permitir referência a outras perguntas no campo Valor das Regras de Validação
+      ➜ alterado logica de cadastro de regras de validação para incluir variaveis referenciando perguntas para usar como validação
+      ➜ adicionado logica de validação usando variáveis no form-dinamico
+
+🚧 In Progress:
+➜ #12212 - Modificações tabelas Checkmilk
+      ➜ (progresso feito) Alterado constraint de unique para os relacionamentos entre iatf_iseminacao e iatf_protocolo, e entre iatf_diagnostico e iatf_inseminação, para transformar esses relacionamentos 1:1
+      ➜ (progresso feito) Adicionado tabela bov_touro para armazenar caracteristica especificas para touro, (porem o cadastro principal do touro vai ficar em bov_animal)
+
+☎️ Com Matheus alinhando alterações nas tabelas importadas do checkmilk
+
+
+
+
+================================================================================
+
+Standup (28/04/2026)
+📆 Update IA
+📆 Alinhamento Modulo PEC
+
+RONALDO
+
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12179 - Vincular propriedades aos técnicos
+
+🚧 In Progress:
+➜ #12228 - Duplicar Formulário
+
+☎️ Com Iohan, sobre ajustes deploy CMS dev   (não estava refletindo a imagem correta)
+☎️ Com Iohan, sobre Demandas Minerva (envios de lembretes, capturar um lançamento de uma safra e duplicar para outra)
+
+
+THIELSON
+📌 agrotrace-v3
+
+🚧 In Progress:
+➜ #12212 - Modificações tabelas Checkmilk
+      ➜ Finalizado alterações no backend das tabelas bov, após alinhamento com matheus (alterações que serão 'abandonadas' em prol de seguir com o modulo pec, que vai abranger controle de pecuária e não somente bovinos)
+      ➜ Iniciado modulo PEC, criado migrations e arquivos de backend para as tabelas: pec_tipo_criacao, pec_lote, pec_tipo_producao, pec_categoria, pec_raca, pec_animal, pec_caracteristica_cadastro, pec_caracteristica_cadastro_item_lista, pec_caracteristica_animal
+
+☎️ Com Matheus alinhando alterações nas tabelas importadas do checkmilk
+BRUNO
+📌 ATER-DIGITAL
+
+✅ Done:
+➜ Implementação de Grace Period em Assinaturas
+    ➜ Gestão de Assinaturas
+        ➜ Implementado cancelamento com período de carência (grace period) via cancel_at_period_end, permitindo reativação antes do encerramento do ciclo.
+        ➜ Adicionado scheduler noturno para expiração de assinaturas e templates de e-mail dinâmicos para status de cancelamento.
+➜ Otimização de Mapas e Visualização
+    ➜ Geolocalização e Mapas
+        ➜ Migração para camadas híbridas Esri (satélite + labels) em todos os mapas e habilitação de zoom no overview de fazendas.
+➜ Melhorias no Fluxo de Atribuição e Pending Queue
+    ➜ Gestão de Técnicos e Assinaturas
+        ➜ Enriquecimento de DTOs de atribuição pendente com dados do produtor e visibilidade de capacidade técnica.
+        ➜ Implementação de fila de atribuição voluntária para técnicos e painel administrativo de pendências.
+➜ Refatoração e Testes de Cobertura
+    ➜ Qualidade de Código
+        ➜ Cobertura de 13 módulos com 597 testes unitários e refatoração de use-cases para repositórios Drizzle, eliminando SQL inline.
+        ➜ Limpeza de dependências, migração para Vitest sob Node e atualização de documentação técnica (CLAUDE.md).
+➜ Auditoria de Lógica de Negócio
+    ➜ Documentação e Compliance
+        ➜ Conclusão de auditoria de gaps de negócio identificando 24 pontos críticos e atualização de diagramas React Flow.
+
+🚧 (In Progress):
+➜ Planejamento de Novas Funcionalidades
+    ➜ Roadmap de Produto
+        ➜ Elaboração de especificações para auditoria de acesso LGPD, filtros de consentimento em benchmarks, fluxo de reabertura de consultas e lembretes de encontros.
+
+
+================================================================================
+
+Standup (29/04/2026)
+📆 Alinhamento Modulo PEC (web  - mobile)
+
+RONALDO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12161 - [FIX] Ranking de Desempenho Regional não está ordenado pela pontuação
+    ➜ O componente mapa-coropletico foi atualizado para exibir o nome da safra, se disponível.
+    ➜ Foram adicionadas traduções para 'Harvest' em inglês, espanhol e português.
+    ➜ Foi adicionada uma migração para alterar o procedimento getIndicadoresGeral corrigindo as classificações
+
+☎️ Com Bruno e Thielson debugando MCP de migrations no Windows e atualização sobre estado do Ater Digital
+☎️ Com Thielson, investigando problemas com o uso da mcp database-details no windows para criação de migrations com skill de migrations
+☎️ Com Brenda, sobre módulos do Agrotrace para inclusão na apresentação de vendas
+☎️ Com Thielson, sobre fluxo provisório de reprodução (milk no agro)
+☎️ Com Iohan, sobre Integração Prodes e Ibama
+☎️ Com Gustavo, melhorias no dashboard carbono
+
+
+THIELSON
+📌 agrotrace-v3
+
+🚧 In Progress:
+➜ #12212 - Modificações tabelas Checkmilk
+      ➜ (progresso feito) Mapeado tabelas, campos e logica para o fluxo reprodução (protocol, inseminação e diagnostico) para a nova estrutura de tabelas do pec (provisorio)
+      ➜ (stand-by) Aguardando validação e confirmação do Carlos para implementar tabelas do fluxo de reprodução e começar as telas de cadastro do front
+
+☎️ Com Ronaldo investigando problemas com o uso da mcp database-details no windows para criação de migrations com skill de migrations
+☎️ Com Ronaldo, apresentando fluxo provisório de reprodução 
+☎️ Com Matheus e Carlos, apresentando fluxo provisório de reprodução
+BRUNO
+📌 ATER-DIGITAL
+
+✅ Done:
+➜ #15 - Painel de Curadoria e Fluxos de Ação
+    ➜ Painel de Curadoria
+        ➜ Implementada rota /technician/curadoria com senior gate, estatísticas de wallet e endpoints de contagem de planos.
+        ➜ Desenvolvidos use cases para upload de áudio, finalização e envio de planos de ação via eventos.
+    ➜ Documentação
+        ➜ Atualizados manuais e diagramas React Flow sobre ciclo de vida de assinaturas e curadoria.
+➜ #2 - Ciclo de Vida de Assinaturas e Perks
+    ➜ Gestão de Perks e Grupos
+        ➜ Implementado ciclo de vida de perks (emissão, expiração, renovação) e schedulers de monitoramento.
+        ➜ Implementados fluxos de demote, remoção e arquivamento de grupos via eventos de domínio.
+➜ #18 - LGPD e Portabilidade de Dados
+    ➜ Conformidade
+        ➜ Expandida exportação de dados para 18 seções e implementado interceptor @AuditDataAccess para auditoria de dados sensíveis.
+➜ #9 - Fluxos de Consulta e Notificações
+    ➜ Consultas e Lembretes
+        ➜ Implementado fluxo de reabertura de consultas e scheduler de lembretes de encontros com tolerância de 15min.
+➜ #1 - Melhorias de Billing e Assinaturas
+    ➜ Gestão de Planos
+        ➜ Implementada lógica de upgrade/downgrade agendado e validação centralizada de nível de técnico no ReassignTechnicianUseCase.
+➜ #24 - Ajustes de Missões e Cron
+    ➜ Agendamento
+        ➜ Corrigidos cron jobs de missões, alinhamento de timezone e cálculo de cycle_day_offset.
+
+🚧 (In Progress):
+➜ #15 - Painel de Curadoria
+    ➜ Interface de Curadoria
+        ➜ Desenvolvimento das interfaces de gravador de áudio e formulário de plano de ação.
+☎️ Com Ronaldo e Thielson debugando MCP de migrations no Windows e atualizando time sobre estado do Ater Digital
+
+
+================================================================================
+
+Standup (30/04/2026)
+RONALDO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #12225 - [FEAT] Configuração de mensagem de lembrete nos templates de envio (e-mail e WhatsApp)
+    ➜ Adicionado um campo de lembrete no formulário.
+    ➜ Implementada a funcionalidade de edição para o campo de lembrete nos templates de envio (e-mail e WhatsApp).
+
+➜ #12096 - Duplicar procedure
+    ➜ Implementada a nova stored procedure getDesempenhoSubtema para cálculo de desempenho por subtema.
+    ➜ A procedure realiza consultas, cálculos de desempenho, desafio, representatividade e pontuação, devolvendo resultados ordenados por subtema.
+    ➜ Criada uma migração TypeORM (1777551389265-addProcedureGetDesempenhoSubtema.ts) para garantir a criação e remoção da procedure no banco de dados.
+    ➜ O script SQL da procedure está em apps/api/src/shared/database/ddl/procedures/getDesempenhoSubtema.sql.
+
+➜ #12238 - Alterar Descrição do campo - Bioma
+    ➜ Atualizado o rótulo do dropdown "Bioma" para "Predominant Biome" nas traduções em inglês (EN), espanhol (ES) e português (PT).
+    ➜ O objetivo foi melhorar a clareza na interface do usuário.
+    ➜ As alterações foram aplicadas nos arquivos de tradução: apps/web/src/assets/i18n/EN.json, apps/web/src/assets/i18n/ES.json, e apps/web/src/assets/i18n/PT.json.
+
+☎️ Com Iohan, validando dados que serão consumidos do PRODES
+☎️ Com Iohan e Ricardo, demandas Agrotrace
+☎️ Com Bruno, sobre Ater Digital e app de compartilhamento de tela para apresentação spotlight
+
+
+THIELSON
+📌 agrotrace-v3
+
+🚧 In Progress:
+➜ #12212 - Modificações tabelas Checkmilk
+      ➜  (progresso feito) Adicionado tabelas, modulos e regras de negocios no backend referente ao do fluxo de reprodução
+      ➜ Adicionando telas de cadastro do fluxo de reprodução no front
+
+☎️ Com Matheus alinhando fluxo de reprodução do PEC
+BRUNO
+
+📌 ATER-DIGITAL
+
+✅ Done:
+➜ Implementação de Missões e Upload de Documentos
+    ➜ Gestão de Missões
+        ➜ Adicionado tipo de missão document_upload e suporte ao upload de documentos.
+        ➜ Criado service p/ fechar missões automaticamente após indexação RAG.
+    ➜ Ferramentas de Dados
+        ➜ criadas tools check_cycle_data e create_adhoc_mission p/ garantir frescor dos dados antes de recomendações agronômicas.
+➜ Atualizações de UI e Fluxo de Assinatura
+    ➜ Plano Gratuito
+        ➜ Adicionado rótulo e estilização “free” ao componente WalletList.
+        ➜ Melhorado fluxo de assinatura do produtor com bootstrapping automático de plano gratuito.
+    ➜ Web
+        ➜ Refatorados componentes para separar “Conselhos” (plans) de “Missões” (tasks).
+➜ Ajustes de Build e Configuração
+    ➜ Build tooling
+        ➜ Script api:generate atualizado com flag --no-errors-on-unmatched para evitar falhas do Biome.
+➜ Testes e Repositórios
+    ➜ Cobertura de Testes
+        ➜ Alinhados 9 novos casos de uso, estendido UserContactRepository com método findManyByIds.
+        ➜ Migrados 5 use‑cases para repositório Drizzle, atualizados testes e garantida compilação limpa.
+🚧 (In Progress):
+➜ Desenvolvimento de Funcionalidades
+    ➜ Retry de RAG falho: implementação do botão 'Tentar enviar outro arquivo' para limpar state local e possibilitar retry.
+    ➜ Supersede automático: detecção de falha em KS antiga e permissão de passar supersedesId automático.
+    ➜ Citation link clicável: adição de link para abrir /producer/farms/{farmId} ou modal com download URL signed.
+
+☎️ Com Ronaldo sobre Ater Digital e app de compartilhamento de tela para apresentação spotlight

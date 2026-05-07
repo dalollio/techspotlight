@@ -267,17 +267,31 @@ span.btn-disabled {
 <div class="grid-container">
   <div class="grid">
 
-    <!-- Edition #03 -->
+    <!-- Edition #04 -->
     <div class="card upcoming">
+      <div class="card-header">
+        <span class="card-edition">#04</span>
+        <span class="card-status next">Planejada</span>
+      </div>
+      <div class="card-date">22/05/2026</div>
+      <div class="card-period">Período: <code>04/05 – 22/05/2026</code></div>
+      <div class="card-actions">
+        <span class="btn-disabled">▶ Em breve</span>
+        <span class="btn-disabled">📋 Em breve</span>
+      </div>
+    </div>
+
+    <!-- Edition #03 -->
+    <div class="card">
       <div class="card-header">
         <span class="card-edition">#03</span>
         <span class="card-status next">Próxima</span>
       </div>
-      <div class="card-date">24/04/2026</div>
-      <div class="card-period">Período: <code>02/04 – 23/04/2026</code></div>
+      <div class="card-date">08/05/2026</div>
+      <div class="card-period">Período: <code>06/04 – 30/04/2026</code></div>
       <div class="card-actions">
-        <span class="btn-disabled">▶ Em breve</span>
-        <span class="btn-disabled">📋 Em breve</span>
+        <a href="edition-03/spotlight.html" class="btn-spotlight">▶ Abrir Spotlight</a>
+        <a href="edition-03/cards.html" class="btn-cards">📋 Ver Cards</a>
       </div>
     </div>
 
@@ -315,6 +329,7 @@ span.btn-disabled {
 <div class="footer">
   <div class="footer-keys">
     <div class="key-hint"><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> Ir para edição</div>
+    <div class="key-hint" style="opacity:0.5"><kbd>4</kbd> Edition #04 (em breve)</div>
     <div class="key-hint"><kbd>←</kbd><kbd>→</kbd> Navegar slides</div>
     <div class="key-hint"><kbd>Esc</kbd> Fechar modal</div>
   </div>
@@ -330,6 +345,7 @@ span.btn-disabled {
 document.addEventListener('keydown', e => {
   if (e.key === '1') window.location.href = 'edition-01/spotlight.html';
   if (e.key === '2') window.location.href = 'edition-02/spotlight.html';
+  if (e.key === '3') window.location.href = 'edition-03/spotlight.html';
 });
 </script>
 

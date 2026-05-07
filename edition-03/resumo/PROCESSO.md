@@ -35,9 +35,10 @@ para a vespera da apresentacao. O processo se divide em 3 fases:
    - Gerar resumo parcial
 
 2. Salvar o resumo gerado em `edition-XX/resumo/`:
-   - `resumo-semana-1.md` (standups de 02/04 a 10/04)
+   - `resumo-semana-1.md` (standups de 06/04 a 10/04)
    - `resumo-semana-2.md` (standups de 13/04 a 17/04)
-   - `resumo-semana-3.md` (standups de 20/04 a 23/04)
+   - `resumo-semana-3.md` (standups de 20/04 a 24/04)
+   - `resumo-semana-4.md` (standups de 27/04 a 30/04)
 
 3. Marcar no resumo os **potenciais spotlights** (destaques tecnicos):
    - Feature complexa com problema/solucao claros
@@ -91,14 +92,19 @@ edition-XX/
 
 ---
 
-## Cronograma Tipico (3 semanas)
+## Cronograma Edition #03 (4 semanas - excepcional)
+
+> Excecao: dois feriados no periodo (Tiradentes 21/04 e Dia do Trabalho 01/05)
+> fizeram nenhuma equipe apresentar no fim de abril, esticando o ciclo para
+> 4 semanas. A partir da edition-04 voltamos ao padrao de 3 semanas.
 
 | Semana | Dias        | Fase 1 (Coleta) | Fase 2 (Consolidacao) |
 |--------|-------------|------------------|-----------------------|
-| 1      | 02-10/04    | Standups diarios | Resumo sexta 10/04    |
+| 1      | 06-10/04    | Standups diarios | Resumo sexta 10/04    |
 | 2      | 13-17/04    | Standups diarios | Resumo sexta 17/04    |
-| 3      | 20-23/04    | Standups diarios | Montagem 22-23/04     |
-| Apres. | 24/04       | -                | Apresentar!           |
+| 3      | 20-24/04    | Standups diarios | Resumo sexta 24/04    |
+| 4      | 27-30/04    | Standups diarios | Montagem 06-07/05     |
+| Apres. | 08/05       | -                | Apresentar!           |
 
 ---
 
