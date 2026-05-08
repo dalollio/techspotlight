@@ -952,6 +952,80 @@ kbd {
   right: 10px;
 }
 
+/* ── ATER DIGITAL VISUALS ── */
+.ater-visual-panel {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+
+.ater-visual-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ater-visual-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text3);
+}
+
+.ater-shot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.ater-shot {
+  background: #f8faf9;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 140px;
+  position: relative;
+}
+
+.ater-shot img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.ater-shot.tall img {
+  object-position: top center;
+}
+
+.ater-shot.wide {
+  grid-column: 1 / -1;
+}
+
+.ater-shot.wide img {
+  height: 190px;
+}
+
+.ater-shot-caption {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(13,17,23,0.88);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text2);
+}
+
 /* ── SCREENSHOT MODAL ── */
 .ss-overlay {
   position: fixed;
@@ -1321,7 +1395,7 @@ kbd {
       <div class="sidebar-header">Lightning</div>
 
       <div class="sidebar-item" onclick="goTo(7)" id="si-7">
-        <span class="sidebar-icon">⚡</span> mastra-agent.ts
+        <span class="sidebar-icon">⚡</span> agro-orchestrator.agent.ts
       </div>
 
       <div class="sidebar-divider"></div>
@@ -1397,7 +1471,7 @@ kbd {
             <span class="kw">class</span> <span class="fn">TechSpotlight</span> {<br>
             &nbsp;&nbsp;<span class="prop">edition</span>: <span class="num">3</span><br>
             &nbsp;&nbsp;<span class="prop">team</span>: <span class="str">"Web"</span><br>
-            &nbsp;&nbsp;<span class="prop">cards</span>: <span class="num">50</span><br>
+            &nbsp;&nbsp;<span class="prop">cards</span>: <span class="num">69</span><br>
             &nbsp;&nbsp;<span class="prop">topics</span>: [<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"ATER Digital + IA"</span>,<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Dashboard Carbono"</span>,<br>
@@ -1613,6 +1687,7 @@ kbd {
         <span class="badge badge-blue">🤖 feature</span>
         <span class="badge badge-green">Novo Projeto</span>
         <span class="badge badge-amber">renomeado 16/04</span>
+        <span class="badge badge-coral">update 05–06/05</span>
         <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">ater-digital.config.ts</span>
       </div>
       <div class="slide-heading" style="font-size:28px; margin-bottom:20px">ATER Digital — IA para <span>consultas agrícolas</span></div>
@@ -1647,7 +1722,11 @@ kbd {
               </div>
               <div style="display:flex; gap:8px; align-items:flex-start">
                 <span style="color:var(--teal); font-family:var(--font-mono)">→</span>
-                <span>Docker Compose: PostgreSQL, Redis, MinIO</span>
+                <span>Integração Typebot com API keys, contexto do produtor e sessão bearer curta</span>
+              </div>
+              <div style="display:flex; gap:8px; align-items:flex-start">
+                <span style="color:var(--teal); font-family:var(--font-mono)">→</span>
+                <span>Webhooks Evolution endurecidos: parsing, idempotência, hash único e captura parcial WhatsApp</span>
               </div>
             </div>
           </div>
@@ -1672,38 +1751,47 @@ kbd {
           <div class="card card-accent-teal">
             <div class="section-label" style="color:var(--teal)">📈 resultado</div>
             <div style="font-size:16px; color:var(--text2); line-height:1.7">
-              Em 4 semanas: setup do zero → chat funcional respondendo via Mastra AI → integração WhatsApp via Evolution+Typebot → renomeação agro-assistant→ATER-DIGITAL sem downtime → deploy K8s nos 3 ambientes.
+              Em 4 semanas: setup do zero → chat funcional respondendo via Mastra AI → integração WhatsApp via Evolution+Typebot → renomeação agro-assistant→ATER-DIGITAL. Depois: captura WhatsApp, API Typebot, sessões de produtor e perfil leve de IA para o canal externo.
             </div>
           </div>
         </div>
 
-        <div class="code-block" style="height:fit-content">
-          <div class="code-block-header">🤖 ater-digital.config.ts</div>
-          <div class="code-body">
-            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16</div>
-            <div class="code-lines">
-              <span class="cmt">// Mastra AI Agent Config</span><br>
-              <span class="kw">const</span> <span class="prop">agent</span> = <span class="kw">new</span> <span class="fn">Agent</span>({<br>
-              &nbsp;&nbsp;<span class="prop">name</span>: <span class="str">"ater-digital"</span>,<br>
-              &nbsp;&nbsp;<span class="prop">model</span>: <span class="fn">gemini</span>(<span class="str">"gemini-2.0-flash"</span>),<br>
-              &nbsp;&nbsp;<span class="prop">tools</span>: {<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">classify</span>: <span class="fn">classifyTool</span>,<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">ragSearch</span>: <span class="fn">ragSearchTool</span>,<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">selfReflect</span>: <span class="fn">reflectionTool</span><br>
-              &nbsp;&nbsp;}<br>
-              })<br><br>
-              <span class="cmt">// RAG Pipeline</span><br>
-              <span class="kw">const</span> <span class="prop">rag</span> = <span class="kw">new</span> <span class="fn">FastAPI</span>()<br>
-              &nbsp;&nbsp;.<span class="fn">add</span>(<span class="fn">Docling</span>()) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">// PDF/DOCX</span><br>
-              &nbsp;&nbsp;.<span class="fn">add</span>(<span class="fn">pgvector</span>()) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">// embeddings</span><br>
-              &nbsp;&nbsp;.<span class="fn">add</span>(<span class="fn">SentenceTransformer</span>())
+        <div class="ater-visual-panel">
+          <div class="ater-visual-head">
+            <div class="ater-visual-title">📱 Ater-Digital — produto em construção</div>
+            <span class="badge badge-blue" style="font-size:11px; padding:3px 8px">screenshots reais</span>
+          </div>
+          <div class="ater-shot-grid">
+            <div class="ater-shot">
+              <img src="assets/ater-digital-5.png" alt="Chat com IA no Ater-Digital">
+              <div class="ater-shot-caption">Chat IA: histórico de consultas agrícolas</div>
+            </div>
+            <div class="ater-shot">
+              <img src="assets/ater-digital-3.png" alt="Chat do Ater-Digital com escolha de fazenda">
+              <div class="ater-shot-caption">Chat contextual por fazenda</div>
+            </div>
+            <div class="ater-shot">
+              <img src="assets/ater-digital-6.png" alt="Fazenda no Ater-Digital">
+              <div class="ater-shot-caption">Fazenda: mapa e talhões</div>
+            </div>
+            <div class="ater-shot">
+              <img src="assets/ater-digital-2.png" alt="Talhão e perfil agronômico no Ater-Digital">
+              <div class="ater-shot-caption">Talhão e perfil agronômico</div>
+            </div>
+            <div class="ater-shot">
+              <img src="assets/ater-digital-7.png" alt="Perfil do produtor no Ater-Digital">
+              <div class="ater-shot-caption">Perfil do produtor e plano</div>
+            </div>
+            <div class="ater-shot">
+              <img src="assets/ater-digital-4.png" alt="Área do técnico com lista de produtores">
+              <div class="ater-shot-caption">Área do técnico: carteira de produtores</div>
             </div>
           </div>
         </div>
       </div>
 
       <div style="margin-top:14px; padding:10px 14px; background:var(--amber-bg); border:1px solid #78350f; border-radius:var(--radius); font-family:var(--font-mono); font-size:14px; color:var(--amber)">
-        🎬 DEMO AO VIVO — Chat fazendo consulta agrícola · cap 30s · screenshot pronto se travar
+        🎬 DEMO AO VIVO — Chat fazendo consulta agrícola · cap 30s · galeria pronta se travar
       </div>
     </div>
 
@@ -1887,7 +1975,25 @@ kbd {
         <div class="overview-card" onclick="openScreenshot('ater-digital','ATER Digital — projeto novo nascendo')">
           <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">novo projeto</span></div>
           <div class="overview-card-id">ATER Digital</div>
-          <div class="overview-card-title">Setup do zero: RAG Python, API NestJS, Web React, chat Mastra AI, integração WhatsApp via Evolution+Typebot, deploy K8s</div>
+          <div class="overview-card-title">Setup do zero: RAG Python, API NestJS, Web React, chat Mastra AI e app mobile-first</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('ater-digital','Ater-Digital — Typebot + WhatsApp')">
+          <div class="overview-card-badge"><span class="badge badge-blue" style="font-size:11px; padding:2px 8px">integração</span></div>
+          <div class="overview-card-id">Typebot API</div>
+          <div class="overview-card-title">API keys administrativas, guard dedicado, contexto do produtor e sessão bearer curta para o Typebot</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('ater-digital','Ater-Digital — Evolution inbound')">
+          <div class="overview-card-badge"><span class="badge badge-coral" style="font-size:11px; padding:2px 8px">hardening</span></div>
+          <div class="overview-card-id">Evolution</div>
+          <div class="overview-card-title">Webhooks WhatsApp com parser validado, idempotência, hash único e captura de usuários parciais</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('ater-digital','Ater-Digital — IA leve para canal externo')">
+          <div class="overview-card-badge"><span class="badge badge-amber" style="font-size:11px; padding:2px 8px">IA</span></div>
+          <div class="overview-card-id">AI profile</div>
+          <div class="overview-card-title">Perfil leve de IA para Typebot: resposta mais objetiva, compatível com canal conversacional externo</div>
           <div class="overview-card-hint">📷 clique para ver screenshot</div>
         </div>
       </div>
@@ -1899,73 +2005,80 @@ kbd {
       <div class="flex-row mb-8">
         <span class="badge badge-amber">⚡ Lightning</span>
         <span class="badge badge-blue">Mastra AI</span>
-        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">mastra-agent.ts</span>
+        <span class="badge badge-teal">Ater-Digital</span>
+        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">agro-orchestrator.agent.ts</span>
       </div>
-      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Mastra AI — agente com <span>ferramentas</span> em 30 min</div>
+      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Mastra AI — o que estamos <span>usando de verdade</span></div>
 
       <div class="grid-2" style="gap:16px; flex:1">
         <div class="code-block" style="height:fit-content">
-          <div class="code-block-header">⚡ mastra-agent.ts</div>
+          <div class="code-block-header">⚡ agro-orchestrator.agent.ts</div>
           <div class="code-body">
-            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19</div>
+            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21</div>
             <div class="code-lines">
-              <span class="cmt">// 1. Definir ferramentas</span><br>
-              <span class="kw">const</span> <span class="prop">classifyTool</span> = <span class="fn">createTool</span>({<br>
-              &nbsp;&nbsp;<span class="prop">name</span>: <span class="str">"classify"</span>,<br>
-              &nbsp;&nbsp;<span class="prop">execute</span>: (<span class="prop">query</span>) =&gt; <span class="fn">classify</span>(<span class="prop">query</span>)<br>
-              })<br><br>
-              <span class="cmt">// 2. Criar agente</span><br>
+              <span class="cmt">// dois perfis: app completo e WhatsApp/Typebot</span><br>
+              <span class="kw">const</span> <span class="prop">profile</span> = <span class="str">"full"</span> | <span class="str">"typebot"</span><br><br>
+              <span class="cmt">// ferramentas tipadas com Zod + serviços do domínio</span><br>
+              <span class="kw">const</span> <span class="prop">tools</span> = {<br>
+              &nbsp;&nbsp;<span class="prop">classify_query</span>, <span class="prop">rag_search</span>, <span class="prop">get_weather</span>,<br>
+              &nbsp;&nbsp;<span class="prop">analyze_image</span>, <span class="prop">transcribe_audio</span>, <span class="prop">self_reflect</span>,<br>
+              &nbsp;&nbsp;<span class="prop">check_cycle_data</span>, <span class="prop">create_adhoc_mission</span>,<br>
+              &nbsp;&nbsp;<span class="prop">...brasilMcpTools</span><br>
+              }<br><br>
+              <span class="cmt">// memória persistente + skills markdown</span><br>
               <span class="kw">const</span> <span class="prop">agent</span> = <span class="kw">new</span> <span class="fn">Agent</span>({<br>
-              &nbsp;&nbsp;<span class="prop">model</span>: <span class="fn">gemini</span>(<span class="str">"gemini-2.0-flash"</span>),<br>
-              &nbsp;&nbsp;<span class="prop">tools</span>: { <span class="prop">classify</span>, <span class="prop">ragSearch</span>, <span class="prop">reflect</span> }<br>
-              })<br><br>
-              <span class="cmt">// 3. Pipeline automático</span><br>
-              <span class="cmt">// Query → Classificação → RAG → Reflexão → Resposta</span><br><br>
-              <span class="cmt">// Por que Mastra e não LangChain?</span><br>
-              <span class="cmt">// → Mais leve, tipado, sem abstrações excessivas</span><br>
-              <span class="cmt">// → Integração nativa com MCP</span><br>
-              <span class="cmt">// → Auto-reflexão como ferramenta, não como loop</span>
+              &nbsp;&nbsp;<span class="prop">model</span>: <span class="fn">google</span>(<span class="prop">CHAT_AGENT_MODEL</span>),<br>
+              &nbsp;&nbsp;<span class="prop">tools</span>, <span class="prop">memory</span>, <span class="prop">workspace</span>,<br>
+              &nbsp;&nbsp;<span class="prop">inputProcessors</span>: [<span class="fn">PII</span>, <span class="fn">Injection</span>, <span class="fn">ToolFilter</span>],<br>
+              &nbsp;&nbsp;<span class="prop">skillsFormat</span>: <span class="str">"markdown"</span><br>
+              })
             </div>
           </div>
         </div>
 
         <div style="display:flex; flex-direction:column; gap:12px">
           <div class="card card-accent-amber">
-            <div class="section-label" style="color:var(--amber)">Por que Mastra AI?</div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:15px; color:var(--text2)">
-              <div>✓ TypeScript nativo</div>
-              <div>✓ Ferramentas tipadas</div>
-              <div>✓ Sem abstrações excessivas</div>
-              <div>✓ Integração MCP nativa</div>
-              <div>✓ Auto-reflexão como tool</div>
-              <div>✓ Leve e sem dependências</div>
+            <div class="section-label" style="color:var(--amber)">Features do Mastra em uso</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:14px; color:var(--text2); line-height:1.35">
+              <div><strong style="color:var(--text)">Agent runtime</strong><br>um orquestrador para chat completo e outro perfil leve para Typebot</div>
+              <div><strong style="color:var(--text)">Tools tipadas</strong><br>Zod schemas para RAG, clima, imagem, áudio, missão e reflexão</div>
+              <div><strong style="color:var(--text)">Memory + Postgres</strong><br>histórico, título de conversa, working memory e observações</div>
+              <div><strong style="color:var(--text)">Workspace skills</strong><br>protocolos em markdown carregados pelo agente em runtime</div>
+              <div><strong style="color:var(--text)">Processors</strong><br>PII, prompt injection, filtro de tool calls e resposta final garantida</div>
+              <div><strong style="color:var(--text)">MCP-Brasil</strong><br>meta-tools para IBGE, INPE, BrasilAPI e dados públicos sob demanda</div>
             </div>
           </div>
 
           <div class="card card-accent-blue">
-            <div class="section-label" style="color:var(--blue)">Anatomia do agente</div>
-            <div style="display:flex; flex-direction:column; gap:6px; font-size:16px; color:var(--text2)">
+            <div class="section-label" style="color:var(--blue)">Pontos bons para comentar</div>
+            <div style="display:flex; flex-direction:column; gap:6px; font-size:15px; color:var(--text2)">
               <div style="display:flex; gap:8px; align-items:flex-start">
                 <span style="color:var(--blue); font-family:var(--font-mono)">1.</span>
-                <span><strong style="color:var(--text)">Ferramentas</strong> — classify, ragSearch, reflect</span>
+                <span><strong style="color:var(--text)">Gate phygital:</strong> antes de recomendar, checa dado fresco; se faltar, cria missão no app.</span>
               </div>
               <div style="display:flex; gap:8px; align-items:flex-start">
                 <span style="color:var(--blue); font-family:var(--font-mono)">2.</span>
-                <span><strong style="color:var(--text)">Modelo</strong> — Gemini 2.0 Flash</span>
+                <span><strong style="color:var(--text)">Multimodal:</strong> foto vira análise visual; áudio vira transcrição; ambos enriquecem o RAG.</span>
               </div>
               <div style="display:flex; gap:8px; align-items:flex-start">
                 <span style="color:var(--blue); font-family:var(--font-mono)">3.</span>
-                <span><strong style="color:var(--text)">Pipeline</strong> — Query → Classificação → RAG → Reflexão → Resposta</span>
+                <span><strong style="color:var(--text)">Autonomia de contexto:</strong> usa fazenda, talhão, cultura, clima e documentos sem perguntar de novo.</span>
+              </div>
+              <div style="display:flex; gap:8px; align-items:flex-start">
+                <span style="color:var(--blue); font-family:var(--font-mono)">4.</span>
+                <span><strong style="color:var(--text)">Segurança operacional:</strong> auto-reflexão, baixa confiança encaminha para especialista e guardrails reduzem risco.</span>
               </div>
             </div>
           </div>
 
           <div class="tag-list">
             <span class="chip">Mastra AI</span>
-            <span class="chip">Gemini 2.0</span>
-            <span class="chip">TypeScript</span>
-            <span class="chip">MCP</span>
+            <span class="chip">Working Memory</span>
+            <span class="chip">Processors</span>
+            <span class="chip">MCP-Brasil</span>
             <span class="chip">RAG</span>
+            <span class="chip">Typebot profile</span>
+            <span class="chip">Multimodal</span>
           </div>
         </div>
       </div>
@@ -2619,7 +2732,7 @@ let cur = 0;
 const labels = [
   'README.md','agenda.ts','stats.json',
   'ater-digital.config.ts','protocolo-importacao.service.ts','carbon-dashboard.component.ts',
-  'overview-bruno.md','mastra-agent.ts','overview-thielson.md','overview-ronaldo.md',
+  'overview-bruno.md','agro-orchestrator.agent.ts','overview-thielson.md','overview-ronaldo.md',
   'wins.log','roadmap.todo','exit.ts'
 ];
 
@@ -3069,6 +3182,10 @@ function flashPeersStatus(text) {
 }
 
 // Auto-connect on load
+const initialSlideFromHash = Number((location.hash.match(/\d+/) || [])[0]);
+if (Number.isInteger(initialSlideFromHash) && initialSlideFromHash >= 0 && initialSlideFromHash < total) {
+  _origGoTo(initialSlideFromHash);
+}
 updatePeersUI();
 try { connectRemote(); } catch(e) {}
 </script>

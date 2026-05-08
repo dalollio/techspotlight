@@ -79,18 +79,25 @@ Frase de abertura:
   - `apps/web/` — React + Vite + TanStack Router + shadcn/ui
 - **Stack agentica:** Mastra AI orquestra ferramentas de classificacao e auto-reflexao
 - **Integracao externa:** Evolution API + Typebot (chat WhatsApp)
+- **Avanco recente do Bruno (05/05-06/05):**
+  - API administrativa de Typebot com chaves, guard dedicado e CRUD
+  - Contexto do produtor para Typebot com sessao bearer curta
+  - Captura inbound do WhatsApp via Evolution com parser validado, idempotencia e hash unico
+  - Persistencia de usuarios parciais vindos do WhatsApp sem poluir listas de tecnico/assinatura
+  - Perfil leve de IA para respostas mais diretas no canal externo
 - **Infra:** docker-compose com Postgres + Redis + MinIO; deploy K8s separado
 - **Renomeacao:** nasceu como `agro-assistant` (07/04), virou `ATER-DIGITAL` em 16/04
   com replace em codigo, manifestos K8s, configmaps e templates de e-mail —
   zero downtime no que ja estava em dev
 
 ### RESULTADO (30s)
-- 1 produto novo, ja com chat funcional, RAG indexando documentos e fluxo
-  WhatsApp-Typebot ativo
+- 1 produto novo, ja com chat funcional, RAG indexando documentos, fluxo
+  WhatsApp-Typebot ativo e telas reais para produtor/tecnico
 
 ### DEMO (30s)
 - Chat fazendo uma consulta agricola → busca em base de conhecimento → resposta
   estruturada com botoes inline
+- Backup visual: galeria `edition-03/assets/ater-digital-1..7.png`, com foco em chat IA, fazenda/talhao e perfil do produtor
 - Cap rigido de 30s — se travar, pular pra screenshot
 
 ⏰ **Cap:** 6 min. Se passar, cortar a demo.
@@ -163,28 +170,39 @@ Frase de abertura:
 
 ---
 
-## LIGHTNING TECH — Mastra AI + RAG: agente com classificacao e auto-reflexao — 3 min — Bruno
+## LIGHTNING TECH — Mastra AI no Ater-Digital: orquestrador de ferramentas — 3 min — Bruno
 
-**Arquivo simulado:** `mastra-agent.ts`
+**Arquivo real:** `apps/server/src/shared/infra/ai/agents/agro-orchestrator.agent.ts`
 
 ### Por que e interessante
-Diferente de chamar a API do LLM direto, o **Mastra AI** organiza o agente em
-ferramentas (tools) com tipagem forte e suporte nativo a auto-reflexao —
-o agente **classifica a pergunta antes de responder** e decide qual fonte
-de conhecimento consultar.
+O Ater-Digital nao esta apenas chamando um LLM. O Mastra virou a camada de
+orquestracao: decide quais ferramentas usar, preserva memoria por produtor,
+carrega protocolos operacionais em markdown e conecta o chat do app com o canal
+leve do WhatsApp/Typebot.
 
-### 3 pontos chave (1 min cada)
-1. **Tools tipadas:** cada capacidade do agente vira uma tool com Zod schema —
-   classificacao, busca em knowledge source, resposta estruturada
-2. **RAG com pgvector:** documentos sao processados com Docling, embedados com
-   sentence-transformers e armazenados em Postgres com pgvector. Busca semantica
-   nativa no banco — sem servico vetorial separado
-3. **Auto-reflexao:** o agente revisa a propria resposta antes de devolver pro
-   usuario, baseado em criterios definidos como tool — reduz alucinacao em
-   contexto agricola onde precisao importa
+### Features reais para comentar
+1. **Dois perfis de agente:** `full` para o app completo e `typebot` para
+   WhatsApp. O perfil Typebot reutiliza RAG, clima, imagem e audio, mas nao
+   aciona diario/missoes/gate phygital.
+2. **Tools tipadas com Zod:** `classify_query`, `rag_search`, `get_weather`,
+   `analyze_image`, `transcribe_audio`, `self_reflect`, `check_cycle_data`,
+   `create_adhoc_mission` e ferramentas do MCP-Brasil.
+3. **Working memory persistida em Postgres:** perfil do produtor, fazendas,
+   talhoes, cultura, documentos, observacoes, semana atual, missoes pendentes
+   e frescor do diario entram no contexto sem perguntar de novo.
+4. **Workspace + skills markdown:** protocolos como `agro-rag-protocol`,
+   `agro-phygital-cycle`, `agro-typebot-lite-routing` e `agro-tool-discipline`
+   sao carregados pelo agente como guias operacionais.
+5. **Processors/guardrails:** PII detector, prompt-injection detector,
+   ToolCallFilter e EnsureFinalResponseProcessor para reduzir risco,
+   economizar contexto e evitar resposta vazia no limite de steps.
+6. **MCP-Brasil:** via meta-tools (`search_tools`, `call_tool`) para buscar
+   dados publicos brasileiros sob demanda sem expor 300+ tools ao agente.
 
-### Codigo no slide
-Mostrar 1 tool com Zod schema + chamada do agente. **Maximo 15 linhas.**
+### Frase curta
+> "A parte interessante nao e so o modelo responder; e o agente saber quando
+> buscar manual, quando puxar clima, quando analisar imagem, quando criar missao
+> e quando parar porque a confianca esta baixa."
 
 ⏰ **Cap:** 4 min. Se passar, cortar pro Wins.
 
