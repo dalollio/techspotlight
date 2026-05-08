@@ -17,7 +17,7 @@
 | Fixes                | 26    |
 | Refactors/Migração   | 3     |
 | Tests                | 2     |
-| Projetos novos       | 1 (ATER Digital — 8 marcos: setup, RAG, agente, Evolution API, chat, renomeação, etc.) |
+| Projetos novos       | 1 (ATER Digital — 8 marcos: produto phygital, RAG, agente, Evolution API, Typebot, renomeação, etc.) |
 | Sistemas atendidos   | Agrotrace-v3, Checkmilk, ATER Digital, Landing Page/Blog, CMS |
 | Stack do periodo     | NestJS, TypeORM, Angular, PostgreSQL, MySQL, **+ Python/FastAPI, React/Vite, Drizzle ORM, Mastra AI, pgvector** |
 
@@ -47,7 +47,7 @@
 
 Métricas do período (slide stats.json):
 - **69 cards** entregues em ~18 dias úteis (≈4/dia)
-- 1 sistema novo nascendo: ATER Digital (8 marcos no período)
+- 1 sistema novo nascendo: ATER Digital (produto phygital de assistência rural, com 8 marcos no período)
 - 5 sistemas atendidos no total
 - Stack expandida: time agora rodando Python + Mastra AI + pgvector além do core Angular/Nest
 
@@ -68,17 +68,21 @@ Frase de abertura:
 **Arquivo simulado:** `ater-digital/README.md`
 
 ### PROBLEMA (1 min)
-- Demanda nova: assistente para apoio ao produtor agricola via chat
-- Precisa responder duvidas tecnicas com base em documentos reais (nao alucinar)
+- O IBS tem 20 anos de assistência rural em campo, mas um modelo 100% presencial não escala
+- A proposta do ATER Digital é transformar o produtor de "espectador do laudo" em coletor ativo de dados e executor assistido
+- Precisa manter a confiança da visita técnica, mas com diário de campo, fotos, medições, missões e evidências entre as visitas
 - Tem que rodar como produto independente, com deploy proprio
 
 ### SOLUÇÃO (3 min) — slide com arquitetura
+- **Produto phygital:** visita técnica estratégica + acompanhamento digital contínuo
+- **Experiência de campo:** diário, fazendas/talhões, perfil agronômico, missões semanais e canais mobile-first
+- **IA como camada de apoio:** triagem, busca em base técnica e respostas assistidas; o produto é a relação contínua com o produtor
 - **Monorepo** com 3 apps:
   - `apps/rag/` — Python + FastAPI + Docling + pgvector + sentence-transformers
   - `apps/server/` — NestJS + Drizzle ORM + Postgres
   - `apps/web/` — React + Vite + TanStack Router + shadcn/ui
 - **Stack agentica:** Mastra AI orquestra ferramentas de classificacao e auto-reflexao
-- **Integracao externa:** Evolution API + Typebot (chat WhatsApp)
+- **Integracao externa:** Evolution API + Typebot para WhatsApp, reduzindo fricção no campo
 - **Avanco recente do Bruno (05/05-06/05):**
   - API administrativa de Typebot com chaves, guard dedicado e CRUD
   - Contexto do produtor para Typebot com sessao bearer curta
@@ -91,13 +95,14 @@ Frase de abertura:
   zero downtime no que ja estava em dev
 
 ### RESULTADO (30s)
-- 1 produto novo, ja com chat funcional, RAG indexando documentos, fluxo
-  WhatsApp-Typebot ativo e telas reais para produtor/tecnico
+- 1 produto novo, ja com base phygital funcional: produtor, fazenda, talhao,
+  chat de apoio, RAG indexando documentos, fluxo WhatsApp-Typebot ativo e telas
+  reais para produtor/tecnico
 
 ### DEMO (30s)
-- Chat fazendo uma consulta agricola → busca em base de conhecimento → resposta
-  estruturada com botoes inline
-- Backup visual: galeria `edition-03/assets/ater-digital-1..7.png`, com foco em chat IA, fazenda/talhao e perfil do produtor
+- Mostrar o fluxo como acompanhamento contínuo: produtor/fazenda/talhao → chat
+  de apoio → base de conhecimento → resposta estruturada
+- Backup visual: galeria `edition-03/assets/ater-digital-1..7.png`, com foco em chat de apoio, fazenda/talhao, perfil do produtor e carteira do tecnico
 - Cap rigido de 30s — se travar, pular pra screenshot
 
 ⏰ **Cap:** 6 min. Se passar, cortar a demo.
