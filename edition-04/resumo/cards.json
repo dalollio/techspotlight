@@ -1,0 +1,194 @@
+{
+  "ca": {
+    "name": "Carlos",
+    "avClass": "av-ca",
+    "avInit": "CA",
+    "nameColor": "var(--ca)",
+    "cards": [
+      {
+        "id": "#12355",
+        "type": "feat",
+        "title": "Ajuda com anexos de atendimento",
+        "desc": "Ajustar as referências com os anexos de atendimentos impactados pela issue de envio de anexos que ocorreu em 03/2026."
+      },
+      {
+        "id": "#12283",
+        "type": "feat",
+        "title": "Conferência dos resultados do Regenera Cerrado",
+        "desc": "Conferência dos resultados do Regenera Cerrado"
+      },
+      {
+        "id": "#12265",
+        "type": "feat",
+        "title": "Gerar RA no APP",
+        "desc": "Adicionar fluxo de geração do RA no APP.Permitir que o usuário escolha o dia, tipo de atendimento e quantidade."
+      },
+      {
+        "id": "#12244",
+        "type": "feat",
+        "title": "Melhorias no RA",
+        "desc": "Aplicar os ajustes para contemplar novos comportamentos esperados após alinhamento com a Samara.Adicionar tarifa básica por usuário: Valor por atendim"
+      },
+      {
+        "id": "#12222",
+        "type": "feat",
+        "title": "Melhorar tela de RA",
+        "desc": "Adicionar Timeline do RA para detalhar processo/ciclo de vida Adicionar colunas com as datas de previsão e efetivação de pagamento; Adicionar informaç"
+      },
+      {
+        "id": "#11848",
+        "type": "feat",
+        "title": "Implementar o RA no CheckWork",
+        "desc": "O RA é usado para realizar o pagamento das diárias dos consultores considerando os atendimentos realizados. De uma forma simplista, o consultor só irá"
+      }
+    ]
+  },
+  "es": {
+    "name": "Elias",
+    "avClass": "av-el",
+    "avInit": "EL",
+    "nameColor": "var(--el)",
+    "cards": [
+      {
+        "id": "#12333",
+        "type": "feat",
+        "title": "Ajustar a quantidade máxima de anexos",
+        "desc": "A WEB trabalhou em uma melhoria que define a quantidade máxima de anexos adicionados em atendimentos e respostas de perguntas usando registros, possib"
+      },
+      {
+        "id": "#12331",
+        "type": "feat",
+        "title": "Publicar primeira versão do ChatBot",
+        "desc": "Objetivo: Publicar a primeira versão do chatbot"
+      },
+      {
+        "id": "#12296",
+        "type": "feat",
+        "title": "Adicionar agendamento - ChatBot WhatsApp",
+        "desc": "Adicionar agendamento - ChatBot WhatsApp"
+      },
+      {
+        "id": "#12259",
+        "type": "feat",
+        "title": "Desenvolver chatbot para WhatsApp",
+        "desc": "Desenvolver um chatbot para WhatsApp que permita o produtor realizar algumas operações em sua propriedade."
+      },
+      {
+        "id": "#12233",
+        "type": "ref",
+        "title": "Tela de listagem dos animais",
+        "desc": "Tela de listagem dos animais"
+      },
+      {
+        "id": "#12201",
+        "type": "feat",
+        "title": "Publicar nova versão nas lojas - APP",
+        "desc": "Publicar uma nova versão nas lojas contendo as atualizações mais recentes da última sprint."
+      }
+    ]
+  },
+  "ma": {
+    "name": "Matheus",
+    "avClass": "av-ma",
+    "avInit": "MA",
+    "nameColor": "var(--ma)",
+    "cards": [
+      {
+        "id": "#12341",
+        "type": "feat",
+        "title": "Telas de Reprodução (Diagnóstico de IA)",
+        "desc": "Telas de Reprodução (Diagnóstico de IA)"
+      },
+      {
+        "id": "#12329",
+        "type": "feat",
+        "title": "Telas de Reprodução (Inseminação)",
+        "desc": "Telas de Reprodução (Inseminação)"
+      },
+      {
+        "id": "#12313",
+        "type": "fix",
+        "title": "Salvar Perguntas em cascata - APP",
+        "desc": "Salvar Perguntas em cascata - APP"
+      },
+      {
+        "id": "#12309",
+        "type": "feat",
+        "title": "Pesagem",
+        "desc": "Dar a opção de lançar pesagem:- Individual - Total de animais - Lote OBS: Deve ser possível configurar nos registros qual modalidade estará disponível"
+      },
+      {
+        "id": "#12308",
+        "type": "feat",
+        "title": "Cadastro de Animal",
+        "desc": "Opção de Cadastro (Data de Nascimento ou Idade Média): Foi decidido que, em casos onde a data de nascimento exata do animal é desconhecida (como anima"
+      },
+      {
+        "id": "#12287",
+        "type": "feat",
+        "title": "Adicionar tela de Pesagem",
+        "desc": "Adicionar tela de Pesagem"
+      },
+      {
+        "id": "#12281",
+        "type": "feat",
+        "title": "Telas de Diagnostico de Gestação",
+        "desc": "Telas de Diagnostico de Gestação"
+      },
+      {
+        "id": "#12280",
+        "type": "feat",
+        "title": "Modificar banner da landing Page",
+        "desc": "Modificar banner da landing Page"
+      },
+      {
+        "id": "#12269",
+        "type": "feat",
+        "title": "Adicionar ativação de indicadores conforme demanda Landing Page",
+        "desc": "Adicionar ativação de indicadores conforme demanda Landing Page"
+      },
+      {
+        "id": "#12264",
+        "type": "feat",
+        "title": "Mudar cadastro de Seção de Resultados na Landing Page",
+        "desc": "Objetivo: Retirar campos de cadastro da seção de metas e resultados, para buscar dados dinamicamente.E mudar URL exibida no final, para a que é utiliz"
+      },
+      {
+        "id": "#12258",
+        "type": "feat",
+        "title": "Adicionar nova tela de animais",
+        "desc": "Objetivo: Adicionar nova tela de animais"
+      },
+      {
+        "id": "#12253",
+        "type": "feat",
+        "title": "Telas de Reprodução (Protocolo)",
+        "desc": "Adicionando telas de reprodução, protocolo"
+      },
+      {
+        "id": "#12241",
+        "type": "feat",
+        "title": "Adicionando tela de financeiro",
+        "desc": "Adicionando tela de financeiro"
+      },
+      {
+        "id": "#12232",
+        "type": "feat",
+        "title": "Definir novas tabelas PEC e a criação",
+        "desc": "Objetivo: Participar da criação de tabelas PEC para animais genericos e depois criar."
+      },
+      {
+        "id": "#12215",
+        "type": "feat",
+        "title": "Adicionar entidades e migrations PEC",
+        "desc": "Adicionar entidades e migrations PEC"
+      },
+      {
+        "id": "#12202",
+        "type": "feat",
+        "title": "Tela 'Situação PEC'",
+        "desc": "Desenvolver a tela SITUAÇÃO PEC: Painel com estatísticas. Menu - Reprodução (Manejo): Reprodução (Rebanho); Produção de Leite; IATF; Financeiro; Cadas"
+      }
+    ]
+  }
+}

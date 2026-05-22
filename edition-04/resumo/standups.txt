@@ -1,0 +1,472 @@
+**[Mobile] Standup 27/04/2026**
+📆 Briefing inicial
+📆 Mobile weekly meeting
+
+**Agrotrace**
+- [Elias] In Progress: #12203 - Tela de reprodução (Rebanho)
+  - Entendendo melhor o módulo de reprodução para iniciar a implementação da tela de listagem dos animais
+- [Matheus] In Progress: #12202 - Tela 'Situação PEC'
+- [Elias] Done: #12201 - Publicar nova versão nas lojas - APP.
+  - Publicado nova versão contendo as alterações trabalhas na sprint/99 para as loja do Android e iOS.
+- [Matheus] Stand By: #11502 - Ferramenta para elaboração de proposta
+- [Matheus] Done: #12215 - Adicionar entidades e migrations PEC
+- [Carlos] Abertura de tasks para execução do módulo PEC.
+
+**CheckWork**
+- [Carlos] In Progress: #12222 - Melhorar tela de RA:
+  - Adicionado Timeline do RA para detalhar processo/ciclo de vida
+  - Adicionado colunas com as datas de previsão e efetivação de pagamento;
+  - Adicionado informações complementares no RA (impressão/PDF);
+
+☎️ [Carlos] Com Luciano sobre envio do link para Márcia e Débora.
+☎️ [Carlos] Com Cerveira para atualizar a licença de uso na Apple.
+☎️ [Elias] Com Thayse sobre feedback da publicação da nova versão nas lojas.
+☎️ [Elias] Com Matheus para tirar dúvidas do módulo do PEC.
+☎️ [Matheus] Com Thielson, sobre sobre mudanças nas tabelas de modulo PEC no Agrotrace.
+☎️ [Matheus] Com Elias, sobre inicio do modulo PEC no Agrotrace.
+☎️ [Matheus] Com Ricardo, Bruno e Elias, sobre novidades de IA.
+
+**[Mobile] Standup 28/04/2026**
+📅 IA Aplicada no nosso dia a dia
+📅 [Carlos] CheckMilk Syncup  - Matheus Magalhães
+📅 [Carlos] Apresentação CheckWork - RA
+📅 Alinhamento Módulo PEC - WEB
+📅 [Carlos] Pauta IA - Sartori
+
+**Agrotrace**
+- [Elias] In Progress: #12203 - Tela de reprodução (Rebanho)
+  - In Progress: #12233 - Tela de listagem dos animais.
+- [Matheus] In Progress: #12232 - Definir novas tabelas PEC e a criação
+- [Matheus] Stand By: #12202 - Tela 'Situação PEC'
+  - Criado todo layout ✅ 
+  - Aguardando novas tabelas para adicionar nos indicadores
+
+☎️ [Carlos] Com Ricardo sobre RA e Módulo PEC
+☎️ [Carlos] Com Matheus para alinhar ajustes no módulo PEC para abranger diversos tipos de animais.
+☎️ [Elias] Com Matheus para tirar dúvidas do módulo do PEC.
+☎️ [Matheus] Com Thielson, Carlos e Ronaldo, sobre criação de novas tabelas PEC.
+☎️ [Matheus] Com Elias, sobre criação do modulo PEC no Agrotrace.
+
+**[Mobile] Standup 29/04/2026**
+📅 Reunião Mobile & Web
+
+**Agrotrace**
+- [Elias] In Progress: #12203 - Tela de reprodução (Rebanho)
+  - In Progress: #12233 - Tela de listagem dos animais.
+    - Criado rota para tela de listagem de animais;
+    - Criado card para renderizar os animais (já com as regras e condições do checkmilk);
+    - Desenvolvendo repositório para buscar os dados da tabela `PecAnimal`.
+- [Matheus] In Progress: #12232 - Definir novas tabelas PEC e a criação
+- [Matheus] In Progress: #12241 - Adicionando tela de financeiro
+  - Adicionado tela de listagem ✅ 
+  - Finalizando tela de cadastro
+- [Matheus] Done: #12202 - Tela 'Situação PEC'
+
+**CheckWork**
+- [Carlos] In Progress: #12244 - Melhorias no RA:
+  - Adicionados novos campos na entidade `ra_config`.
+  - Adicionados novos campos na entidade `user`.
+
+☎️ [Carlos] Com Matheus sobre recurso de análise de atendimentos usando IA.
+☎️ [Carlos] Com Brenda sobre material promocional Agrotrace.
+☎️ [Carlos] Com Thielson sobre modelagem do reprodutivo no Agrotrace.
+☎️ [Elias] Com Matheus para tirar dúvidas do módulo do PEC.
+☎️ [Elias] Com Brenda para tirar dúvida sobre o design do PEC.
+☎️ [Elias] Com Iohan para responder dúvida sobre anexos do atendimento no app.
+☎️ [Matheus] Com Thielson, Carlos e Ronaldo, sobre criação de novas tabelas PEC.
+☎️ [Matheus] Com Elias, sobre criação do modulo PEC no Agrotrace.
+
+**[Mobile] Standup 30/04/2026**
+📅 Detalhamento Produtivo - Coordenadores PEC
+
+**Agrotrace**
+- [Elias] In Progress: #12203 - Tela de reprodução (Rebanho)
+  - In Progress: #12233 - Tela de listagem dos animais.
+    - Criado rota para tela de listagem de animais;
+    - Criado card para renderizar os animais (já com as regras e condições do checkmilk);
+    - Desenvolvendo repositório para buscar os dados da tabela `PecAnimal`.
+- [Matheus] In Progress: #12253 -Telas de Reprodução (Protocolo)
+- [Matheus] Done: #12232 - Definir novas tabelas PEC e a criação
+- [Matheus] Done: #12241 - Adicionando tela de financeiro
+
+**CheckWork**
+- [Carlos] In Progress: #12244 - Melhorias no RA:
+  - Ajustando fluxo de fechamento do RA.
+
+☎️ [Carlos] Com Thielson sobre feedback da modelagem do Reprodutivo no Agrotrace.
+☎️ [Carlos] Com Matheus para explicar sobre processo de IATF.
+☎️ [Elias] Com Matheus para tirar dúvidas do módulo do PEC.
+☎️ [Elias] Com Brenda para tirar dúvida sobre o design do PEC.
+☎️ [Elias] Com Iohan para responder dúvida sobre anexos do atendimento no app.
+☎️ [Matheus] Com Thielson, sobre criação de novas tabelas de reprodução PEC.
+☎️ [Matheus] Com Elias, sobre criação do modulo PEC no Agrotrace.
+☎️ [Matheus] Com Brenda, sobre design de animação para o Agrotrace,
+
+**[Mobile] Standup 04/05/2026**
+📅 Briefing inicial
+
+**Agrotrace**
+- [Matheus] Done #12232 - Definir novas tabelas PEC e a criação
+- [Matheus] Stand By #12253 -Telas de Reprodução (Protocolo)
+- [Matheus] In Progress #12258 - Adicionar nova tela de animais
+  - Iniciando mudança no fluxo de cadastro de animais, com mais possibilidades de campos
+
+**Ater Digital**
+- [Elias] In Progress: #12259 - Desenvolver chatbot para WhatsApp
+  - Criando chatbot utilizando o Typebot + Evolution API.
+
+**CheckWork**
+- [Carlos] In Progress: #12244 - Melhorias no RA:
+  - Aplicando lógica para faturar RA com base em:
+    - Tarifa básica do usuário por Atendimento / Diária.
+    - Projetos cadastrados sem vínculo com o Agrotrace.
+    - Quantidade máxima de um tipo de atendimentos por dia.
+
+☎️ [Carlos] Com ELias sobre mudança de foco e atuação no projeto AterDigital.
+☎️ [Carlos] Com Ricardo sobre objetivos primários na construção do ChatBoot do AterDigital no Whatsapp.
+☎️ [Carlos] Com Brenda sobre detalhamento da proposta de Gameficação no Agrotrace (Produtor).
+☎️ [Elias] Com Bruno e Ronaldo para ajuda na criação de chatbot para WhatsApp.
+☎️ [Matheus] Com Thielson, sobre criação de novas tabelas de reprodução PEC.
+☎️ [Matheus] Com Iohan, sobre mudança na dev do Agrotrace.
+
+**[Mobile] Standup 05/05/2026**
+📆 Syncup CheckMilk - Matheus M e Isabelle A.
+📅 Reunião Mobile
+
+**Agrotrace**
+- [Matheus] Done: #12264 - Mudar cadastro de Seção de Resultados na Landing Page
+- [Matheus] In Progress: #12258 - Adicionar nova tela de animais
+  - Adicionado Cadastro funcional ✅
+  - Adicionado Regras de acordo com o tipo de Tipo de Criação e Categoria ✅
+  - Adicionado Campos dinamicos de acordo com caracteristicas ✅
+  - Adicionando Cadastro de Diagnóstico pela tela de animal
+
+**Ater Digital**
+- [Elias] In Progress: #12259 - Desenvolver chatbot para WhatsApp
+  - Adicionado envio de consulta de informações da Rural Shape API através do envio da localização do google maps, latitude/longitude e número do CAR
+
+**CheckWork**
+- [Carlos] Done: #12244 - Melhorias no RA
+  - Ajustado cálculo e emissão do RA com base nas novas configurações.
+- [Carlos] In Progress: #12265 - Gerar RA no APP
+  - Adicionar fluxo de geração do RA no APP.
+  - Permitir que o usuário escolha o dia, tipo de atendimento e quantidade.
+
+☎️ [Carlos] Com Gustavo sobre dúvidas e orientação no uso de aplicativos terceiros nos celulares do IBS.
+☎️ [Carlos] Com Elias para acompanhar o fluxo do Bot AterDigital no WhatsApp.
+☎️ [Carlos] Com Ricardo para tirar dúvidas e pedir auxílio em demandas.
+☎️ [Carlos] Com Ronaldo sobre dúvidas na modelagem do PEC no Agrotrace.
+☎️ [Elias] Com Bruno e Ronaldo para ajuda na criação de chatbot para WhatsApp.
+☎️ [Matheus] Com Thielson, sobre mudanças nas tabelas do PEC.
+☎️ [Matheus] Com Bruno, Ricardo, Iohan e Brenda, sobre alterações na Landing Page, Agrotrace.
+
+**[Mobile] Standup 06/05/2026**
+**Agrotrace**
+- [Matheus] In Progress #12258 - Adicionar nova tela de animais
+  - Adicionado Cadastro de Diagnóstico pela tela de animal ✅
+  - Adicionado Baixa de animal ✅
+  - Adicionado Remoção de Animal ✅
+  - Adicionado Edição de Animal ✅
+  - Adicionado itens padões para rapidez no cadastro ✅
+  - Adicionando mais layouts de cards de Animais conforme tipo de criação, categoria e status
+- [Matheus] Done #12269 - Adicionar ativação de indicadores conforme demanda Landing Page
+
+**Ater Digital**
+- [Elias] In Progress: #12259 - Desenvolver chatbot para WhatsApp
+  - Adicionado fluxo de cadastro de novas propriedades com consulta de dados na API do Rural Shape.
+
+- [Carlos] In Progress: #12265 - Gerar RA no APP
+  - Adicionando formulário para preenchimento do RA:
+    - Criação de novo RA;
+    - Abertura do DIA;
+    - Lançamento de Atendimento.
+
+☎️ [Elias] Com Bruno para ajuda na criação de chatbot para WhatsApp.
+☎️ [Matheus] Com Thielson, sobre mudanças nas tabelas do PEC.
+☎️ [Matheus] Com Bruno, sobre alterações na Landing Page, Agrotrace.
+☎️ [Matheus] Com Brenda, sobre problema de Anexar Imagens no Agrotrace.
+
+**[Mobile] Standup 07/05/2026**
+📅 [Carlos] Com Leonardo - Regenera Cerrado.
+
+**Agrotrace**
+- [Matheus] In Progress: #12281 - Telas de Diagnostico de Gestação
+  - Adicionado listagem de diagnosticos ✅
+  - Adicionado cadastro de diagnostico de um ou varios animais ✅
+  - Adicionado Revalidação de Diagnostico ✅
+  - Adicionando Parto
+- [Carlos] Done: #12283 - Conferência dos resultados do Regenera Cerrado.
+- [Matheus] Done: #12280 - Modificar banner da landing Page
+- [Matheus] Done: #12258 - Adicionar nova tela de animais
+
+**Ater Digital**
+- [Elias] In Progress: #12259 - Desenvolver chatbot para WhatsApp
+  - Implementando opção para iniciar conversa direto com o agente de IA da API do Ater Digital.
+
+**CheckWork**
+- [Carlos] In Progress: #12265 - Gerar RA no APP
+  - Edição de atendimento. 
+  - Exibição do PDF.
+  - Construindo fluxo de contestação.
+
+☎️ [Elias] Com Bruno para ajuda na criação de chatbot para WhatsApp.
+☎️ [Matheus] Com Thielson, sobre mudanças nas tabelas do PEC.
+☎️ [Matheus] Com Ricardo, sobre alterações na Landing Page, Agrotrace.
+☎️ [Matheus] Com Brenda, sobre Imagens na Landing Page no Agrotrace.
+
+**[Mobile] Standup 08/05/2026**
+📆 Spotlight WEB
+
+**Agrotrace**
+- [Matheus] In Progress: #12287 - Adicionar tela de Pesagem
+- [Matheus] Done: #12281 - Telas de Diagnostico de Gestação
+  - Adicionado Parto e parto em lote ✅
+
+**Ater Digital**
+- [Elias] Done: #12259 - Desenvolver chatbot para WhatsApp
+  - Finalizado a implementação da primeira versão do chatbot que incluí funcionalidades de listar/editar dados da propriedade e retirar dúvidas da uma propriedade específica utilizando o agente de IA da plataforma do Ater Digital.
+
+**CheckWork**
+- [Carlos] In Progress: #12265 - Gerar RA no APP
+  - Alterando o Fluxo de contestação:
+    - Agora o gestor será o responsável pela contestação.
+    - Usuário (técnico) não abrirá réplica, apenas visualizará se o atendimento será ou não faturado.
+  - Adicionando tela de acompanhamento do fluxo de aprovação do RA no APP.
+
+☎️ [Elias] Com Bruno para ajuda na criação de chatbot para WhatsApp.
+☎️ [Matheus] Com Carlos, sobre mudanças nas tabelas do PEC.
+☎️ [Matheus] Com Brenda, sobre Imagens na Landing Page no Agrotrace.
+
+**[Mobile] Standup 11/05/2026**
+📅 Briefing Inicial
+📅 Reunião RH / NR-1 Segurança do trabalho
+
+**Agrotrace**
+- [Matheus] In Progress: #12253 - Telas de Reprodução (Protocolo)
+- [Matheus] Done: #12287 - Adicionar tela de Pesagem
+  - Adicionado listagem de pesagens ✅
+  - Adicionado cadastro individual e integral ✅
+  - Adicionado possibilidade de trazer vacas secas para lactantes na tela de cadastro de pesagem ✅
+
+**Ater Digital**
+- [Elias] In Progress: #12296 - Adicionar agendamento técnico - ChatBot Whatsapp.
+  - Implementando funcionalidade de cadastro de agendamento técnico.
+
+**CheckWork**
+- [Carlos] In Progress: #12265 - Gerar RA no APP
+  - Validando fluxo de contestação/Pagamento
+  - Adicionado novos Status de RA na API:
+
+☎️ [Carlos] Com Elias para alinhar prazo para entrega de demanda no Chatbot.
+☎️ [Carlos] Com Samara sobre feedback no fluxo de pagamento.
+☎️ [Carlos] Com Sartori sobre recurso no CheckWork.
+☎️ [Carlos] Com Luciano sobre feature de registro/acompanhamento da Caixinha.
+☎️ [Carlos] Com Gustavo sobre novos projetos na Azure Devops
+☎️ [Elias] Com Bruno para ajuda na criação de chatbot para WhatsApp.
+☎️ [Matheus] Com Brenda, sobre Imagens na Landing Page no Agrotrace.
+
+**[Mobile] Standup 12/05/2026**
+📅 Syncup Checkmilk - Matheus M. e Isabelle A.
+
+**Agrotrace**
+- [Matheus] In Progress: #12308 - Alterações no Cadastro de Animal
+- [Matheus] Done: #12253 - Telas de Reprodução (Protocolo)
+- [Carlos] Abertura de taks para ajustes pontuais no Módulo PEC.
+
+**Ater Digital**
+- [Elias] Done: #12296 - Adicionar agendamento técnico - ChatBot Whatsapp.
+  - Implementado funcionalidade de cadastro de agendamento técnico.
+  - Implementado funcionalidade de listagem de agendamentos técnico.
+  - Adicionado agente de IA para fazer o atendimento primário do chatbot
+
+**CheckMilk**
+- [Carlos] Abertura de card para ajuste de erro ortográfico na plataforma.
+
+**CheckWork**
+- [Carlos] In Progress: #12265 - Gerar RA no APP
+  - Testando e ajsutando fluxo no APP
+
+☎️ [Carlos] Com Matheus sobre alterações no módulo do PEC após Syncup do Checkmilk.
+☎️ [Carlos] Com Francisco Paredes e Leonardo do Regenera cerrado, entendendo e dando feedback sobre as questões levantadas.
+☎️ [Carlos] Com Ricardo sobre questões levantadas pelo Francisco e Regenera Cerrado.
+☎️ [Carlos] Com Elias sobre feedback nos testes do Chatbot - Ater
+☎️ [Elias] Com Bruno para ajuda na criação de chatbot para WhatsApp.
+☎️ [Matheus] Com Carlos, sobre mudanças no fluxo do PEC.
+☎️ [Matheus] Com Thielson, sobre fluxo do PEC.
+
+**[Mobile] Standup 13/05/2026**
+📅 [Carlos] Research x Projecttrace
+📅 Mobile Meeting
+
+**Agrotrace**
+- [Matheus] In Progress #12329 - Telas de Reprodução (Inseminação)
+- [Matheus] Done #12313 - Salvar Perguntas em cascata - APP
+- [Matheus] Done #12309 - Alterações no Cadastro de Pesagem
+- [Matheus] Done #12308 - Alterações no Cadastro de Animal
+
+**Ater Digital**
+- [Elias] Done: #12331 - Publicar primeira versão do ChatBot.
+  - Publicado a primeira versão do chatbot na mesma VPS que hospeda a EvolutionAPI.
+  - Adicionado funcionalidade para encerrar a conversa automaticamente após um determinado tempo sem interação.
+  - Adicionado funcionalidade para encerrar conversa com agente de IA da API do Ater Digital (Corrigindo a dificuldade de nunca finalizar a conversa).
+
+**CheckWork**
+- [Carlos] In Progress: #12265 - Gerar RA no APP
+  - Aplicando melhorias na tela de lançamento de atendimentos do RA:
+    - Usuário pode usar atendimentos realizados no agrotrace redefinindo seu tipo no CheckWork para se encaixar nos tipos "customizados" em projetos específicos.
+
+☎️ [Carlos] Com Iohan sobre dificuldade reportada pela Heloisa - Agroplus.
+☎️ [Elias] Com Bruno e Gustavo para ajuda na publicação do chatbot para WhatsApp.
+☎️ [Matheus] Com Carlos, sobre erro nas perguntas em cascata no Agrotrace.
+☎️ [Matheus] Com Thielson, sobre fluxo do PEC.
+
+**[Mobile] Standup 14/05/2026**
+📅 [Carlos] Detalhes sobre o RA - Samara e Liliane
+
+**Agrotrace**
+- [Matheus] In Progress: #12341 - Telas de Reprodução (Diagnóstico de IA)
+- [Elias] Done: #12333 - Ajustar quantidade máxima de anexos.
+  - Adicionado limite de anexos configurado por registro certificadora nos módulos questionário diagnóstico, acompanhamento e atendimento.
+- [Matheus] Done: #12329 - Telas de Reprodução (Inseminação)
+
+**CheckWork**
+- [Carlos] In Progress: #12265 - Gerar RA no APP
+  - Resolvendo detalhes no DatePicker.
+  - Restringindo a listagem dos projetos disponíeis para o usuário (apenas os configurados).
+  - Permitindo a edição dos itens do RA:
+    - Relacionamento dos Atendimendos com Agrotrace.
+
+☎️ [Carlos] Com Ronaldo sobre novos registros e forma de definir limites de anexos em alguns processos.
+☎️ [Carlos] Com Thayse sobre alguns tickets no GLPI.
+☎️ [Carlos] Com Elias sobre detalhes na task de limites de anexos.
+☎️ [Carlos] Com Sartori sobre futuras tasks no Agrotrace (D8, Materiais, RAT)
+☎️ [Elias] Com Bruno para revisar a primeira versão do chatbot.
+☎️ [Elias] Com Carlos para tirar dúvidas sobre tarefas pendentes.
+☎️ [Matheus] Com Tahyse, sobre teste no Agrotrace.
+
+**[Mobile] Standup 15/05/2026**
+📆 Devops Spotilight
+
+**Agrotrace**
+- [Matheus] Almost Done: #12341 - Telas de Reprodução (Diagnóstico de IA)
+  - Adicionado Listagem de Diagnosticos de IA ✅
+  - Adicionado Lista para escolha de Inseminações para Diagnóstico ✅
+  - Finalizando tela de cadastro e ultimas regras
+- [Carlos] Done: #12355 - Ajuda com anexos de atendimento
+  - Escaneado DB para recuperar as referências.
+  - Gerado SQLs de ajuste e enviado para o dispositivo pela plataforma.
+
+**Ater Digital**
+- [Elias] Done: #12356 - Melhorias no ChatBot do WhatsApp
+  - Adicionando melhorias solicitadas após a demonstração da primeira versão do ChatBot.
+
+**CheckWork**
+- [Carlos] In Progress: #12265 - Gerar RA no APP
+  - Resolvido issues nas DTOs.
+  - Adicionando guardas de rotas para validação de perfis em processos sensíveis.
+
+☎️ [Carlos] Com Iohan para mais informações sobre a melhoria nos status do Agrotrace.
+☎️ [Carlos] Com a Thayse para ajuda com os anexos do Agrotrace.
+☎️ [Elias] Com Bruno para ajuda com melhorias no ChatBot.
+☎️ [Matheus] Com Thielson, sobre fluxo do PEC.
+
+**[Mobile] Standup 18/05/2026**
+📆 Briefing Inicial
+📆 Reunião Mobile
+
+**Agrotrace**
+  - [Matheus] Done: #12341 - Telas de Reprodução (Diagnóstico de IA)
+  - [Matheus] In Progress: #12371 - Adicionar Download e Upload de dados PEC
+
+**Ater Digital**
+- [Elias] In Progress: #12356 - Melhorias no ChatBot do WhatsApp
+  - Migrando fluxo para N8N.
+
+**CheckWork**
+- [Carlos] In Progress: #12343 - Validações sobre o RA (Cerveira)
+  - Adicionado regras para envio de e-mail para gestores/financeiro
+  - Adicionado triggers para envio de notificação para informar o usuário sobre as alterações no fluxo de aprovação do RA.
+  - Removido a data de agendamento de pagamento do APP.
+- [Carlos] Done: #12265 - Gerar RA no APP
+  - Finalizado Integração do Backend com o OneSignal.
+
+☎️ [Carlos] Com Sartori sobre novas demandas no Pectrace.
+☎️ [Elias] Com Bruno para ajuda com melhorias no ChatBot.
+☎️ [Elias] Com Thayse sobre feedback de testes no app do Agrotrace.
+
+**[Mobile] Standup 19/05/2026**
+📆 [Carlos] Syncup CheckMilk - Matheus M. e Isabelle A.
+📆 Planning Meeting
+
+**Agrotrace**
+- [Matheus] Done: #12382 - Melhoria tipo pergunta FormDinâmico
+- [Matheus] In Progress: #12371 - Adicionar Download e Upload de dados PEC
+  - Adicionado entidades e rotas usadas para download e upload de dados PEC ✅
+  - Adicionado escolha de produtor e propriedade para baixar dados PEC ✅
+  - Testando todas as rotas com download e upload de dados
+
+**Ater Digital**
+- [Elias] In Progress: #12356 - Melhorias no ChatBot do WhatsApp
+  - Finalizado a implementação do cadastro de primeira propriedade;
+  - Implementando a funcionalidade de menu principal.
+
+**CheckWork**
+- [Carlos] In Progress: #12343 - Validações sobre o RA (Cerveira)
+  - Adicionando novas relações para adição de anexos de documentos necessários para aprovação de pagamento.
+
+☎️ [Carlos] Com Gustavo para tirar dúvidas sobre o formDinâmico.
+☎️ [Elias] Com Bruno para ajuda com melhorias no ChatBot.
+☎️ [Elias] Com Gustavo sobre dúvida no formulário dinâmico do app do Agrotrace.
+☎️ [Matheus] Com Thielson, sobre fluxo do PEC.
+
+
+**[Mobile] Standup 20/05/2026**
+**Agrotrace**
+- [Matheus] In Progress #12371 - Adicionar Download e Upload de dados PEC
+  - Adicionado Envio de dados PEC ✅
+  - Aguardando implementação de trazer tabelas de certificadora
+  - Aguardando implementação de rotas com propriedadesIds para baixar varias propriedades de uma vez
+
+**Ater Digital**
+- [Elias] In Progress: #12356 - Melhorias no ChatBot do WhatsApp
+  - Finalizado funcionalidade de menu principal com IA como secretária inicial.
+  - Implementando funcionalidade de retirar dúvidas com IA do Ater Digital.
+
+**CheckWork**
+- [Carlos] In Progress: #12343 - Validações sobre o RA (Cerveira)
+  - Adicionado novas relações para adição de anexos de documentos necessários para aprovação de pagamento.
+  - Adicionado importação de atendimentos do Agrotrace por demanda.
+
+☎️ [Carlos] Com Brenda sobre nova task no Agrotrace.
+☎️ [Elias] Com Bruno para ajuda com melhorias no ChatBot.
+☎️ [Elias] Com Thayse sobre disponibilidade do novo número de telefone para o chatbot.
+☎️ [Matheus] Com Thielson, sobre fluxo do PEC.
+
+**[Mobile] Standup 21/05/2026**
+**Agrotrace**
+- [Matheus] In Progress: #12371 - Adicionar Download e Upload de dados PEC
+  - Adicionado Download de dados de varias propriedades de uma vez ✅
+  - Finalizado Download de dados ✅
+  - Aguardando mudança de regras em algumas rotas, que não condizem com o Mobile #BLOCK API
+- [Matheus] Done: #12376 - Landing Page - Cronograma
+
+**Ater Digital**
+- [Elias] In Progress: #12356 - Melhorias no ChatBot do WhatsApp
+  - Finalizado funcionalidade que habilita conversa com IA do Ater via API. (Adicionado suporte a mensagens do tipo mídia Imagem/Áudio)
+  - Finalizado funcionalidade de listar dados de uma propriedade específica.
+  - Implementando funcionalidade de agendar atendimentos técnicos.
+
+**CheckWork**
+- [Carlos] In Progress: #12343 - Validações sobre o RA (Cerveira)
+  - Alterando fluxo de fechamento do RA para exigir a inclusão da documentação exigida pelo financeiro.
+  - Adicionando integração com API para consulta da inscrião estadual - CNPJ.
+
+☎️ [Carlos] Com Gustavo tirando dúvidas sobre o lançamento de despesas no RD.
+☎️ [Carlos] Com Matheus e Ricarso sobre ajustes na Landing Page.
+☎️ [Carlos] Com Lucas sobre as configs do WireGuard.
+☎️ [Elias] Com Bruno para ajuda com melhorias no ChatBot.
+☎️ [Elias] Com Gustavo para responder dúvida sobre app do Agrotrace.
+☎️ [Elias] Com Matheus para ajudar com dificuldade no envio de dados do app do Agrotrace.
+☎️ [Matheus] Com Thielson, sobre fluxo do PEC.
+☎️ [Matheus] Com Carlos e Ricardo, sobre mudança nas Landing Pages, Agrotrace.
+☎️ [Matheus] Com Elias, sobre fluxo de envio de dados no Agrotrace.

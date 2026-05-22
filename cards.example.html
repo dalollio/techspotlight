@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-EL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumo de Cards — Web Team · Abr 2026</title>
+<link rel="icon" type="image/svg+xml" href="../assets/web-team.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #0f1117;
+    --bg2:      #181c27;
+    --bg3:      #1e2235;
+    --bg4:      #252a40;
+    --border:   #2d3348;
+    --border2:  #3d4460;
+    --text:     #e8eaf2;
+    --text2:    #8b90a8;
+    --text3:    #555b78;
+    --ro:       #7c6af7;
+    --ro-bg:    #1a1640;
+    --ro-bd:    #3d3580;
+    --br:       #f0a855;
+    --br-bg:    #2a1e08;
+    --br-bd:    #7a5020;
+    --th:       #3ecf8e;
+    --th-bg:    #082418;
+    --th-bd:    #1a6845;
+    --feat:     #60adf5;
+    --feat-bg:  #0c1e35;
+    --fix:      #f97070;
+    --fix-bg:   #2a0f0f;
+    --ref:      #f0c040;
+    --ref-bg:   #261e04;
+    --test:     #52d98a;
+    --test-bg:  #082418;
+    --radius:   6px;
+    --radius-lg:10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .hero {
+    padding: 56px 48px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,106,247,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .hero-title {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-names {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hero-names .dot {
+    color: var(--text3);
+    font-weight: 400;
+    font-size: 24px;
+  }
+
+  .hero-names .accent-ro { color: var(--ca); }
+  .hero-names .accent-br { color: var(--el); }
+  .hero-names .accent-th { color: var(--ma); }
+
+  .hero-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text2);
+    margin-bottom: 32px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .stat-chip {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 10px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+  }
+
+  .stat-val {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .stat-lbl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+  }
+
+  .controls {
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+    max-width: 360px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text3);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    pointer-events: none;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 8px 12px 8px 32px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .search-wrap input:focus { border-color: var(--border2); }
+  .search-wrap input::placeholder { color: var(--text3); }
+
+  .filter-group {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .fbtn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .fbtn:hover { background: var(--bg4); color: var(--text); }
+
+  .fbtn.on-feat  { background: var(--feat-bg); color: var(--feat);  border-color: var(--feat); }
+  .fbtn.on-fix   { background: var(--fix-bg);  color: var(--fix);   border-color: var(--fix); }
+  .fbtn.on-ref   { background: var(--ref-bg);  color: var(--ref);   border-color: var(--ref); }
+  .fbtn.on-test  { background: var(--test-bg); color: var(--test);  border-color: var(--test); }
+  .fbtn.on-all   { background: var(--bg4); color: var(--text); border-color: var(--border2); }
+  .fbtn.on-ro    { background: var(--ca-bg);  color: var(--ca);  border-color: var(--ca-bd); }
+  .fbtn.on-br    { background: var(--el-bg);  color: var(--el);  border-color: var(--el-bd); }
+  .fbtn.on-th    { background: var(--ma-bg);  color: var(--ma);  border-color: var(--ma-bd); }
+
+  .sep { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
+
+  .result-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .content {
+    padding: 32px 48px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .member-section { display: flex; flex-direction: column; gap: 0; }
+  .member-section.hidden { display: none; }
+
+  .member-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .member-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .av-ca { background: var(--ca-bg); color: var(--ca); border: 1px solid var(--ca-bd); }
+  .av-el { background: var(--el-bg); color: var(--el); border: 1px solid var(--el-bd); }
+  .av-ma { background: var(--ma-bg); color: var(--ma); border: 1px solid var(--ma-bd); }
+
+  .member-name {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .member-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    margin-left: 4px;
+  }
+
+  .member-bar {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .cards-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .cards-table thead th {
+    background: var(--bg3);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cards-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.12s;
+    animation: rowIn 0.3s ease both;
+  }
+
+  @keyframes rowIn {
+    from { opacity: 0; transform: translateX(-6px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .cards-table tbody tr:last-child { border-bottom: none; }
+  .cards-table tbody tr:hover { background: var(--bg3); }
+  .cards-table tbody tr.hidden { display: none; }
+
+  .cards-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+  }
+
+  .col-id {
+    width: 110px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    white-space: nowrap;
+  }
+
+  .col-id a {
+    color: var(--text3);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .col-id a:hover {
+    color: var(--ca);
+    text-decoration: underline;
+  }
+
+  .col-id .no-link {
+    color: var(--text3);
+    cursor: default;
+  }
+
+  .col-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .col-desc {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.55;
+  }
+
+  .col-type { width: 90px; }
+
+  .badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .badge-feat { background: var(--feat-bg); color: var(--feat); border: 1px solid #1a3d60; }
+  .badge-fix  { background: var(--fix-bg);  color: var(--fix);  border: 1px solid #5a1818; }
+  .badge-ref  { background: var(--ref-bg);  color: var(--ref);  border: 1px solid #5a4010; }
+  .badge-test { background: var(--test-bg); color: var(--test); border: 1px solid #0f5030; }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text3);
+    display: none;
+  }
+
+  .empty-state.visible { display: block; }
+
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-left {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 8px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+  }
+
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow" style="display:flex; align-items:center; gap:16px; justify-content:space-between">
+    <span>// web-team · agrotrace-v3 · ater-digital · sprint review</span>
+    <a href="../index.html" style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text3); text-decoration:none; border:1px solid var(--border); padding:3px 10px; border-radius:4px; transition:all 0.15s; letter-spacing:0" onmouseover="this.style.color='#e8eaf2';this.style.borderColor='#3d4460'" onmouseout="this.style.color='var(--text3)';this.style.borderColor='var(--border)'">⌂ Hub</a>
+  </div>
+  <h1 class="hero-title">Resumo de Cards</h1>
+  <div class="hero-names">
+    <span class="accent-ro">Carlos</span>
+    <span class="dot">·</span>
+    <span class="accent-br">Elias</span>
+    <span class="dot">·</span>
+    <span class="accent-th">Matheus</span>
+  </div>
+  <div class="hero-sub">06/04/2026 – 30/04/2026 &nbsp;·&nbsp; Tech Spotlight #03 &nbsp;·&nbsp; 4 semanas (excepcional, feriados Tiradentes + 1º de Maio)</div>
+
+  <div class="stats-row">
+    <div class="stat-chip">
+      <div class="stat-val" id="s-total">69</div>
+      <div class="stat-lbl">total</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--feat)" id="s-feat">38</div>
+      <div class="stat-lbl">features</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--fix)" id="s-fix">26</div>
+      <div class="stat-lbl">fixes</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--ref)" id="s-ref">3</div>
+      <div class="stat-lbl">refactors</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--test)" id="s-test">2</div>
+      <div class="stat-lbl">testes</div>
+    </div>
+    <div class="stat-chip" style="margin-left:auto">
+      <div class="stat-val" style="color:var(--ca)" id="s-ro">29</div>
+      <div class="stat-lbl">Carlos</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--el)" id="s-br">13</div>
+      <div class="stat-lbl">Elias</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--ma)" id="s-th">27</div>
+      <div class="stat-lbl">Matheus</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="searchInput" placeholder="Buscar por título ou #card..." oninput="applyFilters()">
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="filter-group" id="typeFilters">
+    <button class="fbtn on-all" data-filter="type" data-val="all" onclick="setFilter('type','all',this)">Todos</button>
+    <button class="fbtn" data-filter="type" data-val="feat" onclick="setFilter('type','feat',this)">feature</button>
+    <button class="fbtn" data-filter="type" data-val="fix"  onclick="setFilter('type','fix',this)">fix</button>
+    <button class="fbtn" data-filter="type" data-val="ref"  onclick="setFilter('type','ref',this)">refactor</button>
+    <button class="fbtn" data-filter="type" data-val="test" onclick="setFilter('type','test',this)">teste</button>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="filter-group" id="memberFilters">
+    <button class="fbtn on-all" data-filter="member" data-val="all" onclick="setFilter('member','all',this)">Todos</button>
+    <button class="fbtn" data-filter="member" data-val="ro" onclick="setFilter('member','ro',this)">Carlos</button>
+    <button class="fbtn" data-filter="member" data-val="br" onclick="setFilter('member','br',this)">Elias</button>
+    <button class="fbtn" data-filter="member" data-val="th" onclick="setFilter('member','th',this)">Matheus</button>
+  </div>
+
+  <div class="result-count" id="resultCount">69 cards</div>
+</div>
+
+<!-- CONTENT -->
+<div class="content" id="content"></div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">Web Team · Agrotrace v3 + ATER Digital · gerado em 07/05/2026</div>
+  <div class="footer-right">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--feat)"></div>feature</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--fix)"></div>fix</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--ref)"></div>refactor</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--test)"></div>teste</div>
+  </div>
+</div>
+
+<script>
+const DATA = {
+  ro: {
+    name: 'Carlos',
+    avClass: 'av-ca',
+    avInit: 'Ca',
+    nameColor: 'var(--ca)',
+    cards: [
+      { id:'#11997', type:'feat', title:'Atividade no cadastro de propriedade', desc:'Carregamento de atividades no formulário com FormArray dinâmico. Ajuste de padding na aba de atividades.' },
+      { id:'#11899', type:'fix',  title:'Botão salvar propriedade não habilitava', desc:'Correção da lógica de validação do formulário que mantinha o botão de salvar desabilitado.' },
+      { id:'#12037', type:'fix',  title:'Anexo de resposta com metadata não abre', desc:'Manipulação de URLs de metadados via SAS do Azure Blob (que-resposta.module.ts e service).' },
+      { id:'#12033', type:'fix',  title:'Erro para gerar relatório (Checkmilk)', desc:'Refatoração do produtor.service para corrigir falha na geração do relatório Produtor — Diagnóstico.' },
+      { id:'#12027', type:'feat', title:'Exportação de relatório Excel — Envio de Links com Erro', desc:'Geração de planilha consolidando os links com erro no envio em massa.' },
+      { id:'#12032', type:'fix',  title:'Dropdown expandia além da largura ao selecionar item longo', desc:'Lista expandindo o container quando o item selecionado tinha texto extenso.' },
+      { id:'#12062', type:'feat', title:'Dashboard Carbono — build inicial + procedure performática', desc:'Painel analítico com temas prioritários, KPIs, gráficos e drill-down por tema. Procedure de extração otimizada.' },
+      { id:'#12070', type:'fix',  title:'Campo Elegível no CAR não salva', desc:'Correção da persistência do campo Elegível no fluxo de importação/edição de CAR.' },
+      { id:'#12076', type:'fix',  title:'Ajustes de layout e conteúdo no Dashboard Carbono', desc:'Ajuste fino do card de Retenção de Carbono e refinos visuais no painel.' },
+      { id:'#12073', type:'fix',  title:'Erro 500 ao carregar permissões no modal de Endpoint Web', desc:'Correção do carregamento de permissões no modal de cadastro/edição de Endpoint Web no CMS.' },
+      { id:'#12074', type:'fix',  title:'Relatórios e Exportações não carregam na tela de Resultados', desc:'Correção no carregamento dos blocos de relatórios e exportações na tela de resultados.' },
+      { id:'#12088', type:'feat', title:'Radar de Temas por Estado — série com valor geral consolidado', desc:'Adicionada nova série representando o valor geral consolidado no gráfico Radar de Temas por Estado.' },
+      { id:'#12097', type:'fix',  title:'Checkboxes em filtros dinâmicos enviam undefined quando não tocados', desc:'Padronização do estado inicial de checkboxes em filtros dinâmicos para enviar false em vez de undefined.' },
+      { id:'#12094', type:'feat', title:'Substituição de URLs de anexos com SAS no QueResposta', desc:'Substituição automática de URLs de anexos com SAS válido nas respostas, evitando links expirados.' },
+      { id:'#12105', type:'fix',  title:'Importação em massa de propriedades SICAR falha com 401', desc:'Falha por ausência do header x-system-platform corrigida no fluxo de importação em massa.' },
+      { id:'#12124', type:'feat', title:'Dashboard Carbono — KPI consolidado', desc:'Visualização consolidada dos indicadores do formulário de Carbono em uma única tela.' },
+      { id:'#12144', type:'feat', title:'Buscar dados do CAR — Novo Cadastro de Propriedade', desc:'Integração com base externa para preenchimento automático dos dados do CAR no novo cadastro.' },
+      { id:'#12166', type:'feat', title:'Revisar Indicadores Carbono', desc:'Revisão e ajustes nos indicadores apresentados no dashboard, com validação por Iohan e Ricardo.' },
+      { id:'#12167', type:'fix',  title:'Corrigir URLs de anexos com container antigo e SAS expirado', desc:'Correção de URLs em resposta_item_metadata apontando para container antigo ou com SAS expirado.' },
+      { id:'#12183', type:'feat', title:'Melhorias no dashboard Carbono', desc:'Iteração final do dashboard com refinos de layout, performance e conteúdo após validação dos stakeholders.' },
+      { id:'#12219', type:'feat', title:'Preview de imagem no hover sobre o nome do relatório', desc:'Hover sobre o nome do relatório passa a exibir um preview da imagem associada.' },
+      { id:'#12179', type:'feat', title:'Vincular propriedades aos técnicos', desc:'Tela complementar para vínculo no sentido inverso — propriedades atribuídas a um técnico.' },
+      { id:'#12228', type:'feat', title:'Duplicar Formulário', desc:'Funcionalidade para duplicar um formulário existente com toda sua estrutura.' },
+      { id:'#12225', type:'feat', title:'Configuração de mensagem de lembrete em templates de envio', desc:'Templates de envio (e-mail e WhatsApp) passam a suportar configuração de mensagem de lembrete.' },
+      { id:'#12238', type:'fix',  title:'Alterar Descrição do campo Bioma', desc:'Pequeno ajuste de copy na descrição do campo Bioma no cadastro.' },
+      { id:'#12104', type:'test', title:'Testar filtro por certificadora nos endpoints', desc:'Validação manual do filtro por certificadora nos endpoints — aprovado.' },
+      { id:'#11960', type:'test', title:'Verificar inclusão de index.html no zip de exportação', desc:'Validação manual da inclusão do index.html no ZIP do Relatório de Atendimento Técnico — aprovado.' },
+      { id:'#12163', type:'feat', title:'Inverter regra de Impressão (CMS)', desc:'Inversão do comportamento padrão da regra de impressão no CMS.' },
+      { id:'#12096', type:'feat', title:'Procedure de cálculo de desempenho por subtema', desc:'Nova procedure consolidando cálculo de desempenho por subtema, usada nos rankings.' },
+      { id:'#12161', type:'fix',  title:'Ranking de Desempenho Regional não ordenado pela pontuação', desc:'Ordenação do Ranking Regional corrigida para considerar a pontuação como chave principal.' },
+      { id:'#12211', type:'fix',  title:'Erro para buscar dados do CAR', desc:'Correção no serviço de busca de dados do CAR via integração externa.' }
+    ]
+  },
+  br: {
+    name: 'Elias',
+    avClass: 'av-el',
+    avInit: 'EL',
+    nameColor: 'var(--el)',
+    cards: [
+      { id:'#11494', type:'feat', title:'Landing Pages Dinâmicas por Projeto + Blog + Deploy K8s', desc:'Pipelines e manifests Kubernetes para dev/homolog/prod, blog com destaque, footer dinâmico, seção de aplicativos, Node 24 e Biome.' },
+      { id:'#11734', type:'feat', title:'Criar opção "Possui Validação" em perguntas', desc:'Refatoração do formulário para validar apenas tipos suportados, com getter e método reutilizável. UI de validação livre migrada de inline para SCSS.' },
+      { id:'#12005', type:'fix',  title:'Vínculo de CAR já importado não atualiza sicar_imovel_id', desc:'Atualização do sicar_imovel_id corrigida no fluxo de vinculação de CAR já importado.' },
+      { id:'#12089', type:'fix',  title:'Campos numéricos da pergunta tipo Anexo enviados como string', desc:'Conversão correta dos campos numéricos da pergunta Anexo no payload de salvamento.' },
+      { id:'ATER-1', type:'feat', title:'ATER Digital — Setup do zero (RAG Python + API NestJS + Web React)', desc:'Monorepo Turbo com 3 apps: serviço RAG (FastAPI/Docling), API (NestJS/Drizzle), Web (React/Vite/TanStack/shadcn). Docker Compose com Postgres, Redis e MinIO.' },
+      { id:'ATER-2', type:'feat', title:'ATER — RAG com Docling + pgvector + sentence-transformers', desc:'Pipeline de ingestão de documentos com Docling, embeddings via sentence-transformers e busca semântica em pgvector — sem serviço vetorial separado.' },
+      { id:'ATER-3', type:'feat', title:'ATER — Agente Mastra AI com classificação + auto-reflexão', desc:'Agente orquestrado pelo Mastra AI com tools tipadas (Zod): classify, ragSearch e selfReflect. Reduz alucinação em contexto agrícola.' },
+      { id:'ATER-4', type:'feat', title:'ATER — Módulo de fontes de conhecimento', desc:'Upload, versionamento, retry de RAG falho ("Tentar enviar outro arquivo") e supersede automático em caso de falha em KS antiga.' },
+      { id:'ATER-5', type:'feat', title:'ATER — Integração Evolution API + Typebot (WhatsApp)', desc:'Captura de eventos via webhook, persistência de sessões de bot, validação de usuários parciais via Typebot, lógica de idempotência refinada.' },
+      { id:'ATER-6', type:'feat', title:'ATER — Chat com ações inline e UI rica', desc:'Botões de navegação inline no chat, Carousel, AssistantActionButton e melhorias na inferência de categorias de documentos.' },
+      { id:'ATER-7', type:'ref',  title:'Renomeação agro-assistant → ATER-DIGITAL (zero downtime)', desc:'Substituição em código, configurações, manifestos K8s, templates de e-mail e documentação. Nenhum ambiente quebrou durante a transição.' },
+      { id:'ATER-8', type:'fix',  title:'ATER — Validação CORS para requisições sem origem + segurança', desc:'Correção de validação CORS, reforço de segurança no acesso a missões/fazendas e desativação de preloading no sidebar admin.' },
+      { id:'LP-1',   type:'feat', title:'Landing Page — Indicadores dinâmicos integrados à procedure', desc:'Indicadores dinâmicos integrados à procedure getIndicadoresHome e atualização do layout da seção de estatísticas.' },
+      { id:'LP-2',   type:'ref',  title:'Centralização de variáveis de ambiente com Zod', desc:'Centralização da gestão de variáveis de ambiente com Zod e implementação de logging de erros para o cliente de API.' }
+    ]
+  },
+  th: {
+    name: 'Matheus',
+    avClass: 'av-ma',
+    avInit: 'MA',
+    nameColor: 'var(--ma)',
+    cards: [
+      { id:'#11762', type:'feat', title:'Importação e Exportação do Protocolo com respostas automáticas', desc:'Edição de respostas automáticas direto na importação/exportação do protocolo.' },
+      { id:'#12020', type:'fix',  title:'Respeitar rate limit do Resend no envio em massa de e-mails', desc:'Ajuste do envio em lote para não estourar o rate limit do Resend — investigado em trio com Elias e Carlos.' },
+      { id:'#12007', type:'feat', title:'Labels configuráveis dos Comparativos na tabela de pontuação', desc:'Refletir labels configuráveis dos Comparativos na coluna Indicador da tabela de pontuação na home.' },
+      { id:'#12006', type:'fix',  title:'Accordion de relatórios não expande automaticamente ao filtrar', desc:'Filtro ajustado para expandir o accordion ao digitar texto, deixando a busca em tempo real fluida.' },
+      { id:'#12040', type:'ref',  title:'Migração de respostas após reestruturação multiselect em agrupadores', desc:'Script criado para migrar respostas após reestruturação no cadastro de form-estruturas.' },
+      { id:'#12029', type:'feat', title:'Respostas Automáticas: contador + otimização N+1', desc:'De 100+ chamadas ao backend para 1 chamada inicial. Contador de respostas configuradas por item e filtro de perguntas inativas otimizado.' },
+      { id:'#12058', type:'fix',  title:'Fix procedure dashboard formulário', desc:'Correção em procedure que estava causando erro ao buscar dashboard formulário.' },
+      { id:'#12060', type:'fix',  title:'Corrigir edição de layout do form dinâmico', desc:'Correção de inconsistências na edição de layout do formulário dinâmico.' },
+      { id:'#12046', type:'feat', title:'Status "Entregue Parcialmente" e detalhamento por e-mail no Histórico', desc:'Novo status visível no Histórico de Envio de Links e detalhamento por e-mail.' },
+      { id:'#11951', type:'fix',  title:'Overview index.html do relatório de atendimento técnico', desc:'Correção de problemas com o overview (index.html) do Relatório de Atendimento Técnico.' },
+      { id:'#12099', type:'feat', title:'Filtro de certificadoras no cadastro de Endpoint Web (CMS)', desc:'Filtro por certificadora adicionado no cadastro de Endpoint Web no CMS.' },
+      { id:'#12082', type:'fix',  title:'Exclusão indevida de campos no modal Dados da Exportação', desc:'Correção da aba Campos no modal Dados da Exportação (CMS) que removia campos indevidamente ao salvar.' },
+      { id:'#11843', type:'feat', title:'Preview de impacto antes da importação de Protocolo (dry-run)', desc:'Tela de preview com diff de impacto e aprovação do usuário antes de aplicar a importação de protocolo.' },
+      { id:'#12136', type:'feat', title:'Exibir protocolo vinculado no dropdown de Importância', desc:'Dropdown de Importância em Gerenciamento de Programas passa a mostrar o protocolo vinculado.' },
+      { id:'#12137', type:'feat', title:'Campo de busca de perguntas no cadastro de Questionário', desc:'Filtro de busca de perguntas adicionado ao cadastro de Questionário.' },
+      { id:'#12138', type:'fix',  title:'Verificação de tipo de array no registro', desc:'Adicionada verificação de tipo de array antes do registro para evitar inconsistências.' },
+      { id:'#12139', type:'fix',  title:'Modal "Dados da resposta" em Diagnósticos abre oversized', desc:'Modal abrindo com dimensão e ancoragem incorretas — corrigido para tamanho e posição padrão.' },
+      { id:'#12156', type:'feat', title:'Migração da tela de Lote de Leite (Checkmilk)', desc:'Migração da tela de Lote de Leite no contexto de unificação Checkmilk.' },
+      { id:'#12157', type:'feat', title:'Migração da tela de Lactação (Checkmilk)', desc:'Migração da tela de Lactação no contexto de unificação Checkmilk.' },
+      { id:'#12158', type:'feat', title:'Migração da tela de Pesagem (Checkmilk)', desc:'Migração da tela de Pesagem no contexto de unificação Checkmilk.' },
+      { id:'#12159', type:'feat', title:'Migração da tela de Qualidade (Checkmilk)', desc:'Migração da tela de Qualidade do leite no contexto de unificação Checkmilk.' },
+      { id:'#12185', type:'fix',  title:'Evitar múltiplas chamadas duplicadas à API ao abrir grupos', desc:'Evitar chamadas duplicadas à API ao abrir grupos no formulário de auto-atendimento.' },
+      { id:'#11737', type:'feat', title:'Vínculo de Técnico por Propriedade no Cadastro de Usuário', desc:'Permitir vincular técnicos responsáveis a propriedades direto pelo cadastro de usuário.' },
+      { id:'#12178', type:'feat', title:'Referência a outras perguntas no campo Valor das Regras de Validação', desc:'Permitir que o campo Valor de uma Regra de Validação referencie a resposta de outra pergunta do formulário.' }
+    ]
+  }
+};
+
+const members = ['ro','br','th'];
+let activeType   = 'all';
+let activeMember = 'all';
+
+function badgeClass(type) {
+  return { feat:'badge-feat', fix:'badge-fix', ref:'badge-ref', test:'badge-test' }[type];
+}
+
+function badgeLabel(type) {
+  return { feat:'feature', fix:'fix', ref:'refactor', test:'teste' }[type];
+}
+
+function isAzureCard(id) {
+  return /^#\d+/.test(id);
+}
+
+function render() {
+  const root = document.getElementById('content');
+  root.innerHTML = '';
+
+  members.forEach(m => {
+    const d = DATA[m];
+    const section = document.createElement('div');
+    section.className = 'member-section';
+    section.id = 'sec-' + m;
+
+    section.innerHTML = `
+      <div class="member-header">
+        <div class="member-avatar ${d.avClass}">${d.avInit}</div>
+        <span class="member-name" style="color:${d.nameColor}">${d.name}</span>
+        <span class="member-meta" id="meta-${m}">${d.cards.length} cards</span>
+        <div class="member-bar"></div>
+      </div>
+      <table class="cards-table" id="tbl-${m}">
+        <thead>
+          <tr>
+            <th style="width:110px">#Card</th>
+            <th>Título &amp; Descrição</th>
+            <th style="width:90px">Tipo</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-${m}"></tbody>
+      </table>
+      <div class="empty-state" id="empty-${m}">Nenhum card encontrado.</div>
+    `;
+
+    root.appendChild(section);
+
+    const tbody = document.getElementById('tbody-' + m);
+    d.cards.forEach(c => {
+      const tr = document.createElement('tr');
+      tr.dataset.type   = c.type;
+      tr.dataset.member = m;
+      tr.dataset.search = (c.id + ' ' + c.title + ' ' + c.desc).toLowerCase();
+
+      const idCell = isAzureCard(c.id)
+        ? `<a href="https://dev.azure.com/ibsbiosistemico/AGROTRACE/_workitems/edit/${c.id.replace('#','')}" target="_blank" title="Abrir no Azure DevOps">${c.id}</a>`
+        : `<span class="no-link" title="Marco interno (sem card Azure)">${c.id}</span>`;
+
+      tr.innerHTML = `
+        <td class="col-id">${idCell}</td>
+        <td>
+          <div class="col-title">${c.title}</div>
+          <div class="col-desc">${c.desc}</div>
+        </td>
+        <td class="col-type"><span class="badge ${badgeClass(c.type)}">${badgeLabel(c.type)}</span></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  });
+
+  applyFilters();
+}
+
+function setFilter(group, val, btn) {
+  document.querySelectorAll(`[data-filter="${group}"]`).forEach(b => {
+    b.className = 'fbtn';
+  });
+  btn.classList.add('on-' + (val === 'all' ? 'all' : val));
+
+  if (group === 'type')   activeType   = val;
+  if (group === 'member') activeMember = val;
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  let total = 0, feat = 0, fix = 0, ref = 0, test = 0;
+  const perM = { ro:0, br:0, th:0 };
+
+  members.forEach(m => {
+    const sec   = document.getElementById('sec-' + m);
+    const empty = document.getElementById('empty-' + m);
+    const memberMatch = activeMember === 'all' || activeMember === m;
+
+    if (!memberMatch) {
+      sec.classList.add('hidden');
+      return;
+    }
+    sec.classList.remove('hidden');
+
+    let vis = 0;
+    sec.querySelectorAll('tbody tr').forEach(row => {
+      const typeOk   = activeType === 'all' || row.dataset.type === activeType;
+      const searchOk = !q || row.dataset.search.includes(q);
+      const show = typeOk && searchOk;
+      row.classList.toggle('hidden', !show);
+      if (show) {
+        vis++;
+        total++;
+        const t = row.dataset.type;
+        if (t === 'feat') feat++;
+        if (t === 'fix')  fix++;
+        if (t === 'ref')  ref++;
+        if (t === 'test') test++;
+        perM[m]++;
+      }
+    });
+
+    document.getElementById('meta-' + m).textContent = vis + ' card' + (vis !== 1 ? 's' : '');
+    empty.classList.toggle('visible', vis === 0);
+  });
+
+  document.getElementById('resultCount').textContent = total + ' card' + (total !== 1 ? 's' : '');
+  document.getElementById('s-total').textContent = total;
+  document.getElementById('s-feat').textContent  = feat;
+  document.getElementById('s-fix').textContent   = fix;
+  document.getElementById('s-ref').textContent   = ref;
+  document.getElementById('s-test').textContent  = test;
+  document.getElementById('s-ro').textContent    = perM.ro;
+  document.getElementById('s-br').textContent    = perM.br;
+  document.getElementById('s-th').textContent    = perM.th;
+}
+
+render();
+</script>
+</body>
+</html>
