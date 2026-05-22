@@ -4,7 +4,7 @@ Central de apresentações do time Web. Cada edição é um "deck" HTML standalo
 com tema VS Code (cada slide simula um arquivo aberto na IDE), apresentado a
 cada 3 semanas nas sextas-feiras.
 
-**Time:** Ronaldo (Head), Bruno, Thielson
+**Time:** Carlos (Head), Elias, Matheus
 
 ---
 
@@ -54,9 +54,9 @@ node server.js
 O servidor sobe na porta `3030` e serve o projeto inteiro:
 
 - Hub:       http://localhost:3030
-- Host:      http://localhost:3030/edition-03/spotlight.html?role=host&name=Ronaldo
-- Guest:     http://localhost:3030/edition-03/spotlight.html?role=guest&name=Bruno
-- Guest:     http://localhost:3030/edition-03/spotlight.html?role=guest&name=Thielson
+- Host:      http://localhost:3030/edition-03/spotlight.html?role=host&name=Carlos
+- Guest:     http://localhost:3030/edition-03/spotlight.html?role=guest&name=Elias
+- Guest:     http://localhost:3030/edition-03/spotlight.html?role=guest&name=Matheus
 
 Para compartilhar o controle com quem está geograficamente distante, use o
 **Port Forwarding do VS Code** (painel PORTS → Forward a Port 3030 → Public)
@@ -80,8 +80,8 @@ O deck suporta múltiplos clientes no mesmo WebSocket, com delegação de contro
 - `T` — cronômetro
 - `R` — reconectar o remoto
 - `4` — devolver controle para Ronaldo (host)
-- `5` — passar controle para Bruno
-- `6` — passar controle para Thielson
+- `5` — passar controle para Elias
+- `6` — passar controle para matheus
 
 Se o guest com controle cai, o controle volta automaticamente para o host.
 
@@ -90,7 +90,7 @@ tem o controle (★ = host, ◉ = quem controla agora).
 
 ---
 
-## Como contribuir (Bruno & Thielson)
+## Como contribuir
 
 A ideia é que cada um tenha liberdade para criar o que quiser na sua parte da
 apresentação — slides, demos, screenshots, o que fizer sentido para o destaque
