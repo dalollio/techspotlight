@@ -1772,6 +1772,9 @@
             <span class="sidebar-icon">🗺️</span> roadmap.todo
           </div>
           <div class="sidebar-item" onclick="goTo(12)" id="si-12">
+            <span class="sidebar-icon">🙏</span> thanks.jpg
+          </div>
+          <div class="sidebar-item" onclick="goTo(13)" id="si-13">
             <span class="sidebar-icon">👋</span> exit.ts
           </div>
         </div>
@@ -3760,34 +3763,16 @@
                 >
               </div>
             </div>
-
-            <div class="todo-item">
-              <div class="todo-check"></div>
-              <div class="todo-content">
-                <div class="todo-title">Painel Consolidado</div>
-                <div class="todo-desc">
-                  Visão unificada da propriedade: atendimentos, formulários,
-                  indicadores, anexos, CAR e dados socioambientais.
-                </div>
-              </div>
-              <div class="flex-row">
-                <span
-                  class="todo-who"
-                  style="background: var(--purple-bg); color: var(--purple)"
-                  >@carlos</span
-                >
-              </div>
-            </div>
-
+            
             <div class="todo-item">
               <div class="todo-check"></div>
               <div class="todo-content">
                 <div class="todo-title">
-                  Integrações PRODES/IBAMA/DETER
+                  RA — integrações e validações
                 </div>
                 <div class="todo-desc">
-                  Camadas geoespaciais via RuralShape para enriquecer cadastros
-                  e análises socioambientais.
+                  Aprimorar fluxo RA: mais integrações, validações automáticas,
+                  relatórios avançados e melhorias de UX.
                 </div>
               </div>
               <div class="flex-row">
@@ -3796,35 +3781,9 @@
                   style="background: var(--purple-bg); color: var(--purple)"
                   >@carlos</span
                 >
-                <span
-                  class="todo-who"
-                  style="
-                    background: var(--bg2);
-                    color: var(--text2);
-                    border: 1px solid var(--border);
-                  "
-                  >+ iohan</span
-                >
               </div>
             </div>
 
-            <div class="todo-item">
-              <div class="todo-check"></div>
-              <div class="todo-content">
-                <div class="todo-title">Excel Import Formulário Dinâmico</div>
-                <div class="todo-desc">
-                  Trazer para o Formulário Dinâmico o modelo de import por Excel
-                  já usado no Diagnóstico.
-                </div>
-              </div>
-              <div class="flex-row">
-                <span
-                  class="todo-who"
-                  style="background: var(--teal-bg); color: var(--teal)"
-                  >@matheus</span
-                >
-              </div>
-            </div>
           </div>
 
           <div
@@ -3842,8 +3801,35 @@
           </div>
         </div>
 
-        <!-- ─── SLIDE 12: EXIT ─── -->
+        <!-- ─── SLIDE 12: THANKS ─── -->
         <div class="slide" id="slide-12">
+          <div class="slide-title">// thanks.jpg</div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Obrigado, <span>Web Team</span>! 🙏
+          </div>
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 24px; flex: 1; justify-content: center">
+            <img
+              src="assets/thanks.jpg"
+              alt="Agradecimento ao time Web"
+              style="max-width: 500px; width: 100%; border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: 0 8px 32px rgba(0,0,0,0.3)"
+            />
+            <div class="card card-accent-purple" style="max-width: 560px; text-align: center">
+              <div style="font-size: 15px; color: var(--text); line-height: 1.6">
+                Agradecemos ao <strong style="color: var(--purple)">time da Web</strong> por ter
+                compartilhado o modelo do Spotlight e estar sempre à disposição
+                para ajudar o time Mobile. A colaboração entre os times é o que
+                nos faz evoluir juntos. 💜
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 13: EXIT ─── -->
+        <div class="slide" id="slide-13">
           <div
             style="
               flex: 1;
@@ -3883,7 +3869,7 @@
                   <span class="cmt">// exit.ts</span><br />
                   <span class="kw">import</span> {
                   <span class="prop">team</span> } <span class="kw">from</span>
-                  <span class="str">'./web-engineering'</span><br /><br />
+                  <span class="str">'./mobile-engineering'</span><br /><br />
                   <span class="prop">console</span>.<span class="fn">log</span
                   >(<span class="str">"Obrigado pela presença!"</span>)<br />
                   <span class="prop">console</span>.<span class="fn">log</span
@@ -3892,7 +3878,7 @@
                   >)<br /><br />
                   <span class="cmt">// Dúvidas?</span><br />
                   <span class="cmt">// → Carlos, Elias ou Matheus</span><br />
-                  <span class="cmt">// → #web-engineering no Discord</span
+                  <span class="cmt">// → #ibs-mobile no Discord</span
                   ><br /><br />
                   <span class="prop">process</span>.<span class="fn">exit</span
                   >(<span class="num">0</span>)
@@ -4455,6 +4441,7 @@
         "wins.log",
         "roadmap.todo",
         "exit.ts",
+        "thanks.jpg",
       ];
 
       // Build tabs
@@ -4473,6 +4460,7 @@
         "🏆",
         "🗺️",
         "👋",
+        "🙏",
       ];
       labels.forEach((l, i) => {
         const t = document.createElement("div");
