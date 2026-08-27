@@ -1,0 +1,254 @@
+{
+  "ca": {
+    "name": "Carlos",
+    "avClass": "av-ca",
+    "avInit": "CA",
+    "nameColor": "var(--ca)",
+    "cards": [
+      {
+        "id": "#13193",
+        "type": "feat",
+        "title": "Análise e solução para envio de dados pendentes",
+        "desc": "Análise e implementação de solução para o envio de dados pendentes no aplicativo."
+      },
+      {
+        "id": "#13232",
+        "type": "ref",
+        "title": "Publicar nova versão do Backend em Produção",
+        "desc": "Publicação de nova versão do backend em produção: criação de migrations, ajuste de tabelas defasadas, configuração de envs e validação de compatibilidade com o front e as versões do APP."
+      },
+      {
+        "id": "#13233",
+        "type": "ref",
+        "title": "Publicar nova versão do APP com o recurso PushNotification",
+        "desc": "Publicação de nova versão do APP com push notifications, incluindo ajuste dos ícones do OneSignal, ocultação do RA e validação da nova versão."
+      }
+    ]
+  },
+  "es": {
+    "name": "Elias",
+    "avClass": "av-el",
+    "avInit": "EL",
+    "nameColor": "var(--el)",
+    "cards": [
+      {
+        "id": "#12610",
+        "type": "feat",
+        "title": "Adicionar módulo PEC na visão do Produtor",
+        "desc": "Extensão do módulo PEC para a visão do Produtor, incluindo registro de parto (entrada de animal no rebanho) e pesagens em lote, individual e coletiva."
+      },
+      {
+        "id": "#12623",
+        "type": "feat",
+        "title": "Restringir safras no APP",
+        "desc": "Restrição das safras disponíveis para abertura de novos atendimentos no APP, via flag permite_execucao configurável na tela de cadastro de safra."
+      },
+      {
+        "id": "#12936",
+        "type": "feat",
+        "title": "Melhoria tela propriedade_info",
+        "desc": "Ajuste na tela de questionário da propriedade para a última pergunta não ficar oculta pelo teclado, com alerta de dados não salvos ao voltar para a agenda."
+      },
+      {
+        "id": "#12944",
+        "type": "ref",
+        "title": "Baixar dados PEC",
+        "desc": "Correção do baixar dados PEC que exibia propriedades de outros projetos; apenas as propriedades do projeto devem ficar visíveis."
+      },
+      {
+        "id": "#12997",
+        "type": "feat",
+        "title": "Respostas Automáticas",
+        "desc": "Evolução das respostas automáticas para aplicar também as ramificações, respondendo em cadeia as perguntas relacionadas às perguntas já relacionadas à pergunta inicial."
+      },
+      {
+        "id": "#12998",
+        "type": "ref",
+        "title": "Dados de atendimento cancelado ficando na fila de envio",
+        "desc": "Correção de dados de atendimento cancelado que permaneciam na fila de envio mesmo após o cancelamento."
+      },
+      {
+        "id": "#13010",
+        "type": "feat",
+        "title": "Restringir safras - API",
+        "desc": "Nova coluna booleana na tabela safra e ajuste da tela de cadastro/edição para controlar quais safras são exibidas na abertura de novos atendimentos."
+      },
+      {
+        "id": "#13017",
+        "type": "fix",
+        "title": "Não aparece foto da propriedade",
+        "desc": "Correção em produção de fotos da propriedade que não eram exibidas para os técnicos do Biodiesel-Cacau."
+      },
+      {
+        "id": "#13027",
+        "type": "ref",
+        "title": "Data na impressão saindo errada - Form Dinamico",
+        "desc": "Correção da data preenchida no formulário dinâmico que saía um dia antes na impressão."
+      },
+      {
+        "id": "#13043",
+        "type": "ref",
+        "title": "Pergunta fora de ordem - Form Atividade Produtiva",
+        "desc": "Ajuste da ordenação das perguntas do formulário de Atividade Produtiva para respeitar a ordem definida no CMS."
+      },
+      {
+        "id": "#13046",
+        "type": "feat",
+        "title": "Formulários - Regras",
+        "desc": "Exibição apenas dos formulários vinculados ao grupo do técnico logado e configuração de preenchimento obrigatório de formulário antes da conclusão do atendimento."
+      },
+      {
+        "id": "#13096",
+        "type": "feat",
+        "title": "Publicar nova versão - APP",
+        "desc": "Publicação de nova versão do aplicativo contendo as alterações da sprint encerrada."
+      },
+      {
+        "id": "#13099",
+        "type": "fix",
+        "title": "Relatório de Diagnostico - Foto da Fazenda - APP",
+        "desc": "Correção da imagem da fazenda que não era exibida corretamente no relatório de diagnóstico e plano de ação."
+      },
+      {
+        "id": "#13107",
+        "type": "feat",
+        "title": "Permitir modelo de recibo para estados diferentes - Débora",
+        "desc": "Implementação da regra de recibo por estado no Biodiesel-Soja: modelo com valor de R$ 18,00 para GO/MG e de R$ 16,50 para os demais estados."
+      },
+      {
+        "id": "#13108",
+        "type": "feat",
+        "title": "Evitar duplicatas nas respostas do formulário dinâmico",
+        "desc": "Adição de safe guards para evitar a duplicação de respostas do formulário dinâmico ao responder várias vezes em um intervalo mínimo."
+      },
+      {
+        "id": "#13112",
+        "type": "feat",
+        "title": "Inserir nome do técnico e CREA no recibo",
+        "desc": "Criação de variáveis para incluir o nome do técnico e o CREA no recibo do Biodiesel-Soja."
+      },
+      {
+        "id": "#13117",
+        "type": "fix",
+        "title": "App fechando na abertura da tela de CROQUI",
+        "desc": "Correção de crash do aplicativo na abertura da tela de croqui, relatado pelos técnicos do Biodiesel-Cacau."
+      },
+      {
+        "id": "#13121",
+        "type": "feat",
+        "title": "Teclado recolhendo ao digitar o nome de produtor",
+        "desc": "Correção do teclado que recolhia a cada letra digitada na busca pelo nome do produtor ao abrir um atendimento."
+      },
+      {
+        "id": "#13126",
+        "type": "fix",
+        "title": "Aplicativo fechando ao add foto",
+        "desc": "Correção de crash do aplicativo ao adicionar mais de quatro fotos ao mesmo tempo."
+      },
+      {
+        "id": "#13134",
+        "type": "feat",
+        "title": "Publicar nova versão nas lojas - APP",
+        "desc": "Publicação de nova versão nas lojas com a correção do crash do aplicativo no módulo de croqui."
+      },
+      {
+        "id": "#13151",
+        "type": "fix",
+        "title": "Problema para concluir Diagnóstico",
+        "desc": "Correção de atendimento que não concluía mesmo com o questionário completo, causado por perguntas que permaneciam ativas em tema desativado (projeto Checksheep)."
+      },
+      {
+        "id": "#13155",
+        "type": "fix",
+        "title": "App fechando no Croqui",
+        "desc": "Investigação e correção do aplicativo que continuava fechando no croqui para alguns técnicos mesmo após a correção anterior."
+      },
+      {
+        "id": "#13170",
+        "type": "ref",
+        "title": "Problema com Perfil - Reinaldo",
+        "desc": "Correção da tela de perfil que exibia temas como respondidos (check verde) mesmo com respostas em branco, incluindo localização marcada como coletada sem coordenada."
+      },
+      {
+        "id": "#13175",
+        "type": "fix",
+        "title": "Performance Form Dinamico - Biodiesel Soja",
+        "desc": "Correção urgente de regressão de performance no formulário dinâmico do projeto Biodiesel-Soja."
+      },
+      {
+        "id": "#13212",
+        "type": "ref",
+        "title": "Investigar atendimentos faltando respostas - Débora",
+        "desc": "Investigação de respostas de atendimento DG no Biodiesel-Cacau que eram desativadas automaticamente no momento do envio, deixando cerca de 233 respostas pendentes."
+      }
+    ]
+  },
+  "ma": {
+    "name": "Matheus",
+    "avClass": "av-ma",
+    "avInit": "MA",
+    "nameColor": "var(--ma)",
+    "cards": [
+      {
+        "id": "#12910",
+        "type": "feat",
+        "title": "Recibo e Assinatura - Cacau - Biodiesel",
+        "desc": "Digitalização da confirmação de entrega do Plano de Ação via assinatura digital, anexando o recibo à gestão de documentos da propriedade com histórico dos termos assinados."
+      },
+      {
+        "id": "#12935",
+        "type": "feat",
+        "title": "Melhorar a pergunta GPS no FormDinâmico",
+        "desc": "Validação dos inputs da pergunta tipo GPS para aceitar apenas números, sinal negativo e ponto decimal, respeitando os intervalos de latitude (-90 a +90) e longitude (-180 a +180)."
+      },
+      {
+        "id": "#12946",
+        "type": "feat",
+        "title": "Tela de cadastro de animal",
+        "desc": "Após cadastrar um animal, o usuário permanece na tela do formulário com os campos Tipo Criação, Idade, Criação e ECC preservados, agilizando cadastros em sequência."
+      },
+      {
+        "id": "#12947",
+        "type": "feat",
+        "title": "Atualizar Score do animal",
+        "desc": "Avaliação e melhoria do fluxo para permitir a atualização do score do animal nas telas de DG e inseminação."
+      },
+      {
+        "id": "#12950",
+        "type": "feat",
+        "title": "Configurar limite mínimo de anexos por atendimento",
+        "desc": "Configuração do limite mínimo de anexos obrigatórios por atendimento, permitindo ajustar a exigência conforme o projeto."
+      },
+      {
+        "id": "#13059",
+        "type": "fix",
+        "title": "Ajustado bugs de envio de anexo da resposta",
+        "desc": "Recuperação de anexos de consultor nas respostas de acompanhamento e correção de bugs na limpeza do app após troca de usuário e no envio de respostas com anexo."
+      },
+      {
+        "id": "#13069",
+        "type": "feat",
+        "title": "Criar MVP analise de imagens com Sentinel",
+        "desc": "Criação de MVP de análise de imagens de satélite utilizando o Sentinel."
+      },
+      {
+        "id": "#13157",
+        "type": "feat",
+        "title": "Aquisição de coordenadas no APP",
+        "desc": "Handler de aquisição de coordenadas com tentativas automáticas de localização e, em caso de falha, liberação da abertura/conclusão do atendimento sem as coordenadas."
+      },
+      {
+        "id": "#13164",
+        "type": "feat",
+        "title": "Criar Pipeline Pectrace",
+        "desc": "Criação de pipeline para publicação do Pectrace nas lojas Android e iOS, seguindo o padrão dos demais pacotes."
+      },
+      {
+        "id": "#13201",
+        "type": "feat",
+        "title": "Publicar em produção microserviço em Python",
+        "desc": "Publicação em produção do microserviço desenvolvido em Python."
+      }
+    ]
+  }
+}

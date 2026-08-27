@@ -1,0 +1,5187 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Spotlight — Mobile Team | 28/08/2026</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/web-team.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0d1117;
+        --bg2: #161b22;
+        --bg3: #1c2128;
+        --bg4: #21262d;
+        --border: #30363d;
+        --border2: #484f58;
+        --text: #e6edf3;
+        --text2: #8b949e;
+        --text3: #6e7681;
+        --purple: #a78bfa;
+        --purple-d: #7c3aed;
+        --purple-bg: #1a1033;
+        --teal: #34d399;
+        --teal-bg: #0a2218;
+        --coral: #fb923c;
+        --coral-bg: #2a1100;
+        --blue: #60a5fa;
+        --blue-bg: #0c1a2e;
+        --amber: #fbbf24;
+        --amber-bg: #241a00;
+        --green: #4ade80;
+        --red: #f87171;
+        --pink: #f472b6;
+        --font-mono: "JetBrains Mono", monospace;
+        --font-sans: "Space Grotesk", sans-serif;
+        --radius: 8px;
+        --radius-lg: 12px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-sans);
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── TOPBAR ── */
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        height: 38px;
+        padding: 0;
+        flex-shrink: 0;
+      }
+
+      .topbar-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 16px;
+        border-right: 1px solid var(--border);
+        height: 100%;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--text2);
+      }
+
+      .topbar-logo .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .dot-red {
+        background: #ff5f57;
+      }
+      .dot-amber {
+        background: #febc2e;
+      }
+      .dot-green {
+        background: #28c840;
+      }
+
+      .tabs-bar {
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        height: 100%;
+        flex: 1;
+      }
+      .tabs-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tab-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 16px;
+        height: 100%;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--text3);
+        border-right: 1px solid var(--border);
+        cursor: pointer;
+        white-space: nowrap;
+        transition:
+          background 0.15s,
+          color 0.15s;
+        position: relative;
+      }
+      .tab-item:hover {
+        background: var(--bg3);
+        color: var(--text2);
+      }
+      .tab-item.active {
+        background: var(--bg);
+        color: var(--text);
+      }
+      .tab-item.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--purple);
+      }
+
+      .tab-icon {
+        font-size: 12px;
+      }
+
+      .topbar-right {
+        margin-left: auto;
+        padding: 0 16px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--text3);
+        border-left: 1px solid var(--border);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+      }
+
+      /* ── MAIN LAYOUT ── */
+      .main {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      /* ── SIDEBAR ── */
+      .sidebar {
+        width: 220px;
+        background: var(--bg2);
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        overflow-y: auto;
+      }
+
+      .sidebar-section {
+        padding: 0;
+      }
+
+      .sidebar-header {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--text3);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 14px 16px 6px;
+      }
+
+      .sidebar-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 5px 16px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--text2);
+        cursor: pointer;
+        transition:
+          background 0.12s,
+          color 0.12s;
+        border-left: 2px solid transparent;
+      }
+      .sidebar-item:hover {
+        background: var(--bg3);
+        color: var(--text);
+      }
+      .sidebar-item.active {
+        background: var(--bg4);
+        color: var(--text);
+        border-left-color: var(--purple);
+      }
+
+      .sidebar-icon {
+        width: 14px;
+        text-align: center;
+        font-size: 11px;
+      }
+
+      .sidebar-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 8px 0;
+      }
+
+      .sidebar-team {
+        padding: 8px 16px 14px;
+      }
+
+      .member {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 0;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--text2);
+      }
+
+      .member-avatar {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: 700;
+      }
+      .av-r {
+        background: var(--purple-bg);
+        color: var(--purple);
+      }
+      .av-b {
+        background: var(--blue-bg);
+        color: var(--blue);
+      }
+      .av-t {
+        background: var(--teal-bg);
+        color: var(--teal);
+      }
+
+      .member-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--teal);
+        margin-left: auto;
+      }
+
+      /* ── CONTENT ── */
+      .content {
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .slide {
+        display: none;
+        flex: 1;
+        overflow-y: auto;
+        padding: 40px 56px;
+        animation: fadeIn 0.25s ease;
+      }
+      .slide.active {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── STATUSBAR ── */
+      .statusbar {
+        height: 24px;
+        background: var(--purple-d);
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        gap: 20px;
+        flex-shrink: 0;
+      }
+
+      .status-item {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.85);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      /* ── TIMER WIDGET ── */
+      .timer-widget {
+        position: fixed;
+        top: 46px;
+        right: 16px;
+        z-index: 900;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 6px 14px;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.2s;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+      }
+      .timer-widget:hover {
+        border-color: var(--border2);
+        background: var(--bg3);
+      }
+      .timer-icon {
+        font-size: 12px;
+        color: var(--text3);
+        transition: color 0.2s;
+      }
+      .timer-display {
+        font-family: var(--font-mono);
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--text3);
+        letter-spacing: 0.05em;
+        transition: color 0.2s;
+      }
+      .timer-widget.running .timer-icon {
+        color: var(--teal);
+      }
+      .timer-widget.running .timer-display {
+        color: var(--teal);
+      }
+      .timer-widget.warning .timer-display {
+        color: var(--amber);
+      }
+      .timer-widget.warning .timer-icon {
+        color: var(--amber);
+      }
+      .timer-widget.overtime .timer-display {
+        color: var(--red);
+      }
+      .timer-widget.overtime .timer-icon {
+        color: var(--red);
+      }
+
+      /* ── CODE BLOCK ── */
+      .code-block {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      .code-block-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: var(--bg3);
+        border-bottom: 1px solid var(--border);
+        font-size: 13px;
+        color: var(--text2);
+      }
+
+      .code-body {
+        display: flex;
+        overflow-x: auto;
+      }
+
+      .line-numbers {
+        padding: 14px 12px;
+        color: var(--text3);
+        text-align: right;
+        user-select: none;
+        border-right: 1px solid var(--border);
+        min-width: 42px;
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .code-lines {
+        padding: 14px 18px;
+        flex: 1;
+      }
+
+      .kw {
+        color: #c792ea;
+      }
+      .str {
+        color: #c3e88d;
+      }
+      .cmt {
+        color: #546e7a;
+        font-style: italic;
+      }
+      .num {
+        color: #f78c6c;
+      }
+      .fn {
+        color: #82aaff;
+      }
+      .prop {
+        color: #89ddff;
+      }
+      .tag {
+        color: var(--amber);
+      }
+      .ok {
+        color: var(--teal);
+      }
+      .err {
+        color: var(--red);
+      }
+      .punc {
+        color: var(--text2);
+      }
+
+      /* ── SLIDE COMPONENTS ── */
+      .slide-title {
+        font-family: var(--font-sans);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text3);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .slide-heading {
+        font-family: var(--font-sans);
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 24px;
+        line-height: 1.2;
+      }
+
+      .slide-heading span {
+        color: var(--purple);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: 500;
+      }
+      .badge-purple {
+        background: var(--purple-bg);
+        color: var(--purple);
+        border: 1px solid #4c1d95;
+      }
+      .badge-teal {
+        background: var(--teal-bg);
+        color: var(--teal);
+        border: 1px solid #065f46;
+      }
+      .badge-blue {
+        background: var(--blue-bg);
+        color: var(--blue);
+        border: 1px solid #1e3a5f;
+      }
+      .badge-amber {
+        background: var(--amber-bg);
+        color: var(--amber);
+        border: 1px solid #78350f;
+      }
+      .badge-coral {
+        background: var(--coral-bg);
+        color: var(--coral);
+        border: 1px solid #7c2d12;
+      }
+      .badge-green {
+        background: #0a2218;
+        color: var(--green);
+        border: 1px solid #14532d;
+      }
+      .badge-red {
+        background: #2a0f0f;
+        color: var(--red);
+        border: 1px solid #7f1d1d;
+      }
+
+      .card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 16px 20px;
+      }
+
+      .card-accent-purple {
+        border-left: 3px solid var(--purple);
+      }
+      .card-accent-teal {
+        border-left: 3px solid var(--teal);
+      }
+      .card-accent-blue {
+        border-left: 3px solid var(--blue);
+      }
+      .card-accent-coral {
+        border-left: 3px solid var(--coral);
+      }
+      .card-accent-amber {
+        border-left: 3px solid var(--amber);
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+      }
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+
+      .metric {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 14px 16px;
+        text-align: center;
+      }
+      .metric-val {
+        font-family: var(--font-mono);
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--purple);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .metric-lbl {
+        font-size: 14px;
+        color: var(--text3);
+      }
+
+      .flex-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .mb-4 {
+        margin-bottom: 4px;
+      }
+      .mb-8 {
+        margin-bottom: 8px;
+      }
+      .mb-12 {
+        margin-bottom: 12px;
+      }
+      .mb-16 {
+        margin-bottom: 16px;
+      }
+      .mb-20 {
+        margin-bottom: 20px;
+      }
+      .mb-24 {
+        margin-bottom: 24px;
+      }
+      .mt-16 {
+        margin-top: 16px;
+      }
+      .mt-20 {
+        margin-top: 20px;
+      }
+
+      .section-block {
+        margin-bottom: 18px;
+      }
+
+      .section-label {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text3);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .tag-list {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .chip {
+        background: var(--bg4);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 3px 12px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text2);
+      }
+
+      .flow {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--text2);
+      }
+
+      .flow-step {
+        background: var(--bg4);
+        border: 1px solid var(--border2);
+        border-radius: var(--radius);
+        padding: 8px 16px;
+        color: var(--text);
+        font-size: 15px;
+      }
+
+      .flow-arrow {
+        color: var(--text3);
+        font-size: 18px;
+      }
+
+      .win-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 16px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .win-icon {
+        font-size: 24px;
+      }
+
+      .win-who {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .win-text {
+        font-size: 16px;
+        color: var(--text2);
+        line-height: 1.6;
+      }
+
+      .todo-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 16px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 8px;
+      }
+
+      .todo-check {
+        width: 16px;
+        height: 16px;
+        border: 1.5px solid var(--border2);
+        border-radius: 3px;
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+
+      .todo-content {
+        flex: 1;
+      }
+      .todo-title {
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+      .todo-desc {
+        font-size: 14px;
+        color: var(--text3);
+      }
+      .todo-who {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        padding: 3px 10px;
+        border-radius: 3px;
+      }
+
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: relative;
+      }
+
+      .tl-item {
+        display: flex;
+        gap: 16px;
+        padding-bottom: 16px;
+      }
+
+      .tl-line {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+
+      .tl-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--purple);
+        flex-shrink: 0;
+        margin-top: 4px;
+      }
+
+      .tl-connector {
+        width: 2px;
+        flex: 1;
+        background: var(--border);
+        min-height: 20px;
+      }
+
+      .tl-body {
+        flex: 1;
+      }
+
+      .tl-time {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text3);
+        margin-bottom: 4px;
+      }
+
+      .tl-text {
+        font-size: 16px;
+        color: var(--text2);
+        line-height: 1.5;
+      }
+
+      /* ── NAV CONTROLS ── */
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 10px;
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        flex-shrink: 0;
+      }
+
+      .nav-btn {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        color: var(--text2);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        padding: 8px 20px;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .nav-btn:hover {
+        background: var(--bg4);
+        color: var(--text);
+        border-color: var(--border2);
+      }
+      .nav-btn:active {
+        transform: scale(0.97);
+      }
+
+      .nav-dots {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+
+      .nav-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--border2);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .nav-dot.active {
+        background: var(--purple);
+        transform: scale(1.4);
+      }
+
+      .slide-counter {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text3);
+        min-width: 60px;
+        text-align: center;
+      }
+
+      /* ── COVER ── */
+      .cover-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        max-width: 1100px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .cover-icon {
+        width: 72px;
+        height: 72px;
+        display: block;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 4px 16px rgba(127, 119, 221, 0.3));
+      }
+
+      .cover-tag {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--purple);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      .cover-title {
+        font-size: 52px;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 12px;
+      }
+
+      .cover-title .accent {
+        color: var(--purple);
+      }
+
+      .cover-subtitle {
+        font-family: var(--font-mono);
+        font-size: 16px;
+        color: var(--text2);
+        margin-bottom: 24px;
+      }
+
+      .cover-code {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        font-family: var(--font-mono);
+        font-size: 15px;
+      }
+
+      .cover-code-header {
+        background: var(--bg3);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 16px;
+        font-size: 13px;
+        color: var(--text3);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .cover-code-body {
+        padding: 16px 18px;
+        line-height: 1.8;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        padding: 6px 14px;
+        border-radius: 20px;
+        background: var(--bg4);
+        border: 1px solid var(--border);
+        color: var(--text2);
+      }
+
+      .progress-bar {
+        height: 4px;
+        background: var(--border);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-top: 8px;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--purple), var(--blue));
+        border-radius: 2px;
+        transition: width 0.5s ease;
+      }
+
+      kbd {
+        display: inline-block;
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        border-radius: 4px;
+        padding: 1px 6px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--text2);
+      }
+
+      /* scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border2);
+        border-radius: 3px;
+      }
+
+      /* ── CLICKABLE METRICS ── */
+      .metric-click {
+        cursor: pointer;
+        transition: all 0.2s;
+        position: relative;
+      }
+      .metric-click:hover {
+        border-color: var(--border2);
+        background: var(--bg4);
+        transform: translateY(-2px);
+      }
+      .metric-click::after {
+        content: "▾ ver cards";
+        position: absolute;
+        bottom: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--font-mono);
+        font-size: 9px;
+        color: var(--text3);
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .metric-click:hover::after {
+        opacity: 1;
+      }
+
+      /* ── KPI MODAL ── */
+      .kpi-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+      .kpi-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .kpi-modal {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        width: 90%;
+        max-width: 800px;
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(10px);
+        transition: transform 0.2s;
+      }
+      .kpi-overlay.open .kpi-modal {
+        transform: translateY(0);
+      }
+
+      .kpi-modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+      .kpi-modal-title {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .kpi-modal-close {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text2);
+        font-size: 14px;
+        padding: 4px 12px;
+        cursor: pointer;
+      }
+      .kpi-modal-close:hover {
+        background: var(--bg4);
+        color: var(--text);
+      }
+
+      .kpi-modal-body {
+        overflow-y: auto;
+        padding: 0;
+      }
+
+      .kpi-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      .kpi-table thead th {
+        background: var(--bg3);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--text3);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 10px 16px;
+        text-align: left;
+        position: sticky;
+        top: 0;
+      }
+      .kpi-table tbody tr {
+        border-bottom: 1px solid var(--border);
+        transition: background 0.1s;
+      }
+      .kpi-table tbody tr:hover {
+        background: var(--bg3);
+      }
+      .kpi-table td {
+        padding: 10px 16px;
+        color: var(--text2);
+      }
+      .kpi-table td:first-child {
+        color: var(--text);
+        font-family: var(--font-mono);
+        font-size: 13px;
+      }
+      .kpi-table .kpi-badge {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 12px;
+      }
+
+      /* ── OVERVIEW CARDS ── */
+      .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        align-content: start;
+      }
+
+      .overview-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 12px 14px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        position: relative;
+      }
+      .overview-card:hover {
+        border-color: var(--purple);
+        background: var(--bg3);
+        transform: translateY(-2px);
+      }
+
+      .overview-card-id {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--text3);
+      }
+
+      .overview-card-title {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text);
+        line-height: 1.35;
+        padding-right: 50px;
+      }
+
+      .overview-card-hint {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--text3);
+        margin-top: 4px;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .overview-card:hover .overview-card-hint {
+        opacity: 1;
+      }
+
+      .overview-card-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      /* ── ATER DIGITAL VISUALS ── */
+      .ater-visual-panel {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 0;
+      }
+
+      .ater-visual-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .ater-visual-title {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text3);
+      }
+
+      .ater-shot-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .ater-shot {
+        background: #f8faf9;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        min-height: 140px;
+        position: relative;
+      }
+
+      .ater-shot img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+      }
+
+      .ater-shot.tall img {
+        object-position: top center;
+      }
+
+      .ater-shot.wide {
+        grid-column: 1 / -1;
+      }
+
+      .ater-shot.wide img {
+        height: 190px;
+      }
+
+      .ater-shot-caption {
+        position: absolute;
+        left: 8px;
+        bottom: 8px;
+        right: 8px;
+        background: rgba(13, 17, 23, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 4px;
+        padding: 4px 6px;
+        font-family: var(--font-mono);
+        font-size: 9px;
+        color: var(--text2);
+      }
+
+      /* ── SCREENSHOT MODAL ── */
+      .ss-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        z-index: 1100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+      .ss-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .ss-modal {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        width: 92%;
+        max-width: 1100px;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(10px);
+        transition: transform 0.2s;
+      }
+      .ss-overlay.open .ss-modal {
+        transform: translateY(0);
+      }
+
+      .ss-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        gap: 12px;
+      }
+
+      .ss-header-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .ss-card-id {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--purple);
+        flex-shrink: 0;
+      }
+
+      .ss-title {
+        font-size: 15px;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .ss-close {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text2);
+        font-size: 14px;
+        padding: 4px 12px;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+      .ss-close:hover {
+        background: var(--bg4);
+        color: var(--text);
+      }
+
+      .ss-body {
+        overflow: auto;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        min-height: 200px;
+      }
+
+      .ss-body img {
+        max-width: 100%;
+        max-height: 70vh;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+      }
+
+      /* Modo "tall" — screenshots de celular muito altos:
+         largura travada (mimetiza viewport mobile), altura livre,
+         body rola verticalmente. Botões/contador passam a fixed
+         pra continuarem visíveis durante o scroll. */
+      .ss-body.tall {
+        align-items: flex-start;
+      }
+      .ss-body.tall img {
+        max-width: 380px;
+        max-height: none;
+        width: 100%;
+      }
+      .ss-body.tall .ss-carousel-btn {
+        position: fixed;
+        top: 50%;
+      }
+      .ss-body.tall .ss-carousel-btn.prev {
+        left: 30px;
+      }
+      .ss-body.tall .ss-carousel-btn.next {
+        right: 30px;
+      }
+      .ss-body.tall .ss-counter {
+        position: fixed;
+        bottom: 5vh;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .ss-carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        color: var(--text);
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          opacity 0.2s ease,
+          background 0.15s,
+          border-color 0.15s;
+        z-index: 2;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .ss-body:hover .ss-carousel-btn,
+      .ss-carousel-btn:focus-visible {
+        opacity: 0.8;
+        pointer-events: auto;
+      }
+      .ss-carousel-btn:hover {
+        background: var(--bg4);
+        border-color: var(--purple);
+        opacity: 1;
+      }
+      .ss-carousel-btn.prev {
+        left: 12px;
+      }
+      .ss-carousel-btn.next {
+        right: 12px;
+      }
+
+      .ss-counter {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 4px 14px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text2);
+        z-index: 2;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+      }
+      .ss-body:hover .ss-counter {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .ss-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--border2);
+        transition: all 0.2s;
+      }
+      .ss-dot.active {
+        background: var(--purple);
+        transform: scale(1.4);
+      }
+
+      .ss-empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 48px;
+        color: var(--text3);
+        font-family: var(--font-mono);
+        font-size: 14px;
+      }
+
+      .ss-empty-icon {
+        font-size: 40px;
+        opacity: 0.5;
+      }
+
+      /* ── STATS FILTER ── */
+      .stats-filter {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        padding: 4px 14px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        background: var(--bg3);
+        color: var(--text2);
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .stats-filter:hover {
+        border-color: var(--border2);
+        color: var(--text);
+      }
+      .stats-filter.active {
+        background: var(--f-color, var(--purple-d));
+        border-color: var(--f-color, var(--purple-d));
+        color: #fff;
+      }
+
+      /* ── TERMINAL DEMO ── */
+      .term-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s;
+      }
+      .term-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .term-window {
+        background: #0d1117;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        width: 90%;
+        max-width: 820px;
+        max-height: 82vh;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(12px) scale(0.97);
+        transition: transform 0.25s;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+      }
+      .term-overlay.open .term-window {
+        transform: translateY(0) scale(1);
+      }
+
+      .term-titlebar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: var(--bg3);
+        border-bottom: 1px solid var(--border);
+        border-radius: 10px 10px 0 0;
+      }
+      .term-titlebar .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .term-titlebar-text {
+        flex: 1;
+        text-align: center;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text3);
+      }
+      .term-close-btn {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text3);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        padding: 2px 10px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .term-close-btn:hover {
+        background: var(--bg4);
+        color: var(--text);
+      }
+
+      .term-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px 20px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text2);
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .term-body .t-prompt {
+        color: var(--teal);
+      }
+      .term-body .t-cmd {
+        color: #e6edf3;
+        font-weight: 700;
+      }
+      .term-body .t-info {
+        color: var(--blue);
+      }
+      .term-body .t-header {
+        color: var(--amber);
+        font-weight: 700;
+      }
+      .term-body .t-label {
+        color: var(--purple);
+      }
+      .term-body .t-ok {
+        color: var(--teal);
+        font-weight: 700;
+      }
+      .term-body .t-h2 {
+        color: var(--amber);
+        font-weight: 700;
+      }
+      .term-body .t-check {
+        color: var(--text3);
+      }
+      .term-body .t-link {
+        color: var(--blue);
+        text-decoration: underline;
+      }
+      .term-body .t-dim {
+        color: var(--text3);
+      }
+      .term-body .t-sparkle {
+        color: #c15f3c;
+        font-weight: 700;
+      }
+      .term-body .t-step-pipe {
+        color: var(--text3);
+        display: inline;
+      }
+      .term-body .t-spin-dot {
+        color: #e5a94e;
+        font-weight: 700;
+        display: inline;
+      }
+      .term-body .t-spin-text {
+        color: var(--text3);
+        display: inline;
+      }
+      .term-body .t-done-dot {
+        color: var(--teal);
+        font-weight: 700;
+        display: inline;
+      }
+      .term-body .t-done-text {
+        color: var(--text3);
+        display: inline;
+      }
+      .term-body .t-cyan {
+        color: var(--blue);
+        font-weight: 700;
+      }
+      .term-body .t-bold {
+        color: #e6edf3;
+        font-weight: 700;
+      }
+      @keyframes termPulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+      .term-body .t-cursor {
+        display: inline-block;
+        width: 8px;
+        height: 15px;
+        background: var(--teal);
+        vertical-align: text-bottom;
+        animation: blink 0.8s step-end infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .term-play-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--bg4);
+        border: 1px solid var(--border2);
+        border-radius: var(--radius);
+        color: var(--amber);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .term-play-btn:hover {
+        background: var(--amber-bg);
+        border-color: var(--amber);
+        color: var(--text);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TIMER WIDGET -->
+    <div
+      class="timer-widget"
+      id="timerBtn"
+      onclick="toggleTimer()"
+      title="Clique para iniciar (ou pressione T)"
+    >
+      <span class="timer-icon" id="timerIcon">▶</span>
+      <span class="timer-display" id="timerDisplay">00:00</span>
+    </div>
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <a
+        href="../index.html"
+        class="topbar-logo"
+        style="text-decoration: none; color: var(--text2)"
+        title="Voltar ao índice"
+      >
+        <div class="dot dot-red"></div>
+        <div class="dot dot-amber"></div>
+        <div class="dot dot-green"></div>
+        &nbsp;⌂ hub
+      </a>
+      <div class="tabs-bar" id="tabsBar"></div>
+      <div class="topbar-right">
+        <span>UTF-8</span>
+        <span>TypeScript</span>
+        <span>Git: main</span>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-header">Explorer</div>
+
+          <div class="sidebar-item active" onclick="goTo(0)" id="si-0">
+            <span class="sidebar-icon">📋</span> README.md
+          </div>
+          <div class="sidebar-item" onclick="goTo(1)" id="si-1">
+            <span class="sidebar-icon">📅</span> agenda.ts
+          </div>
+          <div class="sidebar-item" onclick="goTo(2)" id="si-2">
+            <span class="sidebar-icon">📊</span> stats.json
+          </div>
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header">Carlos</div>
+
+          <div class="sidebar-item" onclick="goTo(3)" id="si-3">
+            <span class="sidebar-icon">📤</span> envio-dados-pendentes.service.ts
+          </div>
+          <div class="sidebar-item" onclick="goTo(6)" id="si-6">
+            <span class="sidebar-icon">📸</span> overview-carlos.md
+          </div>
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header">Elias</div>
+
+          <div class="sidebar-item" onclick="goTo(4)" id="si-4">
+            <span class="sidebar-icon">🐄</span> pec-produtor.module.ts
+          </div>
+          <div class="sidebar-item" onclick="goTo(8)" id="si-8">
+            <span class="sidebar-icon">📸</span> overview-elias.md
+          </div>
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header">Matheus</div>
+
+          <div class="sidebar-item" onclick="goTo(5)" id="si-5">
+            <span class="sidebar-icon">🛰️</span> sentinel-analysis.py
+          </div>
+          <div class="sidebar-item" onclick="goTo(9)" id="si-9">
+            <span class="sidebar-icon">📸</span> overview-matheus.md
+          </div>
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header">Dica Técnica</div>
+
+          <div class="sidebar-item" onclick="goTo(7)" id="si-7">
+            <span class="sidebar-icon">💡</span> dica-form-dinamico.ts
+          </div>
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header">Wrap-up</div>
+
+          <div class="sidebar-item" onclick="goTo(10)" id="si-10">
+            <span class="sidebar-icon">🏆</span> wins.log
+          </div>
+          <div class="sidebar-item" onclick="goTo(11)" id="si-11">
+            <span class="sidebar-icon">🗺️</span> roadmap.todo
+          </div>
+          <div class="sidebar-item" onclick="goTo(12)" id="si-12">
+            <span class="sidebar-icon">👋</span> exit.ts
+          </div>
+        </div>
+
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-team">
+          <div class="sidebar-header" style="padding: 0 0 6px">Time Mobile</div>
+          <div class="member">
+            <div class="member-avatar av-r">CA</div>
+            Carlos
+            <div class="member-dot"></div>
+          </div>
+          <div class="member">
+            <div class="member-avatar av-b">EL</div>
+            Elias
+            <div class="member-dot"></div>
+          </div>
+          <div class="member">
+            <div class="member-avatar av-t">MA</div>
+            Matheus
+            <div class="member-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="content">
+        <!-- ─── SLIDE 0: CAPA ─── -->
+        <div class="slide active" id="slide-0">
+          <div class="cover-grid">
+            <div>
+              <img
+                src="../assets/web-team.svg"
+                alt="Mobile Team"
+                class="cover-icon"
+              />
+              <div class="cover-tag">// Tech Spotlight — Edition 08</div>
+              <div class="cover-title">
+                Mobile<br /><span class="accent">Engineering</span><br />Team
+              </div>
+              <div class="cover-subtitle">
+                28 de agosto de 2026 · 30 min (target)
+              </div>
+
+              <div class="flex-row mb-20">
+                <span class="pill">🧑‍💻 Carlos</span>
+                <span class="pill">🧑‍💻 Elias</span>
+                <span class="pill">🧑‍💻 Matheus</span>
+              </div>
+
+              <div class="tag-list">
+                <span class="badge badge-purple">Módulo PEC</span>
+                <span class="badge badge-blue">Form Dinâmico</span>
+                <span class="badge badge-teal">Croqui</span>
+                <span class="badge badge-amber">Recibo &amp; Assinatura</span>
+                <span class="badge badge-coral">🛰️ Sentinel / Satélite</span>
+                <span class="badge badge-green">Push Notification</span>
+                <span class="badge badge-red">Pipeline Pectrace (Python)</span>
+              </div>
+            </div>
+
+            <div class="cover-code">
+              <div class="cover-code-header">📄 README.md — agrotrace-v3</div>
+              <div class="cover-code-body">
+                <span class="cmt"># Tech Spotlight</span><br />
+                <span class="cmt">## 08/08 – 28/08/2026</span><br /><br />
+                <span class="kw">class</span>
+                <span class="fn">TechSpotlight</span> {<br />
+                &nbsp;&nbsp;<span class="prop">edition</span>:
+                <span class="num">8</span><br />
+                &nbsp;&nbsp;<span class="prop">team</span>:
+                <span class="str">"Mobile"</span><br />
+                &nbsp;&nbsp;<span class="prop">cards</span>:
+                <span class="num">38</span><br />
+                &nbsp;&nbsp;<span class="prop">topics</span>: [<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
+                  >"Envio de dados pendentes"</span
+                >,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
+                  >"Módulo PEC — visão do Produtor"</span
+                >,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
+                  >"MVP Sentinel — imagens de satélite"</span
+                >,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
+                  >"Pipeline Pectrace (Python)"</span
+                ><br />
+                &nbsp;&nbsp;]<br />
+                }
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: auto;
+              padding-top: 24px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 12px;
+              font-family: var(--font-mono);
+              font-size: 11px;
+              color: var(--text3);
+            "
+          >
+            Use <kbd>←</kbd> <kbd>→</kbd> para navegar &nbsp;·&nbsp;
+            <kbd>F</kbd> tela cheia &nbsp;·&nbsp; <kbd>T</kbd> cronômetro
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 1: AGENDA ─── -->
+        <div class="slide" id="slide-1">
+          <div class="slide-title">// agenda.ts</div>
+          <div class="slide-heading">Agenda de <span>hoje</span></div>
+
+          <div
+            style="
+              margin-bottom: 16px;
+              padding: 8px 14px;
+              background: var(--amber-bg);
+              border: 1px solid #78350f;
+              border-radius: var(--radius);
+              font-family: var(--font-mono);
+              font-size: 13px;
+              color: var(--amber);
+              display: inline-block;
+            "
+          >
+            ⏱ Programado: 30min · Cap: 30min · sem buffer — manter o ritmo
+          </div>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--text2)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">00:00 – 04:00 · Carlos · 4min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-purple">Abertura</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >Visão geral do período e números</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--purple)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">04:00 – 11:00 · Carlos · 7min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-purple">Spotlight 1</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >Envio de dados pendentes — análise, solução e release em
+                    produção</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--blue)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">11:00 – 18:00 · Elias · 7min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-blue">Spotlight 2</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >Módulo PEC na visão do Produtor + estabilidade do app</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--teal)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">18:00 – 25:00 · Matheus · 7min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-teal">Spotlight 3</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >MVP análise de imagens com Sentinel + Pipeline
+                    Pectrace</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--amber)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">25:00 – 27:00 · Elias · 2min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-amber">Dica Técnica</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >Form Dinâmico — safe guards contra duplicação e lições de
+                    performance</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item" style="padding-bottom: 0">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--green)"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">27:00 – 30:00 · Carlos · 3min</div>
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <span class="badge badge-green">Wrap-up</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >Wins, roadmap e encerramento</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 2: STATS ─── -->
+        <div class="slide" id="slide-2">
+          <div class="slide-title">// stats.json</div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 16px;
+              margin-bottom: 20px;
+              flex-wrap: wrap;
+            "
+          >
+            <div class="slide-heading" style="margin-bottom: 0">
+              Métricas do <span>período</span>
+            </div>
+            <div
+              style="
+                font-family: var(--font-mono);
+                font-size: 18px;
+                color: var(--text2);
+                margin-bottom: 0;
+                letter-spacing: 0.03em;
+              "
+            >
+              📅 08/08 – 28/08/2026
+            </div>
+            <div
+              style="
+                display: flex;
+                gap: 6px;
+                margin-left: auto;
+                align-items: center;
+              "
+            >
+              <button
+                class="stats-filter active"
+                data-member="all"
+                onclick="filterStats('all')"
+              >
+                Todos
+              </button>
+              <button
+                class="stats-filter"
+                data-member="Carlos"
+                onclick="filterStats('Carlos')"
+                style="--f-color: var(--purple)"
+              >
+                Carlos
+              </button>
+              <button
+                class="stats-filter"
+                data-member="Elias"
+                onclick="filterStats('Elias')"
+                style="--f-color: var(--blue)"
+              >
+                Elias
+              </button>
+              <button
+                class="stats-filter"
+                data-member="Matheus"
+                onclick="filterStats('Matheus')"
+                style="--f-color: var(--teal)"
+              >
+                Matheus
+              </button>
+              <span
+                id="statsCount"
+                style="
+                  font-family: var(--font-mono);
+                  font-size: 12px;
+                  color: var(--text3);
+                  margin-left: 8px;
+                "
+                >38 cards</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="grid-4 mb-24"
+            style="grid-template-columns: repeat(5, 1fr)"
+          >
+            <div
+              class="metric metric-click"
+              data-kpi="all"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-all" style="color: var(--purple)">
+                38
+              </div>
+              <div class="metric-lbl">cards entregues</div>
+            </div>
+            <div
+              class="metric metric-click"
+              data-kpi="feat"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-feat" style="color: var(--teal)">
+                22
+              </div>
+              <div class="metric-lbl">features</div>
+            </div>
+            <div
+              class="metric metric-click"
+              data-kpi="fix"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-fix" style="color: var(--coral)">
+                8
+              </div>
+              <div class="metric-lbl">bugs corrigidos</div>
+            </div>
+            <div
+              class="metric metric-click"
+              data-kpi="ref"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-ref" style="color: var(--blue)">
+                8
+              </div>
+              <div class="metric-lbl">refactors/migração</div>
+            </div>
+            <div
+              class="metric metric-click"
+              data-kpi="test"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-test" style="color: var(--amber)">
+                0
+              </div>
+              <div class="metric-lbl">tests</div>
+            </div>
+          </div>
+
+          <div class="grid-2" style="gap: 20px">
+            <div>
+              <div class="section-label">sistemas atendidos</div>
+              <div class="tag-list mb-16">
+                <span class="badge badge-purple">APP Agrotrace</span>
+                <span class="badge badge-blue">Backend/API</span>
+                <span class="badge badge-teal">Biodiesel-Soja</span>
+                <span class="badge badge-amber">Biodiesel-Cacau</span>
+                <span class="badge badge-coral">Pectrace</span>
+                <span class="badge badge-green">Checksheep</span>
+              </div>
+
+              <div class="section-label">stack utilizada</div>
+              <div class="tag-list mb-16">
+                <span class="chip">Módulo PEC</span>
+                <span class="chip">Form Dinâmico</span>
+                <span class="chip">Croqui</span>
+                <span class="chip">Recibo &amp; Assinatura</span>
+                <span class="chip">🛰️ Sentinel / Satélite</span>
+                <span class="chip">Push Notification</span>
+                <span class="chip">Pipeline Pectrace</span>
+                <span class="chip">Python</span>
+              </div>
+
+              <div class="section-label">cards por dev</div>
+              <div style="display: flex; gap: 10px">
+                <div
+                  class="metric"
+                  style="cursor: pointer; flex: 1; padding: 10px 12px"
+                  onclick="filterStats('Carlos')"
+                >
+                  <div
+                    class="metric-val"
+                    id="mv-carlos"
+                    style="
+                      color: var(--purple);
+                      font-size: 22px;
+                      margin-bottom: 2px;
+                    "
+                  >
+                    3
+                  </div>
+                  <div class="metric-lbl" style="font-size: 12px">carlos</div>
+                </div>
+                <div
+                  class="metric"
+                  style="cursor: pointer; flex: 1; padding: 10px 12px"
+                  onclick="filterStats('Elias')"
+                >
+                  <div
+                    class="metric-val"
+                    id="mv-elias"
+                    style="
+                      color: var(--blue);
+                      font-size: 22px;
+                      margin-bottom: 2px;
+                    "
+                  >
+                    25
+                  </div>
+                  <div class="metric-lbl" style="font-size: 12px">elias</div>
+                </div>
+                <div
+                  class="metric"
+                  style="cursor: pointer; flex: 1; padding: 10px 12px"
+                  onclick="filterStats('Matheus')"
+                >
+                  <div
+                    class="metric-val"
+                    id="mv-matheus"
+                    style="
+                      color: var(--teal);
+                      font-size: 22px;
+                      margin-bottom: 2px;
+                    "
+                  >
+                    10
+                  </div>
+                  <div class="metric-lbl" style="font-size: 12px">matheus</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <div class="code-block-header">📊 distribuição por tipo</div>
+              <div class="code-body">
+                <div
+                  class="code-lines"
+                  style="padding: 14px 18px"
+                  id="statsDistribution"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 3: SPOTLIGHT 1 — Carlos ─── -->
+        <div class="slide" id="slide-3">
+          <div class="slide-title">// spotlight 1 — Carlos — 7 min ⏱</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-purple">📤 feature</span>
+            <span class="badge badge-green">#13193</span>
+            <span class="badge badge-blue">#13232</span>
+            <span class="badge badge-blue">#13233</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >envio-dados-pendentes.service.ts</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Envio de dados <span>pendentes</span> — análise, solução e release
+          </div>
+
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div class="card card-accent-coral">
+                <div class="section-label" style="color: var(--coral)">
+                  ❌ problema
+                </div>
+                <div
+                  style="font-size: 16px; color: var(--text2); line-height: 1.7"
+                >
+                  Dados coletados em campo ficavam <strong>presos na fila de
+                  envio</strong> do aplicativo. Sem visibilidade da causa, o
+                  técnico não sabia se o atendimento tinha subido — risco de
+                  perda de dados e retrabalho na propriedade.
+                </div>
+              </div>
+
+              <div class="card card-accent-purple">
+                <div class="section-label" style="color: var(--purple)">
+                  ✓ solução em 3 movimentos
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    font-size: 16px;
+                    color: var(--text2);
+                  "
+                >
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#13193</span
+                    >
+                    <span
+                      >Análise do fluxo de sincronização e implementação da
+                      solução para o envio dos dados pendentes no
+                      aplicativo.</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#13232</span
+                    >
+                    <span
+                      >Nova versão do <strong style="color: var(--text)"
+                      >backend em produção</strong>: migrations, ajuste de
+                      tabelas defasadas, configuração de envs e validação de
+                      compatibilidade com o front e as versões do APP.</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#13233</span
+                    >
+                    <span
+                      >Nova versão do <strong style="color: var(--text)"
+                      >APP com PushNotification</strong>: ajuste dos ícones do
+                      OneSignal, ocultação do RA e validação da nova
+                      versão.</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-teal">
+                <div class="section-label" style="color: var(--teal)">
+                  📈 resultado
+                </div>
+                <div
+                  style="font-size: 16px; color: var(--text2); line-height: 1.7"
+                >
+                  Fila de pendentes destravada, backend e APP alinhados em
+                  produção e push notifications abrindo um canal direto com o
+                  técnico no campo — release coordenado, sem quebrar versões
+                  antigas do aplicativo.
+                </div>
+              </div>
+            </div>
+
+            <div class="code-block" style="height: fit-content">
+              <div class="code-block-header">
+                📤 envio-dados-pendentes.service.ts
+              </div>
+              <div class="code-body">
+                <div class="line-numbers">
+                  1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14
+                </div>
+                <div class="code-lines">
+                  <span class="cmt"
+                    >// 1. diagnóstico: por que o dado não subiu?</span
+                  ><br />
+                  <span class="kw">const</span>
+                  <span class="prop">pendentes</span> =
+                  <span class="kw">await</span>
+                  <span class="prop">filaEnvio</span>.<span class="fn"
+                    >listarPendentes</span
+                  >()<br />
+                  <span class="cmt"
+                    >// → agrupados por causa: rede, payload, versão</span
+                  ><br /><br />
+                  <span class="cmt">// 2. reenvio seguro, nada é descartado</span
+                  ><br />
+                  <span class="kw">for</span> (<span class="kw">const</span>
+                  <span class="prop">item</span> <span class="kw">of</span>
+                  <span class="prop">pendentes</span>) {<br />
+                  &nbsp;&nbsp;<span class="kw">const</span>
+                  <span class="prop">check</span> =
+                  <span class="kw">await</span>
+                  <span class="fn">validar</span>(<span class="prop">item</span
+                  >)<br />
+                  &nbsp;&nbsp;<span class="kw">if</span> (<span class="prop"
+                    >check</span
+                  >.<span class="prop">ok</span>) <span class="kw">await</span>
+                  <span class="fn">enviar</span>(<span class="prop">item</span
+                  >) <span class="cmt">// idempotente</span><br />
+                  &nbsp;&nbsp;<span class="kw">else</span>
+                  <span class="kw">await</span>
+                  <span class="fn">marcarParaAnalise</span>(<span class="prop"
+                    >item</span
+                  >)<br />
+                  }<br /><br />
+                  <span class="cmt">// 3. release coordenado</span><br />
+                  <span class="fn">deploy</span>(<span class="str"
+                    >"backend"</span
+                  >) <span class="cmt">// #13232 migrations + envs</span><br />
+                  <span class="fn">deploy</span>(<span class="str">"app"</span>)
+                  <span class="cmt">// #13233 push OneSignal</span><br />
+                  <span class="prop">notify</span>.<span class="fn">push</span
+                  >(<span class="str">"Dados sincronizados ✓"</span>)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 14px;
+              padding: 10px 14px;
+              background: var(--amber-bg);
+              border: 1px solid #78350f;
+              border-radius: var(--radius);
+              font-family: var(--font-mono);
+              font-size: 14px;
+              color: var(--amber);
+            "
+          >
+            🎬 Fila de pendentes antes/depois + push chegando no device ·
+            screenshot backup
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 4: SPOTLIGHT 2 — Elias ─── -->
+        <div class="slide" id="slide-4">
+          <div class="slide-title">// spotlight 2 — Elias — 7 min ⏱</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-blue">🐄 feature</span>
+            <span class="badge badge-green">#12610</span>
+            <span class="badge badge-red">#13117 · #13155 · #13126</span>
+            <span class="badge badge-amber">#13175</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >pec-produtor.module.ts</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Módulo PEC na visão do <span>Produtor</span> + app estável
+          </div>
+
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div class="card card-accent-coral">
+                <div class="section-label" style="color: var(--coral)">
+                  ❌ problema
+                </div>
+                <div
+                  style="font-size: 16px; color: var(--text2); line-height: 1.7"
+                >
+                  O módulo PEC existia apenas na visão do
+                  <strong>técnico</strong> — o produtor não registrava partos
+                  nem pesagens sozinho. Em paralelo, crashes na tela de Croqui e
+                  ao adicionar fotos, mais uma regressão de performance no Form
+                  Dinâmico, minavam a confiança no app em campo.
+                </div>
+              </div>
+
+              <div class="card card-accent-purple">
+                <div class="section-label" style="color: var(--purple)">
+                  ✓ solução
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    font-size: 16px;
+                    color: var(--text2);
+                  "
+                >
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#12610</span
+                    >
+                    <span
+                      >Extensão do PEC para o Produtor:
+                      <strong style="color: var(--text)"
+                        >registro de parto</strong
+                      >
+                      (entrada de animal no rebanho) e
+                      <strong style="color: var(--text)">pesagens</strong> em
+                      lote, individual e coletiva.</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#13117/#13155</span
+                    >
+                    <span
+                      >Crash na abertura do Croqui (Biodiesel-Cacau) corrigido —
+                      e re-investigado até parar de fechar para todos os
+                      técnicos.</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#13126</span
+                    >
+                    <span
+                      >Crash ao adicionar mais de 4 fotos ao mesmo tempo
+                      eliminado.</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#13175</span
+                    >
+                    <span
+                      >Correção urgente da regressão de performance no Form
+                      Dinâmico do Biodiesel-Soja.</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-teal">
+                <div class="section-label" style="color: var(--teal)">
+                  📈 resultado
+                </div>
+                <div
+                  style="font-size: 16px; color: var(--text2); line-height: 1.7"
+                >
+                  Produtor autônomo no PEC — rebanho atualizado sem depender de
+                  visita — e app estável: croqui e fotos sem crash, formulário
+                  rápido de novo. Versões publicadas nas lojas (#13096, #13134).
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                height: fit-content;
+              "
+            >
+              <div
+                style="
+                  font-family: var(--font-mono);
+                  font-size: 12px;
+                  color: var(--text3);
+                  letter-spacing: 0.5px;
+                "
+              >
+                // mapa do módulo PEC — visão do produtor
+              </div>
+
+              <div class="grid-2" style="gap: 12px">
+                <div
+                  style="
+                    background: var(--bg2);
+                    border: 1px solid var(--border);
+                    border-top: 3px solid var(--blue);
+                    border-radius: var(--radius);
+                    padding: 14px;
+                  "
+                >
+                  <div
+                    style="
+                      font-family: var(--font-mono);
+                      font-size: 12px;
+                      color: var(--blue);
+                      margin-bottom: 8px;
+                    "
+                  >
+                    🐄 Registro de parto
+                  </div>
+                  <div
+                    style="
+                      font-size: 14px;
+                      color: var(--text2);
+                      line-height: 1.7;
+                    "
+                  >
+                    • Entrada de animal no rebanho<br />
+                    • Feito pelo próprio produtor<br />
+                    • Direto no APP
+                  </div>
+                  <div
+                    style="
+                      margin-top: 10px;
+                      padding-top: 8px;
+                      border-top: 1px dashed var(--border);
+                      font-family: var(--font-mono);
+                      font-size: 11px;
+                      color: var(--text3);
+                    "
+                  >
+                    → antes: só o técnico
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    background: var(--bg2);
+                    border: 1px solid var(--border);
+                    border-top: 3px solid var(--teal);
+                    border-radius: var(--radius);
+                    padding: 14px;
+                  "
+                >
+                  <div
+                    style="
+                      font-family: var(--font-mono);
+                      font-size: 12px;
+                      color: var(--teal);
+                      margin-bottom: 8px;
+                    "
+                  >
+                    ⚖️ Pesagens
+                  </div>
+                  <div
+                    style="
+                      font-size: 14px;
+                      color: var(--text2);
+                      line-height: 1.7;
+                    "
+                  >
+                    • Em lote<br />
+                    • Individual<br />
+                    • Coletiva
+                  </div>
+                  <div
+                    style="
+                      margin-top: 10px;
+                      padding-top: 8px;
+                      border-top: 1px dashed var(--border);
+                      font-family: var(--font-mono);
+                      font-size: 11px;
+                      color: var(--text3);
+                    "
+                  >
+                    → rebanho sempre atualizado
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style="
+                  text-align: center;
+                  font-family: var(--font-mono);
+                  font-size: 12px;
+                  color: var(--purple);
+                  padding: 8px;
+                  background: var(--bg2);
+                  border: 1px dashed var(--purple);
+                  border-radius: var(--radius);
+                "
+              >
+                ↑ produtor ativo no PEC — mesma base do técnico ↑
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 4px;
+                  font-family: var(--font-mono);
+                  font-size: 12px;
+                  color: var(--text3);
+                  padding: 10px 12px;
+                  background: var(--bg2);
+                  border: 1px solid var(--border);
+                  border-radius: var(--radius);
+                "
+              >
+                <span style="color: var(--text2); margin-bottom: 2px"
+                  >frente de estabilidade &amp; performance</span
+                >
+                <span
+                  >#13117 #13155 croqui · #13126 fotos · #13175 form dinâmico →
+                  0 crashes reportados após #13134</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 14px;
+              padding: 10px 14px;
+              background: var(--amber-bg);
+              border: 1px solid #78350f;
+              border-radius: var(--radius);
+              font-family: var(--font-mono);
+              font-size: 14px;
+              color: var(--amber);
+            "
+          >
+            🎬 PEC Produtor ao vivo — parto + pesagem em lote · screenshot
+            backup
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 5: SPOTLIGHT 3 — Matheus ─── -->
+        <div class="slide" id="slide-5">
+          <div class="slide-title">// spotlight 3 — Matheus — 7 min ⏱</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-teal">🛰️ feature</span>
+            <span class="badge badge-green">#13069</span>
+            <span class="badge badge-green">#13201</span>
+            <span class="badge badge-green">#13157</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >sentinel-analysis.py</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            MVP de análise de imagens com <span>Sentinel</span>
+          </div>
+
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div class="card card-accent-coral">
+                <div class="section-label" style="color: var(--coral)">
+                  ❌ problema
+                </div>
+                <div
+                  style="font-size: 16px; color: var(--text2); line-height: 1.7"
+                >
+                  Analisar a propriedade dependia de
+                  <strong>visita e coleta manual</strong> — sem visão de
+                  satélite, sem base para acompanhar talhões remotamente. E no
+                  APP, quando o GPS falhava, o técnico ficava
+                  <strong>travado</strong> sem conseguir abrir ou concluir o
+                  atendimento.
+                </div>
+              </div>
+
+              <div class="card card-accent-purple">
+                <div class="section-label" style="color: var(--purple)">
+                  ✓ solução
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    font-size: 16px;
+                    color: var(--text2);
+                  "
+                >
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#13069</span
+                    >
+                    <span
+                      >MVP de <strong style="color: var(--text)"
+                        >análise de imagens de satélite</strong
+                      >
+                      utilizando o Sentinel.</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#13201</span
+                    >
+                    <span
+                      >Microserviço em <strong style="color: var(--text)"
+                        >Python publicado em produção</strong
+                      > — a base de processamento da análise.</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#13164</span
+                    >
+                    <span
+                      >Pipeline Pectrace: publicação nas lojas Android e iOS no
+                      padrão dos demais pacotes.</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#13157</span
+                    >
+                    <span
+                      >Handler de aquisição de coordenadas com tentativas
+                      automáticas e, se o GPS falhar, liberação da
+                      abertura/conclusão do atendimento sem as
+                      coordenadas.</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-teal">
+                <div class="section-label" style="color: var(--teal)">
+                  📈 resultado
+                </div>
+                <div
+                  style="font-size: 16px; color: var(--text2); line-height: 1.7"
+                >
+                  Visão por satélite pronta para evoluir para análise de
+                  talhões, Pectrace com esteira de publicação padronizada e o
+                  APP sem travas por falta de GPS — coordenada vira apoio, não
+                  bloqueio.
+                </div>
+              </div>
+            </div>
+
+            <div class="code-block" style="height: fit-content">
+              <div class="code-block-header">🛰️ sentinel-analysis.py</div>
+              <div class="code-body">
+                <div class="line-numbers">
+                  1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14
+                </div>
+                <div class="code-lines">
+                  <span class="cmt"># MVP — análise de imagens com Sentinel</span
+                  ><br />
+                  <span class="kw">from</span>
+                  <span class="prop">sentinel</span>
+                  <span class="kw">import</span>
+                  <span class="fn">SentinelClient</span><br /><br />
+                  <span class="prop">client</span> =
+                  <span class="fn">SentinelClient</span>()<br />
+                  <span class="prop">cena</span> =
+                  <span class="prop">client</span>.<span class="fn"
+                    >buscar_cena</span
+                  >(<br />
+                  &nbsp;&nbsp;<span class="prop">bbox</span>=<span class="prop"
+                    >talhao</span
+                  >.<span class="prop">bbox</span>,
+                  <span class="prop">max_nuvens</span>=<span class="num"
+                    >0.2</span
+                  ><br />
+                  )<br /><br />
+                  <span class="prop">ndvi</span> =
+                  <span class="prop">cena</span>.<span class="fn"
+                    >calcular_indice</span
+                  >(<span class="str">"NDVI"</span>)<br />
+                  <span class="prop">analise</span> =
+                  <span class="fn">analisar</span>(<span class="prop">ndvi</span
+                  >) <span class="cmt"># saúde da vegetação</span><br /><br />
+                  <span class="cmt"
+                    ># produção: microserviço Python (#13201)</span
+                  ><br />
+                  <span class="cmt"># lojas: pipeline Pectrace (#13164)</span
+                  ><br />
+                  <span class="fn">publicar</span>(<span class="prop"
+                    >analise</span
+                  >, <span class="prop">propriedade_id</span>)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 14px;
+              padding: 10px 14px;
+              background: var(--amber-bg);
+              border: 1px solid #78350f;
+              border-radius: var(--radius);
+              font-family: var(--font-mono);
+              font-size: 14px;
+              color: var(--amber);
+            "
+          >
+            🎬 Imagem Sentinel do talhão + resposta do microserviço · cap 30s ·
+            screenshot backup
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 6: OVERVIEW CARLOS ─── -->
+        <div class="slide" id="slide-6">
+          <div class="slide-title">// overview — Carlos</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-purple">📸 overview</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >overview-carlos.md</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Entregas em <span>destaque</span> — Carlos
+          </div>
+
+          <div class="overview-grid">
+            <div
+              class="overview-card"
+              onclick="
+                openScreenshot(
+                  '13193',
+                  'Análise e solução para envio de dados pendentes',
+                )
+              "
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13193</div>
+              <div class="overview-card-title">
+                Análise e solução para envio de dados pendentes no aplicativo
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="
+                openScreenshot(
+                  '13232',
+                  'Publicar nova versão do Backend em Produção',
+                )
+              "
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-blue"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >ref</span
+                >
+              </div>
+              <div class="overview-card-id">#13232</div>
+              <div class="overview-card-title">
+                Backend em produção — migrations, ajuste de tabelas defasadas,
+                envs e compatibilidade com front e versões do APP
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="
+                openScreenshot(
+                  '13233',
+                  'Publicar nova versão do APP com PushNotification',
+                )
+              "
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-blue"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >ref</span
+                >
+              </div>
+              <div class="overview-card-id">#13233</div>
+              <div class="overview-card-title">
+                Nova versão do APP com PushNotification — ícones do OneSignal,
+                ocultação do RA e validação da versão
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 7: DICA TÉCNICA — Elias ─── -->
+        <div class="slide" id="slide-7">
+          <div class="slide-title">// dica técnica — Elias — 2 min ⏱</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-amber">💡 Dica Técnica</span>
+            <span class="badge badge-blue">Form Dinâmico</span>
+            <span class="badge badge-green">#13108</span>
+            <span class="badge badge-coral">#13175</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >dica-form-dinamico.ts</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Safe guards no Form Dinâmico —
+            <span>duplicação e performance</span>
+          </div>
+
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div class="code-block" style="height: fit-content">
+              <div class="code-block-header">💡 dica-form-dinamico.ts</div>
+              <div class="code-body">
+                <div class="line-numbers">
+                  1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14
+                </div>
+                <div class="code-lines">
+                  <span class="cmt"
+                    >// toque repetido em rajada? descarta com segurança</span
+                  ><br />
+                  <span class="kw">const</span>
+                  <span class="prop">MIN_INTERVALO</span> =
+                  <span class="num">800</span>
+                  <span class="cmt">// ms</span><br /><br />
+                  <span class="kw">async function</span>
+                  <span class="fn">salvarResposta</span>(<span class="prop"
+                    >resposta</span
+                  >) {<br />
+                  &nbsp;&nbsp;<span class="kw">const</span>
+                  <span class="prop">agora</span> =
+                  <span class="fn">Date.now</span>()<br /><br />
+                  &nbsp;&nbsp;<span class="cmt"
+                    >// guard 1 — tempo: ignora rajadas</span
+                  ><br />
+                  &nbsp;&nbsp;<span class="kw">if</span> (<span class="prop"
+                    >agora</span
+                  >
+                  - <span class="prop">ultimaResposta</span> &lt;
+                  <span class="prop">MIN_INTERVALO</span>)
+                  <span class="kw">return</span><br /><br />
+                  &nbsp;&nbsp;<span class="cmt"
+                    >// guard 2 — conteúdo: dedup por pergunta + hash</span
+                  ><br />
+                  &nbsp;&nbsp;<span class="kw">if</span> (<span class="kw"
+                    >await</span
+                  >
+                  <span class="fn">jaRespondida</span>(<span class="prop"
+                    >resposta</span
+                  >)) <span class="kw">return</span><br /><br />
+                  &nbsp;&nbsp;<span class="prop">ultimaResposta</span> =
+                  <span class="prop">agora</span><br />
+                  &nbsp;&nbsp;<span class="kw">await</span>
+                  <span class="fn">persistir</span>(<span class="prop"
+                    >resposta</span
+                  >) <span class="cmt">// 1 toque = 1 resposta</span><br />
+                  }
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div class="card card-accent-amber">
+                <div class="section-label" style="color: var(--amber)">
+                  Por que isso importa
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                    font-size: 15px;
+                    color: var(--text2);
+                  "
+                >
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--amber); font-family: var(--font-mono)"
+                      >1.</span
+                    >
+                    <span
+                      ><strong style="color: var(--text)"
+                        >Campo real = rede lenta + usuário insistindo:</strong
+                      >
+                      toda ação repetível precisa de guard de tempo + dedup por
+                      conteúdo (#13108).</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--amber); font-family: var(--font-mono)"
+                      >2.</span
+                    >
+                    <span
+                      ><strong style="color: var(--text)"
+                        >Regressão de performance se pega medindo:</strong
+                      >
+                      no #13175 o vilão era re-render em cascata do formulário —
+                      profile antes de otimizar.</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--amber); font-family: var(--font-mono)"
+                      >3.</span
+                    >
+                    <span
+                      ><strong style="color: var(--text)"
+                        >Guard barato no cliente evita limpeza cara no
+                        banco:</strong
+                      >
+                      as ~233 respostas pendentes do #13212 mostram o custo de
+                      não ter.</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--amber); font-family: var(--font-mono)"
+                      >4.</span
+                    >
+                    <span
+                      ><strong style="color: var(--text)"
+                        >Padrão reaproveitável:</strong
+                      >
+                      a mesma receita vale para fila de envio, anexos e qualquer
+                      ação offline-first.</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-blue">
+                <div class="section-label" style="color: var(--blue)">
+                  Regra de bolso
+                </div>
+                <div
+                  style="font-size: 16px; color: var(--text2); line-height: 1.7"
+                >
+                  Se o usuário pode disparar 2× a mesma ação,
+                  <strong style="color: var(--text)"
+                    >um dia ele vai disparar</strong
+                  >. Debounce no tempo, dedup no conteúdo e idempotência no
+                  servidor — as três camadas juntas.
+                </div>
+              </div>
+
+              <div class="tag-list">
+                <span class="chip">Form Dinâmico</span>
+                <span class="chip">Debounce</span>
+                <span class="chip">Dedup</span>
+                <span class="chip">Idempotência</span>
+                <span class="chip">Profiling</span>
+                <span class="chip">Offline-first</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 8: OVERVIEW ELIAS ─── -->
+        <div class="slide" id="slide-8">
+          <div class="slide-title">// overview — Elias</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-blue">📸 overview</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >overview-elias.md</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Entregas em <span>destaque</span> — Elias
+          </div>
+
+          <div class="overview-grid">
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12610', 'Módulo PEC na visão do Produtor')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12610</div>
+              <div class="overview-card-title">
+                Módulo PEC na visão do Produtor — registro de parto e pesagens
+                em lote, individual e coletiva
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12997', 'Respostas Automáticas')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12997</div>
+              <div class="overview-card-title">
+                Respostas Automáticas — ramificações respondidas em cadeia a
+                partir da pergunta inicial
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13046', 'Formulários — Regras')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13046</div>
+              <div class="overview-card-title">
+                Formulários — Regras: só os forms do grupo do técnico +
+                preenchimento obrigatório antes de concluir
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="
+                openScreenshot(
+                  '13107',
+                  'Modelo de recibo por estado — Biodiesel-Soja',
+                )
+              "
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13107</div>
+              <div class="overview-card-title">
+                Recibo por estado no Biodiesel-Soja — R$ 18,00 para GO/MG e
+                R$ 16,50 para os demais
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="
+                openScreenshot('13112', 'Nome do técnico e CREA no recibo')
+              "
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13112</div>
+              <div class="overview-card-title">
+                Nome do técnico e CREA no recibo do Biodiesel-Soja via novas
+                variáveis de template
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="
+                openScreenshot(
+                  '13212',
+                  'Investigar atendimentos faltando respostas',
+                )
+              "
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-blue"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >ref</span
+                >
+              </div>
+              <div class="overview-card-id">#13212</div>
+              <div class="overview-card-title">
+                Investigação das respostas DG desativadas no envio
+                (Biodiesel-Cacau) — ~233 respostas pendentes mapeadas
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 9: OVERVIEW MATHEUS ─── -->
+        <div class="slide" id="slide-9">
+          <div class="slide-title">// overview — Matheus</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-teal">📸 overview</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >overview-matheus.md</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Entregas em <span>destaque</span> — Matheus
+          </div>
+
+          <div class="overview-grid">
+            <div
+              class="overview-card"
+              onclick="
+                openScreenshot(
+                  '12910',
+                  'Recibo e Assinatura — Cacau — Biodiesel',
+                )
+              "
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12910</div>
+              <div class="overview-card-title">
+                Recibo e Assinatura (Cacau) — entrega do Plano de Ação assinada
+                digitalmente e anexada à gestão de documentos
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="
+                openScreenshot('12935', 'Pergunta GPS no FormDinâmico')
+              "
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12935</div>
+              <div class="overview-card-title">
+                Pergunta GPS no FormDinâmico — validação de inputs e intervalos
+                de latitude (-90/+90) e longitude (-180/+180)
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12946', 'Tela de cadastro de animal')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12946</div>
+              <div class="overview-card-title">
+                Cadastro de animal em sequência — campos Tipo Criação, Idade,
+                Criação e ECC preservados após salvar
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12947', 'Atualizar Score do animal')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12947</div>
+              <div class="overview-card-title">
+                Atualização do score do animal nas telas de DG e inseminação
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="
+                openScreenshot(
+                  '12950',
+                  'Limite mínimo de anexos por atendimento',
+                )
+              "
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12950</div>
+              <div class="overview-card-title">
+                Limite mínimo de anexos obrigatórios por atendimento,
+                configurável por projeto
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="
+                openScreenshot('13059', 'Bugs de envio de anexo da resposta')
+              "
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-red"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >fix</span
+                >
+              </div>
+              <div class="overview-card-id">#13059</div>
+              <div class="overview-card-title">
+                Envio de anexo da resposta — recuperação de anexos de consultor
+                e limpeza correta do app na troca de usuário
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 10: WINS ─── -->
+        <div class="slide" id="slide-10">
+          <div class="slide-title">// wins.log — wrap-up ⏱</div>
+          <div class="slide-heading">Engineering <span>Wins</span></div>
+
+          <div class="grid-3" style="flex: 1">
+            <div class="win-card" style="border-left: 3px solid var(--purple)">
+              <div
+                class="flex-row"
+                style="justify-content: space-between; align-items: center"
+              >
+                <div class="win-icon">🚀</div>
+                <span
+                  class="badge badge-purple"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >release coordenado</span
+                >
+              </div>
+              <div class="win-who" style="color: var(--purple)">CARLOS</div>
+              <div class="win-text">
+                <strong style="color: var(--text)"
+                  >Backend e APP publicados em produção em sequência</strong
+                >
+                (#13232/#13233): migrations, tabelas defasadas e envs alinhados
+                sem quebrar versões antigas — e o APP estreou
+                <strong style="color: var(--text)">PushNotification</strong> via
+                OneSignal, destravando junto o envio de dados pendentes
+                (#13193).
+              </div>
+            </div>
+
+            <div class="win-card" style="border-left: 3px solid var(--blue)">
+              <div
+                class="flex-row"
+                style="justify-content: space-between; align-items: center"
+              >
+                <div class="win-icon">🛡️</div>
+                <span
+                  class="badge badge-blue"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >25 cards</span
+                >
+              </div>
+              <div class="win-who" style="color: var(--blue)">ELIAS</div>
+              <div class="win-text">
+                <strong style="color: var(--text)"
+                  >Maratona de estabilidade:</strong
+                >
+                crashes do Croqui (#13117/#13155) e das fotos (#13126)
+                eliminados, performance do Form Dinâmico recuperada (#13175) e
+                ainda o
+                <strong style="color: var(--text)">PEC do Produtor</strong>
+                (#12610) entregue — 25 cards no período, o maior volume do time.
+              </div>
+            </div>
+
+            <div class="win-card" style="border-left: 3px solid var(--teal)">
+              <div
+                class="flex-row"
+                style="justify-content: space-between; align-items: center"
+              >
+                <div class="win-icon">🛰️</div>
+                <span
+                  class="badge badge-teal"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >MVP → produção</span
+                >
+              </div>
+              <div class="win-who" style="color: var(--teal)">MATHEUS</div>
+              <div class="win-text">
+                Do zero à produção no mesmo período:
+                <strong style="color: var(--text)"
+                  >MVP Sentinel de análise de imagens</strong
+                >
+                (#13069), microserviço Python publicado (#13201) e pipeline
+                Pectrace para as lojas Android/iOS (#13164) — nova frente de
+                visão por satélite aberta para o produto.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 11: ROADMAP ─── -->
+        <div class="slide" id="slide-11">
+          <div class="slide-title">
+            // roadmap.todo — Edition #09 (31/08 a 18/09) — wrap-up ⏱
+          </div>
+          <div class="slide-heading">Próximas <span>prioridades</span></div>
+
+          <div style="display: flex; flex-direction: column; gap: 0; flex: 1">
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">
+                  Envio de dados pendentes — monitoramento pós-release
+                </div>
+                <div class="todo-desc">
+                  Acompanhar a fila de envio em produção, medir reincidência e
+                  criar alertas para pendências acima do normal.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--purple-bg); color: var(--purple)"
+                  >@carlos</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">
+                  Push Notification — segmentação e deep links
+                </div>
+                <div class="todo-desc">
+                  Evoluir o push do OneSignal para campanhas segmentadas por
+                  projeto e abertura direta na tela certa do APP.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--purple-bg); color: var(--purple)"
+                  >@carlos</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">
+                  Módulo PEC Produtor — próximos manejos
+                </div>
+                <div class="todo-desc">
+                  Ampliar a visão do produtor com novos manejos e histórico do
+                  rebanho, sobre a base entregue no #12610.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--blue-bg); color: var(--blue)"
+                  >@elias</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">
+                  Form Dinâmico — hardening de performance
+                </div>
+                <div class="todo-desc">
+                  Transformar as lições do #13175/#13108 em testes de regressão
+                  de performance e safe guards padrão do formulário.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--blue-bg); color: var(--blue)"
+                  >@elias</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">
+                  Sentinel — do MVP à análise de talhões
+                </div>
+                <div class="todo-desc">
+                  Evoluir o MVP #13069 para análises por talhão (índices de
+                  vegetação e série temporal) servidas pelo microserviço Python.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--teal-bg); color: var(--teal)"
+                  >@matheus</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">
+                  Pectrace — primeira release pelas lojas
+                </div>
+                <div class="todo-desc">
+                  Usar o pipeline #13164 para publicar o Pectrace nas lojas
+                  Android e iOS e validar a esteira ponta a ponta.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--teal-bg); color: var(--teal)"
+                  >@matheus</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: auto;
+              padding-top: 14px;
+              font-family: var(--font-mono);
+              font-size: 13px;
+              color: var(--text3);
+              text-align: center;
+            "
+          >
+            Próxima Mobile: <span style="color: var(--purple)">18/09/2026</span>
+            — ciclo padrão de 3 semanas
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 12: EXIT ─── -->
+        <div class="slide" id="slide-12">
+          <div
+            style="
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              gap: 24px;
+            "
+          >
+            <div
+              style="
+                font-family: var(--font-mono);
+                font-size: 14px;
+                color: var(--text3);
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+              "
+            >
+              // exit.ts
+            </div>
+
+            <div style="font-size: 48px; font-weight: 700; line-height: 1.15">
+              Obrigado pela<br /><span style="color: var(--purple)"
+                >presença!</span
+              >
+            </div>
+
+            <div class="code-block" style="max-width: 720px; width: 100%">
+              <div class="code-block-header">👋 exit.ts</div>
+              <div class="code-body">
+                <div class="line-numbers">
+                  1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13
+                </div>
+                <div class="code-lines">
+                  <span class="cmt">// exit.ts</span><br />
+                  <span class="kw">import</span> {
+                  <span class="prop">team</span> } <span class="kw">from</span>
+                  <span class="str">'./mobile-engineering'</span><br /><br />
+                  <span class="prop">console</span>.<span class="fn">log</span
+                  >(<span class="str">"Obrigado pela presença!"</span>)<br />
+                  <span class="prop">console</span>.<span class="fn">log</span
+                  >(<span class="str"
+                    >`Próximo spotlight: ${team.nextDate}`</span
+                  >)<br /><br />
+                  <span class="cmt">// Dúvidas?</span><br />
+                  <span class="cmt">// → Carlos, Elias ou Matheus</span><br />
+                  <span class="cmt">// → #ibs-mobile no Discord</span
+                  ><br /><br />
+                  <span class="prop">process</span>.<span class="fn">exit</span
+                  >(<span class="num">0</span>)
+                  <span class="cmt">// até a próxima! 👋</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-row" style="justify-content: center; gap: 8px">
+              <span
+                class="pill"
+                style="border-color: var(--border2); color: var(--text3)"
+                >✓ Edition #08 concluída</span
+              >
+              <span
+                class="pill"
+                style="border-color: #4c1d95; color: var(--purple)"
+                >→ Edition #09 — 18/09/2026</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /content -->
+    </div>
+    <!-- /main -->
+
+    <!-- NAV -->
+    <div class="nav-controls">
+      <button class="nav-btn" onclick="prev()">← prev</button>
+      <div class="nav-dots" id="navDots"></div>
+      <span class="slide-counter" id="slideCounter">1 / 13</span>
+      <button class="nav-btn" onclick="next()">next →</button>
+    </div>
+
+    <!-- STATUSBAR -->
+    <div class="statusbar">
+      <div class="status-item">🌿 main</div>
+      <div class="status-item" id="statusFile">README.md</div>
+      <div class="status-item">Tech Spotlight — Mobile Team</div>
+      <div class="status-item" style="margin-left: auto">28/08/2026</div>
+    </div>
+
+    <!-- KPI MODAL -->
+    <div
+      class="kpi-overlay"
+      id="kpiOverlay"
+      onclick="if (event.target === this) closeKpiModal();"
+    >
+      <div class="kpi-modal">
+        <div class="kpi-modal-header">
+          <div class="kpi-modal-title" id="kpiTitle">Cards</div>
+          <button class="kpi-modal-close" onclick="closeKpiModal()">
+            ✕ Fechar
+          </button>
+        </div>
+        <div class="kpi-modal-body">
+          <table class="kpi-table">
+            <thead>
+              <tr>
+                <th>#Card</th>
+                <th>Título</th>
+                <th>Tipo</th>
+                <th>Responsável</th>
+              </tr>
+            </thead>
+            <tbody id="kpiBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREENSHOT MODAL -->
+    <div
+      class="ss-overlay"
+      id="ssOverlay"
+      onclick="if (event.target === this) closeScreenshot();"
+    >
+      <div class="ss-modal">
+        <div class="ss-header">
+          <div class="ss-header-left">
+            <span class="ss-card-id" id="ssCardId">#00000</span>
+            <span class="ss-title" id="ssTitle">Título</span>
+          </div>
+          <button class="ss-close" onclick="closeScreenshot()">✕ Fechar</button>
+        </div>
+        <div class="ss-body" id="ssBody"></div>
+      </div>
+    </div>
+
+    <!-- TERMINAL DEMO MODAL -->
+    <div
+      class="term-overlay"
+      id="termOverlay"
+      onclick="if (event.target === this) closeTermDemo();"
+    >
+      <div class="term-window">
+        <div class="term-titlebar">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-amber"></div>
+          <div class="dot dot-green"></div>
+          <div class="term-titlebar-text" id="termTitle">Terminal</div>
+          <button class="term-close-btn" onclick="closeTermDemo()">
+            ✕ Fechar
+          </button>
+        </div>
+        <div class="term-body" id="termBody"></div>
+      </div>
+    </div>
+
+    <script>
+      /* ── TERMINAL DEMO ANIMATION ── */
+      const TERM_SEQUENCES = {};
+
+      const TERM_CLASSES = {
+        prompt: "t-prompt",
+        cmd: "t-cmd",
+        info: "t-info",
+        header: "t-header",
+        label: "t-label",
+        ok: "t-ok",
+        h2: "t-h2",
+        check: "t-check",
+        link: "t-link",
+        dim: "t-dim",
+        text: "",
+        sparkle: "t-sparkle",
+        cyan: "t-cyan",
+        bold: "t-bold",
+      };
+
+      let termAnimId = 0;
+
+      async function openTermDemo(which) {
+        const overlay = document.getElementById("termOverlay");
+        const body = document.getElementById("termBody");
+        const title = document.getElementById("termTitle");
+        title.textContent = "Terminal — " + which;
+        body.innerHTML = "";
+        overlay.classList.add("open");
+
+        const seq = TERM_SEQUENCES[which];
+        if (!seq) return;
+        const runId = ++termAnimId;
+
+        for (const step of seq) {
+          if (runId !== termAnimId) return;
+
+          if (step.delay) {
+            await new Promise((r) => setTimeout(r, step.delay));
+            continue;
+          }
+
+          if (step.type === "spin") {
+            const line = document.createElement("div");
+            const pipe = document.createElement("span");
+            pipe.className = "t-step-pipe";
+            pipe.textContent = "  │ ";
+            const dot = document.createElement("span");
+            dot.className = "t-spin-dot";
+            dot.textContent = "●";
+            dot.style.animation = "termPulse .6s ease-in-out infinite";
+            const txt = document.createElement("span");
+            txt.className = "t-spin-text";
+            txt.textContent = " " + step.spinText;
+            line.append(pipe, dot, txt);
+            body.appendChild(line);
+            body.scrollTop = body.scrollHeight;
+
+            await new Promise((r) => setTimeout(r, step.spinDuration || 500));
+            if (runId !== termAnimId) return;
+
+            dot.style.animation = "";
+            dot.className = "t-done-dot";
+            dot.textContent = "✓";
+            txt.className = "t-done-text";
+            txt.textContent = " " + step.doneText;
+            body.scrollTop = body.scrollHeight;
+            await new Promise((r) => setTimeout(r, 80));
+          } else if (step.type === "cmd" && step.typeSpeed) {
+            const line = document.createElement("div");
+            const span = document.createElement("span");
+            span.className = TERM_CLASSES[step.type] || "";
+            line.appendChild(span);
+            body.appendChild(line);
+
+            for (let i = 0; i < step.text.length; i++) {
+              if (runId !== termAnimId) return;
+              span.textContent += step.text[i];
+              body.scrollTop = body.scrollHeight;
+              await new Promise((r) => setTimeout(r, step.typeSpeed));
+            }
+          } else {
+            const line = document.createElement("div");
+            const span = document.createElement("span");
+            span.className = TERM_CLASSES[step.type] || "";
+            span.textContent = step.text;
+            line.appendChild(span);
+            body.appendChild(line);
+            body.scrollTop = body.scrollHeight;
+            await new Promise((r) => setTimeout(r, 45));
+          }
+        }
+
+        if (runId === termAnimId) {
+          const cursor = document.createElement("div");
+          cursor.style.marginTop = "8px";
+          const prompt = document.createElement("span");
+          prompt.className = "t-prompt";
+          prompt.textContent = "~/agrotrace-v3 ";
+          cursor.appendChild(prompt);
+          const blk = document.createElement("span");
+          blk.className = "t-cursor";
+          cursor.appendChild(blk);
+          body.appendChild(cursor);
+          body.scrollTop = body.scrollHeight;
+        }
+      }
+
+      function closeTermDemo() {
+        termAnimId++;
+        document.getElementById("termOverlay").classList.remove("open");
+      }
+
+      const KPI_CARDS = [
+        // === CARLOS ===
+        {
+          id: "#13193",
+          type: "feat",
+          title: "Análise e solução para envio de dados pendentes",
+          who: "Carlos",
+        },
+        {
+          id: "#13232",
+          type: "ref",
+          title: "Publicar nova versão do Backend em Produção",
+          who: "Carlos",
+        },
+        {
+          id: "#13233",
+          type: "ref",
+          title: "Publicar nova versão do APP com o recurso PushNotification",
+          who: "Carlos",
+        },
+
+        // === ELIAS ===
+        {
+          id: "#12610",
+          type: "feat",
+          title: "Adicionar módulo PEC na visão do Produtor",
+          who: "Elias",
+        },
+        {
+          id: "#12623",
+          type: "feat",
+          title: "Restringir safras no APP",
+          who: "Elias",
+        },
+        {
+          id: "#12936",
+          type: "feat",
+          title: "Melhoria tela propriedade_info",
+          who: "Elias",
+        },
+        {
+          id: "#12944",
+          type: "ref",
+          title: "Baixar dados PEC",
+          who: "Elias",
+        },
+        {
+          id: "#12997",
+          type: "feat",
+          title: "Respostas Automáticas",
+          who: "Elias",
+        },
+        {
+          id: "#12998",
+          type: "ref",
+          title: "Dados de atendimento cancelado ficando na fila de envio",
+          who: "Elias",
+        },
+        {
+          id: "#13010",
+          type: "feat",
+          title: "Restringir safras - API",
+          who: "Elias",
+        },
+        {
+          id: "#13017",
+          type: "fix",
+          title: "Não aparece foto da propriedade",
+          who: "Elias",
+        },
+        {
+          id: "#13027",
+          type: "ref",
+          title: "Data na impressão saindo errada - Form Dinamico",
+          who: "Elias",
+        },
+        {
+          id: "#13043",
+          type: "ref",
+          title: "Pergunta fora de ordem - Form Atividade Produtiva",
+          who: "Elias",
+        },
+        {
+          id: "#13046",
+          type: "feat",
+          title: "Formulários - Regras",
+          who: "Elias",
+        },
+        {
+          id: "#13096",
+          type: "feat",
+          title: "Publicar nova versão - APP",
+          who: "Elias",
+        },
+        {
+          id: "#13099",
+          type: "fix",
+          title: "Relatório de Diagnostico - Foto da Fazenda - APP",
+          who: "Elias",
+        },
+        {
+          id: "#13107",
+          type: "feat",
+          title: "Permitir modelo de recibo para estados diferentes - Débora",
+          who: "Elias",
+        },
+        {
+          id: "#13108",
+          type: "feat",
+          title: "Evitar duplicatas nas respostas do formulário dinâmico",
+          who: "Elias",
+        },
+        {
+          id: "#13112",
+          type: "feat",
+          title: "Inserir nome do técnico e CREA no recibo",
+          who: "Elias",
+        },
+        {
+          id: "#13117",
+          type: "fix",
+          title: "App fechando na abertura da tela de CROQUI",
+          who: "Elias",
+        },
+        {
+          id: "#13121",
+          type: "feat",
+          title: "Teclado recolhendo ao digitar o nome de produtor",
+          who: "Elias",
+        },
+        {
+          id: "#13126",
+          type: "fix",
+          title: "Aplicativo fechando ao add foto",
+          who: "Elias",
+        },
+        {
+          id: "#13134",
+          type: "feat",
+          title: "Publicar nova versão nas lojas - APP",
+          who: "Elias",
+        },
+        {
+          id: "#13151",
+          type: "fix",
+          title: "Problema para concluir Diagnóstico",
+          who: "Elias",
+        },
+        {
+          id: "#13155",
+          type: "fix",
+          title: "App fechando no Croqui",
+          who: "Elias",
+        },
+        {
+          id: "#13170",
+          type: "ref",
+          title: "Problema com Perfil - Reinaldo",
+          who: "Elias",
+        },
+        {
+          id: "#13175",
+          type: "fix",
+          title: "Performance Form Dinamico - Biodiesel Soja",
+          who: "Elias",
+        },
+        {
+          id: "#13212",
+          type: "ref",
+          title: "Investigar atendimentos faltando respostas - Débora",
+          who: "Elias",
+        },
+
+        // === MATHEUS ===
+        {
+          id: "#12910",
+          type: "feat",
+          title: "Recibo e Assinatura - Cacau - Biodiesel",
+          who: "Matheus",
+        },
+        {
+          id: "#12935",
+          type: "feat",
+          title: "Melhorar a pergunta GPS no FormDinâmico",
+          who: "Matheus",
+        },
+        {
+          id: "#12946",
+          type: "feat",
+          title: "Tela de cadastro de animal",
+          who: "Matheus",
+        },
+        {
+          id: "#12947",
+          type: "feat",
+          title: "Atualizar Score do animal",
+          who: "Matheus",
+        },
+        {
+          id: "#12950",
+          type: "feat",
+          title: "Configurar limite mínimo de anexos por atendimento",
+          who: "Matheus",
+        },
+        {
+          id: "#13059",
+          type: "fix",
+          title: "Ajustado bugs de envio de anexo da resposta",
+          who: "Matheus",
+        },
+        {
+          id: "#13069",
+          type: "feat",
+          title: "Criar MVP analise de imagens com Sentinel",
+          who: "Matheus",
+        },
+        {
+          id: "#13157",
+          type: "feat",
+          title: "Aquisição de coordenadas no APP",
+          who: "Matheus",
+        },
+        {
+          id: "#13164",
+          type: "feat",
+          title: "Criar Pipeline Pectrace",
+          who: "Matheus",
+        },
+        {
+          id: "#13201",
+          type: "feat",
+          title: "Publicar em produção microserviço em Python",
+          who: "Matheus",
+        },
+      ];
+
+      const KPI_LABELS = {
+        all: "Todos os Cards",
+        feat: "Features",
+        fix: "Bugs Corrigidos",
+        ref: "Refactors/Migração",
+        test: "Tests",
+      };
+      const KPI_COLORS = {
+        feat: "var(--teal)",
+        fix: "var(--coral)",
+        ref: "var(--blue)",
+        test: "var(--amber)",
+      };
+      const KPI_BG = {
+        feat: "var(--teal-bg)",
+        fix: "var(--coral-bg)",
+        ref: "var(--blue-bg)",
+        test: "var(--amber-bg)",
+      };
+      const KPI_NAMES = {
+        feat: "feature",
+        fix: "fix",
+        ref: "refactor",
+        test: "test",
+      };
+
+      // ── Stats filter by member ──
+      let statsMember = "all";
+
+      function filterStats(member) {
+        statsMember = member;
+        document.querySelectorAll(".stats-filter").forEach((b) => {
+          b.classList.toggle("active", b.dataset.member === member);
+        });
+        const cards =
+          member === "all"
+            ? KPI_CARDS
+            : KPI_CARDS.filter((c) => c.who === member);
+        const total = cards.length;
+        const feat = cards.filter((c) => c.type === "feat").length;
+        const fix = cards.filter((c) => c.type === "fix").length;
+        const ref = cards.filter((c) => c.type === "ref").length;
+        const test = cards.filter((c) => c.type === "test").length;
+
+        document.getElementById("mv-all").textContent = total;
+        document.getElementById("mv-feat").textContent = feat;
+        document.getElementById("mv-fix").textContent = fix;
+        document.getElementById("mv-ref").textContent = ref;
+        document.getElementById("mv-test").textContent = test;
+        document.getElementById("statsCount").textContent = total + " cards";
+
+        // Update per-dev counts
+        const devC = (member === "all" ? KPI_CARDS : cards).filter(
+          (c) => c.who === "Carlos",
+        ).length;
+        const devE = (member === "all" ? KPI_CARDS : cards).filter(
+          (c) => c.who === "Elias",
+        ).length;
+        const devM = (member === "all" ? KPI_CARDS : cards).filter(
+          (c) => c.who === "Matheus",
+        ).length;
+        document.getElementById("mv-carlos").textContent = devC;
+        document.getElementById("mv-elias").textContent = devE;
+        document.getElementById("mv-matheus").textContent = devM;
+
+        // Update distribution bars
+        const dist = document.getElementById("statsDistribution");
+        const bars = [
+          {
+            label: "features",
+            count: feat,
+            color: "var(--purple)",
+            grad: "linear-gradient(90deg, var(--purple), var(--blue))",
+          },
+          {
+            label: "fixes",
+            count: fix,
+            color: "var(--red)",
+            grad: "linear-gradient(90deg, var(--red), var(--coral))",
+          },
+          {
+            label: "refactors",
+            count: ref,
+            color: "var(--teal)",
+            grad: "linear-gradient(90deg, var(--teal), var(--blue))",
+          },
+          {
+            label: "infra",
+            count: test,
+            color: "var(--amber)",
+            grad: "linear-gradient(90deg, var(--amber), var(--coral))",
+          },
+        ];
+        dist.innerHTML = bars
+          .map((b, i) => {
+            const pct = total > 0 ? Math.round((b.count / total) * 100) : 0;
+            return `<div style="margin-bottom:${i < 3 ? "10px" : "0"}">
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+        <span style="color:${b.color}">${b.label} (${b.count})</span>
+        <span class="num">${pct}%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${b.grad};transition:width 0.4s"></div></div>
+    </div>`;
+          })
+          .join("");
+      }
+
+      // Render initial stats
+      filterStats("all");
+
+      function openKpiModal(kpi) {
+        let base =
+          statsMember === "all"
+            ? KPI_CARDS
+            : KPI_CARDS.filter((c) => c.who === statsMember);
+        const filtered =
+          kpi === "all" ? base : base.filter((c) => c.type === kpi);
+        document.getElementById("kpiTitle").textContent = KPI_LABELS[kpi];
+        const tbody = document.getElementById("kpiBody");
+        tbody.innerHTML = filtered
+          .map((c) => {
+            const num = c.id.replace("#", "").replace("b", "");
+            return `<tr>
+      <td><a href="https://dev.azure.com/ibsbiosistemico/AGROTRACE/_workitems/edit/${num}" target="_blank" style="color:var(--text);text-decoration:none;transition:color 0.15s" onmouseover="this.style.color='var(--purple)'" onmouseout="this.style.color='var(--text)'">${c.id}</a></td>
+      <td>${c.title}</td>
+      <td><span class="kpi-badge" style="background:${KPI_BG[c.type]};color:${KPI_COLORS[c.type]}">${KPI_NAMES[c.type]}</span></td>
+      <td>${c.who}</td>
+    </tr>`;
+          })
+          .join("");
+        document.getElementById("kpiOverlay").classList.add("open");
+      }
+
+      function closeKpiModal() {
+        document.getElementById("kpiOverlay").classList.remove("open");
+      }
+
+      document.querySelectorAll(".metric-click").forEach((el) => {
+        el.addEventListener("click", () => openKpiModal(el.dataset.kpi));
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          if (
+            document.getElementById("termOverlay").classList.contains("open")
+          ) {
+            closeTermDemo();
+            e.stopPropagation();
+            return;
+          }
+          if (document.getElementById("ssOverlay").classList.contains("open")) {
+            closeScreenshot();
+            e.stopPropagation();
+            return;
+          }
+          if (
+            document.getElementById("kpiOverlay").classList.contains("open")
+          ) {
+            closeKpiModal();
+            e.stopPropagation();
+          }
+        }
+      });
+
+      // ── Screenshot carousel ──
+      let ssImages = [];
+      let ssIndex = 0;
+      let ssCardId = "";
+
+      function openScreenshot(cardId, title) {
+        ssCardId = cardId;
+        ssImages = [];
+        ssIndex = 0;
+        document.getElementById("ssCardId").textContent = "#" + cardId;
+        document.getElementById("ssTitle").textContent = title;
+        const body = document.getElementById("ssBody");
+        body.innerHTML =
+          '<div class="ss-empty"><div class="ss-empty-icon">⏳</div>Carregando...</div>';
+        document.getElementById("ssOverlay").classList.add("open");
+
+        const single = new Image();
+        single.src = "assets/" + cardId + ".png";
+        single.onload = () => {
+          ssImages = [single.src];
+          probeNext(cardId, 2, () => renderCarousel());
+        };
+        single.onerror = () => {
+          const first = new Image();
+          first.src = "assets/" + cardId + "-1.png";
+          first.onload = () => {
+            ssImages = [first.src];
+            probeNext(cardId, 2, () => renderCarousel());
+          };
+          first.onerror = () => {
+            body.innerHTML =
+              '<div class="ss-empty"><div class="ss-empty-icon">📷</div>Screenshot ainda não adicionado<br><span style="font-size:12px;color:var(--text3)">Salve em assets/' +
+              cardId +
+              ".png ou assets/" +
+              cardId +
+              "-1.png, -2.png, ...</span></div>";
+          };
+        };
+      }
+
+      function probeNext(cardId, n, done) {
+        const img = new Image();
+        img.src = "assets/" + cardId + "-" + n + ".png";
+        img.onload = () => {
+          ssImages.push(img.src);
+          probeNext(cardId, n + 1, done);
+        };
+        img.onerror = done;
+      }
+
+      function renderCarousel() {
+        const body = document.getElementById("ssBody");
+        body.classList.remove("tall");
+        body.scrollTop = 0;
+        const img = document.createElement("img");
+        img.src = ssImages[ssIndex];
+        img.alt = "#" + ssCardId + " — imagem " + (ssIndex + 1);
+        const applyTallIfNeeded = () => {
+          if (img.naturalWidth && img.naturalHeight) {
+            if (img.naturalHeight / img.naturalWidth > 1.5) {
+              body.classList.add("tall");
+            }
+          }
+        };
+        img.addEventListener("load", applyTallIfNeeded);
+        if (img.complete) applyTallIfNeeded();
+        body.innerHTML = "";
+        body.appendChild(img);
+
+        body
+          .querySelectorAll(".ss-carousel-btn, .ss-counter")
+          .forEach((el) => el.remove());
+
+        if (ssImages.length > 1) {
+          const prev = document.createElement("button");
+          prev.className = "ss-carousel-btn prev";
+          prev.innerHTML = "‹";
+          prev.onclick = (e) => {
+            e.stopPropagation();
+            ssNav(-1);
+          };
+
+          const next = document.createElement("button");
+          next.className = "ss-carousel-btn next";
+          next.innerHTML = "›";
+          next.onclick = (e) => {
+            e.stopPropagation();
+            ssNav(1);
+          };
+
+          const counter = document.createElement("div");
+          counter.className = "ss-counter";
+          counter.innerHTML =
+            ssImages
+              .map(
+                (_, i) =>
+                  '<div class="ss-dot' +
+                  (i === ssIndex ? " active" : "") +
+                  '"></div>',
+              )
+              .join("") +
+            "<span>" +
+            (ssIndex + 1) +
+            " / " +
+            ssImages.length +
+            "</span>";
+
+          body.appendChild(prev);
+          body.appendChild(next);
+          body.appendChild(counter);
+        }
+      }
+
+      function ssNav(dir) {
+        ssIndex = (ssIndex + dir + ssImages.length) % ssImages.length;
+        renderCarousel();
+      }
+
+      function closeScreenshot() {
+        document.getElementById("ssOverlay").classList.remove("open");
+        ssImages = [];
+        ssIndex = 0;
+      }
+
+      const slides = document.querySelectorAll(".slide");
+      const sidebarItems = document.querySelectorAll('[id^="si-"]');
+      const total = slides.length;
+      let cur = 0;
+
+      const labels = [
+        "README.md",
+        "agenda.ts",
+        "stats.json",
+        "envio-dados-pendentes.service.ts",
+        "pec-produtor.module.ts",
+        "sentinel-analysis.py",
+        "overview-carlos.md",
+        "dica-form-dinamico.ts",
+        "overview-elias.md",
+        "overview-matheus.md",
+        "wins.log",
+        "roadmap.todo",
+        "exit.ts",
+      ];
+
+      // Build tabs
+      const tabsBar = document.getElementById("tabsBar");
+      const icons = [
+        "📋",
+        "📅",
+        "📊",
+        "📤",
+        "🐄",
+        "🛰️",
+        "📸",
+        "💡",
+        "📸",
+        "📸",
+        "🏆",
+        "🗺️",
+        "👋",
+      ];
+      labels.forEach((l, i) => {
+        const t = document.createElement("div");
+        t.className = "tab-item" + (i === 0 ? " active" : "");
+        t.innerHTML = `<span class="tab-icon">${icons[i]}</span>${l}`;
+        t.onclick = () => goTo(i);
+        t.id = "tab-" + i;
+        tabsBar.appendChild(t);
+      });
+
+      // Build dots
+      const dotsEl = document.getElementById("navDots");
+      for (let i = 0; i < total; i++) {
+        const d = document.createElement("div");
+        d.className = "nav-dot" + (i === 0 ? " active" : "");
+        d.onclick = () => goTo(i);
+        d.id = "dot-" + i;
+        dotsEl.appendChild(d);
+      }
+
+      function goTo(n) {
+        slides[cur].classList.remove("active");
+        document.getElementById("tab-" + cur)?.classList.remove("active");
+        document.getElementById("dot-" + cur)?.classList.remove("active");
+        document.getElementById("si-" + cur)?.classList.remove("active");
+
+        cur = (n + total) % total;
+
+        slides[cur].classList.add("active");
+        document.getElementById("tab-" + cur)?.classList.add("active");
+        document.getElementById("dot-" + cur)?.classList.add("active");
+        document.getElementById("si-" + cur)?.classList.add("active");
+
+        document.getElementById("slideCounter").textContent =
+          cur + 1 + " / " + total;
+        document.getElementById("statusFile").textContent = labels[cur];
+
+        const tab = document.getElementById("tab-" + cur);
+        if (tab)
+          tab.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center",
+          });
+      }
+
+      function next() {
+        goTo(cur + 1);
+      }
+      function prev() {
+        goTo(cur - 1);
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (document.getElementById("ssOverlay").classList.contains("open")) {
+          if (ssImages.length > 1) {
+            if (e.key === "ArrowRight") {
+              ssNav(1);
+              e.stopPropagation();
+              return;
+            }
+            if (e.key === "ArrowLeft") {
+              ssNav(-1);
+              e.stopPropagation();
+              return;
+            }
+          }
+          return;
+        }
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") next();
+        if (e.key === "ArrowLeft" || e.key === "ArrowUp") prev();
+        if (e.key === "f" || e.key === "F") {
+          if (!document.fullscreenElement)
+            document.documentElement.requestFullscreen();
+          else document.exitFullscreen();
+        }
+        if (e.key === "t" || e.key === "T") toggleTimer();
+        if (e.key === "r" || e.key === "R") toggleRemote();
+      });
+
+      // ── Timer / Cronômetro ──
+      let timerInterval = null;
+      let timerStart = null;
+      let timerElapsed = 0;
+      let timerRunning = false;
+
+      function toggleTimer() {
+        if (!timerRunning) {
+          timerStart = Date.now() - timerElapsed;
+          timerInterval = setInterval(updateTimer, 1000);
+          timerRunning = true;
+          document.getElementById("timerIcon").textContent = "⏸";
+          document.getElementById("timerBtn").classList.add("running");
+          document.getElementById("timerBtn").title =
+            "Clique para pausar (ou pressione T)";
+        } else {
+          clearInterval(timerInterval);
+          timerElapsed = Date.now() - timerStart;
+          timerRunning = false;
+          document.getElementById("timerIcon").textContent = "▶";
+          document.getElementById("timerBtn").classList.remove("running");
+          document.getElementById("timerBtn").title =
+            "Clique para retomar (ou pressione T)";
+        }
+      }
+
+      function updateTimer() {
+        timerElapsed = Date.now() - timerStart;
+        const totalSec = Math.floor(timerElapsed / 1000);
+        const min = Math.floor(totalSec / 60);
+        const sec = totalSec % 60;
+        const display =
+          String(min).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
+        document.getElementById("timerDisplay").textContent = display;
+
+        const btn = document.getElementById("timerBtn");
+        btn.classList.remove("warning", "overtime");
+        if (min >= 50) {
+          btn.classList.add("overtime");
+        } else if (min >= 40) {
+          btn.classList.add("warning");
+        }
+      }
+
+      // ── WebSocket Remote Control (host/guest com delegação) ──
+      // Protocolo novo: cada cliente entra com role=host|guest e name.
+      // Somente quem tem `controlOwnerId` pode navegar/disparar ações.
+      // O host (4=Carlos) pode delegar controle com as teclas 4/5/6.
+      // Se o guest com controle cai, volta pro host automaticamente.
+
+      const urlParams = new URLSearchParams(location.search);
+      const myRole =
+        (urlParams.get("role") || "host").toLowerCase() === "guest"
+          ? "guest"
+          : "host";
+      const myName =
+        urlParams.get("name") || (myRole === "host" ? "Carlos" : "Guest");
+
+      // Mapeamento das teclas de delegação (sem modificador, só o número)
+      const HANDOFF_KEYS = {
+        4: "Carlos",
+        5: "Elias",
+        6: "Matheus",
+      };
+
+      let remoteWs = null;
+      let remoteConnected = false;
+      let applyingFromRemote = false;
+      let myId = null;
+      let hostId = null;
+      let controlOwnerId = null;
+      let peers = [];
+
+      function iHaveControl() {
+        return myId != null && myId === controlOwnerId;
+      }
+      function iAmHost() {
+        return myId != null && myId === hostId;
+      }
+      function canActLocally() {
+        // Antes de o handshake chegar, deixa agir normalmente (sessão ainda não conhecida).
+        if (applyingFromRemote) return true;
+        if (!remoteConnected) return true;
+        if (controlOwnerId == null) return true;
+        return iHaveControl();
+      }
+
+      function toggleRemote() {
+        if (remoteConnected) disconnectRemote();
+        else connectRemote();
+      }
+
+      function connectRemote(url) {
+        if (!url) {
+          if (location.protocol === "file:") return;
+          const wsProto = location.protocol === "https:" ? "wss:" : "ws:";
+          url = `${wsProto}//${location.host}`;
+        }
+        try {
+          remoteWs = new WebSocket(url);
+        } catch {
+          updatePeersUI();
+          return;
+        }
+
+        remoteWs.onopen = () => {
+          remoteWs.send(
+            JSON.stringify({
+              type: "join",
+              role: myRole,
+              name: myName,
+              totalSlides: total,
+              currentSlide: cur,
+            }),
+          );
+          remoteConnected = true;
+          updatePeersUI();
+        };
+
+        remoteWs.onmessage = (e) => {
+          let msg;
+          try {
+            msg = JSON.parse(e.data);
+          } catch {
+            return;
+          }
+
+          if (msg.type === "session") {
+            if (typeof msg.myId === "number") myId = msg.myId;
+            hostId = msg.hostId;
+            controlOwnerId = msg.controlOwnerId;
+            peers = Array.isArray(msg.clients) ? msg.clients : [];
+            // Guests recém-conectados: sincroniza pro slide atual do host.
+            if (
+              myRole === "guest" &&
+              typeof msg.currentSlide === "number" &&
+              msg.currentSlide !== cur
+            ) {
+              applyingFromRemote = true;
+              try {
+                goTo(msg.currentSlide);
+              } finally {
+                applyingFromRemote = false;
+              }
+            }
+            updatePeersUI();
+            return;
+          }
+
+          if (msg.type === "slide-update") {
+            if (
+              typeof msg.currentSlide === "number" &&
+              msg.currentSlide !== cur
+            ) {
+              applyingFromRemote = true;
+              try {
+                goTo(msg.currentSlide);
+              } finally {
+                applyingFromRemote = false;
+              }
+            }
+            return;
+          }
+
+          if (msg.type === "navigate") {
+            applyingFromRemote = true;
+            try {
+              if (msg.action === "next") next();
+              else if (msg.action === "prev") prev();
+              else if (msg.action === "goto" && typeof msg.slide === "number")
+                goTo(msg.slide);
+            } finally {
+              applyingFromRemote = false;
+            }
+            return;
+          }
+
+          if (msg.type === "action") {
+            applyingFromRemote = true;
+            try {
+              handleRemoteAction(msg.action, msg.params || {});
+            } finally {
+              applyingFromRemote = false;
+            }
+            return;
+          }
+
+          if (msg.type === "error") {
+            flashPeersStatus(msg.error || "erro");
+            return;
+          }
+        };
+
+        remoteWs.onerror = () => {};
+
+        remoteWs.onclose = () => {
+          remoteConnected = false;
+          myId = null;
+          hostId = null;
+          controlOwnerId = null;
+          peers = [];
+          updatePeersUI();
+          setTimeout(() => {
+            if (!remoteConnected)
+              try {
+                connectRemote(url);
+              } catch (e) {}
+          }, 5000);
+        };
+      }
+
+      function disconnectRemote() {
+        if (remoteWs) {
+          remoteWs.close();
+          remoteWs = null;
+        }
+        remoteConnected = false;
+        myId = null;
+        hostId = null;
+        controlOwnerId = null;
+        peers = [];
+        updatePeersUI();
+      }
+
+      // Map of actions available per slide
+      const SLIDE_ACTIONS = {
+        6: [
+          // overview-carlos.md
+          {
+            id: "ss-13193",
+            label: "📷 #13193 — Dados pendentes",
+            action: "openScreenshot",
+            params: {
+              cardId: "13193",
+              title: "Análise e solução para envio de dados pendentes",
+            },
+          },
+          {
+            id: "ss-13233",
+            label: "📷 #13233 — APP com PushNotification",
+            action: "openScreenshot",
+            params: {
+              cardId: "13233",
+              title: "Publicar nova versão do APP com PushNotification",
+            },
+          },
+        ],
+        8: [
+          // overview-elias.md
+          {
+            id: "ss-12610",
+            label: "📷 #12610 — PEC Produtor",
+            action: "openScreenshot",
+            params: {
+              cardId: "12610",
+              title: "Módulo PEC na visão do Produtor",
+            },
+          },
+          {
+            id: "ss-12997",
+            label: "📷 #12997 — Respostas Automáticas",
+            action: "openScreenshot",
+            params: {
+              cardId: "12997",
+              title: "Respostas Automáticas com ramificações",
+            },
+          },
+          {
+            id: "ss-13107",
+            label: "📷 #13107 — Recibo por estado",
+            action: "openScreenshot",
+            params: {
+              cardId: "13107",
+              title: "Modelo de recibo por estado — Biodiesel-Soja",
+            },
+          },
+        ],
+        9: [
+          // overview-matheus.md
+          {
+            id: "ss-13069",
+            label: "📷 #13069 — MVP Sentinel",
+            action: "openScreenshot",
+            params: {
+              cardId: "13069",
+              title: "MVP análise de imagens com Sentinel",
+            },
+          },
+          {
+            id: "ss-12910",
+            label: "📷 #12910 — Recibo e Assinatura",
+            action: "openScreenshot",
+            params: {
+              cardId: "12910",
+              title: "Recibo e Assinatura — Cacau — Biodiesel",
+            },
+          },
+        ],
+      };
+
+      function getSlideActions() {
+        return SLIDE_ACTIONS[cur] || [];
+      }
+
+      function handleRemoteAction(action, params) {
+        switch (action) {
+          case "openScreenshot":
+            openScreenshot(params.cardId, params.title);
+            break;
+          case "closeModals":
+            if (document.getElementById("ssOverlay").classList.contains("open"))
+              closeScreenshot();
+            if (
+              document.getElementById("kpiOverlay").classList.contains("open")
+            )
+              closeKpiModal();
+            break;
+          case "ssNav":
+            if (ssImages.length > 1) ssNav(params.dir);
+            break;
+          case "toggleTimer":
+            toggleTimer();
+            break;
+          case "openKpiModal":
+            openKpiModal(params.kpi || "all");
+            break;
+          case "closeKpiModal":
+            closeKpiModal();
+            break;
+          case "filterStats":
+            filterStats(params.member || "all");
+            break;
+        }
+      }
+
+      function emitSlideUpdate() {
+        if (!remoteWs || remoteWs.readyState !== 1) return;
+        if (applyingFromRemote) return;
+        if (!iHaveControl()) return;
+        remoteWs.send(
+          JSON.stringify({
+            type: "slide-update",
+            currentSlide: cur,
+            slideLabel: labels[cur] || "",
+            slideActions: getSlideActions(),
+          }),
+        );
+      }
+
+      function emitAction(action, params) {
+        if (!remoteWs || remoteWs.readyState !== 1) return;
+        if (applyingFromRemote) return;
+        if (!iHaveControl()) return;
+        remoteWs.send(
+          JSON.stringify({
+            type: "action",
+            action,
+            params: params || {},
+          }),
+        );
+      }
+
+      // ── Wrap das funções locais para aplicar regras de controle + broadcast ──
+      const _origGoTo = goTo;
+      goTo = function (n) {
+        if (!canActLocally()) {
+          flashPeersStatus("sem controle — aguarde handoff");
+          return;
+        }
+        _origGoTo(n);
+        emitSlideUpdate();
+      };
+
+      const _origOpenScreenshot = openScreenshot;
+      openScreenshot = function (cardId, title) {
+        if (!canActLocally()) {
+          flashPeersStatus("sem controle");
+          return;
+        }
+        _origOpenScreenshot(cardId, title);
+        emitAction("openScreenshot", { cardId, title });
+      };
+
+      const _origCloseScreenshot = closeScreenshot;
+      closeScreenshot = function () {
+        if (!canActLocally()) return;
+        _origCloseScreenshot();
+        emitAction("closeModals");
+      };
+
+      const _origSsNav = ssNav;
+      ssNav = function (dir) {
+        if (!canActLocally()) return;
+        _origSsNav(dir);
+        emitAction("ssNav", { dir });
+      };
+
+      const _origToggleTimer = toggleTimer;
+      toggleTimer = function () {
+        // Timer pode ser sincronizado, mas não bloqueia guest (cada um vê o seu próprio)
+        _origToggleTimer();
+        emitAction("toggleTimer");
+      };
+
+      const _origOpenKpiModal = openKpiModal;
+      openKpiModal = function (kpi) {
+        if (!canActLocally()) {
+          flashPeersStatus("sem controle");
+          return;
+        }
+        _origOpenKpiModal(kpi);
+        emitAction("openKpiModal", { kpi });
+      };
+
+      const _origCloseKpiModal = closeKpiModal;
+      closeKpiModal = function () {
+        if (!canActLocally()) return;
+        _origCloseKpiModal();
+        emitAction("closeModals");
+      };
+
+      const _origFilterStats = filterStats;
+      filterStats = function (member) {
+        if (!canActLocally()) {
+          flashPeersStatus("sem controle");
+          return;
+        }
+        _origFilterStats(member);
+        emitAction("filterStats", { member });
+      };
+
+      // ── Teclas de delegação (apenas host): 4=Carlos, 5=Elias, 6=Matheus ──
+      document.addEventListener("keydown", (e) => {
+        if (!iAmHost()) return;
+        if (document.getElementById("ssOverlay")?.classList.contains("open"))
+          return;
+        if (document.getElementById("kpiOverlay")?.classList.contains("open"))
+          return;
+        if (e.ctrlKey || e.altKey || e.metaKey || e.shiftKey) return;
+        const targetName = HANDOFF_KEYS[e.key];
+        if (!targetName) return;
+        if (!remoteWs || remoteWs.readyState !== 1) return;
+        const target = peers.find(
+          (p) => p.name.toLowerCase() === targetName.toLowerCase(),
+        );
+        if (!target) {
+          flashPeersStatus(`${targetName} nao esta conectado`);
+          e.preventDefault();
+          return;
+        }
+        if (target.id === controlOwnerId) {
+          flashPeersStatus(`${targetName} ja esta no controle`);
+          e.preventDefault();
+          return;
+        }
+        remoteWs.send(
+          JSON.stringify({
+            type: "control-handoff",
+            targetId: target.id,
+            targetName,
+          }),
+        );
+        flashPeersStatus(`controle → ${targetName}`);
+        e.preventDefault();
+      });
+
+      // ── UI: barra de peers/controle ──
+      function updatePeersUI() {
+        let el = document.getElementById("peersBar");
+        if (!el) {
+          el = document.createElement("div");
+          el.id = "peersBar";
+          el.style.cssText =
+            "position:fixed;bottom:32px;right:16px;font-family:JetBrains Mono,monospace;font-size:0.7rem;padding:6px 12px;border-radius:6px;z-index:9999;background:rgba(30,30,30,0.92);border:1px solid #3e3e42;color:#cccccc;display:flex;gap:10px;align-items:center;cursor:pointer;transition:opacity 0.3s";
+          el.onclick = toggleRemote;
+          el.title = "Clique para reconectar (ou pressione R)";
+          document.body.appendChild(el);
+        }
+        if (!remoteConnected) {
+          el.innerHTML = `<span style="color:#f87171">● offline</span> <span style="opacity:0.6">${myRole}:${myName}</span>`;
+          return;
+        }
+        const parts = [];
+        parts.push(
+          `<span style="color:#34d399">●</span> <span style="opacity:0.6">você:</span> <span>${myName}</span>`,
+        );
+        if (peers.length) {
+          parts.push(`<span style="opacity:0.3">│</span>`);
+          const tags = peers
+            .map((p) => {
+              const isHost = p.id === hostId;
+              const hasControl = p.id === controlOwnerId;
+              const isMe = p.id === myId;
+              let color = "#9ca3af";
+              if (hasControl) color = "#fbbf24";
+              else if (isMe) color = "#60a5fa";
+              const prefix = isHost ? "★" : "";
+              const suffix = hasControl ? "◉" : "";
+              return `<span style="color:${color}">${prefix}${p.name}${suffix}</span>`;
+            })
+            .join(" ");
+          parts.push(tags);
+        }
+        if (iAmHost()) {
+          parts.push(
+            '<span style="opacity:0.3">│</span>',
+            '<span style="opacity:0.5">[4/5/6]</span>',
+          );
+        } else if (!iHaveControl()) {
+          parts.push(
+            '<span style="opacity:0.3">│</span>',
+            '<span style="opacity:0.5">modo view</span>',
+          );
+        }
+        el.innerHTML = parts.join(" ");
+        el.style.opacity = "1";
+      }
+
+      let _peersFlashTimer = null;
+      function flashPeersStatus(text) {
+        const el = document.getElementById("peersBar");
+        if (!el) return;
+        el.innerHTML = `<span style="color:#fbbf24">⚠ ${text}</span>`;
+        if (_peersFlashTimer) clearTimeout(_peersFlashTimer);
+        _peersFlashTimer = setTimeout(() => updatePeersUI(), 2000);
+      }
+
+      // Auto-connect on load
+      const initialSlideFromHash = Number(
+        (location.hash.match(/\d+/) || [])[0],
+      );
+      if (
+        Number.isInteger(initialSlideFromHash) &&
+        initialSlideFromHash >= 0 &&
+        initialSlideFromHash < total
+      ) {
+        _origGoTo(initialSlideFromHash);
+      }
+      updatePeersUI();
+      try {
+        connectRemote();
+      } catch (e) {}
+    </script>
+  </body>
+</html>

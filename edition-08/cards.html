@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="pt-EL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumo de Cards — Mobile Team · Ago 2026</title>
+<link rel="icon" type="image/svg+xml" href="../assets/web-team.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #0f1117;
+    --bg2:      #181c27;
+    --bg3:      #1e2235;
+    --bg4:      #252a40;
+    --border:   #2d3348;
+    --border2:  #3d4460;
+    --text:     #e8eaf2;
+    --text2:    #8b90a8;
+    --text3:    #555b78;
+    --ca:       #7c6af7;
+    --ca-bg:    #1a1640;
+    --ca-bd:    #3d3580;
+    --el:       #f0a855;
+    --el-bg:    #2a1e08;
+    --el-bd:    #7a5020;
+    --ma:       #3ecf8e;
+    --ma-bg:    #082418;
+    --ma-bd:    #1a6845;
+    --feat:     #60adf5;
+    --feat-bg:  #0c1e35;
+    --fix:      #f97070;
+    --fix-bg:   #2a0f0f;
+    --ref:      #f0c040;
+    --ref-bg:   #261e04;
+    --test:     #52d98a;
+    --test-bg:  #082418;
+    --radius:   6px;
+    --radius-lg:10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .hero {
+    padding: 56px 48px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,106,247,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .hero-title {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-names {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hero-names .dot {
+    color: var(--text3);
+    font-weight: 400;
+    font-size: 24px;
+  }
+
+  .hero-names .accent-ro { color: var(--ca); }
+  .hero-names .accent-br { color: var(--el); }
+  .hero-names .accent-th { color: var(--ma); }
+
+  .hero-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text2);
+    margin-bottom: 32px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .stat-chip {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 10px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+  }
+
+  .stat-val {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .stat-lbl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+  }
+
+  .controls {
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+    max-width: 360px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text3);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    pointer-events: none;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 8px 12px 8px 32px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .search-wrap input:focus { border-color: var(--border2); }
+  .search-wrap input::placeholder { color: var(--text3); }
+
+  .filter-group {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .fbtn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .fbtn:hover { background: var(--bg4); color: var(--text); }
+
+  .fbtn.on-feat  { background: var(--feat-bg); color: var(--feat);  border-color: var(--feat); }
+  .fbtn.on-fix   { background: var(--fix-bg);  color: var(--fix);   border-color: var(--fix); }
+  .fbtn.on-ref   { background: var(--ref-bg);  color: var(--ref);   border-color: var(--ref); }
+  .fbtn.on-test  { background: var(--test-bg); color: var(--test);  border-color: var(--test); }
+  .fbtn.on-all   { background: var(--bg4); color: var(--text); border-color: var(--border2); }
+  .fbtn.on-ro    { background: var(--ca-bg);  color: var(--ca);  border-color: var(--ca-bd); }
+  .fbtn.on-br    { background: var(--el-bg);  color: var(--el);  border-color: var(--el-bd); }
+  .fbtn.on-th    { background: var(--ma-bg);  color: var(--ma);  border-color: var(--ma-bd); }
+
+  .sep { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
+
+  .result-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .content {
+    padding: 32px 48px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .member-section { display: flex; flex-direction: column; gap: 0; }
+  .member-section.hidden { display: none; }
+
+  .member-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .member-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .av-ca { background: var(--ca-bg); color: var(--ca); border: 1px solid var(--ca-bd); }
+  .av-el { background: var(--el-bg); color: var(--el); border: 1px solid var(--el-bd); }
+  .av-ma { background: var(--ma-bg); color: var(--ma); border: 1px solid var(--ma-bd); }
+
+  .member-name {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .member-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    margin-left: 4px;
+  }
+
+  .member-bar {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .cards-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .cards-table thead th {
+    background: var(--bg3);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cards-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.12s;
+    animation: rowIn 0.3s ease both;
+  }
+
+  @keyframes rowIn {
+    from { opacity: 0; transform: translateX(-6px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .cards-table tbody tr:last-child { border-bottom: none; }
+  .cards-table tbody tr:hover { background: var(--bg3); }
+  .cards-table tbody tr.hidden { display: none; }
+
+  .cards-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+  }
+
+  .col-id {
+    width: 110px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    white-space: nowrap;
+  }
+
+  .col-id a {
+    color: var(--text3);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .col-id a:hover {
+    color: var(--ca);
+    text-decoration: underline;
+  }
+
+  .col-id .no-link {
+    color: var(--text3);
+    cursor: default;
+  }
+
+  .col-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .col-desc {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.55;
+  }
+
+  .col-type { width: 90px; }
+
+  .badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .badge-feat { background: var(--feat-bg); color: var(--feat); border: 1px solid #1a3d60; }
+  .badge-fix  { background: var(--fix-bg);  color: var(--fix);  border: 1px solid #5a1818; }
+  .badge-ref  { background: var(--ref-bg);  color: var(--ref);  border: 1px solid #5a4010; }
+  .badge-test { background: var(--test-bg); color: var(--test); border: 1px solid #0f5030; }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text3);
+    display: none;
+  }
+
+  .empty-state.visible { display: block; }
+
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-left {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 8px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+  }
+
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow" style="display:flex; align-items:center; gap:16px; justify-content:space-between">
+    <span>// mobile-team · agrotrace-v3 · rd-ra · pec · sprint review</span>
+    <a href="../index.html" style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text3); text-decoration:none; border:1px solid var(--border); padding:3px 10px; border-radius:4px; transition:all 0.15s; letter-spacing:0" onmouseover="this.style.color='#e8eaf2';this.style.borderColor='#3d4460'" onmouseout="this.style.color='var(--text3)';this.style.borderColor='var(--border)'">⌂ Hub</a>
+  </div>
+  <h1 class="hero-title">Resumo de Cards</h1>
+  <div class="hero-names">
+    <span class="accent-ro">Carlos</span>
+    <span class="dot">·</span>
+    <span class="accent-br">Elias</span>
+    <span class="dot">·</span>
+    <span class="accent-th">Matheus</span>
+  </div>
+  <div class="hero-sub">08/08 – 28/08/2026 &nbsp;·&nbsp; Tech Spotlight #08 &nbsp;·&nbsp; 3 semanas · 38 cards entregues</div>
+
+  <div class="stats-row">
+    <div class="stat-chip">
+      <div class="stat-val" id="s-total">38</div>
+      <div class="stat-lbl">total</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--feat)" id="s-feat">22</div>
+      <div class="stat-lbl">features</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--fix)" id="s-fix">8</div>
+      <div class="stat-lbl">fixes</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--ref)" id="s-ref">8</div>
+      <div class="stat-lbl">refactors</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--test)" id="s-test">0</div>
+      <div class="stat-lbl">testes</div>
+    </div>
+    <div class="stat-chip" style="margin-left:auto">
+      <div class="stat-val" style="color:var(--ca)" id="s-ro">3</div>
+      <div class="stat-lbl">Carlos</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--el)" id="s-br">25</div>
+      <div class="stat-lbl">Elias</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--ma)" id="s-th">10</div>
+      <div class="stat-lbl">Matheus</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="searchInput" placeholder="Buscar por título ou #card..." oninput="applyFilters()">
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="filter-group" id="typeFilters">
+    <button class="fbtn on-all" data-filter="type" data-val="all" onclick="setFilter('type','all',this)">Todos</button>
+    <button class="fbtn" data-filter="type" data-val="feat" onclick="setFilter('type','feat',this)">feature</button>
+    <button class="fbtn" data-filter="type" data-val="fix"  onclick="setFilter('type','fix',this)">fix</button>
+    <button class="fbtn" data-filter="type" data-val="ref"  onclick="setFilter('type','ref',this)">refactor</button>
+    <button class="fbtn" data-filter="type" data-val="test" onclick="setFilter('type','test',this)">teste</button>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="filter-group" id="memberFilters">
+    <button class="fbtn on-all" data-filter="member" data-val="all" onclick="setFilter('member','all',this)">Todos</button>
+    <button class="fbtn" data-filter="member" data-val="ro" onclick="setFilter('member','ro',this)">Carlos</button>
+    <button class="fbtn" data-filter="member" data-val="br" onclick="setFilter('member','br',this)">Elias</button>
+    <button class="fbtn" data-filter="member" data-val="th" onclick="setFilter('member','th',this)">Matheus</button>
+  </div>
+
+  <div class="result-count" id="resultCount">38 cards</div>
+</div>
+
+<!-- CONTENT -->
+<div class="content" id="content"></div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">Mobile Team · Agrotrace v3 + RD-RA + PEC · gerado em 28/08/2026</div>
+  <div class="footer-right">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--feat)"></div>feature</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--fix)"></div>fix</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--ref)"></div>refactor</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--test)"></div>teste</div>
+  </div>
+</div>
+
+<script>
+const DATA = {
+  ro: {
+    name: 'Carlos',
+    avClass: 'av-ca',
+    avInit: 'CA',
+    nameColor: 'var(--ca)',
+    cards: [
+      { id:'#13193', type:'feat', title:'Análise e solução para envio de dados pendentes', desc:'Análise e implementação de solução para o envio de dados pendentes no aplicativo.' },
+      { id:'#13232', type:'ref',  title:'Publicar nova versão do Backend em Produção', desc:'Publicação de nova versão do backend em produção: criação de migrations, ajuste de tabelas defasadas, configuração de envs e validação de compatibilidade com o front e as versões do APP.' },
+      { id:'#13233', type:'ref',  title:'Publicar nova versão do APP com o recurso PushNotification', desc:'Publicação de nova versão do APP com push notifications, incluindo ajuste dos ícones do OneSignal, ocultação do RA e validação da nova versão.' }
+    ]
+  },
+  br: {
+    name: 'Elias',
+    avClass: 'av-el',
+    avInit: 'EL',
+    nameColor: 'var(--el)',
+    cards: [
+      { id:'#12610', type:'feat', title:'Adicionar módulo PEC na visão do Produtor', desc:'Extensão do módulo PEC para a visão do Produtor, incluindo registro de parto (entrada de animal no rebanho) e pesagens em lote, individual e coletiva.' },
+      { id:'#12623', type:'feat', title:'Restringir safras no APP', desc:'Restrição das safras disponíveis para abertura de novos atendimentos no APP, via flag permite_execucao configurável na tela de cadastro de safra.' },
+      { id:'#12936', type:'feat', title:'Melhoria tela propriedade_info', desc:'Ajuste na tela de questionário da propriedade para a última pergunta não ficar oculta pelo teclado, com alerta de dados não salvos ao voltar para a agenda.' },
+      { id:'#12944', type:'ref',  title:'Baixar dados PEC', desc:'Correção do baixar dados PEC que exibia propriedades de outros projetos; apenas as propriedades do projeto devem ficar visíveis.' },
+      { id:'#12997', type:'feat', title:'Respostas Automáticas', desc:'Evolução das respostas automáticas para aplicar também as ramificações, respondendo em cadeia as perguntas relacionadas às perguntas já relacionadas à pergunta inicial.' },
+      { id:'#12998', type:'ref',  title:'Dados de atendimento cancelado ficando na fila de envio', desc:'Correção de dados de atendimento cancelado que permaneciam na fila de envio mesmo após o cancelamento.' },
+      { id:'#13010', type:'feat', title:'Restringir safras - API', desc:'Nova coluna booleana na tabela safra e ajuste da tela de cadastro/edição para controlar quais safras são exibidas na abertura de novos atendimentos.' },
+      { id:'#13017', type:'fix',  title:'Não aparece foto da propriedade', desc:'Correção em produção de fotos da propriedade que não eram exibidas para os técnicos do Biodiesel-Cacau.' },
+      { id:'#13027', type:'ref',  title:'Data na impressão saindo errada - Form Dinamico', desc:'Correção da data preenchida no formulário dinâmico que saía um dia antes na impressão.' },
+      { id:'#13043', type:'ref',  title:'Pergunta fora de ordem - Form Atividade Produtiva', desc:'Ajuste da ordenação das perguntas do formulário de Atividade Produtiva para respeitar a ordem definida no CMS.' },
+      { id:'#13046', type:'feat', title:'Formulários - Regras', desc:'Exibição apenas dos formulários vinculados ao grupo do técnico logado e configuração de preenchimento obrigatório de formulário antes da conclusão do atendimento.' },
+      { id:'#13096', type:'feat', title:'Publicar nova versão - APP', desc:'Publicação de nova versão do aplicativo contendo as alterações da sprint encerrada.' },
+      { id:'#13099', type:'fix',  title:'Relatório de Diagnostico - Foto da Fazenda - APP', desc:'Correção da imagem da fazenda que não era exibida corretamente no relatório de diagnóstico e plano de ação.' },
+      { id:'#13107', type:'feat', title:'Permitir modelo de recibo para estados diferentes - Débora', desc:'Implementação da regra de recibo por estado no Biodiesel-Soja: modelo com valor de R$ 18,00 para GO/MG e de R$ 16,50 para os demais estados.' },
+      { id:'#13108', type:'feat', title:'Evitar duplicatas nas respostas do formulário dinâmico', desc:'Adição de safe guards para evitar a duplicação de respostas do formulário dinâmico ao responder várias vezes em um intervalo mínimo.' },
+      { id:'#13112', type:'feat', title:'Inserir nome do técnico e CREA no recibo', desc:'Criação de variáveis para incluir o nome do técnico e o CREA no recibo do Biodiesel-Soja.' },
+      { id:'#13117', type:'fix',  title:'App fechando na abertura da tela de CROQUI', desc:'Correção de crash do aplicativo na abertura da tela de croqui, relatado pelos técnicos do Biodiesel-Cacau.' },
+      { id:'#13121', type:'feat', title:'Teclado recolhendo ao digitar o nome de produtor', desc:'Correção do teclado que recolhia a cada letra digitada na busca pelo nome do produtor ao abrir um atendimento.' },
+      { id:'#13126', type:'fix',  title:'Aplicativo fechando ao add foto', desc:'Correção de crash do aplicativo ao adicionar mais de quatro fotos ao mesmo tempo.' },
+      { id:'#13134', type:'feat', title:'Publicar nova versão nas lojas - APP', desc:'Publicação de nova versão nas lojas com a correção do crash do aplicativo no módulo de croqui.' },
+      { id:'#13151', type:'fix',  title:'Problema para concluir Diagnóstico', desc:'Correção de atendimento que não concluía mesmo com o questionário completo, causado por perguntas que permaneciam ativas em tema desativado (projeto Checksheep).' },
+      { id:'#13155', type:'fix',  title:'App fechando no Croqui', desc:'Investigação e correção do aplicativo que continuava fechando no croqui para alguns técnicos mesmo após a correção anterior.' },
+      { id:'#13170', type:'ref',  title:'Problema com Perfil - Reinaldo', desc:'Correção da tela de perfil que exibia temas como respondidos (check verde) mesmo com respostas em branco, incluindo localização marcada como coletada sem coordenada.' },
+      { id:'#13175', type:'fix',  title:'Performance Form Dinamico - Biodiesel Soja', desc:'Correção urgente de regressão de performance no formulário dinâmico do projeto Biodiesel-Soja.' },
+      { id:'#13212', type:'ref',  title:'Investigar atendimentos faltando respostas - Débora', desc:'Investigação de respostas de atendimento DG no Biodiesel-Cacau que eram desativadas automaticamente no momento do envio, deixando cerca de 233 respostas pendentes.' }
+    ]
+  },
+  th: {
+    name: 'Matheus',
+    avClass: 'av-ma',
+    avInit: 'MA',
+    nameColor: 'var(--ma)',
+    cards: [
+      { id:'#12910', type:'feat', title:'Recibo e Assinatura - Cacau - Biodiesel', desc:'Digitalização da confirmação de entrega do Plano de Ação via assinatura digital, anexando o recibo à gestão de documentos da propriedade com histórico dos termos assinados.' },
+      { id:'#12935', type:'feat', title:'Melhorar a pergunta GPS no FormDinâmico', desc:'Validação dos inputs da pergunta tipo GPS para aceitar apenas números, sinal negativo e ponto decimal, respeitando os intervalos de latitude (-90 a +90) e longitude (-180 a +180).' },
+      { id:'#12946', type:'feat', title:'Tela de cadastro de animal', desc:'Após cadastrar um animal, o usuário permanece na tela do formulário com os campos Tipo Criação, Idade, Criação e ECC preservados, agilizando cadastros em sequência.' },
+      { id:'#12947', type:'feat', title:'Atualizar Score do animal', desc:'Avaliação e melhoria do fluxo para permitir a atualização do score do animal nas telas de DG e inseminação.' },
+      { id:'#12950', type:'feat', title:'Configurar limite mínimo de anexos por atendimento', desc:'Configuração do limite mínimo de anexos obrigatórios por atendimento, permitindo ajustar a exigência conforme o projeto.' },
+      { id:'#13059', type:'fix',  title:'Ajustado bugs de envio de anexo da resposta', desc:'Recuperação de anexos de consultor nas respostas de acompanhamento e correção de bugs na limpeza do app após troca de usuário e no envio de respostas com anexo.' },
+      { id:'#13069', type:'feat', title:'Criar MVP analise de imagens com Sentinel', desc:'Criação de MVP de análise de imagens de satélite utilizando o Sentinel.' },
+      { id:'#13157', type:'feat', title:'Aquisição de coordenadas no APP', desc:'Handler de aquisição de coordenadas com tentativas automáticas de localização e, em caso de falha, liberação da abertura/conclusão do atendimento sem as coordenadas.' },
+      { id:'#13164', type:'feat', title:'Criar Pipeline Pectrace', desc:'Criação de pipeline para publicação do Pectrace nas lojas Android e iOS, seguindo o padrão dos demais pacotes.' },
+      { id:'#13201', type:'feat', title:'Publicar em produção microserviço em Python', desc:'Publicação em produção do microserviço desenvolvido em Python.' }
+    ]
+  }
+};
+
+const members = ['ro','br','th'];
+let activeType   = 'all';
+let activeMember = 'all';
+
+function badgeClass(type) {
+  return { feat:'badge-feat', fix:'badge-fix', ref:'badge-ref', test:'badge-test' }[type];
+}
+
+function badgeLabel(type) {
+  return { feat:'feature', fix:'fix', ref:'refactor', test:'teste' }[type];
+}
+
+function isAzureCard(id) {
+  return /^#\d+/.test(id);
+}
+
+function render() {
+  const root = document.getElementById('content');
+  root.innerHTML = '';
+
+  members.forEach(m => {
+    const d = DATA[m];
+    const section = document.createElement('div');
+    section.className = 'member-section';
+    section.id = 'sec-' + m;
+
+    section.innerHTML = `
+      <div class="member-header">
+        <div class="member-avatar ${d.avClass}">${d.avInit}</div>
+        <span class="member-name" style="color:${d.nameColor}">${d.name}</span>
+        <span class="member-meta" id="meta-${m}">${d.cards.length} cards</span>
+        <div class="member-bar"></div>
+      </div>
+      <table class="cards-table" id="tbl-${m}">
+        <thead>
+          <tr>
+            <th style="width:110px">#Card</th>
+            <th>Título &amp; Descrição</th>
+            <th style="width:90px">Tipo</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-${m}"></tbody>
+      </table>
+      <div class="empty-state" id="empty-${m}">Nenhum card encontrado.</div>
+    `;
+
+    root.appendChild(section);
+
+    const tbody = document.getElementById('tbody-' + m);
+    d.cards.forEach(c => {
+      const tr = document.createElement('tr');
+      tr.dataset.type   = c.type;
+      tr.dataset.member = m;
+      tr.dataset.search = (c.id + ' ' + c.title + ' ' + c.desc).toLowerCase();
+
+      const idCell = isAzureCard(c.id)
+        ? `<a href="https://dev.azure.com/ibsbiosistemico/AGROTRACE/_workitems/edit/${c.id.replace('#','')}" target="_blank" title="Abrir no Azure DevOps">${c.id}</a>`
+        : `<span class="no-link" title="Marco interno (sem card Azure)">${c.id}</span>`;
+
+      tr.innerHTML = `
+        <td class="col-id">${idCell}</td>
+        <td>
+          <div class="col-title">${c.title}</div>
+          <div class="col-desc">${c.desc}</div>
+        </td>
+        <td class="col-type"><span class="badge ${badgeClass(c.type)}">${badgeLabel(c.type)}</span></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  });
+
+  applyFilters();
+}
+
+function setFilter(group, val, btn) {
+  document.querySelectorAll(`[data-filter="${group}"]`).forEach(b => {
+    b.className = 'fbtn';
+  });
+  btn.classList.add('on-' + (val === 'all' ? 'all' : val));
+
+  if (group === 'type')   activeType   = val;
+  if (group === 'member') activeMember = val;
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  let total = 0, feat = 0, fix = 0, ref = 0, test = 0;
+  const perM = { ro:0, br:0, th:0 };
+
+  members.forEach(m => {
+    const sec   = document.getElementById('sec-' + m);
+    const empty = document.getElementById('empty-' + m);
+    const memberMatch = activeMember === 'all' || activeMember === m;
+
+    if (!memberMatch) {
+      sec.classList.add('hidden');
+      return;
+    }
+    sec.classList.remove('hidden');
+
+    let vis = 0;
+    sec.querySelectorAll('tbody tr').forEach(row => {
+      const typeOk   = activeType === 'all' || row.dataset.type === activeType;
+      const searchOk = !q || row.dataset.search.includes(q);
+      const show = typeOk && searchOk;
+      row.classList.toggle('hidden', !show);
+      if (show) {
+        vis++;
+        total++;
+        const t = row.dataset.type;
+        if (t === 'feat') feat++;
+        if (t === 'fix')  fix++;
+        if (t === 'ref')  ref++;
+        if (t === 'test') test++;
+        perM[m]++;
+      }
+    });
+
+    document.getElementById('meta-' + m).textContent = vis + ' card' + (vis !== 1 ? 's' : '');
+    empty.classList.toggle('visible', vis === 0);
+  });
+
+  document.getElementById('resultCount').textContent = total + ' card' + (total !== 1 ? 's' : '');
+  document.getElementById('s-total').textContent = total;
+  document.getElementById('s-feat').textContent  = feat;
+  document.getElementById('s-fix').textContent   = fix;
+  document.getElementById('s-ref').textContent   = ref;
+  document.getElementById('s-test').textContent  = test;
+  document.getElementById('s-ro').textContent    = perM.ro;
+  document.getElementById('s-br').textContent    = perM.br;
+  document.getElementById('s-th').textContent    = perM.th;
+}
+
+render();
+</script>
+</body>
+</html>
