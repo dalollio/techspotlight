@@ -1,0 +1,260 @@
+{
+  "ca": {
+    "name": "Carlos",
+    "avClass": "av-ca",
+    "avInit": "CA",
+    "nameColor": "var(--ca)",
+    "cards": [
+      {
+        "id": "#12768",
+        "type": "feat",
+        "title": "Filtro de perguntas no aplicativo - Criar",
+        "desc": "Criação de filtro de perguntas no aplicativo para facilitar a localização de itens no formulário."
+      },
+      {
+        "id": "#12812",
+        "type": "feat",
+        "title": "Atualizar Entidade Pessoa",
+        "desc": "Atualização da entidade Pessoa no sistema para refletir os campos e regras mais recentes."
+      },
+      {
+        "id": "#12868",
+        "type": "fix",
+        "title": "Dificuldade ao trocar de programa",
+        "desc": "Correção de regressão que dificultava a troca de programa dentro do aplicativo."
+      },
+      {
+        "id": "#12883",
+        "type": "fix",
+        "title": "APP Fechando sozinho",
+        "desc": "Correção de regressão que fazia o aplicativo fechar sozinho durante o uso."
+      },
+      {
+        "id": "#12885",
+        "type": "fix",
+        "title": "Impressão fora de ordem - Laudos Biodiesel-Cacau",
+        "desc": "Correção da ordem de impressão dos laudos nos projetos Biodiesel e Cacau."
+      },
+      {
+        "id": "#12887",
+        "type": "fix",
+        "title": "Verificar funcionalidade 2fa",
+        "desc": "Investigação e correção de problema em produção na funcionalidade de autenticação em duas etapas (2FA)."
+      },
+      {
+        "id": "#12889",
+        "type": "fix",
+        "title": "Impressão do Formulário Dinâmico falha para formulários compartilhados",
+        "desc": "Correção de falha na impressão do Formulário Dinâmico quando o formulário é compartilhado entre programas."
+      },
+      {
+        "id": "#12899",
+        "type": "fix",
+        "title": "Envio dos dados PEC",
+        "desc": "Correção de problema em produção no envio dos dados do módulo PEC."
+      },
+      {
+        "id": "#12907",
+        "type": "fix",
+        "title": "Dificuldade com login",
+        "desc": "Correção de regressão que causava dificuldade para os usuários realizarem login."
+      },
+      {
+        "id": "#12908",
+        "type": "feat",
+        "title": "Melhorar fluxo de login usando MFA",
+        "desc": "Melhoria no fluxo de login com autenticação multifator (MFA)."
+      },
+      {
+        "id": "#12918",
+        "type": "fix",
+        "title": "Ajustes no módulo PEC",
+        "desc": "Ajustes de correção no módulo PEC após identificação de regressões."
+      },
+      {
+        "id": "#12924",
+        "type": "feat",
+        "title": "Tabela de qualidade no RAT",
+        "desc": "Adição de tabela de qualidade no Relatório de Atendimento Técnico (RAT)."
+      },
+      {
+        "id": "#12928",
+        "type": "feat",
+        "title": "Tamanho da fonte no RAT",
+        "desc": "Ajuste do tamanho de fonte no Relatório de Atendimento Técnico (RAT) para melhorar a legibilidade."
+      },
+      {
+        "id": "#12978",
+        "type": "ref",
+        "title": "Publicar nova versão em PROD",
+        "desc": "Publicação de nova versão do sistema em produção."
+      },
+      {
+        "id": "#12979",
+        "type": "ref",
+        "title": "Ferramenta de análise",
+        "desc": "Disponibilização de ferramenta de análise solicitada pelo time."
+      }
+    ]
+  },
+  "es": {
+    "name": "Elias",
+    "avClass": "av-el",
+    "avInit": "EL",
+    "nameColor": "var(--el)",
+    "cards": [
+      {
+        "id": "#12994",
+        "type": "fix",
+        "title": "Backup e Instruções não estão funcionando",
+        "desc": "Correção de problema em produção no backup e nas instruções que não estavam funcionando."
+      },
+      {
+        "id": "#12612",
+        "type": "feat",
+        "title": "Adicionar funcionalidade de pesagem",
+        "desc": "Adição da funcionalidade de pesagem no módulo de pecuária."
+      },
+      {
+        "id": "#12980",
+        "type": "ref",
+        "title": "Publicar versões atualizadas",
+        "desc": "Publicação de versões atualizadas do sistema."
+      },
+      {
+        "id": "#12997",
+        "type": "feat",
+        "title": "Respostas Automáticas",
+        "desc": "Implementação de respostas automáticas. Em teste (QA)."
+      },
+      {
+        "id": "#13010",
+        "type": "feat",
+        "title": "Restringir safras - API",
+        "desc": "Restrição de safras na API. Em teste (QA)."
+      },
+      {
+        "id": "#13027",
+        "type": "fix",
+        "title": "Data na impressão saindo errada - Form Dinamico",
+        "desc": "Correção de regressão na data exibida na impressão do Formulário Dinâmico. Em teste (QA)."
+      },
+      {
+        "id": "#12944",
+        "type": "fix",
+        "title": "Baixar dados PEC",
+        "desc": "Correção de regressão no download dos dados do módulo PEC. Em teste (QA)."
+      },
+      {
+        "id": "#9967",
+        "type": "fix",
+        "title": "Aplicativo fechando sozinho ao entrar na nova tela de localização da propriedade",
+        "desc": "Correção de bug que fazia o aplicativo fechar sozinho ao acessar a tela de localização da propriedade. Em teste (QA)."
+      },
+      {
+        "id": "#12610",
+        "type": "feat",
+        "title": "Adicionar módulo PEC na visão do Produtor",
+        "desc": "Adição do módulo PEC na visão do Produtor. Em teste (QA)."
+      },
+      {
+        "id": "#12623",
+        "type": "feat",
+        "title": "Restringir safras no APP",
+        "desc": "Restrição de safras no aplicativo. Em teste (QA)."
+      },
+      {
+        "id": "#13043",
+        "type": "fix",
+        "title": "Pergunta fora de ordem - Form Atividade Produtiva",
+        "desc": "Correção de regressão na ordem das perguntas do Formulário de Atividade Produtiva. Em teste (QA)."
+      }
+    ]
+  },
+  "ma": {
+    "name": "Matheus",
+    "avClass": "av-ma",
+    "avInit": "MA",
+    "nameColor": "var(--ma)",
+    "cards": [
+      {
+        "id": "#12835",
+        "type": "feat",
+        "title": "Liberar protocolo de animais lactantes",
+        "desc": "Liberação do protocolo de atendimento para animais lactantes."
+      },
+      {
+        "id": "#12837",
+        "type": "fix",
+        "title": "Módulo Financeiro - Saldo",
+        "desc": "Correção de problema em produção no cálculo/exibição de saldo no módulo Financeiro."
+      },
+      {
+        "id": "#12841",
+        "type": "feat",
+        "title": "Alterar data do atendimento produtivo",
+        "desc": "Permitir a alteração da data do atendimento produtivo."
+      },
+      {
+        "id": "#12779",
+        "type": "feat",
+        "title": "Retirado Diagnostico pós parto",
+        "desc": "Ajuste no fluxo de diagnóstico pós-parto do animal."
+      },
+      {
+        "id": "#12799",
+        "type": "feat",
+        "title": "Retirar recibo do RAT do modulo PEC",
+        "desc": "Remoção/ajuste da emissão de recibo do RAT dentro do módulo PEC."
+      },
+      {
+        "id": "#12645",
+        "type": "feat",
+        "title": "Trabalhar nos relatórios vindos do CheckMilk",
+        "desc": "Desenvolvimento dos relatórios com dados vindos do CheckMilk."
+      },
+      {
+        "id": "#12760",
+        "type": "feat",
+        "title": "Adicionado sync de dados do Qualidade do Leite",
+        "desc": "Adição da sincronização de dados do módulo Qualidade do Leite."
+      },
+      {
+        "id": "#12991",
+        "type": "fix",
+        "title": "Ajustando relatorios PEC com problema em produção",
+        "desc": "Ajuste dos relatórios do PEC que apresentavam problema em produção."
+      },
+      {
+        "id": "#12910",
+        "type": "ref",
+        "title": "Recibo e Assinatura - Cacau - Biodiesel",
+        "desc": "Ajuste de recibo e assinatura para os projetos Cacau e Biodiesel. Em teste (QA)."
+      },
+      {
+        "id": "#12935",
+        "type": "feat",
+        "title": "Melhorar a pergunta GPS no FormDinâmico",
+        "desc": "Melhoria na pergunta de GPS do Formulário Dinâmico. Em teste (QA)."
+      },
+      {
+        "id": "#12946",
+        "type": "feat",
+        "title": "Tela de cadastro de animal",
+        "desc": "Nova tela de cadastro de animal. Em teste (QA)."
+      },
+      {
+        "id": "#12947",
+        "type": "feat",
+        "title": "Atualizar Score do animal",
+        "desc": "Atualização do cálculo/exibição do Score do animal. Em teste (QA)."
+      },
+      {
+        "id": "#12950",
+        "type": "feat",
+        "title": "Configurar limite mínimo de anexos por atendimento",
+        "desc": "Configuração de limite mínimo de anexos exigidos por atendimento. Em teste (QA)."
+      }
+    ]
+  }
+}

@@ -11,7 +11,11 @@
       "Bash(open \"/Users/carlosdalollio/repos/techspotlight/edition-05/spotlight.html\")",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(python3)",
+      "Bash(python3 -c ' *)",
+      "Bash(node --check /tmp/_check.js)",
+      "Bash(rm -f /tmp/_check.js)"
     ]
   }
 }

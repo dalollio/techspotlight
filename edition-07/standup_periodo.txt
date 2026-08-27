@@ -1,0 +1,242 @@
+[Mobile] Standup 21/07/2026
+📅 Syncup CheckMilk - Matheus M.
+
+Agrotrace
+[Carlos] Teste QA: #12883 - APP Fechando sozinho:
+Corrigido crash na pesagem de leite (query do total de lactantes separada da lista de pesagem). Fix na dev para o build dos testadores.
+[Carlos] Teste QA: #12885 - Impressão fora de ordem - Laudos Biodiesel-Cacau:
+Corrigida a ordem de impressão do relatório do formulário dinâmico. Mergeado na sprint/106 e na dev.
+[Carlos] Done: #12889 - Impressão do Formulário Dinâmico falha para formulários compartilhados:
+Correção da impressão de formulários compartilhados mergeada na sprint/106; PR da réplica na dev aguardando review.
+[Carlos] Done: #12768 - Filtro de perguntas no aplicativo - Criar:
+Finalizado o ajuste do campo de busca oculto pelo teclado; já na dev.
+
+☎️ [Carlos] Com Gustavo sobre dificuldade no tamanho da fonte diferente no RAT: Identificado o uso das tags <p>, fazendo com que ocorresse essa dificuldade/comportamento;
+☎️ [Carlos] Com Gustavo sobre dificuldade no login usando MFA: Identificado nova incompatibilidade com a versão usando o Better Auth;
+☎️ [Carlos] Com Bruno para ajuste necessário no fluxo de login pelo MFA no APP;
+☎️ [Carlos] Com Thayse sobre testes das tasks trabalhadas, e identificando comportamento do filtro de sub-protocolos;
+
+[Mobile] Standup 22/07/2026
+
+Agrotrace
+[Carlos] In Progress: #12822 - Impressão de Termo:
+Analisando possíveis abordagens na execução dessa task.
+[Carlos] Test QA: #12899 - Envio dos dados PEC:
+Investigada a causa-raiz dos 409 no push do PEC (lactação, controle de pesagem e pesagem): na primeira sincronização o id local é trocado pelo id do servidor, mas a troca não propagava para os registros filhos quando o enforcement de FKs do SQLite estava desligado (sessão sem pull prévio) — filhos subiam apontando para o id local antigo.
+Implementado reapontamento explícito das FKs dos filhos pós-push (remapChildForeignKeys) nos workers de sincronização. PR 11451 aberto para a sprint/106, aguardando review; réplica na dev pendente.
+Na validação, mapeadas ~10 FKs sem ON UPDATE CASCADE no schema local (ex.: financeiro_lancamento.tecnico_id → pessoa) — candidata a card de hardening futuro; por isso foi descartada a abordagem de ligar enforcement global.
+
+☎️[Carlos] Com Gustavo sobre dificuldade no lançamento de NFS-e no CheckWork: Lançamento da mesma NFS-e por dois usuários diferentes.
+☎️[Carlos] Com Thayse sobre necessidade de re-imprimir o Recibo da Safra 2024/2025 do Biodiesel.
+
+[Mobile]  Standup 23/07/2026
+📅 Pauta Agrotrace e Projetos Agro - Recibo de recebimento do Plano de Ação
+
+Agrotrace
+[Carlos] In Progress: #12918 - Ajustes no módulo PEC
+[Carlos] Done: #12907 - Dificuldade com login:
+Dificuldade persistente com a configuração do usuário: Certificadora não estava vinculada ao usuário.
+Configurado corretamente. Login passou como previsto.
+
+☎️ [Carlos] Com Iohan para entender o comportamento reportado.
+☎️ [Carlos] Com Gustavo para acompanhar a dificuldade persistente no login MFA do Sartori: Bruno lançou nova versão da API em PROD que corrigiu isso.
+☎️ [Carlos] Com Gustavo sobre a dificuldade no tamanho da fonte de conteúdo copiado nos campos Sit. Enccontrada e Recomendação
+☎️ [Carlos] Com Matheus M e Sartori sobre ajustes no módulo PEC 
+
+
+[Mobile]  Standup 24/07/2026
+📅 Spotlight WEB
+
+Agrotrace
+[Carlos] Done: #12918 - Ajustes no módulo PEC:
+Removida obrigatoriedade de preencher todos os campos numéricos da Qualidade do Leite (campos vazios agora são aceitos e salvos como nulos).
+Alterado padrão do campo "Reprodutor do rebanho" na Inseminação: nova IA agora inicia como "Não" (antes iniciava como "Sim").
+Corrigido gatilho de atendimento: atendimento gerado por gatilho agora nasce sempre agendado com data de execução preenchida, e o status (Concluído ou Em Andamento) segue a configuração do gatilho.
+[Carlos] Done: #12924 - Tabela de qualidade do leite no RAT:
+Nova seção "QUALIDADE DO LEITE" no RAT para programas com PEC, exibida quando o atendimento possui análise registrada (usa a mais recente).
+Tabela com Gordura, Proteína, Lactose, Dornic, ESD, EST, Densidade, PC, Água, N. Ureico, CPP UF, CCS, Alizarol e Teste CMT.
+Campos não preenchidos exibem "-"; Alizarol e CMT exibidos como Positivo/Negativo.
+[Carlos] Done: #12928 - Tamanho da fonte no RAT:
+Editor de texto agora cola como texto puro: conteúdo copiado de fontes externas (Word, PDF etc.) perde a formatação de origem nos campos Sit. Encontrada e Recomendação.
+RAT passou a neutralizar formatação embutida em registros antigos, garantindo fonte uniforme na impressão.
+
+☎️ [Carlos] Com Gustavo sobre detalhes sobre a tabela de qualdiade do leite no RAT.
+
+[Mobile] Standup 27/07/2026
+📅 Briefing Inicial
+📅 Reunião Mobile
+
+Agrotrace
+[Matheus] In Progress: #12910 -  Recibo e Assinatura - Cacau - Biodiesel
+Adicionando nova tabela de propriedade-anexo e seu sync.
+[Carlos] Done: #12760 - Sync qualidade do leite (produtor_id/certificadora_id nulos):
+Registro de qualidade do leite criado/editado no app agora sobe com produtor_id e certificadora_id preenchidos (antes iam nulos para pec_imp_qualidade).
+A tela de qualidade do leite passou a enviar a certificadora do usuário logado, e o repositório deriva o produtor a partir da propriedade do atendimento em todo save — editar um registro antigo com campos nulos também corrige os dados.
+Fix pushado na branch do PR 11313 (Matheus, sprint/106) + réplica dev merged; registros já sincronizados com null no servidor precisam de ajuste de dados no backend.
+[Carlos] Test QA: #12908 - Melhorar fluxo de login usando MFA:
+Decisão de exigir MFA deixou de usar a heurística local do app (lista mfas do usuário + status da certificadora) e passou a seguir o servidor: presença de parcialToken na resposta do login.
+App agora persiste o par access/refresh devolvido pelo mfa-verify — antes descartava o refresh e a sessão de logins com MFA expirava em poucos dias.
+Token pré-MFA (restrito, 5 min) não é mais gravado como sessão: guarda mfaPending no store e auto-cura no revalidate para sessões que já ficaram com token inválido (causa dos 401 em massa reportados hoje em prod).
+Cobertura nova de testes para LoginScreen, RevalidateLoginSheet e authentication.service; réplica dev merged, PR 11471 (sprint/106) aguardando review.
+☎️ [Carlos] Com Matheus M. sobre ajustes no Pectrace.
+☎️ [Carlos] Com Thayse sobre testes nos PRs abertos e ajustes necessários.
+☎️ [Carlos] Com Bruno sobre dificuldade com usuários no fluxo do MFA.
+☎️ [Matheus] Com Carlos, sobre novas tarefas e sync dos projetos.
+☎️ [Matheus] Com Thielson, sobre adição dos relatorios PEC no Front do Agrotrace.
+
+[Mobile] Standup 28/07/2026
+📅 [Carlos] Syncup CheckMil Mantheus M e Isabelle
+📆 Planning Meeting
+
+Agrotrace
+[Elias] In Progress: #12610 - Adicionar módulo PEC na visão do produtor.
+In Progress: #12612 - Adicionar funcionalidade de pesagem.
+[Matheus]  In Progress: #12958 -  Estudar e verificar possiblidade de trabalho com o QGIS para analise de imagens
+[Matheus]  Done: #12935 -  Melhorar a pergunta GPS no FormDinâmico
+[Matheus]  Done: #12910 -  Recibo e Assinatura - Cacau - Biodiesel
+[Carlos] Abertura e refinamento de novas tasks para melhoria no Agrotrace.
+
+☎️ [Carlos] Com Elias para alinhar tarefas no Agrotrace.
+☎️ [Carlos] Com Sartori sobre melhorias no modulo PEC.
+☎️ [Carlos] Com Matheus, sobre modulo PEC e criação de atendimento Protocolo.
+☎️ [Carlos] Com Thayse sobre pontos de ajustes pendentes no Agrotrace.
+☎️ [Carlos] Com Gustavo para tirar dúvidas sobre PR pendente para a sprint 106.
+☎️ [Elias] Com Gustavo para ajuda em plataform web do Agrotrace.
+☎️ [Elias] Com Matheus para tirar dúvidas sobre o módulo PEC.
+☎️ [Matheus] Com Elias, sobre duvidas no modulo PEC.
+☎️ [Matheus] Com Carlos, sobre modulo PEC e criação de atendimento Protocolo.
+☎️ [Matheus] Com Thielson, sobre rota de propriedade_anexo no Agrotrace.
+
+[Mobile] Standup 29/07/2026
+
+Agrotrace
+[Carlos] In Progress: #12979 - Ferramenta de análise:
+Análise e validação do APP.
+[Matheus] In Progress: #12958 -  Estudar e verificar possiblidade de trabalho com o QGIS para analise de imagens
+[Carlos] Done: #12978 - Publicar nova versão em PROD
+[Elias] Done: #12610 - Adicionar módulo PEC na visão do produtor.
+Done: #12612 - Adicionar funcionalidade de pesagem.
+[Matheus]  Done: #12946 - Melhorar fluxo tela de cadastro de animal
+
+☎️ [Carlos] Com Débora para entender requisitos e comportamentos esperados na feature de Recibo.
+☎️ [Carlos] Com Matheus para esclarecer detalhes de variáveis e assinatura usados no Recibo.
+☎️ [Carlos] Com Bruno sobre APP apontado para URL de DEV e importância na inclusão de uma suite de testes na API.
+☎️ [Carlos] Com Thayse para passar todos os recursos da Sprint106 que entraram em PROD.
+☎️ [Elias] Com Matheus para tirar dúvidas sobre o módulo PEC.
+☎️ [Matheus] Com Elias, sobre duvidas no modulo PEC.
+
+[Mobile] Standup 30/07/2026
+📆 Syncup Mobile
+
+Agrotrace
+[Carlos] In Progress: #12672 - Modelar a ferramenta considerando características identificadas:
+Recuperando detalhes e informações relevantes para continuar processo pós férias.
+[Elias] In Progress: #12980 - Publicar versões atualizadas de aplicativos terceiros.
+Publicado versão atualizada na PlayStore.
+Realizando a publicação da versão atualizada na AppStore (iOS).
+[Matheus]  In Progress: #12958 -  Estudar e verificar possiblidade de trabalho com o QGIS para analise de imagens
+[Matheus]  In Progress: #12991 - Ajustando relatorios PEC com problema em produção
+[Carlos] Done: #12979 - Ferramenta de análise:
+Análise e validação do APP.
+[Elias] Done: #12944 - Baixar dados do PEC.
+Corrigido exibição de propriedades disponíveis para baixar os dados do PEC no módulo do técnico.
+
+☎️ [Carlos] Com Elias sobre prócimas tarefas no Agrotrace.
+☎️ [Carlos] Com Ronaldo sobre inclusão de novo tipo de pergunta no FormDinâmico.
+☎️ [Elias] Com Gustavo com ajuda para acessar gmail da conta mobile.
+☎️ [Matheus] Com Gustavo e Thielson, me auxiliando nos problemas do Jasper.
+☎️ [Matheus] Com Iohan sobre credencial do banco de prod do agrotrace.
+☎️ [Matheus] Com Bruno sobre problema de 2FA ao logar no agrotrace.
+
+[Mobile] Standup 31/07/2026 🦩 
+📅 Spotlight WEB
+
+Agrotrace
+[Matheus]  In Progress #12991 - Ajustando relatorios PEC com problema em produção
+Relatório de Acompanhamento PQFL ✅
+Relatório de inconsistencias de qualidade ✅
+Relatório de PQFL
+[Elias] Done: #12980 - Publicar versões atualizadas de aplicativos terceiros.
+Publicado versão atualizada para ambas as lojas PlayStore e AppStore.
+[Elias] Done: #12994 - Backup e Instruções remotas não funcionando.
+A dificuldade não foi no aplicativo em si mas sim na infraestrutura do ambiente de produção. Foi feito uma chamada com o Lucas Corradin, encontrado o problema e corrigido o mesmo.
+[Carlos] Stand By: #12672 - Modelar a ferramenta considerando características identificadas:
+Recuperando detalhes e informações relevantes para continuar processo pós férias.
+
+☎️ [Carlos] Com Gustavo sobre dificuldade persistente na geração de backup e execução de instruções SQL.
+☎️ [Carlos] Com Elias sobre prioridade no Agrotrace.
+☎️ [Carlos] Com Thayse sobre melhoria na resposta de perguntas automaticas encadeadas.
+☎️ [Elias] Com Gustavo sobre possível dificuldade no envio de backups para o servidor.
+☎️ [Elias] Com Bruno e Lucas sobre dificuldade na rota de subir anexos.
+☎️ [Matheus] Com Gustavo me auxiliando nos problemas do Jasper.
+☎️ [Matheus] Com Ronaldo sobre logs do JasperServer.
+☎️ [Matheus] Com Thielson sobre jasper e relatorios em produção
+
+[Mobile] Standup 03-08-2026:
+
+Agrotrace:
+
+[Matheus]  In Progress #12947 - Atualizar Score do animal
+
+[Matheus]  Done #12991 - Ajustando relatorios PEC com problema em produção
+Relatório de PQFL ✅
+
+[Elias] Done: #12623 - Restringir safras no aplicativo.
+Done: #13010 - Alterações relacionadas na API e na Web.
+
+☎️ [Elias] Com Bruno sobre melhorias e nova funcionalidade na API.
+☎️ [Matheus] Com Gustavo me auxiliando nos problemas do Jasper.
+☎️ [Matheus] Com Thielson sobre jasper e relatorios em produção
+
+[MOBILE] Standup 04-08-2026:
+
+Agrotrace:
+[Matheus]  Done #12947 - Atualizar Score do animal
+[Matheus]  In Progress #12773 - Desenvolver a tela de pacotes de serviço no APP do Produtor
+[Elias] Done: #13027 - Corrigir exibição da data no relatório formulário dinâmico.
+Corrigido a timezone do objeto de data do Javascript.
+[Elias] Done: #13019 - Realizar testes na rota de cadastro de dispositivos.
+Realizado testes de cadastrar novos dispositivos e também dispositivos já cadastrados.
+
+☎️ [Matheus] Com Gustavo, sobre obrigatoriedade na propriedade Operacional do Checkmilk.
+☎️ [Matheus] Com Thielson sobre relatorios PEC em produção e task de escore no diagnostico PEC
+☎️ [Matheus] Com Elias, sobre crash do Agrotrace em produção.
+☎️ [Elias] Com Matheus para ajuda em resolução de dificuldades.
+☎️ [Elias] Com Bruno sobre feedback de testes em rota na API.
+
+[Mobile] Standup 05-08-2026:
+
+Agrotrace:
+
+[Matheus] In Progress #12950 - Configurar limite mínimo de anexos por atendimento
+
+[Matheus] Stand By #12773 - Desenvolver a tela de pacotes de serviço no APP do Produtor
+Finalizado maior parte, aguardando volta do Carlos para esclarecer algumas duvidas.
+
+[Elias] Stand By: #13017 - Não exibe foto da propriedade.
+Trabalhando na investigação de anexos corrompidos para tentar encontrar um padrão.
+
+[Elias] Done: #13043 - Ordenação para perguntas referenciadas.
+Adicionado ordenação para perguntas referenciadas do formulário dinâmico.
+
+☎️ [Elias] Com Bruno para investigar motivo de anexos corrompidos.
+☎️ [Elias] Com Thayse sobre feedback de testes e melhorias.
+☎️ [Matheus] Com Gustavo, sobre sincronização de alguns itens no Checkmilk.
+☎️ [Matheus] Com Brenda, sobre design dos pacotes de atendimento no app do Produtor, Agrotrace.
+☎️ [Matheus] Com Thayse, sobre pacote de atendimentos no Agrotrace e envio de backup no Checkmilk.
+
+ [MOBILE] Standup 06/08/2026
+
+Checkmilk:
+[Matheus] Done #13059 - Ajustado bugs de envio de anexo da resposta
+
+Agrotrace:
+[Elias] Done: #12997 - Respostas automáticas diagnóstico questionário.
+Melhorado funcionalidade de respostas automáticas para adicionar suporte a respostas automáticas recursivas.
+[Elias] In Progress: #12936 - Melhorias na tela de informações da propriedade.
+Trabalhando na correção da abertura do teclado para que o mesmo não fique por cima dos campos do formulário.
+[Matheus] Done #12950 - Configurar limite mínimo de anexos por atendimento
+[Matheus] In Progress #13063 - Criar Spotilight mobile
+
+☎️ [Elias] Com Thayse sobre feedback de testes e melhorias.
+☎️ [Elias] Com Thielson sobre melhorias no form dinâmico do aplicativo.

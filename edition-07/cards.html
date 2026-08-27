@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumo de Cards — Mobile Team · Ago 2026</title>
+<link rel="icon" type="image/svg+xml" href="../assets/web-team.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #0f1117;
+    --bg2:      #181c27;
+    --bg3:      #1e2235;
+    --bg4:      #252a40;
+    --border:   #2d3348;
+    --border2:  #3d4460;
+    --text:     #e8eaf2;
+    --text2:    #8b90a8;
+    --text3:    #555b78;
+    --ca:       #7c6af7;
+    --ca-bg:    #1a1640;
+    --ca-bd:    #3d3580;
+    --el:       #f0a855;
+    --el-bg:    #2a1e08;
+    --el-bd:    #7a5020;
+    --ma:       #3ecf8e;
+    --ma-bg:    #082418;
+    --ma-bd:    #1a6845;
+    --feat:     #60adf5;
+    --feat-bg:  #0c1e35;
+    --fix:      #f97070;
+    --fix-bg:   #2a0f0f;
+    --ref:      #f0c040;
+    --ref-bg:   #261e04;
+    --test:     #52d98a;
+    --test-bg:  #082418;
+    --radius:   6px;
+    --radius-lg:10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .hero {
+    padding: 56px 48px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,106,247,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .hero-title {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-names {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hero-names .dot {
+    color: var(--text3);
+    font-weight: 400;
+    font-size: 24px;
+  }
+
+  .hero-names .accent-ro { color: var(--ca); }
+  .hero-names .accent-br { color: var(--el); }
+  .hero-names .accent-th { color: var(--ma); }
+
+  .hero-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text2);
+    margin-bottom: 32px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .stat-chip {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 10px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+  }
+
+  .stat-val {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .stat-lbl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+  }
+
+  .controls {
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+    max-width: 360px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text3);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    pointer-events: none;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 8px 12px 8px 32px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .search-wrap input:focus { border-color: var(--border2); }
+  .search-wrap input::placeholder { color: var(--text3); }
+
+  .filter-group {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .fbtn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .fbtn:hover { background: var(--bg4); color: var(--text); }
+
+  .fbtn.on-feat  { background: var(--feat-bg); color: var(--feat);  border-color: var(--feat); }
+  .fbtn.on-fix   { background: var(--fix-bg);  color: var(--fix);   border-color: var(--fix); }
+  .fbtn.on-ref   { background: var(--ref-bg);  color: var(--ref);   border-color: var(--ref); }
+  .fbtn.on-test  { background: var(--test-bg); color: var(--test);  border-color: var(--test); }
+  .fbtn.on-all   { background: var(--bg4); color: var(--text); border-color: var(--border2); }
+  .fbtn.on-ro    { background: var(--ca-bg);  color: var(--ca);  border-color: var(--ca-bd); }
+  .fbtn.on-br    { background: var(--el-bg);  color: var(--el);  border-color: var(--el-bd); }
+  .fbtn.on-th    { background: var(--ma-bg);  color: var(--ma);  border-color: var(--ma-bd); }
+
+  .sep { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
+
+  .result-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .content {
+    padding: 32px 48px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .member-section { display: flex; flex-direction: column; gap: 0; }
+  .member-section.hidden { display: none; }
+
+  .member-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .member-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .av-ca { background: var(--ca-bg); color: var(--ca); border: 1px solid var(--ca-bd); }
+  .av-el { background: var(--el-bg); color: var(--el); border: 1px solid var(--el-bd); }
+  .av-ma { background: var(--ma-bg); color: var(--ma); border: 1px solid var(--ma-bd); }
+
+  .member-name {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .member-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    margin-left: 4px;
+  }
+
+  .member-bar {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .cards-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .cards-table thead th {
+    background: var(--bg3);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cards-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.12s;
+    animation: rowIn 0.3s ease both;
+  }
+
+  @keyframes rowIn {
+    from { opacity: 0; transform: translateX(-6px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .cards-table tbody tr:last-child { border-bottom: none; }
+  .cards-table tbody tr:hover { background: var(--bg3); }
+  .cards-table tbody tr.hidden { display: none; }
+
+  .cards-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+  }
+
+  .col-id {
+    width: 110px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    white-space: nowrap;
+  }
+
+  .col-id a {
+    color: var(--text3);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .col-id a:hover {
+    color: var(--ca);
+    text-decoration: underline;
+  }
+
+  .col-id .no-link {
+    color: var(--text3);
+    cursor: default;
+  }
+
+  .col-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .col-desc {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.55;
+  }
+
+  .col-type { width: 90px; }
+
+  .badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .badge-feat { background: var(--feat-bg); color: var(--feat); border: 1px solid #1a3d60; }
+  .badge-fix  { background: var(--fix-bg);  color: var(--fix);  border: 1px solid #5a1818; }
+  .badge-ref  { background: var(--ref-bg);  color: var(--ref);  border: 1px solid #5a4010; }
+  .badge-test { background: var(--test-bg); color: var(--test); border: 1px solid #0f5030; }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text3);
+    display: none;
+  }
+
+  .empty-state.visible { display: block; }
+
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-left {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 8px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+  }
+
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow" style="display:flex; align-items:center; gap:16px; justify-content:space-between">
+    <span>// mobile-team · agrotrace-v3 · rd-ra · pec · sprint review</span>
+    <a href="../index.html" style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text3); text-decoration:none; border:1px solid var(--border); padding:3px 10px; border-radius:4px; transition:all 0.15s; letter-spacing:0" onmouseover="this.style.color='#e8eaf2';this.style.borderColor='#3d4460'" onmouseout="this.style.color='var(--text3)';this.style.borderColor='var(--border)'">⌂ Hub</a>
+  </div>
+  <h1 class="hero-title">Resumo de Cards</h1>
+  <div class="hero-names">
+    <span class="accent-ro">Carlos</span>
+    <span class="dot">·</span>
+    <span class="accent-br">Elias</span>
+    <span class="dot">·</span>
+    <span class="accent-th">Matheus</span>
+  </div>
+  <div class="hero-sub">18/07 – 07/08/2026 &nbsp;·&nbsp; Tech Spotlight #07 &nbsp;·&nbsp; ~3 semanas · 39 cards entregues</div>
+
+  <div class="stats-row">
+    <div class="stat-chip">
+      <div class="stat-val" id="s-total">39</div>
+      <div class="stat-lbl">total</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--feat)" id="s-feat">20</div>
+      <div class="stat-lbl">features</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--fix)" id="s-fix">15</div>
+      <div class="stat-lbl">fixes</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--ref)" id="s-ref">4</div>
+      <div class="stat-lbl">refactors</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--test)" id="s-test">0</div>
+      <div class="stat-lbl">testes</div>
+    </div>
+    <div class="stat-chip" style="margin-left:auto">
+      <div class="stat-val" style="color:var(--ca)" id="s-ro">15</div>
+      <div class="stat-lbl">Carlos</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--el)" id="s-br">11</div>
+      <div class="stat-lbl">Elias</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--ma)" id="s-th">13</div>
+      <div class="stat-lbl">Matheus</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="searchInput" placeholder="Buscar por título ou #card..." oninput="applyFilters()">
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="filter-group" id="typeFilters">
+    <button class="fbtn on-all" data-filter="type" data-val="all" onclick="setFilter('type','all',this)">Todos</button>
+    <button class="fbtn" data-filter="type" data-val="feat" onclick="setFilter('type','feat',this)">feature</button>
+    <button class="fbtn" data-filter="type" data-val="fix"  onclick="setFilter('type','fix',this)">fix</button>
+    <button class="fbtn" data-filter="type" data-val="ref"  onclick="setFilter('type','ref',this)">refactor</button>
+    <button class="fbtn" data-filter="type" data-val="test" onclick="setFilter('type','test',this)">teste</button>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="filter-group" id="memberFilters">
+    <button class="fbtn on-all" data-filter="member" data-val="all" onclick="setFilter('member','all',this)">Todos</button>
+    <button class="fbtn" data-filter="member" data-val="ro" onclick="setFilter('member','ro',this)">Carlos</button>
+    <button class="fbtn" data-filter="member" data-val="br" onclick="setFilter('member','br',this)">Elias</button>
+    <button class="fbtn" data-filter="member" data-val="th" onclick="setFilter('member','th',this)">Matheus</button>
+  </div>
+
+  <div class="result-count" id="resultCount">39 cards</div>
+</div>
+
+<!-- CONTENT -->
+<div class="content" id="content"></div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">Mobile Team · Agrotrace v3 + RD-RA + PEC · gerado em 07/08/2026</div>
+  <div class="footer-right">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--feat)"></div>feature</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--fix)"></div>fix</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--ref)"></div>refactor</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--test)"></div>teste</div>
+  </div>
+</div>
+
+<script>
+const DATA = {
+  ro: {
+    name: 'Carlos',
+    avClass: 'av-ca',
+    avInit: 'CA',
+    nameColor: 'var(--ca)',
+    cards: [
+      { id:'#12768', type:'feat', title:'Filtro de perguntas no aplicativo - Criar', desc:'Criação de filtro de perguntas no aplicativo para facilitar a localização de itens no formulário.' },
+      { id:'#12812', type:'feat', title:'Atualizar Entidade Pessoa', desc:'Atualização da entidade Pessoa no sistema para refletir os campos e regras mais recentes.' },
+      { id:'#12868', type:'fix', title:'Dificuldade ao trocar de programa', desc:'Correção de regressão que dificultava a troca de programa dentro do aplicativo.' },
+      { id:'#12883', type:'fix', title:'APP Fechando sozinho', desc:'Correção de regressão que fazia o aplicativo fechar sozinho durante o uso.' },
+      { id:'#12885', type:'fix', title:'Impressão fora de ordem - Laudos Biodiesel-Cacau', desc:'Correção da ordem de impressão dos laudos nos projetos Biodiesel e Cacau.' },
+      { id:'#12887', type:'fix', title:'Verificar funcionalidade 2fa', desc:'Investigação e correção de problema em produção na funcionalidade de autenticação em duas etapas (2FA).' },
+      { id:'#12889', type:'fix', title:'Impressão do Formulário Dinâmico falha para formulários compartilhados', desc:'Correção de falha na impressão do Formulário Dinâmico quando o formulário é compartilhado entre programas.' },
+      { id:'#12899', type:'fix', title:'Envio dos dados PEC', desc:'Correção de problema em produção no envio dos dados do módulo PEC.' },
+      { id:'#12907', type:'fix', title:'Dificuldade com login', desc:'Correção de regressão que causava dificuldade para os usuários realizarem login.' },
+      { id:'#12908', type:'feat', title:'Melhorar fluxo de login usando MFA', desc:'Melhoria no fluxo de login com autenticação multifator (MFA).' },
+      { id:'#12918', type:'fix', title:'Ajustes no módulo PEC', desc:'Ajustes de correção no módulo PEC após identificação de regressões.' },
+      { id:'#12924', type:'feat', title:'Tabela de qualidade no RAT', desc:'Adição de tabela de qualidade no Relatório de Atendimento Técnico (RAT).' },
+      { id:'#12928', type:'feat', title:'Tamanho da fonte no RAT', desc:'Ajuste do tamanho de fonte no Relatório de Atendimento Técnico (RAT) para melhorar a legibilidade.' },
+      { id:'#12978', type:'ref', title:'Publicar nova versão em PROD', desc:'Publicação de nova versão do sistema em produção.' },
+      { id:'#12979', type:'ref', title:'Ferramenta de análise', desc:'Disponibilização de ferramenta de análise solicitada pelo time.' }
+    ]
+  },
+  br: {
+    name: 'Elias',
+    avClass: 'av-el',
+    avInit: 'EL',
+    nameColor: 'var(--el)',
+    cards: [
+      { id:'#12994', type:'fix', title:'Backup e Instruções não estão funcionando', desc:'Correção de problema em produção no backup e nas instruções que não estavam funcionando.' },
+      { id:'#12612', type:'feat', title:'Adicionar funcionalidade de pesagem', desc:'Adição da funcionalidade de pesagem no módulo de pecuária.' },
+      { id:'#12980', type:'ref', title:'Publicar versões atualizadas', desc:'Publicação de versões atualizadas do sistema.' },
+      { id:'#12997', type:'feat', title:'Respostas Automáticas', desc:'Implementação de respostas automáticas. Em teste (QA).' },
+      { id:'#13010', type:'feat', title:'Restringir safras - API', desc:'Restrição de safras na API. Em teste (QA).' },
+      { id:'#13027', type:'fix', title:'Data na impressão saindo errada - Form Dinamico', desc:'Correção de regressão na data exibida na impressão do Formulário Dinâmico. Em teste (QA).' },
+      { id:'#12944', type:'fix', title:'Baixar dados PEC', desc:'Correção de regressão no download dos dados do módulo PEC. Em teste (QA).' },
+      { id:'#9967', type:'fix', title:'Aplicativo fechando sozinho ao entrar na nova tela de localização da propriedade', desc:'Correção de bug que fazia o aplicativo fechar sozinho ao acessar a tela de localização da propriedade. Em teste (QA).' },
+      { id:'#12610', type:'feat', title:'Adicionar módulo PEC na visão do Produtor', desc:'Adição do módulo PEC na visão do Produtor. Em teste (QA).' },
+      { id:'#12623', type:'feat', title:'Restringir safras no APP', desc:'Restrição de safras no aplicativo. Em teste (QA).' },
+      { id:'#13043', type:'fix', title:'Pergunta fora de ordem - Form Atividade Produtiva', desc:'Correção de regressão na ordem das perguntas do Formulário de Atividade Produtiva. Em teste (QA).' }
+    ]
+  },
+  th: {
+    name: 'Matheus',
+    avClass: 'av-ma',
+    avInit: 'MA',
+    nameColor: 'var(--ma)',
+    cards: [
+      { id:'#12835', type:'feat', title:'Liberar protocolo de animais lactantes', desc:'Liberação do protocolo de atendimento para animais lactantes.' },
+      { id:'#12837', type:'fix', title:'Módulo Financeiro - Saldo', desc:'Correção de problema em produção no cálculo/exibição de saldo no módulo Financeiro.' },
+      { id:'#12841', type:'feat', title:'Alterar data do atendimento produtivo', desc:'Permitir a alteração da data do atendimento produtivo.' },
+      { id:'#12779', type:'feat', title:'Retirado Diagnostico pós parto', desc:'Ajuste no fluxo de diagnóstico pós-parto do animal.' },
+      { id:'#12799', type:'feat', title:'Retirar recibo do RAT do modulo PEC', desc:'Remoção/ajuste da emissão de recibo do RAT dentro do módulo PEC.' },
+      { id:'#12645', type:'feat', title:'Trabalhar nos relatórios vindos do CheckMilk', desc:'Desenvolvimento dos relatórios com dados vindos do CheckMilk.' },
+      { id:'#12760', type:'feat', title:'Adicionado sync de dados do Qualidade do Leite', desc:'Adição da sincronização de dados do módulo Qualidade do Leite.' },
+      { id:'#12991', type:'fix', title:'Ajustando relatorios PEC com problema em produção', desc:'Ajuste dos relatórios do PEC que apresentavam problema em produção.' },
+      { id:'#12910', type:'ref', title:'Recibo e Assinatura - Cacau - Biodiesel', desc:'Ajuste de recibo e assinatura para os projetos Cacau e Biodiesel. Em teste (QA).' },
+      { id:'#12935', type:'feat', title:'Melhorar a pergunta GPS no FormDinâmico', desc:'Melhoria na pergunta de GPS do Formulário Dinâmico. Em teste (QA).' },
+      { id:'#12946', type:'feat', title:'Tela de cadastro de animal', desc:'Nova tela de cadastro de animal. Em teste (QA).' },
+      { id:'#12947', type:'feat', title:'Atualizar Score do animal', desc:'Atualização do cálculo/exibição do Score do animal. Em teste (QA).' },
+      { id:'#12950', type:'feat', title:'Configurar limite mínimo de anexos por atendimento', desc:'Configuração de limite mínimo de anexos exigidos por atendimento. Em teste (QA).' }
+    ]
+  }
+};
+
+
+const members = ['ro','br','th'];
+let activeType   = 'all';
+let activeMember = 'all';
+
+function badgeClass(type) {
+  return { feat:'badge-feat', fix:'badge-fix', ref:'badge-ref', test:'badge-test' }[type];
+}
+
+function badgeLabel(type) {
+  return { feat:'feature', fix:'fix', ref:'refactor', test:'teste' }[type];
+}
+
+function isAzureCard(id) {
+  return /^#\d+/.test(id);
+}
+
+function render() {
+  const root = document.getElementById('content');
+  root.innerHTML = '';
+
+  members.forEach(m => {
+    const d = DATA[m];
+    const section = document.createElement('div');
+    section.className = 'member-section';
+    section.id = 'sec-' + m;
+
+    section.innerHTML = `
+      <div class="member-header">
+        <div class="member-avatar ${d.avClass}">${d.avInit}</div>
+        <span class="member-name" style="color:${d.nameColor}">${d.name}</span>
+        <span class="member-meta" id="meta-${m}">${d.cards.length} cards</span>
+        <div class="member-bar"></div>
+      </div>
+      <table class="cards-table" id="tbl-${m}">
+        <thead>
+          <tr>
+            <th style="width:110px">#Card</th>
+            <th>Título &amp; Descrição</th>
+            <th style="width:90px">Tipo</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-${m}"></tbody>
+      </table>
+      <div class="empty-state" id="empty-${m}">Nenhum card encontrado.</div>
+    `;
+
+    root.appendChild(section);
+
+    const tbody = document.getElementById('tbody-' + m);
+    d.cards.forEach(c => {
+      const tr = document.createElement('tr');
+      tr.dataset.type   = c.type;
+      tr.dataset.member = m;
+      tr.dataset.search = (c.id + ' ' + c.title + ' ' + c.desc).toLowerCase();
+
+      const idCell = isAzureCard(c.id)
+        ? `<a href="https://dev.azure.com/ibsbiosistemico/AGROTRACE/_workitems/edit/${c.id.replace('#','')}" target="_blank" title="Abrir no Azure DevOps">${c.id}</a>`
+        : `<span class="no-link" title="Marco interno (sem card Azure)">${c.id}</span>`;
+
+      tr.innerHTML = `
+        <td class="col-id">${idCell}</td>
+        <td>
+          <div class="col-title">${c.title}</div>
+          <div class="col-desc">${c.desc}</div>
+        </td>
+        <td class="col-type"><span class="badge ${badgeClass(c.type)}">${badgeLabel(c.type)}</span></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  });
+
+  applyFilters();
+}
+
+function setFilter(group, val, btn) {
+  document.querySelectorAll(`[data-filter="${group}"]`).forEach(b => {
+    b.className = 'fbtn';
+  });
+  btn.classList.add('on-' + (val === 'all' ? 'all' : val));
+
+  if (group === 'type')   activeType   = val;
+  if (group === 'member') activeMember = val;
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  let total = 0, feat = 0, fix = 0, ref = 0, test = 0;
+  const perM = { ro:0, br:0, th:0 };
+
+  members.forEach(m => {
+    const sec   = document.getElementById('sec-' + m);
+    const empty = document.getElementById('empty-' + m);
+    const memberMatch = activeMember === 'all' || activeMember === m;
+
+    if (!memberMatch) {
+      sec.classList.add('hidden');
+      return;
+    }
+    sec.classList.remove('hidden');
+
+    let vis = 0;
+    sec.querySelectorAll('tbody tr').forEach(row => {
+      const typeOk   = activeType === 'all' || row.dataset.type === activeType;
+      const searchOk = !q || row.dataset.search.includes(q);
+      const show = typeOk && searchOk;
+      row.classList.toggle('hidden', !show);
+      if (show) {
+        vis++;
+        total++;
+        const t = row.dataset.type;
+        if (t === 'feat') feat++;
+        if (t === 'fix')  fix++;
+        if (t === 'ref')  ref++;
+        if (t === 'test') test++;
+        perM[m]++;
+      }
+    });
+
+    document.getElementById('meta-' + m).textContent = vis + ' card' + (vis !== 1 ? 's' : '');
+    empty.classList.toggle('visible', vis === 0);
+  });
+
+  document.getElementById('resultCount').textContent = total + ' card' + (total !== 1 ? 's' : '');
+  document.getElementById('s-total').textContent = total;
+  document.getElementById('s-feat').textContent  = feat;
+  document.getElementById('s-fix').textContent   = fix;
+  document.getElementById('s-ref').textContent   = ref;
+  document.getElementById('s-test').textContent  = test;
+  document.getElementById('s-ro').textContent    = perM.ro;
+  document.getElementById('s-br').textContent    = perM.br;
+  document.getElementById('s-th').textContent    = perM.th;
+}
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,5306 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Spotlight — Mobile Team | 07/08/2026</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/web-team.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0d1117;
+        --bg2: #161b22;
+        --bg3: #1c2128;
+        --bg4: #21262d;
+        --border: #30363d;
+        --border2: #484f58;
+        --text: #e6edf3;
+        --text2: #8b949e;
+        --text3: #6e7681;
+        --purple: #a78bfa;
+        --purple-d: #7c3aed;
+        --purple-bg: #1a1033;
+        --teal: #34d399;
+        --teal-bg: #0a2218;
+        --coral: #fb923c;
+        --coral-bg: #2a1100;
+        --blue: #60a5fa;
+        --blue-bg: #0c1a2e;
+        --amber: #fbbf24;
+        --amber-bg: #241a00;
+        --green: #4ade80;
+        --red: #f87171;
+        --pink: #f472b6;
+        --font-mono: "JetBrains Mono", monospace;
+        --font-sans: "Space Grotesk", sans-serif;
+        --radius: 8px;
+        --radius-lg: 12px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-sans);
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── TOPBAR ── */
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        height: 38px;
+        padding: 0;
+        flex-shrink: 0;
+      }
+
+      .topbar-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 16px;
+        border-right: 1px solid var(--border);
+        height: 100%;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--text2);
+      }
+
+      .topbar-logo .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .dot-red {
+        background: #ff5f57;
+      }
+      .dot-amber {
+        background: #febc2e;
+      }
+      .dot-green {
+        background: #28c840;
+      }
+
+      .tabs-bar {
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        height: 100%;
+        flex: 1;
+      }
+      .tabs-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tab-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 16px;
+        height: 100%;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--text3);
+        border-right: 1px solid var(--border);
+        cursor: pointer;
+        white-space: nowrap;
+        transition:
+          background 0.15s,
+          color 0.15s;
+        position: relative;
+      }
+      .tab-item:hover {
+        background: var(--bg3);
+        color: var(--text2);
+      }
+      .tab-item.active {
+        background: var(--bg);
+        color: var(--text);
+      }
+      .tab-item.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--purple);
+      }
+
+      .tab-icon {
+        font-size: 12px;
+      }
+
+      .topbar-right {
+        margin-left: auto;
+        padding: 0 16px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--text3);
+        border-left: 1px solid var(--border);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+      }
+
+      /* ── MAIN LAYOUT ── */
+      .main {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      /* ── SIDEBAR ── */
+      .sidebar {
+        width: 220px;
+        background: var(--bg2);
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        overflow-y: auto;
+      }
+
+      .sidebar-section {
+        padding: 0;
+      }
+
+      .sidebar-header {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--text3);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 14px 16px 6px;
+      }
+
+      .sidebar-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 5px 16px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--text2);
+        cursor: pointer;
+        transition:
+          background 0.12s,
+          color 0.12s;
+        border-left: 2px solid transparent;
+      }
+      .sidebar-item:hover {
+        background: var(--bg3);
+        color: var(--text);
+      }
+      .sidebar-item.active {
+        background: var(--bg4);
+        color: var(--text);
+        border-left-color: var(--purple);
+      }
+
+      .sidebar-icon {
+        width: 14px;
+        text-align: center;
+        font-size: 11px;
+      }
+
+      .sidebar-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 8px 0;
+      }
+
+      .sidebar-team {
+        padding: 8px 16px 14px;
+      }
+
+      .member {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 0;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--text2);
+      }
+
+      .member-avatar {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: 700;
+      }
+      .av-r {
+        background: var(--purple-bg);
+        color: var(--purple);
+      }
+      .av-b {
+        background: var(--blue-bg);
+        color: var(--blue);
+      }
+      .av-t {
+        background: var(--teal-bg);
+        color: var(--teal);
+      }
+
+      .member-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--teal);
+        margin-left: auto;
+      }
+
+      /* ── CONTENT ── */
+      .content {
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .slide {
+        display: none;
+        flex: 1;
+        overflow-y: auto;
+        padding: 40px 56px;
+        animation: fadeIn 0.25s ease;
+      }
+      .slide.active {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── STATUSBAR ── */
+      .statusbar {
+        height: 24px;
+        background: var(--purple-d);
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        gap: 20px;
+        flex-shrink: 0;
+      }
+
+      .status-item {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.85);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      /* ── TIMER WIDGET ── */
+      .timer-widget {
+        position: fixed;
+        top: 46px;
+        right: 16px;
+        z-index: 900;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 6px 14px;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.2s;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+      }
+      .timer-widget:hover {
+        border-color: var(--border2);
+        background: var(--bg3);
+      }
+      .timer-icon {
+        font-size: 12px;
+        color: var(--text3);
+        transition: color 0.2s;
+      }
+      .timer-display {
+        font-family: var(--font-mono);
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--text3);
+        letter-spacing: 0.05em;
+        transition: color 0.2s;
+      }
+      .timer-widget.running .timer-icon {
+        color: var(--teal);
+      }
+      .timer-widget.running .timer-display {
+        color: var(--teal);
+      }
+      .timer-widget.warning .timer-display {
+        color: var(--amber);
+      }
+      .timer-widget.warning .timer-icon {
+        color: var(--amber);
+      }
+      .timer-widget.overtime .timer-display {
+        color: var(--red);
+      }
+      .timer-widget.overtime .timer-icon {
+        color: var(--red);
+      }
+
+      /* ── CODE BLOCK ── */
+      .code-block {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      .code-block-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: var(--bg3);
+        border-bottom: 1px solid var(--border);
+        font-size: 13px;
+        color: var(--text2);
+      }
+
+      .code-body {
+        display: flex;
+        overflow-x: auto;
+      }
+
+      .line-numbers {
+        padding: 14px 12px;
+        color: var(--text3);
+        text-align: right;
+        user-select: none;
+        border-right: 1px solid var(--border);
+        min-width: 42px;
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .code-lines {
+        padding: 14px 18px;
+        flex: 1;
+      }
+
+      .kw {
+        color: #c792ea;
+      }
+      .str {
+        color: #c3e88d;
+      }
+      .cmt {
+        color: #546e7a;
+        font-style: italic;
+      }
+      .num {
+        color: #f78c6c;
+      }
+      .fn {
+        color: #82aaff;
+      }
+      .prop {
+        color: #89ddff;
+      }
+      .tag {
+        color: var(--amber);
+      }
+      .ok {
+        color: var(--teal);
+      }
+      .err {
+        color: var(--red);
+      }
+      .punc {
+        color: var(--text2);
+      }
+
+      /* ── SLIDE COMPONENTS ── */
+      .slide-title {
+        font-family: var(--font-sans);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text3);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .slide-heading {
+        font-family: var(--font-sans);
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 24px;
+        line-height: 1.2;
+      }
+
+      .slide-heading span {
+        color: var(--purple);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: 500;
+      }
+      .badge-purple {
+        background: var(--purple-bg);
+        color: var(--purple);
+        border: 1px solid #4c1d95;
+      }
+      .badge-teal {
+        background: var(--teal-bg);
+        color: var(--teal);
+        border: 1px solid #065f46;
+      }
+      .badge-blue {
+        background: var(--blue-bg);
+        color: var(--blue);
+        border: 1px solid #1e3a5f;
+      }
+      .badge-amber {
+        background: var(--amber-bg);
+        color: var(--amber);
+        border: 1px solid #78350f;
+      }
+      .badge-coral {
+        background: var(--coral-bg);
+        color: var(--coral);
+        border: 1px solid #7c2d12;
+      }
+      .badge-green {
+        background: #0a2218;
+        color: var(--green);
+        border: 1px solid #14532d;
+      }
+      .badge-red {
+        background: #2a0f0f;
+        color: var(--red);
+        border: 1px solid #7f1d1d;
+      }
+
+      .card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 16px 20px;
+      }
+
+      .card-accent-purple {
+        border-left: 3px solid var(--purple);
+      }
+      .card-accent-teal {
+        border-left: 3px solid var(--teal);
+      }
+      .card-accent-blue {
+        border-left: 3px solid var(--blue);
+      }
+      .card-accent-coral {
+        border-left: 3px solid var(--coral);
+      }
+      .card-accent-amber {
+        border-left: 3px solid var(--amber);
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+      }
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+
+      .metric {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 14px 16px;
+        text-align: center;
+      }
+      .metric-val {
+        font-family: var(--font-mono);
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--purple);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .metric-lbl {
+        font-size: 14px;
+        color: var(--text3);
+      }
+
+      .flex-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .mb-4 {
+        margin-bottom: 4px;
+      }
+      .mb-8 {
+        margin-bottom: 8px;
+      }
+      .mb-12 {
+        margin-bottom: 12px;
+      }
+      .mb-16 {
+        margin-bottom: 16px;
+      }
+      .mb-20 {
+        margin-bottom: 20px;
+      }
+      .mb-24 {
+        margin-bottom: 24px;
+      }
+      .mt-16 {
+        margin-top: 16px;
+      }
+      .mt-20 {
+        margin-top: 20px;
+      }
+
+      .section-block {
+        margin-bottom: 18px;
+      }
+
+      .section-label {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text3);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .tag-list {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .chip {
+        background: var(--bg4);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 3px 12px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text2);
+      }
+
+      .flow {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--text2);
+      }
+
+      .flow-step {
+        background: var(--bg4);
+        border: 1px solid var(--border2);
+        border-radius: var(--radius);
+        padding: 8px 16px;
+        color: var(--text);
+        font-size: 15px;
+      }
+
+      .flow-arrow {
+        color: var(--text3);
+        font-size: 18px;
+      }
+
+      .win-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 16px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .win-icon {
+        font-size: 24px;
+      }
+
+      .win-who {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .win-text {
+        font-size: 16px;
+        color: var(--text2);
+        line-height: 1.6;
+      }
+
+      .todo-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 16px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 8px;
+      }
+
+      .todo-check {
+        width: 16px;
+        height: 16px;
+        border: 1.5px solid var(--border2);
+        border-radius: 3px;
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+
+      .todo-content {
+        flex: 1;
+      }
+      .todo-title {
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+      .todo-desc {
+        font-size: 14px;
+        color: var(--text3);
+      }
+      .todo-who {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        padding: 3px 10px;
+        border-radius: 3px;
+      }
+
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: relative;
+      }
+
+      .tl-item {
+        display: flex;
+        gap: 16px;
+        padding-bottom: 16px;
+      }
+
+      .tl-line {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+
+      .tl-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--purple);
+        flex-shrink: 0;
+        margin-top: 4px;
+      }
+
+      .tl-connector {
+        width: 2px;
+        flex: 1;
+        background: var(--border);
+        min-height: 20px;
+      }
+
+      .tl-body {
+        flex: 1;
+      }
+
+      .tl-time {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text3);
+        margin-bottom: 4px;
+      }
+
+      .tl-text {
+        font-size: 16px;
+        color: var(--text2);
+        line-height: 1.5;
+      }
+
+      /* ── NAV CONTROLS ── */
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 10px;
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        flex-shrink: 0;
+      }
+
+      .nav-btn {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        color: var(--text2);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        padding: 8px 20px;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .nav-btn:hover {
+        background: var(--bg4);
+        color: var(--text);
+        border-color: var(--border2);
+      }
+      .nav-btn:active {
+        transform: scale(0.97);
+      }
+
+      .nav-dots {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+
+      .nav-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--border2);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .nav-dot.active {
+        background: var(--purple);
+        transform: scale(1.4);
+      }
+
+      .slide-counter {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text3);
+        min-width: 60px;
+        text-align: center;
+      }
+
+      /* ── COVER ── */
+      .cover-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        max-width: 1100px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .cover-icon {
+        width: 72px;
+        height: 72px;
+        display: block;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 4px 16px rgba(127, 119, 221, 0.3));
+      }
+
+      .cover-tag {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--purple);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      .cover-title {
+        font-size: 52px;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 12px;
+      }
+
+      .cover-title .accent {
+        color: var(--purple);
+      }
+
+      .cover-subtitle {
+        font-family: var(--font-mono);
+        font-size: 16px;
+        color: var(--text2);
+        margin-bottom: 24px;
+      }
+
+      .cover-code {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        font-family: var(--font-mono);
+        font-size: 15px;
+      }
+
+      .cover-code-header {
+        background: var(--bg3);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 16px;
+        font-size: 13px;
+        color: var(--text3);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .cover-code-body {
+        padding: 16px 18px;
+        line-height: 1.8;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        padding: 6px 14px;
+        border-radius: 20px;
+        background: var(--bg4);
+        border: 1px solid var(--border);
+        color: var(--text2);
+      }
+
+      .progress-bar {
+        height: 4px;
+        background: var(--border);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-top: 8px;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--purple), var(--blue));
+        border-radius: 2px;
+        transition: width 0.5s ease;
+      }
+
+      kbd {
+        display: inline-block;
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        border-radius: 4px;
+        padding: 1px 6px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--text2);
+      }
+
+      /* scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border2);
+        border-radius: 3px;
+      }
+
+      /* ── CLICKABLE METRICS ── */
+      .metric-click {
+        cursor: pointer;
+        transition: all 0.2s;
+        position: relative;
+      }
+      .metric-click:hover {
+        border-color: var(--border2);
+        background: var(--bg4);
+        transform: translateY(-2px);
+      }
+      .metric-click::after {
+        content: "▾ ver cards";
+        position: absolute;
+        bottom: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--font-mono);
+        font-size: 9px;
+        color: var(--text3);
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .metric-click:hover::after {
+        opacity: 1;
+      }
+
+      /* ── KPI MODAL ── */
+      .kpi-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+      .kpi-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .kpi-modal {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        width: 90%;
+        max-width: 800px;
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(10px);
+        transition: transform 0.2s;
+      }
+      .kpi-overlay.open .kpi-modal {
+        transform: translateY(0);
+      }
+
+      .kpi-modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+      .kpi-modal-title {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .kpi-modal-close {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text2);
+        font-size: 14px;
+        padding: 4px 12px;
+        cursor: pointer;
+      }
+      .kpi-modal-close:hover {
+        background: var(--bg4);
+        color: var(--text);
+      }
+
+      .kpi-modal-body {
+        overflow-y: auto;
+        padding: 0;
+      }
+
+      .kpi-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      .kpi-table thead th {
+        background: var(--bg3);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--text3);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 10px 16px;
+        text-align: left;
+        position: sticky;
+        top: 0;
+      }
+      .kpi-table tbody tr {
+        border-bottom: 1px solid var(--border);
+        transition: background 0.1s;
+      }
+      .kpi-table tbody tr:hover {
+        background: var(--bg3);
+      }
+      .kpi-table td {
+        padding: 10px 16px;
+        color: var(--text2);
+      }
+      .kpi-table td:first-child {
+        color: var(--text);
+        font-family: var(--font-mono);
+        font-size: 13px;
+      }
+      .kpi-table .kpi-badge {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 12px;
+      }
+
+      /* ── OVERVIEW CARDS ── */
+      .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        align-content: start;
+      }
+
+      .overview-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 12px 14px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        position: relative;
+      }
+      .overview-card:hover {
+        border-color: var(--purple);
+        background: var(--bg3);
+        transform: translateY(-2px);
+      }
+
+      .overview-card-id {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--text3);
+      }
+
+      .overview-card-title {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text);
+        line-height: 1.35;
+        padding-right: 50px;
+      }
+
+      .overview-card-hint {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--text3);
+        margin-top: 4px;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .overview-card:hover .overview-card-hint {
+        opacity: 1;
+      }
+
+      .overview-card-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      /* ── ATER DIGITAL VISUALS ── */
+      .ater-visual-panel {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 0;
+      }
+
+      .ater-visual-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .ater-visual-title {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text3);
+      }
+
+      .ater-shot-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .ater-shot {
+        background: #f8faf9;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        min-height: 140px;
+        position: relative;
+      }
+
+      .ater-shot img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+      }
+
+      .ater-shot.tall img {
+        object-position: top center;
+      }
+
+      .ater-shot.wide {
+        grid-column: 1 / -1;
+      }
+
+      .ater-shot.wide img {
+        height: 190px;
+      }
+
+      .ater-shot-caption {
+        position: absolute;
+        left: 8px;
+        bottom: 8px;
+        right: 8px;
+        background: rgba(13, 17, 23, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 4px;
+        padding: 4px 6px;
+        font-family: var(--font-mono);
+        font-size: 9px;
+        color: var(--text2);
+      }
+
+      /* ── SCREENSHOT MODAL ── */
+      .ss-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        z-index: 1100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+      .ss-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .ss-modal {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        width: 92%;
+        max-width: 1100px;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(10px);
+        transition: transform 0.2s;
+      }
+      .ss-overlay.open .ss-modal {
+        transform: translateY(0);
+      }
+
+      .ss-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        gap: 12px;
+      }
+
+      .ss-header-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .ss-card-id {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--purple);
+        flex-shrink: 0;
+      }
+
+      .ss-title {
+        font-size: 15px;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .ss-close {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text2);
+        font-size: 14px;
+        padding: 4px 12px;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+      .ss-close:hover {
+        background: var(--bg4);
+        color: var(--text);
+      }
+
+      .ss-body {
+        overflow: auto;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        min-height: 200px;
+      }
+
+      .ss-body img {
+        max-width: 100%;
+        max-height: 70vh;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+      }
+
+      /* Modo "tall" — screenshots de celular muito altos:
+         largura travada (mimetiza viewport mobile), altura livre,
+         body rola verticalmente. Botões/contador passam a fixed
+         pra continuarem visíveis durante o scroll. */
+      .ss-body.tall {
+        align-items: flex-start;
+      }
+      .ss-body.tall img {
+        max-width: 380px;
+        max-height: none;
+        width: 100%;
+      }
+      .ss-body.tall .ss-carousel-btn {
+        position: fixed;
+        top: 50%;
+      }
+      .ss-body.tall .ss-carousel-btn.prev {
+        left: 30px;
+      }
+      .ss-body.tall .ss-carousel-btn.next {
+        right: 30px;
+      }
+      .ss-body.tall .ss-counter {
+        position: fixed;
+        bottom: 5vh;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .ss-carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        color: var(--text);
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          opacity 0.2s ease,
+          background 0.15s,
+          border-color 0.15s;
+        z-index: 2;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .ss-body:hover .ss-carousel-btn,
+      .ss-carousel-btn:focus-visible {
+        opacity: 0.8;
+        pointer-events: auto;
+      }
+      .ss-carousel-btn:hover {
+        background: var(--bg4);
+        border-color: var(--purple);
+        opacity: 1;
+      }
+      .ss-carousel-btn.prev {
+        left: 12px;
+      }
+      .ss-carousel-btn.next {
+        right: 12px;
+      }
+
+      .ss-counter {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 4px 14px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text2);
+        z-index: 2;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+      }
+      .ss-body:hover .ss-counter {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .ss-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--border2);
+        transition: all 0.2s;
+      }
+      .ss-dot.active {
+        background: var(--purple);
+        transform: scale(1.4);
+      }
+
+      .ss-empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 48px;
+        color: var(--text3);
+        font-family: var(--font-mono);
+        font-size: 14px;
+      }
+
+      .ss-empty-icon {
+        font-size: 40px;
+        opacity: 0.5;
+      }
+
+      /* ── STATS FILTER ── */
+      .stats-filter {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        padding: 4px 14px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        background: var(--bg3);
+        color: var(--text2);
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .stats-filter:hover {
+        border-color: var(--border2);
+        color: var(--text);
+      }
+      .stats-filter.active {
+        background: var(--f-color, var(--purple-d));
+        border-color: var(--f-color, var(--purple-d));
+        color: #fff;
+      }
+
+      /* ── TERMINAL DEMO ── */
+      .term-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s;
+      }
+      .term-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .term-window {
+        background: #0d1117;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        width: 90%;
+        max-width: 820px;
+        max-height: 82vh;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(12px) scale(0.97);
+        transition: transform 0.25s;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+      }
+      .term-overlay.open .term-window {
+        transform: translateY(0) scale(1);
+      }
+
+      .term-titlebar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: var(--bg3);
+        border-bottom: 1px solid var(--border);
+        border-radius: 10px 10px 0 0;
+      }
+      .term-titlebar .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .term-titlebar-text {
+        flex: 1;
+        text-align: center;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text3);
+      }
+      .term-close-btn {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text3);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        padding: 2px 10px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .term-close-btn:hover {
+        background: var(--bg4);
+        color: var(--text);
+      }
+
+      .term-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px 20px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text2);
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .term-body .t-prompt {
+        color: var(--teal);
+      }
+      .term-body .t-cmd {
+        color: #e6edf3;
+        font-weight: 700;
+      }
+      .term-body .t-info {
+        color: var(--blue);
+      }
+      .term-body .t-header {
+        color: var(--amber);
+        font-weight: 700;
+      }
+      .term-body .t-label {
+        color: var(--purple);
+      }
+      .term-body .t-ok {
+        color: var(--teal);
+        font-weight: 700;
+      }
+      .term-body .t-h2 {
+        color: var(--amber);
+        font-weight: 700;
+      }
+      .term-body .t-check {
+        color: var(--text3);
+      }
+      .term-body .t-link {
+        color: var(--blue);
+        text-decoration: underline;
+      }
+      .term-body .t-dim {
+        color: var(--text3);
+      }
+      .term-body .t-sparkle {
+        color: #c15f3c;
+        font-weight: 700;
+      }
+      .term-body .t-step-pipe {
+        color: var(--text3);
+        display: inline;
+      }
+      .term-body .t-spin-dot {
+        color: #e5a94e;
+        font-weight: 700;
+        display: inline;
+      }
+      .term-body .t-spin-text {
+        color: var(--text3);
+        display: inline;
+      }
+      .term-body .t-done-dot {
+        color: var(--teal);
+        font-weight: 700;
+        display: inline;
+      }
+      .term-body .t-done-text {
+        color: var(--text3);
+        display: inline;
+      }
+      .term-body .t-cyan {
+        color: var(--blue);
+        font-weight: 700;
+      }
+      .term-body .t-bold {
+        color: #e6edf3;
+        font-weight: 700;
+      }
+      @keyframes termPulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+      .term-body .t-cursor {
+        display: inline-block;
+        width: 8px;
+        height: 15px;
+        background: var(--teal);
+        vertical-align: text-bottom;
+        animation: blink 0.8s step-end infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .term-play-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--bg4);
+        border: 1px solid var(--border2);
+        border-radius: var(--radius);
+        color: var(--amber);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .term-play-btn:hover {
+        background: var(--amber-bg);
+        border-color: var(--amber);
+        color: var(--text);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TIMER WIDGET -->
+    <div
+      class="timer-widget"
+      id="timerBtn"
+      onclick="toggleTimer()"
+      title="Clique para iniciar (ou pressione T)"
+    >
+      <span class="timer-icon" id="timerIcon">▶</span>
+      <span class="timer-display" id="timerDisplay">00:00</span>
+    </div>
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <a
+        href="../index.html"
+        class="topbar-logo"
+        style="text-decoration: none; color: var(--text2)"
+        title="Voltar ao índice"
+      >
+        <div class="dot dot-red"></div>
+        <div class="dot dot-amber"></div>
+        <div class="dot dot-green"></div>
+        &nbsp;⌂ hub
+      </a>
+      <div class="tabs-bar" id="tabsBar"></div>
+      <div class="topbar-right">
+        <span>UTF-8</span>
+        <span>TypeScript</span>
+        <span>Git: main</span>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-header">Explorer</div>
+
+          <div class="sidebar-item active" onclick="goTo(0)" id="si-0">
+            <span class="sidebar-icon">📋</span> README.md
+          </div>
+          <div class="sidebar-item" onclick="goTo(1)" id="si-1">
+            <span class="sidebar-icon">📅</span> agenda.ts
+          </div>
+          <div class="sidebar-item" onclick="goTo(2)" id="si-2">
+            <span class="sidebar-icon">📊</span> stats.json
+          </div>
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header">Matheus</div>
+
+          <div class="sidebar-item" onclick="goTo(3)" id="si-3">
+            <span class="sidebar-icon">🤖</span> pec-testes.service.ts
+          </div>
+          <div class="sidebar-item" onclick="goTo(7)" id="si-7">
+            <span class="sidebar-icon">📸</span> overview-matheus.md
+          </div>
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header" title="Ausente hoje">Carlos 🌙</div>
+
+          <div class="sidebar-item" onclick="goTo(4)" id="si-4">
+            <span class="sidebar-icon">🔐</span> carlos-highlights.service.ts
+          </div>
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header">Elias</div>
+
+          <div class="sidebar-item" onclick="goTo(5)" id="si-5">
+            <span class="sidebar-icon">📊</span> entregas-elias.module.ts
+          </div>
+          <div class="sidebar-item" onclick="goTo(6)" id="si-6">
+            <span class="sidebar-icon">💡</span> 9router.md
+          </div>
+          <div class="sidebar-item" onclick="goTo(9)" id="si-9">
+            <span class="sidebar-icon">📸</span> overview-elias.md
+          </div>
+
+          <!-- <div class="sidebar-divider"></div> -->
+          <!-- <div class="sidebar-header">Lightning</div>
+
+          <div class="sidebar-item" onclick="goTo(8)" id="si-8">
+            <span class="sidebar-icon">⚡</span> openspec-em-uso.md
+          </div> -->
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header">Wrap-up</div>
+
+          <div class="sidebar-item" onclick="goTo(10)" id="si-10">
+            <span class="sidebar-icon">🏆</span> wins.log
+          </div>
+          <div class="sidebar-item" onclick="goTo(11)" id="si-11">
+            <span class="sidebar-icon">🗺️</span> roadmap.todo
+          </div>
+          <div class="sidebar-item" onclick="goTo(12)" id="si-12">
+            <span class="sidebar-icon">👋</span> exit.ts
+          </div>
+        </div>
+
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-team">
+          <div class="sidebar-header" style="padding: 0 0 6px">Time Mobile</div>
+          <div class="member" style="opacity: 0.6" title="Ausente hoje">
+            <div class="member-avatar av-r">CA</div>
+            Carlos 🌙
+            <div class="member-dot" style="background: var(--text3)"></div>
+          </div>
+          <div class="member">
+            <div class="member-avatar av-b">EL</div>
+            Elias
+            <div class="member-dot"></div>
+          </div>
+          <div class="member">
+            <div class="member-avatar av-t">MA</div>
+            Matheus
+            <div class="member-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="content">
+        <!-- ─── SLIDE 0: CAPA ─── -->
+        <div class="slide active" id="slide-0">
+          <div class="cover-grid">
+            <div>
+              <img
+                src="../assets/web-team.svg"
+                alt="Mobile Team"
+                class="cover-icon"
+              />
+              <div class="cover-tag">// Tech Spotlight — Edition 07</div>
+              <div class="cover-title">
+                Mobile<br /><span class="accent">Engineering</span><br />Team
+              </div>
+              <div class="cover-subtitle">
+                07 de agosto de 2026 · 30 min (target)
+              </div>
+
+              <div class="flex-row mb-20">
+                <span
+                  class="pill"
+                  style="opacity: 0.7"
+                  title="Ausente hoje — spotlight apresentado por Elias"
+                  >🌙 Carlos (ausente)</span
+                >
+                <span class="pill">🧑‍💻 Elias</span>
+                <span class="pill">🧑‍💻 Matheus</span>
+              </div>
+
+              <div class="tag-list">
+                <span class="badge badge-purple">PEC (Pecuária)</span>
+                <span class="badge badge-blue">RAT</span>
+                <span class="badge badge-coral">🛰️ MVP Satélite</span>
+                <span class="badge badge-teal">Form Dinâmico</span>
+                <span class="badge badge-amber">Login &amp; MFA</span>
+                <span class="badge badge-green">Azure DevOps</span>
+              </div>
+            </div>
+
+            <div class="cover-code">
+              <div class="cover-code-header">📄 README.md — agrotrace</div>
+              <div class="cover-code-body">
+                <span class="cmt"># Tech Spotlight</span><br />
+                <span class="cmt">## 18/07 – 07/08/2026</span><br /><br />
+                <span class="kw">class</span>
+                <span class="fn">TechSpotlight</span> {<br />
+                &nbsp;&nbsp;<span class="prop">edition</span>:
+                <span class="num">07</span><br />
+                &nbsp;&nbsp;<span class="prop">team</span>:
+                <span class="str">"Mobile"</span><br />
+                &nbsp;&nbsp;<span class="prop">cards</span>:
+                <span class="num">39</span><br />
+                &nbsp;&nbsp;<span class="prop">topics</span>: [<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
+                  >"Ajustes do PEC em teste &amp; MVP Satélite"</span
+                >,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
+                  >"O período do Carlos (por Elias)"</span
+                >,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
+                  >"PEC no Produtor, Respostas Recursivas &amp; Versões"</span
+                ><br />
+                &nbsp;&nbsp;]<br />
+                }
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: auto;
+              padding-top: 24px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 12px;
+              font-family: var(--font-mono);
+              font-size: 11px;
+              color: var(--text3);
+            "
+          >
+            Use <kbd>←</kbd> <kbd>→</kbd> para navegar &nbsp;·&nbsp;
+            <kbd>F</kbd> tela cheia &nbsp;·&nbsp; <kbd>T</kbd> cronômetro
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 1: AGENDA ─── -->
+        <div class="slide" id="slide-1">
+          <div class="slide-title">// agenda.ts</div>
+          <div class="slide-heading">Agenda de <span>hoje</span></div>
+
+          <div
+            style="
+              margin-bottom: 16px;
+              padding: 8px 14px;
+              background: var(--amber-bg);
+              border: 1px solid #78350f;
+              border-radius: var(--radius);
+              font-family: var(--font-mono);
+              font-size: 13px;
+              color: var(--amber);
+              display: inline-block;
+            "
+          >
+            ⏱ Programado: 30min · Cap: 30min · Carlos ausente, Elias cobre o
+            spotlight dele
+          </div>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--text2)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">00:00 – 04:00 · Matheus · 4min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-purple">Abertura</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >Abertura &amp; Métricas do período</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--teal)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">04:00 – 12:00 · Matheus · 8min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-teal">Spotlight 1</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >Ajustes do PEC em teste &amp; MVP Satélite</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--purple)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">12:00 – 18:00 · Elias (pelo Carlos) · 6min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-purple">Spotlight 2</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >O período do Carlos</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--blue)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">18:00 – 24:00 · Elias · 6min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-blue">Spotlight 3</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >PEC no Produtor, Respostas Recursivas &amp; Versões</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--amber)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">24:00 – 27:00 · Elias · 3min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-amber">Dica técnica</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >9Router — roteamento automático de IA</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item" style="padding-bottom: 0">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--green)"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">27:00 – 30:00 · Matheus · 3min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-green">Wrap-up</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >Wins &amp; Roadmap</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 2: STATS ─── -->
+        <div class="slide" id="slide-2">
+          <div class="slide-title">// stats.json</div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 16px;
+              margin-bottom: 20px;
+              flex-wrap: wrap;
+            "
+          >
+            <div class="slide-heading" style="margin-bottom: 0">
+              Métricas do <span>período</span>
+            </div>
+            <div
+              style="
+                font-family: var(--font-mono);
+                font-size: 18px;
+                color: var(--text2);
+                margin-bottom: 0;
+                letter-spacing: 0.03em;
+              "
+            >
+              📅 18/07 – 07/08/2026
+            </div>
+            <div
+              style="
+                display: flex;
+                gap: 6px;
+                margin-left: auto;
+                align-items: center;
+              "
+            >
+              <button
+                class="stats-filter active"
+                data-member="all"
+                onclick="filterStats('all')"
+              >
+                Todos
+              </button>
+              <button
+                class="stats-filter"
+                data-member="Carlos"
+                onclick="filterStats('Carlos')"
+                style="--f-color: var(--purple)"
+                title="Ausente hoje"
+              >
+                Carlos 🌙
+              </button>
+              <button
+                class="stats-filter"
+                data-member="Elias"
+                onclick="filterStats('Elias')"
+                style="--f-color: var(--blue)"
+              >
+                Elias
+              </button>
+              <button
+                class="stats-filter"
+                data-member="Matheus"
+                onclick="filterStats('Matheus')"
+                style="--f-color: var(--teal)"
+              >
+                Matheus
+              </button>
+              <span
+                id="statsCount"
+                style="
+                  font-family: var(--font-mono);
+                  font-size: 12px;
+                  color: var(--text3);
+                  margin-left: 8px;
+                "
+                >39 cards</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="grid-4 mb-24"
+            style="grid-template-columns: repeat(5, 1fr)"
+          >
+            <div
+              class="metric metric-click"
+              data-kpi="all"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-all" style="color: var(--purple)">
+                39
+              </div>
+              <div class="metric-lbl">cards entregues</div>
+            </div>
+            <div
+              class="metric metric-click"
+              data-kpi="feat"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-feat" style="color: var(--teal)">
+                20
+              </div>
+              <div class="metric-lbl">features</div>
+            </div>
+            <div
+              class="metric metric-click"
+              data-kpi="fix"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-fix" style="color: var(--coral)">
+                15
+              </div>
+              <div class="metric-lbl">bugs corrigidos</div>
+            </div>
+            <div
+              class="metric metric-click"
+              data-kpi="ref"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-ref" style="color: var(--blue)">
+                4
+              </div>
+              <div class="metric-lbl">refactors/migração</div>
+            </div>
+            <div
+              class="metric metric-click"
+              data-kpi="test"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-test" style="color: var(--amber)">
+                0
+              </div>
+              <div class="metric-lbl">tests</div>
+            </div>
+          </div>
+
+          <div class="grid-2" style="gap: 20px">
+            <div>
+              <div class="section-label">sistemas atendidos</div>
+              <div class="tag-list mb-16">
+                <span class="badge badge-purple">Agrotrace</span>
+                <span class="badge badge-blue">Azure DevOps</span>
+              </div>
+
+              <div class="section-label">stack utilizada</div>
+              <div class="tag-list mb-16">
+                <span class="chip">Módulo PEC</span>
+                <span class="chip">RAT</span>
+                <span class="chip">Form Dinâmico</span>
+                <span class="chip">Login &amp; MFA / 2FA</span>
+                <span class="chip">🛰️ Imagens de Satélite</span>
+              </div>
+
+              <div class="section-label">cards por dev</div>
+              <div style="display: flex; gap: 10px">
+                <div
+                  class="metric"
+                  style="cursor: pointer; flex: 1; padding: 10px 12px"
+                  onclick="filterStats('Carlos')"
+                >
+                  <div
+                    class="metric-val"
+                    id="mv-carlos"
+                    style="
+                      color: var(--purple);
+                      font-size: 22px;
+                      margin-bottom: 2px;
+                    "
+                  >
+                    15
+                  </div>
+                  <div class="metric-lbl" style="font-size: 12px">
+                    carlos 🌙
+                  </div>
+                </div>
+                <div
+                  class="metric"
+                  style="cursor: pointer; flex: 1; padding: 10px 12px"
+                  onclick="filterStats('Elias')"
+                >
+                  <div
+                    class="metric-val"
+                    id="mv-elias"
+                    style="
+                      color: var(--blue);
+                      font-size: 22px;
+                      margin-bottom: 2px;
+                    "
+                  >
+                    11
+                  </div>
+                  <div class="metric-lbl" style="font-size: 12px">elias</div>
+                </div>
+                <div
+                  class="metric"
+                  style="cursor: pointer; flex: 1; padding: 10px 12px"
+                  onclick="filterStats('Matheus')"
+                >
+                  <div
+                    class="metric-val"
+                    id="mv-matheus"
+                    style="
+                      color: var(--teal);
+                      font-size: 22px;
+                      margin-bottom: 2px;
+                    "
+                  >
+                    13
+                  </div>
+                  <div class="metric-lbl" style="font-size: 12px">matheus</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <div class="code-block-header">📊 distribuição por tipo</div>
+              <div class="code-body">
+                <div
+                  class="code-lines"
+                  style="padding: 14px 18px"
+                  id="statsDistribution"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 3: SPOTLIGHT 1 — Matheus ─── -->
+        <div class="slide" id="slide-3">
+          <div class="slide-title">// spotlight 1 — Matheus — 8 min ⏱</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-teal">🔧 ajustes</span>
+            <span class="badge badge-amber">PEC · RAT · animal · diagnóstico</span>
+            <span class="badge badge-purple">🛰️ novo: MVP Satélite</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >pec-testes.service.ts</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Ajustes do <span>PEC</span> em teste &amp; próximo passo: Satélite
+          </div>
+
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div class="card card-accent-coral" style="padding: 12px 16px">
+                <div class="section-label" style="color: var(--coral)">
+                  ❌ problema
+                </div>
+                <div
+                  style="font-size: 15px; color: var(--text2); line-height: 1.6"
+                >
+                  Os testes iniciais do módulo PEC — RAT, cadastro de animal e
+                  diagnóstico — revelaram uma série de ajustes necessários
+                  antes de seguir com o rollout.
+                </div>
+              </div>
+
+              <div class="card card-accent-teal" style="padding: 12px 16px">
+                <div class="section-label" style="color: var(--teal)">
+                  ✓ ajustes do período
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    font-size: 14px;
+                    color: var(--text2);
+                  "
+                >
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#12946</span
+                    >
+                    <span
+                      >Tela de cadastro de animal —
+                      <strong style="color: var(--text)">em QA</strong></span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#12947</span
+                    >
+                    <span
+                      >Atualizar Score do animal —
+                      <strong style="color: var(--text)">em QA</strong></span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#12835</span
+                    >
+                    <span>Liberar protocolo de animais lactantes</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#12841</span
+                    >
+                    <span>Alterar data do atendimento produtivo</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#12779</span
+                    >
+                    <span>Ajuste no diagnóstico pós-parto</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >#12799</span
+                    >
+                    <span>Retirar recibo do RAT do módulo PEC</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--text3); font-family: var(--font-mono)"
+                      >#12991</span
+                    >
+                    <span style="color: var(--text3)"
+                      >Ajuste dos relatórios do PEC com problema em
+                      produção</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-teal" style="padding: 10px 16px">
+                <div class="section-label" style="color: var(--teal)">
+                  📈 resultado
+                </div>
+                <div
+                  style="font-size: 14px; color: var(--text2); line-height: 1.5"
+                >
+                  Módulo PEC mais robusto depois da rodada de testes — parte
+                  já em produção, parte ainda em QA.
+                  <em>(Matheus: sem detalhe específico por card — foco no
+                  conjunto.)</em>
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                height: fit-content;
+              "
+            >
+              <div class="card card-accent-purple" style="padding: 14px 16px">
+                <div class="section-label" style="color: var(--purple)">
+                  🛰️ próximo passo — MVP
+                </div>
+                <div
+                  style="font-size: 15px; color: var(--text2); line-height: 1.6"
+                >
+                  <strong style="color: var(--text)"
+                    >Análise de Imagens via Satélite:</strong
+                  >
+                  período de pesquisa concluído — pronto para começar o MVP.
+                  <em
+                    >(Matheus: completar com objetivo, fonte das imagens e
+                    escopo do MVP antes de apresentar.)</em
+                  >
+                </div>
+                <div
+                  style="
+                    margin-top: 10px;
+                    padding-top: 8px;
+                    border-top: 1px dashed var(--border);
+                    font-family: var(--font-mono);
+                    font-size: 11px;
+                    color: var(--text3);
+                  "
+                >
+                  → pesquisa → MVP · sem card ainda
+                </div>
+              </div>
+
+              <div class="card card-accent-teal" style="padding: 12px 16px">
+                <div class="section-label" style="color: var(--teal)">
+                  // PEC — ajustes do período
+                </div>
+                <div class="tag-list">
+                  <span class="chip">Cadastro animal (#12946)</span>
+                  <span class="chip">Score animal (#12947)</span>
+                  <span class="chip">Animais lactantes (#12835)</span>
+                  <span class="chip">Diagnóstico (#12779)</span>
+                  <span class="chip">Recibo RAT/PEC (#12799)</span>
+                  <span class="chip" style="opacity: 0.6"
+                    >Relatório PEC (#12991)</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 14px;
+              padding: 10px 14px;
+              background: var(--amber-bg);
+              border: 1px solid #78350f;
+              border-radius: var(--radius);
+              font-family: var(--font-mono);
+              font-size: 14px;
+              color: var(--amber);
+            "
+          >
+            🎬 Demo: telas de cadastro/score de animal em QA · cap 30s
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 4: SPOTLIGHT 2 — Carlos (apresentado por Elias) ─── -->
+        <div class="slide" id="slide-4">
+          <div class="slide-title">// spotlight 2 — Carlos — 6 min ⏱</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-purple">🔐 estabilidade &amp; segurança</span>
+            <span class="badge badge-green">15 cards</span>
+            <span class="badge badge-amber">🎤 apresentado por Elias</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >carlos-highlights.service.ts</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            O período do <span>Carlos</span>
+          </div>
+
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div class="card card-accent-coral" style="padding: 12px 16px">
+                <div class="section-label" style="color: var(--coral)">
+                  ❌ contexto
+                </div>
+                <div
+                  style="font-size: 15px; color: var(--text2); line-height: 1.6"
+                >
+                  Carlos não está presente hoje, mas concentrou o período em
+                  <strong style="color: var(--text)"
+                    >estabilidade do app, segurança de acesso e evolução do
+                    RAT</strong
+                  >. O Elias repassa os destaques em nome dele.
+                </div>
+              </div>
+
+              <div class="card card-accent-purple" style="padding: 12px 16px">
+                <div class="section-label" style="color: var(--purple)">
+                  ✓ destaques do período
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    font-size: 14px;
+                    color: var(--text2);
+                  "
+                >
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--purple); font-family: var(--font-mono)"
+                      >#12907</span
+                    >
+                    <span>Correção da regressão que travava o login</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--purple); font-family: var(--font-mono)"
+                      >#12887</span
+                    >
+                    <span>Verificação/ajuste da funcionalidade de 2FA em produção</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--purple); font-family: var(--font-mono)"
+                      >#12908</span
+                    >
+                    <span>Melhoria do fluxo de login usando MFA</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--purple); font-family: var(--font-mono)"
+                      >#12883</span
+                    >
+                    <span>Correção de crash — app fechando sozinho</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--purple); font-family: var(--font-mono)"
+                      >#12924</span
+                    >
+                    <span>Tabela de qualidade no RAT</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--purple); font-family: var(--font-mono)"
+                      >#12899</span
+                    >
+                    <span>Correção no envio dos dados do PEC</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--purple); font-family: var(--font-mono)"
+                      >#12768</span
+                    >
+                    <span>Filtro de perguntas no aplicativo — criado</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-teal" style="padding: 10px 16px">
+                <div class="section-label" style="color: var(--teal)">
+                  📈 resultado
+                </div>
+                <div
+                  style="font-size: 14px; color: var(--text2); line-height: 1.5"
+                >
+                  App mais estável, login mais seguro (MFA + 2FA) e RAT mais
+                  completo.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                height: fit-content;
+              "
+            >
+              <div
+                style="
+                  font-family: var(--font-mono);
+                  font-size: 12px;
+                  color: var(--text3);
+                  letter-spacing: 0.5px;
+                "
+              >
+                // 15 cards por tema
+              </div>
+
+              <div class="grid-2" style="gap: 12px">
+                <div
+                  style="
+                    background: var(--bg2);
+                    border: 1px solid var(--border);
+                    border-top: 3px solid var(--purple);
+                    border-radius: var(--radius);
+                    padding: 14px;
+                  "
+                >
+                  <div
+                    style="
+                      font-family: var(--font-mono);
+                      font-size: 12px;
+                      color: var(--purple);
+                      margin-bottom: 8px;
+                    "
+                  >
+                    🔐 Segurança
+                  </div>
+                  <div
+                    style="
+                      font-size: 14px;
+                      color: var(--text2);
+                      line-height: 1.7;
+                    "
+                  >
+                    #12907 · #12887 · #12908
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    background: var(--bg2);
+                    border: 1px solid var(--border);
+                    border-top: 3px solid var(--coral);
+                    border-radius: var(--radius);
+                    padding: 14px;
+                  "
+                >
+                  <div
+                    style="
+                      font-family: var(--font-mono);
+                      font-size: 12px;
+                      color: var(--coral);
+                      margin-bottom: 8px;
+                    "
+                  >
+                    🩹 Estabilidade
+                  </div>
+                  <div
+                    style="
+                      font-size: 14px;
+                      color: var(--text2);
+                      line-height: 1.7;
+                    "
+                  >
+                    #12868 · #12883 · #12885 · #12889
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    background: var(--bg2);
+                    border: 1px solid var(--border);
+                    border-top: 3px solid var(--amber);
+                    border-radius: var(--radius);
+                    padding: 14px;
+                  "
+                >
+                  <div
+                    style="
+                      font-family: var(--font-mono);
+                      font-size: 12px;
+                      color: var(--amber);
+                      margin-bottom: 8px;
+                    "
+                  >
+                    📋 RAT
+                  </div>
+                  <div
+                    style="
+                      font-size: 14px;
+                      color: var(--text2);
+                      line-height: 1.7;
+                    "
+                  >
+                    #12924 · #12928
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    background: var(--bg2);
+                    border: 1px solid var(--border);
+                    border-top: 3px solid var(--blue);
+                    border-radius: var(--radius);
+                    padding: 14px;
+                  "
+                >
+                  <div
+                    style="
+                      font-family: var(--font-mono);
+                      font-size: 12px;
+                      color: var(--blue);
+                      margin-bottom: 8px;
+                    "
+                  >
+                    🐄 PEC
+                  </div>
+                  <div
+                    style="
+                      font-size: 14px;
+                      color: var(--text2);
+                      line-height: 1.7;
+                    "
+                  >
+                    #12899 · #12918
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-teal" style="padding: 12px 16px">
+                <div class="section-label" style="color: var(--teal)">
+                  // outros cards do Carlos
+                </div>
+                <div class="tag-list">
+                  <span class="chip">Entidade Pessoa (#12812)</span>
+                  <span class="chip">Publicar PROD (#12978)</span>
+                  <span class="chip">Ferramenta análise (#12979)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 14px;
+              padding: 10px 14px;
+              background: var(--amber-bg);
+              border: 1px solid #78350f;
+              border-radius: var(--radius);
+              font-family: var(--font-mono);
+              font-size: 14px;
+              color: var(--amber);
+            "
+          >
+            🎤 Carlos ausente hoje — bloco apresentado pelo Elias
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 5: SPOTLIGHT 3 — Elias ─── -->
+        <div class="slide" id="slide-5">
+          <div class="slide-title">// spotlight 3 — Elias — 6 min ⏱</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-blue">🐄 PEC no Produtor</span>
+            <span class="badge badge-teal">🔁 Respostas recursivas</span>
+            <span class="badge badge-amber">📦 4 apps publicados</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >entregas-elias.module.ts</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            PEC no Produtor, Respostas Recursivas <span>&amp; Versões</span>
+          </div>
+
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div class="card card-accent-coral" style="padding: 12px 16px">
+                <div class="section-label" style="color: var(--coral)">
+                  // contexto
+                </div>
+                <div
+                  style="font-size: 15px; color: var(--text2); line-height: 1.6"
+                >
+                  Durante o período, as atividades giraram em torno de
+                  desenvolvimento, manutenção e publicação de novas versões do
+                  aplicativo — três frentes que avançaram em paralelo.
+                </div>
+              </div>
+
+              <div class="card card-accent-blue" style="padding: 12px 16px">
+                <div class="section-label" style="color: var(--blue)">
+                  ✓ principais entregas
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    font-size: 14px;
+                    color: var(--text2);
+                  "
+                >
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--blue); font-family: var(--font-mono)"
+                      >#12610 · #12612</span
+                    >
+                    <span
+                      >Implementação do módulo PEC na visão do produtor,
+                      adicionando listagem de animais, parto e pesagem —
+                      pesagem já
+                      <strong style="color: var(--text)">concluída</strong>,
+                      restante em
+                      <strong style="color: var(--text)">QA</strong></span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--blue); font-family: var(--font-mono)"
+                      >#12997</span
+                    >
+                    <span
+                      >Melhoria nas respostas automáticas do questionário
+                      diagnóstico — o app agora responde de forma
+                      <strong style="color: var(--text)">recursiva</strong> —
+                      em QA</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--blue); font-family: var(--font-mono)"
+                      >#12980</span
+                    >
+                    <span
+                      >Preparação, validação e atualização das versões do
+                      Pectrace, Agroplus, 3S e CocoaVerified — Android e
+                      iOS</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-teal" style="padding: 10px 16px">
+                <div class="section-label" style="color: var(--teal)">
+                  📈 resultado
+                </div>
+                <div
+                  style="font-size: 14px; color: var(--text2); line-height: 1.5"
+                >
+                  Módulo do produtor avançando (pesagem já entregue),
+                  respostas automáticas mais inteligentes, e todo o portfólio
+                  de apps de terceiros atualizado nas lojas.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                height: fit-content;
+              "
+            >
+              <div class="code-block" style="height: fit-content">
+                <div class="code-block-header">
+                  📄 respostas-automaticas.recursive.ts
+                </div>
+                <div class="code-body">
+                  <div class="line-numbers">
+                    1<br />2<br />3<br />4<br />5<br />6<br />7<br />8
+                  </div>
+                  <div class="code-lines">
+                    <span class="cmt">// diagnostico.service.ts</span><br />
+                    <span class="kw">function</span>
+                    <span class="fn">responderAutomatico</span>(<span
+                      class="prop"
+                      >pergunta</span
+                    >) {<br />
+                    &nbsp;&nbsp;<span class="fn">responder</span>(<span
+                      class="prop"
+                      >pergunta</span
+                    >);<br />
+                    &nbsp;&nbsp;<span class="kw">for</span> (<span
+                      class="kw"
+                      >const</span
+                    >
+                    <span class="prop">dependente</span>
+                    <span class="kw">of</span>
+                    <span class="prop">pergunta</span>.<span class="prop"
+                      >encadeadas</span
+                    >) {<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="fn"
+                      >responderAutomatico</span
+                    >(<span class="prop">dependente</span>);
+                    <span class="cmt">// recursivo</span><br />
+                    &nbsp;&nbsp;}<br />
+                    }
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-amber" style="padding: 12px 16px">
+                <div class="section-label" style="color: var(--amber)">
+                  // apps publicados no período
+                </div>
+                <div class="tag-list">
+                  <span class="chip">Pectrace</span>
+                  <span class="chip">Agroplus</span>
+                  <span class="chip">3S</span>
+                  <span class="chip">CocoaVerified</span>
+                </div>
+              </div>
+
+              <div class="card card-accent-teal" style="padding: 12px 16px">
+                <div class="section-label" style="color: var(--teal)">
+                  // outros cards do Elias
+                </div>
+                <div class="tag-list">
+                  <span class="chip">Backup/Instruções (#12994)</span>
+                  <span class="chip">Safras API (#13010)</span>
+                  <span class="chip">Data impressão (#13027)</span>
+                  <span class="chip">Baixar dados PEC (#12944)</span>
+                  <span class="chip">Crash localização (#9967)</span>
+                  <span class="chip">Safras APP (#12623)</span>
+                  <span class="chip">Ordem perguntas (#13043)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 14px;
+              padding: 10px 14px;
+              background: var(--amber-bg);
+              border: 1px solid #78350f;
+              border-radius: var(--radius);
+              font-family: var(--font-mono);
+              font-size: 14px;
+              color: var(--amber);
+            "
+          >
+            🎬 Tela ao vivo: PEC no Produtor + respostas automáticas · cap 30s
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 6: DICA TÉCNICA — 9Router ─── -->
+        <div class="slide" id="slide-6">
+          <div class="slide-title">// dica técnica — Elias — 3 min ⏱</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-amber">💡 dica técnica</span>
+            <span class="badge badge-blue">60+ provedores de IA</span>
+            <span class="badge badge-teal">-20% a -65% tokens</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >9router.md</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            9Router — <span>roteamento automático</span> de IA
+          </div>
+
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div class="card card-accent-blue" style="padding: 12px 16px">
+                <div class="section-label" style="color: var(--blue)">
+                  🔌 o que é
+                </div>
+                <div
+                  style="font-size: 15px; color: var(--text2); line-height: 1.6"
+                >
+                  O
+                  <strong style="color: var(--text)">9Router</strong> conecta
+                  suas ferramentas de código — Cursor, Claude Code, Copilot,
+                  etc. — a
+                  <strong style="color: var(--text)"
+                    >mais de 60 provedores de IA</strong
+                  >
+                  por um único endpoint.
+                </div>
+              </div>
+
+              <div class="card card-accent-amber" style="padding: 12px 16px">
+                <div class="section-label" style="color: var(--amber)">
+                  🔁 o truque
+                </div>
+                <div
+                  style="font-size: 15px; color: var(--text2); line-height: 1.6"
+                >
+                  Quando a cota de um provedor acaba, ele troca sozinho para
+                  outro —
+                  <strong style="color: var(--text)"
+                    >assinatura → barato → grátis</strong
+                  >
+                  — sem parar o trabalho.
+                </div>
+              </div>
+
+              <div class="card card-accent-teal" style="padding: 10px 16px">
+                <div class="section-label" style="color: var(--teal)">
+                  📈 resultado
+                </div>
+                <div
+                  style="font-size: 14px; color: var(--text2); line-height: 1.5"
+                >
+                  Ainda economiza de
+                  <strong style="color: var(--text)">20% a 65%</strong> de
+                  tokens automaticamente.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                height: fit-content;
+              "
+            >
+              <div
+                style="
+                  font-family: var(--font-mono);
+                  font-size: 12px;
+                  color: var(--text3);
+                  letter-spacing: 0.5px;
+                "
+              >
+                // fallback automático
+              </div>
+
+              <div
+                style="
+                  text-align: center;
+                  font-family: var(--font-mono);
+                  font-size: 13px;
+                  color: var(--amber);
+                  padding: 14px;
+                  background: var(--bg2);
+                  border: 1px dashed var(--amber);
+                  border-radius: var(--radius);
+                "
+              >
+                assinatura<br />
+                ↓ cota esgotada<br />
+                barato<br />
+                ↓ cota esgotada<br />
+                grátis<br />
+                <span style="color: var(--text3); font-size: 11px"
+                  >→ endpoint único, sem interromper o trabalho</span
+                >
+              </div>
+
+              <div class="card card-accent-blue" style="padding: 12px 16px">
+                <div class="section-label" style="color: var(--blue)">
+                  // compatível com
+                </div>
+                <div class="tag-list">
+                  <span class="chip">Cursor</span>
+                  <span class="chip">Claude Code</span>
+                  <span class="chip">Copilot</span>
+                  <span class="chip">+ 60 provedores</span>
+                </div>
+              </div>
+
+              <div
+                style="
+                  text-align: center;
+                  font-family: var(--font-mono);
+                  font-size: 13px;
+                "
+              >
+                <a
+                  href="https://9router.com/"
+                  target="_blank"
+                  style="
+                    color: var(--purple);
+                    text-decoration: none;
+                    padding: 8px 12px;
+                    border: 1px solid var(--purple);
+                    border-radius: var(--radius);
+                    display: inline-block;
+                  "
+                  >🔗 9router.com</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 14px;
+              padding: 10px 14px;
+              background: var(--amber-bg);
+              border: 1px solid #78350f;
+              border-radius: var(--radius);
+              font-family: var(--font-mono);
+              font-size: 14px;
+              color: var(--amber);
+            "
+          >
+            💡 Sugestão do Elias pro time — vale testar em conjunto antes de
+            adotar.
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 7: OVERVIEW MATHEUS ─── -->
+        <div class="slide" id="slide-7">
+          <div class="slide-title">// overview — Matheus</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-teal">📸 overview</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >overview-matheus.md</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Entregas em <span>destaque</span> — Matheus
+          </div>
+
+          <div class="overview-grid">
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12946', 'Tela de cadastro de animal')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12946</div>
+              <div class="overview-card-title">
+                Tela de cadastro de animal — em QA
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12947', 'Atualizar Score do animal')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12947</div>
+              <div class="overview-card-title">
+                Atualizar Score do animal — em QA
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12835', 'Liberar protocolo de animais lactantes')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12835</div>
+              <div class="overview-card-title">
+                Liberar protocolo de animais lactantes
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12841', 'Alterar data do atendimento produtivo')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12841</div>
+              <div class="overview-card-title">
+                Alterar data do atendimento produtivo
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12779', 'Diagnostico pos parto')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12779</div>
+              <div class="overview-card-title">
+                Ajuste no diagnóstico pós-parto
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12799', 'Retirar recibo do RAT do modulo PEC')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12799</div>
+              <div class="overview-card-title">
+                Retirar recibo do RAT do módulo PEC
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12645', 'Trabalhar nos relatorios vindos do CheckMilk')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12645</div>
+              <div class="overview-card-title">
+                Trabalhar nos relatórios vindos do CheckMilk
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12760', 'Sync de dados do Qualidade do Leite')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12760</div>
+              <div class="overview-card-title">
+                Adicionado sync de dados do Qualidade do Leite
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12991', 'Ajustando relatorios PEC com problema em producao')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-red"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >fix</span
+                >
+              </div>
+              <div class="overview-card-id">#12991</div>
+              <div class="overview-card-title">
+                Ajustando relatórios PEC com problema em produção
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 8: LIGHTNING TECH — OpenSpec (backup) ─── -->
+        <div class="slide" id="slide-8">
+          <div class="slide-title">
+            // lightning — OpenSpec — extra (se sobrar tempo) ⏱
+          </div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-amber">⚡ Lightning</span>
+            <span class="badge badge-coral">OpenSpec</span>
+            <span class="badge badge-green">#12768</span>
+            <span class="badge badge-green">#12812</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >openspec-em-uso.md</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            OpenSpec <span>em uso real</span> — specs que viram código
+          </div>
+
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div class="code-block" style="height: fit-content">
+              <div class="code-block-header">
+                ⚡ openspec/filtro-perguntas/proposal.md
+              </div>
+              <div class="code-body">
+                <div class="line-numbers">
+                  1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14
+                </div>
+                <div class="code-lines">
+                  <span class="tag">## Why</span><br />
+                  Técnicos rolavam telas longas para achar<br />
+                  perguntas pendentes no Form Dinâmico.<br /><br />
+                  <span class="tag">## What Changes</span><br />
+                  <span class="punc">-</span> Filtro
+                  <span class="str">"pendentes / referenciadas"</span><br />
+                  <span class="punc">-</span> Aplicado em
+                  <span class="num">3</span> telas de resposta<br />
+                  <span class="punc">-</span> Specs promovidas para a base do
+                  projeto<br /><br />
+                  <span class="tag">## Impact</span><br />
+                  <span class="punc">-</span> <span class="prop">specs</span>:
+                  <span class="str">filtro-perguntas/spec.md</span><br />
+                  <span class="punc">-</span> <span class="prop">code</span>:
+                  <span class="str">form-dinamico (3 telas)</span><br />
+                  <span class="cmt"># proposal → design → specs → código</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div class="card card-accent-amber">
+                <div class="section-label" style="color: var(--amber)">
+                  Onde o OpenSpec entrou no período
+                </div>
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 8px;
+                    font-size: 14px;
+                    color: var(--text2);
+                    line-height: 1.35;
+                  "
+                >
+                  <div>
+                    <strong style="color: var(--text)">#12768 — Filtro</strong
+                    ><br />proposal, design e specs; implementado em 3 telas de
+                    resposta
+                  </div>
+                  <div>
+                    <strong style="color: var(--text)">#12812 — Gênero</strong
+                    ><br />campo gênero na entidade Pessoa especificado via
+                    OpenSpec
+                  </div>
+                  <div>
+                    <strong style="color: var(--text)">Specs promovidas</strong
+                    ><br />de openspec/changes para a base viva do projeto
+                  </div>
+                  <div>
+                    <strong style="color: var(--text)">Fluxo completo</strong
+                    ><br />proposal → design → specs → tasks → código
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-blue">
+                <div class="section-label" style="color: var(--blue)">
+                  Pontos bons para comentar
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                    font-size: 15px;
+                    color: var(--text2);
+                  "
+                >
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--blue); font-family: var(--font-mono)"
+                      >1.</span
+                    >
+                    <span
+                      ><strong style="color: var(--text)"
+                        >Spec antes do código:</strong
+                      >
+                      menos retrabalho — edge cases discutidos antes de
+                      implementar.</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--blue); font-family: var(--font-mono)"
+                      >2.</span
+                    >
+                    <span
+                      ><strong style="color: var(--text)"
+                        >Documentação viva:</strong
+                      >
+                      specs promovidas viram a referência do comportamento
+                      atual.</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--blue); font-family: var(--font-mono)"
+                      >3.</span
+                    >
+                    <span
+                      ><strong style="color: var(--text)"
+                        >Vale para mudança pequena:</strong
+                      >
+                      até um campo novo (#12812) ganha clareza com o
+                      fluxo.</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="tag-list">
+                <span class="chip">OpenSpec</span>
+                <span class="chip">proposal.md</span>
+                <span class="chip">design.md</span>
+                <span class="chip">specs</span>
+                <span class="chip">tasks.md</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 9: OVERVIEW ELIAS ─── -->
+        <div class="slide" id="slide-9">
+          <div class="slide-title">// overview — Elias</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-blue">📸 overview</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >overview-elias.md</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Entregas em <span>destaque</span> — Elias
+          </div>
+
+          <div class="overview-grid">
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12610', 'Adicionar modulo PEC na visao do Produtor')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12610</div>
+              <div class="overview-card-title">
+                Módulo PEC na visão do Produtor — em QA
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12612', 'Adicionar funcionalidade de pesagem')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12612</div>
+              <div class="overview-card-title">
+                Funcionalidade de pesagem — concluída
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12994', 'Backup e Instrucoes nao estao funcionando')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-red"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >fix</span
+                >
+              </div>
+              <div class="overview-card-id">#12994</div>
+              <div class="overview-card-title">
+                Backup e Instruções não estavam funcionando
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('9967', 'App fechando sozinho na tela de localizacao')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-red"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >fix</span
+                >
+              </div>
+              <div class="overview-card-id">#9967</div>
+              <div class="overview-card-title">
+                App fechando sozinho na tela de localização da propriedade — em QA
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12997', 'Respostas automaticas recursivas')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#12997</div>
+              <div class="overview-card-title">
+                Respostas automáticas recursivas — em QA
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12980', 'Publicar versoes atualizadas')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-blue"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >ref</span
+                >
+              </div>
+              <div class="overview-card-id">#12980</div>
+              <div class="overview-card-title">
+                Pectrace, Agroplus, 3S e CocoaVerified atualizados
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 10: WINS ─── -->
+        <div class="slide" id="slide-10">
+          <div class="slide-title">// wins.log — wrap-up ⏱</div>
+          <div class="slide-heading">Engineering <span>Wins</span></div>
+
+          <div class="grid-3" style="flex: 1">
+            <div class="win-card" style="border-left: 3px solid var(--purple)">
+              <div
+                class="flex-row"
+                style="justify-content: space-between; align-items: center"
+              >
+                <div class="win-icon">🐄</div>
+                <span
+                  class="badge badge-coral"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >8 cards</span
+                >
+              </div>
+              <div class="win-who" style="color: var(--purple)">
+                TIME MOBILE · PEC
+              </div>
+              <div class="win-text">
+                <strong style="color: var(--text)"
+                  >Módulo PEC segue como maior frente do time:</strong
+                >
+                8 cards no período entre os três devs — #12899 · #12918
+                (Carlos), #12799 · #12991 (Matheus), #12610 · #12612 · #12944
+                (Elias).
+              </div>
+            </div>
+
+            <div class="win-card" style="border-left: 3px solid var(--teal)">
+              <div
+                class="flex-row"
+                style="justify-content: space-between; align-items: center"
+              >
+                <div class="win-icon">🩹</div>
+                <span
+                  class="badge badge-teal"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >#12883 · #9967</span
+                >
+              </div>
+              <div class="win-who" style="color: var(--teal)">
+                CARLOS · ELIAS
+              </div>
+              <div class="win-text">
+                <strong style="color: var(--text)">Estabilidade:</strong>
+                2 crashes do app corrigidos — app fechando sozinho (#12883,
+                Carlos) e ao acessar a tela de localização da propriedade
+                (#9967, Elias — em QA).
+              </div>
+            </div>
+
+            <div class="win-card" style="border-left: 3px solid var(--blue)">
+              <div
+                class="flex-row"
+                style="justify-content: space-between; align-items: center"
+              >
+                <div class="win-icon">🔐</div>
+                <span
+                  class="badge badge-blue"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >#12887 · #12907 · #12908</span
+                >
+              </div>
+              <div class="win-who" style="color: var(--blue)">CARLOS</div>
+              <div class="win-text">
+                <strong style="color: var(--text)"
+                  >Login e MFA reforçados:</strong
+                >
+                2FA verificado em produção, regressão de login corrigida e
+                fluxo de autenticação com MFA melhorado.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 11: ROADMAP ─── -->
+        <div class="slide" id="slide-11">
+          <div class="slide-title">
+            // roadmap.todo — Edition #08 (a partir de 08/08) — wrap-up ⏱
+          </div>
+          <div class="slide-heading">Próximas <span>prioridades</span></div>
+
+          <div style="display: flex; flex-direction: column; gap: 0; flex: 1">
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">
+                  🛰️ MVP — Análise de Imagens via Satélite
+                </div>
+                <div class="todo-desc">
+                  Início do desenvolvimento após período de pesquisa — sem card ainda.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--teal-bg); color: var(--teal)"
+                  >@matheus</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">
+                  ⚛️ Migrar app do Agrotrace para Expo
+                </div>
+                <div class="todo-desc">
+                  Migração do aplicativo para Expo — sem card ainda.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--blue-bg); color: var(--blue)"
+                  >@elias</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">
+                  📡 Offline First — melhorias na arquitetura
+                </div>
+                <div class="todo-desc">
+                  Evoluir a arquitetura Offline First do Agrotrace — sem card ainda.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--teal-bg); color: var(--teal)"
+                  >@matheus</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">
+                  Módulo PEC na visão do Produtor (#12610)
+                </div>
+                <div class="todo-desc">
+                  Validar em QA e publicar — maior card do período ainda pendente.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--blue-bg); color: var(--blue)"
+                  >@elias</span
+                >
+              </div>
+            </div>
+
+          </div>
+
+          <div
+            style="
+              margin-top: auto;
+              padding-top: 14px;
+              font-family: var(--font-mono);
+              font-size: 13px;
+              color: var(--text3);
+              text-align: center;
+            "
+          >
+            Próxima Mobile: <span style="color: var(--purple)">a definir</span>
+            — ciclo padrão de 3 semanas
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 12: EXIT ─── -->
+        <div class="slide" id="slide-12">
+          <div
+            style="
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              gap: 24px;
+            "
+          >
+            <div
+              style="
+                font-family: var(--font-mono);
+                font-size: 14px;
+                color: var(--text3);
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+              "
+            >
+              // exit.ts
+            </div>
+
+            <div style="font-size: 48px; font-weight: 700; line-height: 1.15">
+              Obrigado pela<br /><span style="color: var(--purple)"
+                >presença!</span
+              >
+            </div>
+
+            <div class="code-block" style="max-width: 720px; width: 100%">
+              <div class="code-block-header">👋 exit.ts</div>
+              <div class="code-body">
+                <div class="line-numbers">
+                  1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13
+                </div>
+                <div class="code-lines">
+                  <span class="cmt">// exit.ts</span><br />
+                  <span class="kw">import</span> {
+                  <span class="prop">team</span> } <span class="kw">from</span>
+                  <span class="str">'./mobile-engineering'</span><br /><br />
+                  <span class="prop">console</span>.<span class="fn">log</span
+                  >(<span class="str">"Obrigado pela presença!"</span>)<br />
+                  <span class="prop">console</span>.<span class="fn">log</span
+                  >(<span class="str"
+                    >`Próximo spotlight: ${team.nextDate}`</span
+                  >)<br /><br />
+                  <span class="cmt">// Dúvidas?</span><br />
+                  <span class="cmt">// → Carlos, Elias ou Matheus</span><br />
+                  <span class="cmt">// → #ibs-mobile no Discord</span
+                  ><br /><br />
+                  <span class="prop">process</span>.<span class="fn">exit</span
+                  >(<span class="num">0</span>)
+                  <span class="cmt">// até a próxima! 👋</span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                max-width: 720px;
+                width: 100%;
+                padding: 32px 28px;
+                background: linear-gradient(
+                  135deg,
+                  var(--amber-bg),
+                  var(--coral-bg)
+                );
+                border: 2px solid var(--amber);
+                border-radius: var(--radius-lg);
+                box-shadow: 0 0 36px var(--amber-bg);
+                text-align: center;
+              "
+            >
+              <div style="font-size: 44px; margin-bottom: 10px; line-height: 1">
+                🍪🍪🍪
+              </div>
+              <div
+                style="
+                  font-size: 28px;
+                  font-weight: 700;
+                  color: var(--text);
+                  margin-bottom: 10px;
+                "
+              >
+                Cookies para os parceiros!
+              </div>
+              <div
+                style="
+                  font-size: 15px;
+                  color: var(--text2);
+                  margin-bottom: 20px;
+                "
+              >
+                Pela interatividade e pelo trabalho em equipe neste período —
+                valeu, time!
+              </div>
+              <div
+                class="flex-row"
+                style="justify-content: center; gap: 12px; flex-wrap: wrap"
+              >
+                <span
+                  class="badge badge-blue"
+                  style="font-size: 15px; padding: 8px 18px"
+                  >🍪 Web</span
+                >
+                <span
+                  class="badge badge-teal"
+                  style="font-size: 15px; padding: 8px 18px"
+                  >🍪 DevOps</span
+                >
+                <span
+                  class="badge badge-purple"
+                  style="font-size: 15px; padding: 8px 18px"
+                  >🍪 Design</span
+                >
+              </div>
+            </div>
+
+            <div class="flex-row" style="justify-content: center; gap: 8px">
+              <span
+                class="pill"
+                style="border-color: var(--border2); color: var(--text3)"
+                >✓ Edition #07 concluída</span
+              >
+              <span
+                class="pill"
+                style="border-color: #4c1d95; color: var(--purple)"
+                >→ Edition #08 — a definir</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /content -->
+    </div>
+    <!-- /main -->
+
+    <!-- NAV -->
+    <div class="nav-controls">
+      <button class="nav-btn" onclick="prev()">← prev</button>
+      <div class="nav-dots" id="navDots"></div>
+      <span class="slide-counter" id="slideCounter">1 / 13</span>
+      <button class="nav-btn" onclick="next()">next →</button>
+    </div>
+
+    <!-- STATUSBAR -->
+    <div class="statusbar">
+      <div class="status-item">🌿 main</div>
+      <div class="status-item" id="statusFile">README.md</div>
+      <div class="status-item">Tech Spotlight — Mobile Team</div>
+      <div class="status-item" style="margin-left: auto">07/08/2026</div>
+    </div>
+
+    <!-- KPI MODAL -->
+    <div
+      class="kpi-overlay"
+      id="kpiOverlay"
+      onclick="if (event.target === this) closeKpiModal();"
+    >
+      <div class="kpi-modal">
+        <div class="kpi-modal-header">
+          <div class="kpi-modal-title" id="kpiTitle">Cards</div>
+          <button class="kpi-modal-close" onclick="closeKpiModal()">
+            ✕ Fechar
+          </button>
+        </div>
+        <div class="kpi-modal-body">
+          <table class="kpi-table">
+            <thead>
+              <tr>
+                <th>#Card</th>
+                <th>Título</th>
+                <th>Tipo</th>
+                <th>Responsável</th>
+              </tr>
+            </thead>
+            <tbody id="kpiBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREENSHOT MODAL -->
+    <div
+      class="ss-overlay"
+      id="ssOverlay"
+      onclick="if (event.target === this) closeScreenshot();"
+    >
+      <div class="ss-modal">
+        <div class="ss-header">
+          <div class="ss-header-left">
+            <span class="ss-card-id" id="ssCardId">#00000</span>
+            <span class="ss-title" id="ssTitle">Título</span>
+          </div>
+          <button class="ss-close" onclick="closeScreenshot()">✕ Fechar</button>
+        </div>
+        <div class="ss-body" id="ssBody"></div>
+      </div>
+    </div>
+
+    <!-- TERMINAL DEMO MODAL -->
+    <div
+      class="term-overlay"
+      id="termOverlay"
+      onclick="if (event.target === this) closeTermDemo();"
+    >
+      <div class="term-window">
+        <div class="term-titlebar">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-amber"></div>
+          <div class="dot dot-green"></div>
+          <div class="term-titlebar-text" id="termTitle">Terminal</div>
+          <button class="term-close-btn" onclick="closeTermDemo()">
+            ✕ Fechar
+          </button>
+        </div>
+        <div class="term-body" id="termBody"></div>
+      </div>
+    </div>
+
+    <script>
+      /* ── TERMINAL DEMO ANIMATION ── */
+      const TERM_SEQUENCES = {};
+
+      const TERM_CLASSES = {
+        prompt: "t-prompt",
+        cmd: "t-cmd",
+        info: "t-info",
+        header: "t-header",
+        label: "t-label",
+        ok: "t-ok",
+        h2: "t-h2",
+        check: "t-check",
+        link: "t-link",
+        dim: "t-dim",
+        text: "",
+        sparkle: "t-sparkle",
+        cyan: "t-cyan",
+        bold: "t-bold",
+      };
+
+      let termAnimId = 0;
+
+      async function openTermDemo(which) {
+        const overlay = document.getElementById("termOverlay");
+        const body = document.getElementById("termBody");
+        const title = document.getElementById("termTitle");
+        title.textContent = "Terminal — " + which;
+        body.innerHTML = "";
+        overlay.classList.add("open");
+
+        const seq = TERM_SEQUENCES[which];
+        if (!seq) return;
+        const runId = ++termAnimId;
+
+        for (const step of seq) {
+          if (runId !== termAnimId) return;
+
+          if (step.delay) {
+            await new Promise((r) => setTimeout(r, step.delay));
+            continue;
+          }
+
+          if (step.type === "spin") {
+            const line = document.createElement("div");
+            const pipe = document.createElement("span");
+            pipe.className = "t-step-pipe";
+            pipe.textContent = "  │ ";
+            const dot = document.createElement("span");
+            dot.className = "t-spin-dot";
+            dot.textContent = "●";
+            dot.style.animation = "termPulse .6s ease-in-out infinite";
+            const txt = document.createElement("span");
+            txt.className = "t-spin-text";
+            txt.textContent = " " + step.spinText;
+            line.append(pipe, dot, txt);
+            body.appendChild(line);
+            body.scrollTop = body.scrollHeight;
+
+            await new Promise((r) => setTimeout(r, step.spinDuration || 500));
+            if (runId !== termAnimId) return;
+
+            dot.style.animation = "";
+            dot.className = "t-done-dot";
+            dot.textContent = "✓";
+            txt.className = "t-done-text";
+            txt.textContent = " " + step.doneText;
+            body.scrollTop = body.scrollHeight;
+            await new Promise((r) => setTimeout(r, 80));
+          } else if (step.type === "cmd" && step.typeSpeed) {
+            const line = document.createElement("div");
+            const span = document.createElement("span");
+            span.className = TERM_CLASSES[step.type] || "";
+            line.appendChild(span);
+            body.appendChild(line);
+
+            for (let i = 0; i < step.text.length; i++) {
+              if (runId !== termAnimId) return;
+              span.textContent += step.text[i];
+              body.scrollTop = body.scrollHeight;
+              await new Promise((r) => setTimeout(r, step.typeSpeed));
+            }
+          } else {
+            const line = document.createElement("div");
+            const span = document.createElement("span");
+            span.className = TERM_CLASSES[step.type] || "";
+            span.textContent = step.text;
+            line.appendChild(span);
+            body.appendChild(line);
+            body.scrollTop = body.scrollHeight;
+            await new Promise((r) => setTimeout(r, 45));
+          }
+        }
+
+        if (runId === termAnimId) {
+          const cursor = document.createElement("div");
+          cursor.style.marginTop = "8px";
+          const prompt = document.createElement("span");
+          prompt.className = "t-prompt";
+          prompt.textContent = "~/agrotrace-v3 ";
+          cursor.appendChild(prompt);
+          const blk = document.createElement("span");
+          blk.className = "t-cursor";
+          cursor.appendChild(blk);
+          body.appendChild(cursor);
+          body.scrollTop = body.scrollHeight;
+        }
+      }
+
+      function closeTermDemo() {
+        termAnimId++;
+        document.getElementById("termOverlay").classList.remove("open");
+      }
+
+      const KPI_CARDS = [
+        // === CARLOS ===
+        {
+          id: '#12768',
+          type: 'feat',
+          title: 'Filtro de perguntas no aplicativo - Criar',
+          who: 'Carlos',
+        },
+        {
+          id: '#12812',
+          type: 'feat',
+          title: 'Atualizar Entidade Pessoa',
+          who: 'Carlos',
+        },
+        {
+          id: '#12868',
+          type: 'fix',
+          title: 'Dificuldade ao trocar de programa',
+          who: 'Carlos',
+        },
+        {
+          id: '#12883',
+          type: 'fix',
+          title: 'APP Fechando sozinho',
+          who: 'Carlos',
+        },
+        {
+          id: '#12885',
+          type: 'fix',
+          title: 'Impressão fora de ordem - Laudos Biodiesel-Cacau',
+          who: 'Carlos',
+        },
+        {
+          id: '#12887',
+          type: 'fix',
+          title: 'Verificar funcionalidade 2fa',
+          who: 'Carlos',
+        },
+        {
+          id: '#12889',
+          type: 'fix',
+          title: 'Impressão do Formulário Dinâmico falha para formulários compartilhados',
+          who: 'Carlos',
+        },
+        {
+          id: '#12899',
+          type: 'fix',
+          title: 'Envio dos dados PEC',
+          who: 'Carlos',
+        },
+        {
+          id: '#12907',
+          type: 'fix',
+          title: 'Dificuldade com login',
+          who: 'Carlos',
+        },
+        {
+          id: '#12908',
+          type: 'feat',
+          title: 'Melhorar fluxo de login usando MFA',
+          who: 'Carlos',
+        },
+        {
+          id: '#12918',
+          type: 'fix',
+          title: 'Ajustes no módulo PEC',
+          who: 'Carlos',
+        },
+        {
+          id: '#12924',
+          type: 'feat',
+          title: 'Tabela de qualidade no RAT',
+          who: 'Carlos',
+        },
+        {
+          id: '#12928',
+          type: 'feat',
+          title: 'Tamanho da fonte no RAT',
+          who: 'Carlos',
+        },
+        {
+          id: '#12978',
+          type: 'ref',
+          title: 'Publicar nova versão em PROD',
+          who: 'Carlos',
+        },
+        {
+          id: '#12979',
+          type: 'ref',
+          title: 'Ferramenta de análise',
+          who: 'Carlos',
+        },
+        // === ELIAS ===
+        {
+          id: '#12994',
+          type: 'fix',
+          title: 'Backup e Instruções não estão funcionando',
+          who: 'Elias',
+        },
+        {
+          id: '#12612',
+          type: 'feat',
+          title: 'Adicionar funcionalidade de pesagem',
+          who: 'Elias',
+        },
+        {
+          id: '#12980',
+          type: 'ref',
+          title: 'Publicar versões atualizadas',
+          who: 'Elias',
+        },
+        {
+          id: '#12997',
+          type: 'feat',
+          title: 'Respostas Automáticas',
+          who: 'Elias',
+        },
+        {
+          id: '#13010',
+          type: 'feat',
+          title: 'Restringir safras - API',
+          who: 'Elias',
+        },
+        {
+          id: '#13027',
+          type: 'fix',
+          title: 'Data na impressão saindo errada - Form Dinamico',
+          who: 'Elias',
+        },
+        {
+          id: '#12944',
+          type: 'fix',
+          title: 'Baixar dados PEC',
+          who: 'Elias',
+        },
+        {
+          id: '#9967',
+          type: 'fix',
+          title: 'Aplicativo fechando sozinho ao entrar na nova tela de localização da propriedade',
+          who: 'Elias',
+        },
+        {
+          id: '#12610',
+          type: 'feat',
+          title: 'Adicionar módulo PEC na visão do Produtor',
+          who: 'Elias',
+        },
+        {
+          id: '#12623',
+          type: 'feat',
+          title: 'Restringir safras no APP',
+          who: 'Elias',
+        },
+        {
+          id: '#13043',
+          type: 'fix',
+          title: 'Pergunta fora de ordem - Form Atividade Produtiva',
+          who: 'Elias',
+        },
+        // === MATHEUS ===
+        {
+          id: '#12835',
+          type: 'feat',
+          title: 'Liberar protocolo de animais lactantes',
+          who: 'Matheus',
+        },
+        {
+          id: '#12837',
+          type: 'fix',
+          title: 'Módulo Financeiro - Saldo',
+          who: 'Matheus',
+        },
+        {
+          id: '#12841',
+          type: 'feat',
+          title: 'Alterar data do atendimento produtivo',
+          who: 'Matheus',
+        },
+        {
+          id: '#12779',
+          type: 'feat',
+          title: 'Retirado Diagnostico pós parto',
+          who: 'Matheus',
+        },
+        {
+          id: '#12799',
+          type: 'feat',
+          title: 'Retirar recibo do RAT do modulo PEC',
+          who: 'Matheus',
+        },
+        {
+          id: '#12645',
+          type: 'feat',
+          title: 'Trabalhar nos relatórios vindos do CheckMilk',
+          who: 'Matheus',
+        },
+        {
+          id: '#12760',
+          type: 'feat',
+          title: 'Adicionado sync de dados do Qualidade do Leite',
+          who: 'Matheus',
+        },
+        {
+          id: '#12991',
+          type: 'fix',
+          title: 'Ajustando relatorios PEC com problema em produção',
+          who: 'Matheus',
+        },
+        {
+          id: '#12910',
+          type: 'ref',
+          title: 'Recibo e Assinatura - Cacau - Biodiesel',
+          who: 'Matheus',
+        },
+        {
+          id: '#12935',
+          type: 'feat',
+          title: 'Melhorar a pergunta GPS no FormDinâmico',
+          who: 'Matheus',
+        },
+        {
+          id: '#12946',
+          type: 'feat',
+          title: 'Tela de cadastro de animal',
+          who: 'Matheus',
+        },
+        {
+          id: '#12947',
+          type: 'feat',
+          title: 'Atualizar Score do animal',
+          who: 'Matheus',
+        },
+        {
+          id: '#12950',
+          type: 'feat',
+          title: 'Configurar limite mínimo de anexos por atendimento',
+          who: 'Matheus',
+        },
+      ];
+
+      const KPI_LABELS = {
+        all: "Todos os Cards",
+        feat: "Features",
+        fix: "Bugs Corrigidos",
+        ref: "Refactors/Migração",
+        test: "Tests",
+      };
+      const KPI_COLORS = {
+        feat: "var(--teal)",
+        fix: "var(--coral)",
+        ref: "var(--blue)",
+        test: "var(--amber)",
+      };
+      const KPI_BG = {
+        feat: "var(--teal-bg)",
+        fix: "var(--coral-bg)",
+        ref: "var(--blue-bg)",
+        test: "var(--amber-bg)",
+      };
+      const KPI_NAMES = {
+        feat: "feature",
+        fix: "fix",
+        ref: "refactor",
+        test: "test",
+      };
+
+      // ── Stats filter by member ──
+      let statsMember = "all";
+
+      function filterStats(member) {
+        statsMember = member;
+        document.querySelectorAll(".stats-filter").forEach((b) => {
+          b.classList.toggle("active", b.dataset.member === member);
+        });
+        const cards =
+          member === "all"
+            ? KPI_CARDS
+            : KPI_CARDS.filter((c) => c.who === member);
+        const total = cards.length;
+        const feat = cards.filter((c) => c.type === "feat").length;
+        const fix = cards.filter((c) => c.type === "fix").length;
+        const ref = cards.filter((c) => c.type === "ref").length;
+        const test = cards.filter((c) => c.type === "test").length;
+
+        document.getElementById("mv-all").textContent = total;
+        document.getElementById("mv-feat").textContent = feat;
+        document.getElementById("mv-fix").textContent = fix;
+        document.getElementById("mv-ref").textContent = ref;
+        document.getElementById("mv-test").textContent = test;
+        document.getElementById("statsCount").textContent = total + " cards";
+
+        // Update per-dev counts
+        const devR = (member === "all" ? KPI_CARDS : cards).filter(
+          (c) => c.who === "Carlos",
+        ).length;
+        const devB = (member === "all" ? KPI_CARDS : cards).filter(
+          (c) => c.who === "Elias",
+        ).length;
+        const devT = (member === "all" ? KPI_CARDS : cards).filter(
+          (c) => c.who === "Matheus",
+        ).length;
+        document.getElementById("mv-carlos").textContent = devR;
+        document.getElementById("mv-elias").textContent = devB;
+        document.getElementById("mv-matheus").textContent = devT;
+
+        // Update distribution bars
+        const dist = document.getElementById("statsDistribution");
+        const bars = [
+          {
+            label: "features",
+            count: feat,
+            color: "var(--purple)",
+            grad: "linear-gradient(90deg, var(--purple), var(--blue))",
+          },
+          {
+            label: "fixes",
+            count: fix,
+            color: "var(--red)",
+            grad: "linear-gradient(90deg, var(--red), var(--coral))",
+          },
+          {
+            label: "refactors",
+            count: ref,
+            color: "var(--teal)",
+            grad: "linear-gradient(90deg, var(--teal), var(--blue))",
+          },
+          {
+            label: "infra",
+            count: test,
+            color: "var(--amber)",
+            grad: "linear-gradient(90deg, var(--amber), var(--coral))",
+          },
+        ];
+        dist.innerHTML = bars
+          .map((b, i) => {
+            const pct = total > 0 ? Math.round((b.count / total) * 100) : 0;
+            return `<div style="margin-bottom:${i < 3 ? "10px" : "0"}">
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+        <span style="color:${b.color}">${b.label} (${b.count})</span>
+        <span class="num">${pct}%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${b.grad};transition:width 0.4s"></div></div>
+    </div>`;
+          })
+          .join("");
+      }
+
+      // Render initial stats
+      filterStats("all");
+
+      function openKpiModal(kpi) {
+        let base =
+          statsMember === "all"
+            ? KPI_CARDS
+            : KPI_CARDS.filter((c) => c.who === statsMember);
+        const filtered =
+          kpi === "all" ? base : base.filter((c) => c.type === kpi);
+        document.getElementById("kpiTitle").textContent = KPI_LABELS[kpi];
+        const tbody = document.getElementById("kpiBody");
+        tbody.innerHTML = filtered
+          .map((c) => {
+            const num = c.id.replace("#", "").replace("b", "");
+            return `<tr>
+      <td><a href="https://dev.azure.com/ibsbiosistemico/AGROTRACE/_workitems/edit/${num}" target="_blank" style="color:var(--text);text-decoration:none;transition:color 0.15s" onmouseover="this.style.color='var(--purple)'" onmouseout="this.style.color='var(--text)'">${c.id}</a></td>
+      <td>${c.title}</td>
+      <td><span class="kpi-badge" style="background:${KPI_BG[c.type]};color:${KPI_COLORS[c.type]}">${KPI_NAMES[c.type]}</span></td>
+      <td>${c.who}</td>
+    </tr>`;
+          })
+          .join("");
+        document.getElementById("kpiOverlay").classList.add("open");
+      }
+
+      function closeKpiModal() {
+        document.getElementById("kpiOverlay").classList.remove("open");
+      }
+
+      document.querySelectorAll(".metric-click").forEach((el) => {
+        el.addEventListener("click", () => openKpiModal(el.dataset.kpi));
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          if (
+            document.getElementById("termOverlay").classList.contains("open")
+          ) {
+            closeTermDemo();
+            e.stopPropagation();
+            return;
+          }
+          if (document.getElementById("ssOverlay").classList.contains("open")) {
+            closeScreenshot();
+            e.stopPropagation();
+            return;
+          }
+          if (
+            document.getElementById("kpiOverlay").classList.contains("open")
+          ) {
+            closeKpiModal();
+            e.stopPropagation();
+          }
+        }
+      });
+
+      // ── Screenshot carousel ──
+      let ssImages = [];
+      let ssIndex = 0;
+      let ssCardId = "";
+
+      function openScreenshot(cardId, title) {
+        ssCardId = cardId;
+        ssImages = [];
+        ssIndex = 0;
+        document.getElementById("ssCardId").textContent = "#" + cardId;
+        document.getElementById("ssTitle").textContent = title;
+        const body = document.getElementById("ssBody");
+        body.innerHTML =
+          '<div class="ss-empty"><div class="ss-empty-icon">⏳</div>Carregando...</div>';
+        document.getElementById("ssOverlay").classList.add("open");
+
+        const single = new Image();
+        single.src = "assets/" + cardId + ".png";
+        single.onload = () => {
+          ssImages = [single.src];
+          probeNext(cardId, 2, () => renderCarousel());
+        };
+        single.onerror = () => {
+          const first = new Image();
+          first.src = "assets/" + cardId + "-1.png";
+          first.onload = () => {
+            ssImages = [first.src];
+            probeNext(cardId, 2, () => renderCarousel());
+          };
+          first.onerror = () => {
+            body.innerHTML =
+              '<div class="ss-empty"><div class="ss-empty-icon">📷</div>Screenshot ainda não adicionado<br><span style="font-size:12px;color:var(--text3)">Salve em assets/' +
+              cardId +
+              ".png ou assets/" +
+              cardId +
+              "-1.png, -2.png, ...</span></div>";
+          };
+        };
+      }
+
+      function probeNext(cardId, n, done) {
+        const img = new Image();
+        img.src = "assets/" + cardId + "-" + n + ".png";
+        img.onload = () => {
+          ssImages.push(img.src);
+          probeNext(cardId, n + 1, done);
+        };
+        img.onerror = done;
+      }
+
+      function renderCarousel() {
+        const body = document.getElementById("ssBody");
+        body.classList.remove("tall");
+        body.scrollTop = 0;
+        const img = document.createElement("img");
+        img.src = ssImages[ssIndex];
+        img.alt = "#" + ssCardId + " — imagem " + (ssIndex + 1);
+        const applyTallIfNeeded = () => {
+          if (img.naturalWidth && img.naturalHeight) {
+            if (img.naturalHeight / img.naturalWidth > 1.5) {
+              body.classList.add("tall");
+            }
+          }
+        };
+        img.addEventListener("load", applyTallIfNeeded);
+        if (img.complete) applyTallIfNeeded();
+        body.innerHTML = "";
+        body.appendChild(img);
+
+        body
+          .querySelectorAll(".ss-carousel-btn, .ss-counter")
+          .forEach((el) => el.remove());
+
+        if (ssImages.length > 1) {
+          const prev = document.createElement("button");
+          prev.className = "ss-carousel-btn prev";
+          prev.innerHTML = "‹";
+          prev.onclick = (e) => {
+            e.stopPropagation();
+            ssNav(-1);
+          };
+
+          const next = document.createElement("button");
+          next.className = "ss-carousel-btn next";
+          next.innerHTML = "›";
+          next.onclick = (e) => {
+            e.stopPropagation();
+            ssNav(1);
+          };
+
+          const counter = document.createElement("div");
+          counter.className = "ss-counter";
+          counter.innerHTML =
+            ssImages
+              .map(
+                (_, i) =>
+                  '<div class="ss-dot' +
+                  (i === ssIndex ? " active" : "") +
+                  '"></div>',
+              )
+              .join("") +
+            "<span>" +
+            (ssIndex + 1) +
+            " / " +
+            ssImages.length +
+            "</span>";
+
+          body.appendChild(prev);
+          body.appendChild(next);
+          body.appendChild(counter);
+        }
+      }
+
+      function ssNav(dir) {
+        ssIndex = (ssIndex + dir + ssImages.length) % ssImages.length;
+        renderCarousel();
+      }
+
+      function closeScreenshot() {
+        document.getElementById("ssOverlay").classList.remove("open");
+        ssImages = [];
+        ssIndex = 0;
+      }
+
+      const slides = document.querySelectorAll(".slide");
+      const sidebarItems = document.querySelectorAll('[id^="si-"]');
+      const total = slides.length;
+      let cur = 0;
+
+      const labels = [
+        "README.md",
+        "agenda.ts",
+        "stats.json",
+        "pec-testes.service.ts",
+        "carlos-highlights.service.ts",
+        "entregas-elias.module.ts",
+        "9router.md",
+        "overview-matheus.md",
+        "openspec-em-uso.md",
+        "overview-elias.md",
+        "wins.log",
+        "roadmap.todo",
+        "exit.ts",
+      ];
+
+      // Build tabs
+      const tabsBar = document.getElementById("tabsBar");
+      const icons = [
+        "📋",
+        "📅",
+        "📊",
+        "🤖",
+        "🔐",
+        "📊",
+        "💡",
+        "📸",
+        "⚡",
+        "📸",
+        "🏆",
+        "🗺️",
+        "👋",
+      ];
+      labels.forEach((l, i) => {
+        const t = document.createElement("div");
+        t.className = "tab-item" + (i === 0 ? " active" : "");
+        t.innerHTML = `<span class="tab-icon">${icons[i]}</span>${l}`;
+        t.onclick = () => goTo(i);
+        t.id = "tab-" + i;
+        tabsBar.appendChild(t);
+      });
+
+      // Build dots
+      const dotsEl = document.getElementById("navDots");
+      for (let i = 0; i < total; i++) {
+        const d = document.createElement("div");
+        d.className = "nav-dot" + (i === 0 ? " active" : "");
+        d.onclick = () => goTo(i);
+        d.id = "dot-" + i;
+        dotsEl.appendChild(d);
+      }
+
+      function goTo(n) {
+        slides[cur].classList.remove("active");
+        document.getElementById("tab-" + cur)?.classList.remove("active");
+        document.getElementById("dot-" + cur)?.classList.remove("active");
+        document.getElementById("si-" + cur)?.classList.remove("active");
+
+        cur = (n + total) % total;
+
+        slides[cur].classList.add("active");
+        document.getElementById("tab-" + cur)?.classList.add("active");
+        document.getElementById("dot-" + cur)?.classList.add("active");
+        document.getElementById("si-" + cur)?.classList.add("active");
+
+        document.getElementById("slideCounter").textContent =
+          cur + 1 + " / " + total;
+        document.getElementById("statusFile").textContent = labels[cur];
+
+        const tab = document.getElementById("tab-" + cur);
+        if (tab)
+          tab.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center",
+          });
+      }
+
+      function next() {
+        goTo(cur + 1);
+      }
+      function prev() {
+        goTo(cur - 1);
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (document.getElementById("ssOverlay").classList.contains("open")) {
+          if (ssImages.length > 1) {
+            if (e.key === "ArrowRight") {
+              ssNav(1);
+              e.stopPropagation();
+              return;
+            }
+            if (e.key === "ArrowLeft") {
+              ssNav(-1);
+              e.stopPropagation();
+              return;
+            }
+          }
+          return;
+        }
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") next();
+        if (e.key === "ArrowLeft" || e.key === "ArrowUp") prev();
+        if (e.key === "f" || e.key === "F") {
+          if (!document.fullscreenElement)
+            document.documentElement.requestFullscreen();
+          else document.exitFullscreen();
+        }
+        if (e.key === "t" || e.key === "T") toggleTimer();
+        if (e.key === "r" || e.key === "R") toggleRemote();
+      });
+
+      // ── Timer / Cronômetro ──
+      let timerInterval = null;
+      let timerStart = null;
+      let timerElapsed = 0;
+      let timerRunning = false;
+
+      function toggleTimer() {
+        if (!timerRunning) {
+          timerStart = Date.now() - timerElapsed;
+          timerInterval = setInterval(updateTimer, 1000);
+          timerRunning = true;
+          document.getElementById("timerIcon").textContent = "⏸";
+          document.getElementById("timerBtn").classList.add("running");
+          document.getElementById("timerBtn").title =
+            "Clique para pausar (ou pressione T)";
+        } else {
+          clearInterval(timerInterval);
+          timerElapsed = Date.now() - timerStart;
+          timerRunning = false;
+          document.getElementById("timerIcon").textContent = "▶";
+          document.getElementById("timerBtn").classList.remove("running");
+          document.getElementById("timerBtn").title =
+            "Clique para retomar (ou pressione T)";
+        }
+      }
+
+      function updateTimer() {
+        timerElapsed = Date.now() - timerStart;
+        const totalSec = Math.floor(timerElapsed / 1000);
+        const min = Math.floor(totalSec / 60);
+        const sec = totalSec % 60;
+        const display =
+          String(min).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
+        document.getElementById("timerDisplay").textContent = display;
+
+        const btn = document.getElementById("timerBtn");
+        btn.classList.remove("warning", "overtime");
+        if (min >= 50) {
+          btn.classList.add("overtime");
+        } else if (min >= 40) {
+          btn.classList.add("warning");
+        }
+      }
+
+      // ── WebSocket Remote Control (host/guest com delegação) ──
+      // Protocolo novo: cada cliente entra com role=host|guest e name.
+      // Somente quem tem `controlOwnerId` pode navegar/disparar ações.
+      // O host (4=Carlos) pode delegar controle com as teclas 4/5/6.
+      // Se o guest com controle cai, volta pro host automaticamente.
+
+      const urlParams = new URLSearchParams(location.search);
+      const myRole =
+        (urlParams.get("role") || "host").toLowerCase() === "guest"
+          ? "guest"
+          : "host";
+      const myName =
+        urlParams.get("name") || (myRole === "host" ? "Carlos" : "Guest");
+
+      // Mapeamento das teclas de delegação (sem modificador, só o número)
+      const HANDOFF_KEYS = {
+        4: "Carlos",
+        5: "Elias",
+        6: "Matheus",
+      };
+
+      let remoteWs = null;
+      let remoteConnected = false;
+      let applyingFromRemote = false;
+      let myId = null;
+      let hostId = null;
+      let controlOwnerId = null;
+      let peers = [];
+
+      function iHaveControl() {
+        return myId != null && myId === controlOwnerId;
+      }
+      function iAmHost() {
+        return myId != null && myId === hostId;
+      }
+      function canActLocally() {
+        // Antes de o handshake chegar, deixa agir normalmente (sessão ainda não conhecida).
+        if (applyingFromRemote) return true;
+        if (!remoteConnected) return true;
+        if (controlOwnerId == null) return true;
+        return iHaveControl();
+      }
+
+      function toggleRemote() {
+        if (remoteConnected) disconnectRemote();
+        else connectRemote();
+      }
+
+      function connectRemote(url) {
+        if (!url) {
+          if (location.protocol === "file:") return;
+          const wsProto = location.protocol === "https:" ? "wss:" : "ws:";
+          url = `${wsProto}//${location.host}`;
+        }
+        try {
+          remoteWs = new WebSocket(url);
+        } catch {
+          updatePeersUI();
+          return;
+        }
+
+        remoteWs.onopen = () => {
+          remoteWs.send(
+            JSON.stringify({
+              type: "join",
+              role: myRole,
+              name: myName,
+              totalSlides: total,
+              currentSlide: cur,
+            }),
+          );
+          remoteConnected = true;
+          updatePeersUI();
+        };
+
+        remoteWs.onmessage = (e) => {
+          let msg;
+          try {
+            msg = JSON.parse(e.data);
+          } catch {
+            return;
+          }
+
+          if (msg.type === "session") {
+            if (typeof msg.myId === "number") myId = msg.myId;
+            hostId = msg.hostId;
+            controlOwnerId = msg.controlOwnerId;
+            peers = Array.isArray(msg.clients) ? msg.clients : [];
+            // Guests recém-conectados: sincroniza pro slide atual do host.
+            if (
+              myRole === "guest" &&
+              typeof msg.currentSlide === "number" &&
+              msg.currentSlide !== cur
+            ) {
+              applyingFromRemote = true;
+              try {
+                goTo(msg.currentSlide);
+              } finally {
+                applyingFromRemote = false;
+              }
+            }
+            updatePeersUI();
+            return;
+          }
+
+          if (msg.type === "slide-update") {
+            if (
+              typeof msg.currentSlide === "number" &&
+              msg.currentSlide !== cur
+            ) {
+              applyingFromRemote = true;
+              try {
+                goTo(msg.currentSlide);
+              } finally {
+                applyingFromRemote = false;
+              }
+            }
+            return;
+          }
+
+          if (msg.type === "navigate") {
+            applyingFromRemote = true;
+            try {
+              if (msg.action === "next") next();
+              else if (msg.action === "prev") prev();
+              else if (msg.action === "goto" && typeof msg.slide === "number")
+                goTo(msg.slide);
+            } finally {
+              applyingFromRemote = false;
+            }
+            return;
+          }
+
+          if (msg.type === "action") {
+            applyingFromRemote = true;
+            try {
+              handleRemoteAction(msg.action, msg.params || {});
+            } finally {
+              applyingFromRemote = false;
+            }
+            return;
+          }
+
+          if (msg.type === "error") {
+            flashPeersStatus(msg.error || "erro");
+            return;
+          }
+        };
+
+        remoteWs.onerror = () => {};
+
+        remoteWs.onclose = () => {
+          remoteConnected = false;
+          myId = null;
+          hostId = null;
+          controlOwnerId = null;
+          peers = [];
+          updatePeersUI();
+          setTimeout(() => {
+            if (!remoteConnected)
+              try {
+                connectRemote(url);
+              } catch (e) {}
+          }, 5000);
+        };
+      }
+
+      function disconnectRemote() {
+        if (remoteWs) {
+          remoteWs.close();
+          remoteWs = null;
+        }
+        remoteConnected = false;
+        myId = null;
+        hostId = null;
+        controlOwnerId = null;
+        peers = [];
+        updatePeersUI();
+      }
+
+      // Map of actions available per slide
+      const SLIDE_ACTIONS = {
+        7: [
+          // overview-matheus.md
+          {
+            id: "ss-12946",
+            label: "📷 #12946 — Cadastro de animal",
+            action: "openScreenshot",
+            params: {
+              cardId: "12946",
+              title: "Tela de cadastro de animal",
+            },
+          },
+          {
+            id: "ss-12947",
+            label: "📷 #12947 — Score do animal",
+            action: "openScreenshot",
+            params: { cardId: "12947", title: "Atualizar Score do animal" },
+          },
+          {
+            id: "ss-12835",
+            label: "📷 #12835 — Animais lactantes",
+            action: "openScreenshot",
+            params: {
+              cardId: "12835",
+              title: "Liberar protocolo de animais lactantes",
+            },
+          },
+        ],
+        9: [
+          // overview-elias.md
+          {
+            id: "ss-12610",
+            label: "📷 #12610 — PEC do Produtor",
+            action: "openScreenshot",
+            params: {
+              cardId: "12610",
+              title: "Adicionar modulo PEC na visao do Produtor",
+            },
+          },
+          {
+            id: "ss-12612",
+            label: "📷 #12612 — Pesagem",
+            action: "openScreenshot",
+            params: {
+              cardId: "12612",
+              title: "Adicionar funcionalidade de pesagem",
+            },
+          },
+          {
+            id: "ss-9967",
+            label: "📷 #9967 — Crash localização",
+            action: "openScreenshot",
+            params: {
+              cardId: "9967",
+              title: "App fechando sozinho na tela de localizacao",
+            },
+          },
+        ],
+      };
+
+      function getSlideActions() {
+        return SLIDE_ACTIONS[cur] || [];
+      }
+
+      function handleRemoteAction(action, params) {
+        switch (action) {
+          case "openScreenshot":
+            openScreenshot(params.cardId, params.title);
+            break;
+          case "closeModals":
+            if (document.getElementById("ssOverlay").classList.contains("open"))
+              closeScreenshot();
+            if (
+              document.getElementById("kpiOverlay").classList.contains("open")
+            )
+              closeKpiModal();
+            break;
+          case "ssNav":
+            if (ssImages.length > 1) ssNav(params.dir);
+            break;
+          case "toggleTimer":
+            toggleTimer();
+            break;
+          case "openKpiModal":
+            openKpiModal(params.kpi || "all");
+            break;
+          case "closeKpiModal":
+            closeKpiModal();
+            break;
+          case "filterStats":
+            filterStats(params.member || "all");
+            break;
+        }
+      }
+
+      function emitSlideUpdate() {
+        if (!remoteWs || remoteWs.readyState !== 1) return;
+        if (applyingFromRemote) return;
+        if (!iHaveControl()) return;
+        remoteWs.send(
+          JSON.stringify({
+            type: "slide-update",
+            currentSlide: cur,
+            slideLabel: labels[cur] || "",
+            slideActions: getSlideActions(),
+          }),
+        );
+      }
+
+      function emitAction(action, params) {
+        if (!remoteWs || remoteWs.readyState !== 1) return;
+        if (applyingFromRemote) return;
+        if (!iHaveControl()) return;
+        remoteWs.send(
+          JSON.stringify({
+            type: "action",
+            action,
+            params: params || {},
+          }),
+        );
+      }
+
+      // ── Wrap das funções locais para aplicar regras de controle + broadcast ──
+      const _origGoTo = goTo;
+      goTo = function (n) {
+        if (!canActLocally()) {
+          flashPeersStatus("sem controle — aguarde handoff");
+          return;
+        }
+        _origGoTo(n);
+        emitSlideUpdate();
+      };
+
+      const _origOpenScreenshot = openScreenshot;
+      openScreenshot = function (cardId, title) {
+        if (!canActLocally()) {
+          flashPeersStatus("sem controle");
+          return;
+        }
+        _origOpenScreenshot(cardId, title);
+        emitAction("openScreenshot", { cardId, title });
+      };
+
+      const _origCloseScreenshot = closeScreenshot;
+      closeScreenshot = function () {
+        if (!canActLocally()) return;
+        _origCloseScreenshot();
+        emitAction("closeModals");
+      };
+
+      const _origSsNav = ssNav;
+      ssNav = function (dir) {
+        if (!canActLocally()) return;
+        _origSsNav(dir);
+        emitAction("ssNav", { dir });
+      };
+
+      const _origToggleTimer = toggleTimer;
+      toggleTimer = function () {
+        // Timer pode ser sincronizado, mas não bloqueia guest (cada um vê o seu próprio)
+        _origToggleTimer();
+        emitAction("toggleTimer");
+      };
+
+      const _origOpenKpiModal = openKpiModal;
+      openKpiModal = function (kpi) {
+        if (!canActLocally()) {
+          flashPeersStatus("sem controle");
+          return;
+        }
+        _origOpenKpiModal(kpi);
+        emitAction("openKpiModal", { kpi });
+      };
+
+      const _origCloseKpiModal = closeKpiModal;
+      closeKpiModal = function () {
+        if (!canActLocally()) return;
+        _origCloseKpiModal();
+        emitAction("closeModals");
+      };
+
+      const _origFilterStats = filterStats;
+      filterStats = function (member) {
+        if (!canActLocally()) {
+          flashPeersStatus("sem controle");
+          return;
+        }
+        _origFilterStats(member);
+        emitAction("filterStats", { member });
+      };
+
+      // ── Teclas de delegação (apenas host): 4=Carlos, 5=Elias, 6=Matheus ──
+      document.addEventListener("keydown", (e) => {
+        if (!iAmHost()) return;
+        if (document.getElementById("ssOverlay")?.classList.contains("open"))
+          return;
+        if (document.getElementById("kpiOverlay")?.classList.contains("open"))
+          return;
+        if (e.ctrlKey || e.altKey || e.metaKey || e.shiftKey) return;
+        const targetName = HANDOFF_KEYS[e.key];
+        if (!targetName) return;
+        if (!remoteWs || remoteWs.readyState !== 1) return;
+        const target = peers.find(
+          (p) => p.name.toLowerCase() === targetName.toLowerCase(),
+        );
+        if (!target) {
+          flashPeersStatus(`${targetName} nao esta conectado`);
+          e.preventDefault();
+          return;
+        }
+        if (target.id === controlOwnerId) {
+          flashPeersStatus(`${targetName} ja esta no controle`);
+          e.preventDefault();
+          return;
+        }
+        remoteWs.send(
+          JSON.stringify({
+            type: "control-handoff",
+            targetId: target.id,
+            targetName,
+          }),
+        );
+        flashPeersStatus(`controle → ${targetName}`);
+        e.preventDefault();
+      });
+
+      // ── UI: barra de peers/controle ──
+      function updatePeersUI() {
+        let el = document.getElementById("peersBar");
+        if (!el) {
+          el = document.createElement("div");
+          el.id = "peersBar";
+          el.style.cssText =
+            "position:fixed;bottom:32px;right:16px;font-family:JetBrains Mono,monospace;font-size:0.7rem;padding:6px 12px;border-radius:6px;z-index:9999;background:rgba(30,30,30,0.92);border:1px solid #3e3e42;color:#cccccc;display:flex;gap:10px;align-items:center;cursor:pointer;transition:opacity 0.3s";
+          el.onclick = toggleRemote;
+          el.title = "Clique para reconectar (ou pressione R)";
+          document.body.appendChild(el);
+        }
+        if (!remoteConnected) {
+          el.innerHTML = `<span style="color:#f87171">● offline</span> <span style="opacity:0.6">${myRole}:${myName}</span>`;
+          return;
+        }
+        const parts = [];
+        parts.push(
+          `<span style="color:#34d399">●</span> <span style="opacity:0.6">você:</span> <span>${myName}</span>`,
+        );
+        if (peers.length) {
+          parts.push(`<span style="opacity:0.3">│</span>`);
+          const tags = peers
+            .map((p) => {
+              const isHost = p.id === hostId;
+              const hasControl = p.id === controlOwnerId;
+              const isMe = p.id === myId;
+              let color = "#9ca3af";
+              if (hasControl) color = "#fbbf24";
+              else if (isMe) color = "#60a5fa";
+              const prefix = isHost ? "★" : "";
+              const suffix = hasControl ? "◉" : "";
+              return `<span style="color:${color}">${prefix}${p.name}${suffix}</span>`;
+            })
+            .join(" ");
+          parts.push(tags);
+        }
+        if (iAmHost()) {
+          parts.push(
+            '<span style="opacity:0.3">│</span>',
+            '<span style="opacity:0.5">[4/5/6]</span>',
+          );
+        } else if (!iHaveControl()) {
+          parts.push(
+            '<span style="opacity:0.3">│</span>',
+            '<span style="opacity:0.5">modo view</span>',
+          );
+        }
+        el.innerHTML = parts.join(" ");
+        el.style.opacity = "1";
+      }
+
+      let _peersFlashTimer = null;
+      function flashPeersStatus(text) {
+        const el = document.getElementById("peersBar");
+        if (!el) return;
+        el.innerHTML = `<span style="color:#fbbf24">⚠ ${text}</span>`;
+        if (_peersFlashTimer) clearTimeout(_peersFlashTimer);
+        _peersFlashTimer = setTimeout(() => updatePeersUI(), 2000);
+      }
+
+      // Auto-connect on load
+      const initialSlideFromHash = Number(
+        (location.hash.match(/\d+/) || [])[0],
+      );
+      if (
+        Number.isInteger(initialSlideFromHash) &&
+        initialSlideFromHash >= 0 &&
+        initialSlideFromHash < total
+      ) {
+        _origGoTo(initialSlideFromHash);
+      }
+      updatePeersUI();
+      try {
+        connectRemote();
+      } catch (e) {}
+    </script>
+  </body>
+</html>

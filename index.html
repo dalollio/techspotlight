@@ -272,11 +272,25 @@ span.btn-disabled {
 <div class="grid-container">
   <div class="grid">
 
+    <!-- Edition #07 -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-edition">#07</span>
+        <span class="card-status today">Hoje</span>
+      </div>
+      <div class="card-date">07/08/2026</div>
+      <div class="card-period">Período: <code>18/07 – 07/08/2026</code></div>
+      <div class="card-actions">
+        <a href="edition-07/spotlight.html" class="btn-spotlight">▶ Abrir Spotlight</a>
+        <a href="edition-07/cards.html" class="btn-cards">📋 Ver Cards</a>
+      </div>
+    </div>
+
     <!-- Edition #06 -->
     <div class="card">
       <div class="card-header">
         <span class="card-edition">#06</span>
-        <span class="card-status today">Hoje</span>
+        <span class="card-status done">Apresentado</span>
       </div>
       <div class="card-date">17/07/2026</div>
       <div class="card-period">Período: <code>29/06 – 17/07/2026</code></div>
@@ -362,7 +376,7 @@ span.btn-disabled {
 <div class="footer">
   <div class="footer-keys">
     <div class="key-hint">
-      <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd><kbd>5</kbd><kbd>6</kbd> Ir para edição</div>
+      <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd><kbd>5</kbd><kbd>6</kbd><kbd>7</kbd> Ir para edição</div>
     <div class="key-hint"><kbd>←</kbd><kbd>→</kbd> Navegar slides</div>
     <div class="key-hint"><kbd>Esc</kbd> Fechar modal</div>
   </div>
@@ -382,6 +396,7 @@ document.addEventListener('keydown', e => {
   if (e.key === '4') window.location.href = 'edition-04/spotlight.html';
   if (e.key === '5') window.location.href = 'edition-05/spotlight.html';
   if (e.key === '6') window.location.href = 'edition-06/spotlight.html';
+  if (e.key === '7') window.location.href = 'edition-07/spotlight.html';
 });
 </script>
 
