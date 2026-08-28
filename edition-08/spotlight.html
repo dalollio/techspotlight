@@ -1743,7 +1743,7 @@
           <div class="sidebar-header">Elias</div>
 
           <div class="sidebar-item" onclick="goTo(4)" id="si-4">
-            <span class="sidebar-icon">🐄</span> pec-produtor.module.ts
+            <span class="sidebar-icon">📝</span> formulario-dinamico.ts
           </div>
           <div class="sidebar-item" onclick="goTo(8)" id="si-8">
             <span class="sidebar-icon">📸</span> overview-elias.md
@@ -1827,7 +1827,7 @@
               </div>
 
               <div class="tag-list">
-                <span class="badge badge-purple">Módulo PEC</span>
+                <span class="badge badge-purple">Grupo filial</span>
                 <span class="badge badge-blue">Form Dinâmico</span>
                 <span class="badge badge-teal">Croqui</span>
                 <span class="badge badge-amber">Recibo &amp; Assinatura</span>
@@ -1855,7 +1855,7 @@
                   >"Envio de dados pendentes"</span
                 >,<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
-                  >"Módulo PEC — visão do Produtor"</span
+                  >"Formulários por grupo filial"</span
                 >,<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
                   >"MVP Sentinel — imagens de satélite"</span
@@ -1971,7 +1971,7 @@
                 >
                   <span class="badge badge-blue">Spotlight 2</span>
                   <span style="font-size: 16px; color: var(--text)"
-                    >Módulo PEC na visão do Produtor + estabilidade do app</span
+                    >Formulários por grupo filial + estabilidade do app</span
                   >
                 </div>
               </div>
@@ -2187,7 +2187,7 @@
 
               <div class="section-label">stack utilizada</div>
               <div class="tag-list mb-16">
-                <span class="chip">Módulo PEC</span>
+                <span class="chip">Grupo filial</span>
                 <span class="chip">Form Dinâmico</span>
                 <span class="chip">Croqui</span>
                 <span class="chip">Recibo &amp; Assinatura</span>
@@ -2451,8 +2451,8 @@
         <div class="slide" id="slide-4">
           <div class="slide-title">// spotlight 2 — Elias — 7 min ⏱</div>
           <div class="flex-row mb-8">
-            <span class="badge badge-blue">🐄 feature</span>
-            <span class="badge badge-green">#12610</span>
+            <span class="badge badge-blue">📝 feature</span>
+            <span class="badge badge-green">#13046</span>
             <span class="badge badge-red">#13117 · #13155 · #13126</span>
             <span class="badge badge-amber">#13175</span>
             <span
@@ -2461,14 +2461,14 @@
                 color: var(--text3);
                 font-family: var(--font-mono);
               "
-              >pec-produtor.module.ts</span
+              >formularios-grupo-filial.ts</span
             >
           </div>
           <div
             class="slide-heading"
             style="font-size: 28px; margin-bottom: 20px"
           >
-            Módulo PEC na visão do <span>Produtor</span> + app estável
+            Formulários por <span>grupo filial</span> + app estável
           </div>
 
           <div class="grid-2" style="gap: 16px; flex: 1">
@@ -2480,11 +2480,12 @@
                 <div
                   style="font-size: 16px; color: var(--text2); line-height: 1.7"
                 >
-                  O módulo PEC existia apenas na visão do
-                  <strong>técnico</strong> — o produtor não registrava partos
-                  nem pesagens sozinho. Em paralelo, crashes na tela de Croqui e
-                  ao adicionar fotos, mais uma regressão de performance no Form
-                  Dinâmico, minavam a confiança no app em campo.
+                  Formulários dinâmicos podiam ficar disponíveis para técnicos
+                  fora do seu grupo filial. A configuração da certificadora não
+                  era sincronizada nem aplicada de forma consistente offline.
+                  Em paralelo, crashes na tela de Croqui e ao adicionar fotos,
+                  mais uma regressão de performance no Form Dinâmico, minavam a
+                  confiança no app em campo.
                 </div>
               </div>
 
@@ -2504,16 +2505,16 @@
                   <div style="display: flex; gap: 8px; align-items: flex-start">
                     <span
                       style="color: var(--teal); font-family: var(--font-mono)"
-                      >#12610</span
+                      >#13046</span
                     >
                     <span
-                      >Extensão do PEC para o Produtor:
+                      >Formulários dinâmicos por grupo filial:
                       <strong style="color: var(--text)"
-                        >registro de parto</strong
+                        >associação e sincronização</strong
                       >
-                      (entrada de animal no rebanho) e
-                      <strong style="color: var(--text)">pesagens</strong> em
-                      lote, individual e coletiva.</span
+                      da configuração, com exibição restrita aos
+                      <strong style="color: var(--text)">técnicos elegíveis</strong
+                      >.</span
                     >
                   </div>
                   <div style="display: flex; gap: 8px; align-items: flex-start">
@@ -2557,9 +2558,10 @@
                 <div
                   style="font-size: 16px; color: var(--text2); line-height: 1.7"
                 >
-                  Produtor autônomo no PEC — rebanho atualizado sem depender de
-                  visita — e app estável: croqui e fotos sem crash, formulário
-                  rápido de novo. Versões publicadas nas lojas (#13096, #13134).
+                  Formulários alinhados ao escopo de cada técnico, inclusive
+                  offline após a sincronização — e app estável: croqui e fotos
+                  sem crash, formulário rápido de novo. Versões publicadas nas
+                  lojas (#13096, #13134).
                 </div>
               </div>
             </div>
@@ -2580,7 +2582,7 @@
                   letter-spacing: 0.5px;
                 "
               >
-                // mapa do módulo PEC — visão do produtor
+                // disponibilidade de formulários por grupo filial
               </div>
 
               <div class="grid-2" style="gap: 12px">
@@ -2601,7 +2603,7 @@
                       margin-bottom: 8px;
                     "
                   >
-                    🐄 Registro de parto
+                    🏢 Configuração por filial
                   </div>
                   <div
                     style="
@@ -2610,9 +2612,9 @@
                       line-height: 1.7;
                     "
                   >
-                    • Entrada de animal no rebanho<br />
-                    • Feito pelo próprio produtor<br />
-                    • Direto no APP
+                    • Formulário associado às filiais<br />
+                    • Configurado pela certificadora<br />
+                    • Sincronizado no dispositivo
                   </div>
                   <div
                     style="
@@ -2624,7 +2626,7 @@
                       color: var(--text3);
                     "
                   >
-                    → antes: só o técnico
+                    → antes: disponível sem esse filtro
                   </div>
                 </div>
 
@@ -2645,7 +2647,7 @@
                       margin-bottom: 8px;
                     "
                   >
-                    ⚖️ Pesagens
+                    👤 Técnico elegível
                   </div>
                   <div
                     style="
@@ -2654,9 +2656,9 @@
                       line-height: 1.7;
                     "
                   >
-                    • Em lote<br />
-                    • Individual<br />
-                    • Coletiva
+                    • Vê apenas os formulários do grupo<br />
+                    • Criação e abertura alinhadas<br />
+                    • Funciona offline após sincronizar
                   </div>
                   <div
                     style="
@@ -2668,7 +2670,7 @@
                       color: var(--text3);
                     "
                   >
-                    → rebanho sempre atualizado
+                    → escopo certo em campo
                   </div>
                 </div>
               </div>
@@ -2685,7 +2687,7 @@
                   border-radius: var(--radius);
                 "
               >
-                ↑ produtor ativo no PEC — mesma base do técnico ↑
+                ↑ formulário certo para o técnico certo ↑
               </div>
 
               <div
@@ -2711,22 +2713,6 @@
                 >
               </div>
             </div>
-          </div>
-
-          <div
-            style="
-              margin-top: 14px;
-              padding: 10px 14px;
-              background: var(--amber-bg);
-              border: 1px solid #78350f;
-              border-radius: var(--radius);
-              font-family: var(--font-mono);
-              font-size: 14px;
-              color: var(--amber);
-            "
-          >
-            🎬 PEC Produtor ao vivo — parto + pesagem em lote · screenshot
-            backup
           </div>
         </div>
 
@@ -3207,26 +3193,6 @@
           <div class="overview-grid">
             <div
               class="overview-card"
-              onclick="openScreenshot('12610', 'Módulo PEC na visão do Produtor')"
-            >
-              <div class="overview-card-badge">
-                <span
-                  class="badge badge-green"
-                  style="font-size: 11px; padding: 2px 8px"
-                  >feat</span
-                >
-              </div>
-              <div class="overview-card-id">#12610</div>
-              <div class="overview-card-title">
-                Módulo PEC na visão do Produtor — registro de parto e pesagens
-                em lote, individual e coletiva
-              </div>
-              <div class="overview-card-hint">
-                📷 clique para ver screenshot
-              </div>
-            </div>
-            <div
-              class="overview-card"
               onclick="openScreenshot('12997', 'Respostas Automáticas')"
             >
               <div class="overview-card-badge">
@@ -3247,7 +3213,7 @@
             </div>
             <div
               class="overview-card"
-              onclick="openScreenshot('13046', 'Formulários — Regras')"
+              onclick="openScreenshot('13046', 'Formulários por grupo filial')"
             >
               <div class="overview-card-badge">
                 <span
@@ -3258,8 +3224,8 @@
               </div>
               <div class="overview-card-id">#13046</div>
               <div class="overview-card-title">
-                Formulários — Regras: só os forms do grupo do técnico +
-                preenchimento obrigatório antes de concluir
+                Formulários por grupo filial — associação, sincronização e
+                acesso apenas aos técnicos elegíveis
               </div>
               <div class="overview-card-hint">
                 📷 clique para ver screenshot
@@ -3548,9 +3514,9 @@
                 >
                 crashes do Croqui (#13117/#13155) e das fotos (#13126)
                 eliminados, performance do Form Dinâmico recuperada (#13175) e
-                ainda o
-                <strong style="color: var(--text)">PEC do Produtor</strong>
-                (#12610) entregue — 25 cards no período, o maior volume do time.
+                ainda os <strong style="color: var(--text)">formulários por
+                grupo filial</strong> (#13046) entregues — 25 cards no período,
+                o maior volume do time.
               </div>
             </div>
 
@@ -3632,11 +3598,11 @@
               <div class="todo-check"></div>
               <div class="todo-content">
                 <div class="todo-title">
-                  Módulo PEC Produtor — próximos manejos
+                  Formulários por grupo filial — evolução de regras
                 </div>
                 <div class="todo-desc">
-                  Ampliar a visão do produtor com novos manejos e histórico do
-                  rebanho, sobre a base entregue no #12610.
+                  Evoluir as regras de disponibilidade e acompanhar o uso dos
+                  formulários por técnicos elegíveis, sobre a base do #13046.
                 </div>
               </div>
               <div class="flex-row">
@@ -4021,12 +3987,6 @@
         },
 
         // === ELIAS ===
-        {
-          id: "#12610",
-          type: "feat",
-          title: "Adicionar módulo PEC na visão do Produtor",
-          who: "Elias",
-        },
         {
           id: "#12623",
           type: "feat",
@@ -4533,7 +4493,7 @@
         "agenda.ts",
         "stats.json",
         "envio-dados-pendentes.service.ts",
-        "pec-produtor.module.ts",
+        "formularios-grupo-filial.ts",
         "sentinel-analysis.py",
         "overview-carlos.md",
         "dica-form-dinamico.ts",
@@ -4890,12 +4850,12 @@
         8: [
           // overview-elias.md
           {
-            id: "ss-12610",
-            label: "📷 #12610 — PEC Produtor",
+            id: "ss-13046",
+            label: "📷 #13046 — Formulários por grupo filial",
             action: "openScreenshot",
             params: {
-              cardId: "12610",
-              title: "Módulo PEC na visão do Produtor",
+              cardId: "13046",
+              title: "Formulários por grupo filial",
             },
           },
           {
