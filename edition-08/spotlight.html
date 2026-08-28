@@ -1733,7 +1733,7 @@
           <div class="sidebar-header">Carlos</div>
 
           <div class="sidebar-item" onclick="goTo(3)" id="si-3">
-            <span class="sidebar-icon">📤</span> envio-dados-pendentes.service.ts
+            <span class="sidebar-icon">🚀</span> release-checkwork.ts
           </div>
           <div class="sidebar-item" onclick="goTo(6)" id="si-6">
             <span class="sidebar-icon">📸</span> overview-carlos.md
@@ -1852,7 +1852,7 @@
                 <span class="num">38</span><br />
                 &nbsp;&nbsp;<span class="prop">topics</span>: [<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
-                  >"Envio de dados pendentes"</span
+                  >"Nova versão CheckWork"</span
                 >,<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
                   >"Formulários por grupo filial"</span
@@ -1948,7 +1948,7 @@
                 >
                   <span class="badge badge-purple">Spotlight 1</span>
                   <span style="font-size: 16px; color: var(--text)"
-                    >Envio de dados pendentes — análise, solução e release em
+                    >Nova versão do CheckWork — publicação do Backend e APP em
                     produção</span
                   >
                 </div>
@@ -2273,9 +2273,8 @@
         <div class="slide" id="slide-3">
           <div class="slide-title">// spotlight 1 — Carlos — 7 min ⏱</div>
           <div class="flex-row mb-8">
-            <span class="badge badge-purple">📤 feature</span>
-            <span class="badge badge-green">#13193</span>
-            <span class="badge badge-blue">#13232</span>
+            <span class="badge badge-purple">🚀 release</span>
+            <span class="badge badge-green">#13232</span>
             <span class="badge badge-blue">#13233</span>
             <span
               style="
@@ -2283,14 +2282,14 @@
                 color: var(--text3);
                 font-family: var(--font-mono);
               "
-              >envio-dados-pendentes.service.ts</span
+              >release-checkwork.ts</span
             >
           </div>
           <div
             class="slide-heading"
             style="font-size: 28px; margin-bottom: 20px"
           >
-            Envio de dados <span>pendentes</span> — análise, solução e release
+            Nova versão do <span>CheckWork</span> — Backend e APP em produção
           </div>
 
           <div class="grid-2" style="gap: 16px; flex: 1">
@@ -2302,16 +2301,16 @@
                 <div
                   style="font-size: 16px; color: var(--text2); line-height: 1.7"
                 >
-                  Dados coletados em campo ficavam <strong>presos na fila de
-                  envio</strong> do aplicativo. Sem visibilidade da causa, o
-                  técnico não sabia se o atendimento tinha subido — risco de
-                  perda de dados e retrabalho na propriedade.
+                  Backend de produção <strong>defasado</strong> — tabelas
+                  antigas, migrations pendentes e envs faltando — e o APP ainda
+                  sem push notifications. O desafio: publicar tudo sem quebrar
+                  as versões do aplicativo já em campo.
                 </div>
               </div>
 
               <div class="card card-accent-purple">
                 <div class="section-label" style="color: var(--purple)">
-                  ✓ solução em 3 movimentos
+                  ✓ solução em 2 movimentos
                 </div>
                 <div
                   style="
@@ -2322,17 +2321,6 @@
                     color: var(--text2);
                   "
                 >
-                  <div style="display: flex; gap: 8px; align-items: flex-start">
-                    <span
-                      style="color: var(--teal); font-family: var(--font-mono)"
-                      >#13193</span
-                    >
-                    <span
-                      >Análise do fluxo de sincronização e implementação da
-                      solução para o envio dos dados pendentes no
-                      aplicativo.</span
-                    >
-                  </div>
                   <div style="display: flex; gap: 8px; align-items: flex-start">
                     <span
                       style="color: var(--teal); font-family: var(--font-mono)"
@@ -2367,64 +2355,59 @@
                 <div
                   style="font-size: 16px; color: var(--text2); line-height: 1.7"
                 >
-                  Fila de pendentes destravada, backend e APP alinhados em
-                  produção e push notifications abrindo um canal direto com o
-                  técnico no campo — release coordenado, sem quebrar versões
-                  antigas do aplicativo.
+                  Backend e APP do CheckWork alinhados em produção, com push
+                  notifications abrindo um canal direto com o usuário — release
+                  coordenado, validado de ponta a ponta e sem quebrar as
+                  versões antigas do aplicativo.
                 </div>
               </div>
             </div>
 
             <div class="code-block" style="height: fit-content">
               <div class="code-block-header">
-                📤 envio-dados-pendentes.service.ts
+                🚀 release-checkwork.ts
               </div>
               <div class="code-body">
                 <div class="line-numbers">
                   1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14
                 </div>
                 <div class="code-lines">
-                  <span class="cmt"
-                    >// 1. diagnóstico: por que o dado não subiu?</span
-                  ><br />
-                  <span class="kw">const</span>
-                  <span class="prop">pendentes</span> =
+                  <span class="cmt">// 1. backend primeiro — #13232</span><br />
                   <span class="kw">await</span>
-                  <span class="prop">filaEnvio</span>.<span class="fn"
-                    >listarPendentes</span
-                  >()<br />
-                  <span class="cmt"
-                    >// → agrupados por causa: rede, payload, versão</span
-                  ><br /><br />
-                  <span class="cmt">// 2. reenvio seguro, nada é descartado</span
-                  ><br />
-                  <span class="kw">for</span> (<span class="kw">const</span>
-                  <span class="prop">item</span> <span class="kw">of</span>
-                  <span class="prop">pendentes</span>) {<br />
-                  &nbsp;&nbsp;<span class="kw">const</span>
-                  <span class="prop">check</span> =
+                  <span class="fn">runMigrations</span>()
+                  <span class="cmt">// tabelas defasadas em PROD</span><br />
                   <span class="kw">await</span>
-                  <span class="fn">validar</span>(<span class="prop">item</span
+                  <span class="fn">setEnvs</span>(<span class="str"
+                    >"producao"</span
                   >)<br />
-                  &nbsp;&nbsp;<span class="kw">if</span> (<span class="prop"
-                    >check</span
-                  >.<span class="prop">ok</span>) <span class="kw">await</span>
-                  <span class="fn">enviar</span>(<span class="prop">item</span
-                  >) <span class="cmt">// idempotente</span><br />
-                  &nbsp;&nbsp;<span class="kw">else</span>
                   <span class="kw">await</span>
-                  <span class="fn">marcarParaAnalise</span>(<span class="prop"
-                    >item</span
+                  <span class="fn">validarCompat</span>(<span class="str"
+                    >"front"</span
+                  >) <span class="cmt">// atual e futuro</span><br />
+                  <span class="kw">await</span>
+                  <span class="fn">validarCompat</span>(<span class="str"
+                    >"app"</span
+                  >) <span class="cmt">// versões em campo</span><br />
+                  <br />
+                  <span class="cmt">// 2. depois o APP — #13233</span><br />
+                  <span class="kw">await</span>
+                  <span class="fn">configurarOneSignal</span>()
+                  <span class="cmt">// ícones do push</span><br />
+                  <span class="kw">await</span>
+                  <span class="fn">ocultarRA</span>()<br />
+                  <span class="kw">await</span>
+                  <span class="fn">validar</span>(<span class="str"
+                    >"checkwork-app"</span
                   >)<br />
-                  }<br /><br />
-                  <span class="cmt">// 3. release coordenado</span><br />
+                  <br />
+                  <span class="cmt">// 3. publicação coordenada</span><br />
                   <span class="fn">deploy</span>(<span class="str"
                     >"backend"</span
-                  >) <span class="cmt">// #13232 migrations + envs</span><br />
-                  <span class="fn">deploy</span>(<span class="str">"app"</span>)
-                  <span class="cmt">// #13233 push OneSignal</span><br />
+                  >); <span class="fn">deploy</span>(<span class="str"
+                    >"app"</span
+                  >)<br />
                   <span class="prop">notify</span>.<span class="fn">push</span
-                  >(<span class="str">"Dados sincronizados ✓"</span>)
+                  >(<span class="str">"Nova versão do CheckWork ✓"</span>)
                 </div>
               </div>
             </div>
@@ -2442,7 +2425,7 @@
               color: var(--amber);
             "
           >
-            🎬 Fila de pendentes antes/depois + push chegando no device ·
+            🎬 Push notification chegando no device + nova versão publicada ·
             screenshot backup
           </div>
         </div>
@@ -3485,7 +3468,7 @@
               <div class="win-who" style="color: var(--purple)">CARLOS</div>
               <div class="win-text">
                 <strong style="color: var(--text)"
-                  >Backend e APP publicados em produção em sequência</strong
+                  >Backend e APP do CheckWork publicados em produção</strong
                 >
                 (#13232/#13233): migrations, tabelas defasadas e envs alinhados
                 sem quebrar versões antigas — e o APP estreou
@@ -4492,7 +4475,7 @@
         "README.md",
         "agenda.ts",
         "stats.json",
-        "envio-dados-pendentes.service.ts",
+        "release-checkwork.ts",
         "formularios-grupo-filial.ts",
         "sentinel-analysis.py",
         "overview-carlos.md",
