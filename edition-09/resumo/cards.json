@@ -1,0 +1,56 @@
+{
+  "ca": {
+    "name": "Carlos",
+    "avClass": "av-ca",
+    "avInit": "CA",
+    "nameColor": "var(--ca)",
+    "cards": [
+      { "id": "#13325", "type": "ref", "title": "Auditoria de despesas com IA", "desc": "Novo recurso de auditoria de despesas no CheckWork com White/BlackList de produtos, indicador de SCORE da resposta da IA e registro de custo de tokens." },
+      { "id": "#11387", "type": "ref", "title": "Ajustar tela de despesas", "desc": "Implementação das alterações de tela de despesas adicionadas ao longo do desenvolvimento e não previstas inicialmente." },
+      { "id": "#13276", "type": "ref", "title": "Ajustar ícones do menu", "desc": "Ajuste dos ícones da sidebar melhorando o entendimento dos contextos." },
+      { "id": "#13390", "type": "ref", "title": "Confirmar Envs e lançar nova versão", "desc": "Validação de abertura/fechamento de RDs, integração com Agrotrace para consulta de RA e ajustes de CORS." },
+      { "id": "#13357", "type": "feat", "title": "Cadastrar var ECC nos modelos PEC", "desc": "Cadastro da variável ECC nos modelos de atendimento do PEC para dar suporte nos RATs." },
+      { "id": "#13312", "type": "feat", "title": "Cadastrar novo modelo D9/D11", "desc": "Novo modelo de RAT reprodutivo para contemplar as datas do D9/D11." },
+      { "id": "#13356", "type": "feat", "title": "Hash Web + Mobile para INPI", "desc": "Geração de hash atualizada contendo os projetos Web e Mobile para cadastro no INPI." },
+      { "id": "#13277", "type": "ref", "title": "Validar recursos da nova versão", "desc": "Validação dos recursos principais da nova versão, incluindo aprovação de despesas e Event Broker." }
+    ]
+  },
+  "es": {
+    "name": "Elias",
+    "avClass": "av-el",
+    "avInit": "EL",
+    "nameColor": "var(--el)",
+    "cards": [
+      { "id": "#13249", "type": "ref", "title": "Analisar backup técnico João Aranha", "desc": "Análise de backup do técnico, reativação e reenvio de dados pendentes afetados pelo erro 404 da API." },
+      { "id": "#13420", "type": "feat", "title": "Rotas de API filtradas e ordenadas", "desc": "Implementação de rotas na API para retornar dados já filtrados e ordenados, base da integração com WhatsApp." },
+      { "id": "#13395", "type": "fix", "title": "Logo do recibo não sai", "desc": "Investigação da não exibição da logo no recibo; descoberto que o problema estava no HTML do registro, não no app." },
+      { "id": "#13306", "type": "fix", "title": "Não anexa PDF em info complementares", "desc": "Correção do anexo de PDFs nas respostas de informações complementares via sanitização da URI do arquivo de cache." },
+      { "id": "#13204", "type": "fix", "title": "Problema para enviar todas as respostas", "desc": "Correção do envio incompleto de respostas do bloco repetível no formulário dinâmico." },
+      { "id": "#13278", "type": "feat", "title": "Recibo não mostra variáveis corretamente", "desc": "Correção da substituição de variáveis repetidas no recibo usando replace global via Regex." },
+      { "id": "#12945", "type": "fix", "title": "RAT no iOS não exibe imagens", "desc": "Correção da renderização de logos no RAT do iOS convertendo imagens para base64; hotfix publicado na loja." },
+      { "id": "#13376", "type": "fix", "title": "Validar campo filial/grupo no cadastro", "desc": "Correção da validação do campo obrigatório filiais no cadastro de produtor/propriedade." },
+      { "id": "#13428", "type": "feat", "title": "Publicar nova versão nas lojas", "desc": "Publicação de nova versão com as alterações da sprint recém finalizada." }
+    ]
+  },
+  "ma": {
+    "name": "Matheus",
+    "avClass": "av-ma",
+    "avInit": "MA",
+    "nameColor": "var(--ma)",
+    "cards": [
+      { "id": "#13298", "type": "feat", "title": "Adicionar importação de Lotes", "desc": "Processo de importação de planilha do Gado Pesado (CSV) criando lotes automaticamente com as pesagens e previsão de abate." },
+      { "id": "#13176", "type": "feat", "title": "Lançamento - Pesagem de Lotes", "desc": "Coleta de dados de lotes com cálculo automático da data prevista de abate a partir de peso, GMD e peso alvo." },
+      { "id": "#13253", "type": "feat", "title": "Melhorar feat de pesagem com novas tabelas", "desc": "Evolução da feature de pesagem em lotes com novas tabelas de suporte." },
+      { "id": "#13342", "type": "feat", "title": "Tipo de Criação e categoria no lote", "desc": "Adição de tipo de criação, categoria e número de animais no cadastro do lote." },
+      { "id": "#13123", "type": "feat", "title": "Microserviço Python de imagens de satélite", "desc": "Criação de microserviço em Python para analisar imagens de satélite." },
+      { "id": "#13228", "type": "feat", "title": "Visualização/gatilho de imagem de satélite", "desc": "Visualização e gatilho para análise de imagem de satélite no front do Agrotrace." },
+      { "id": "#13172", "type": "feat", "title": "Acesso ao Módulo PEC", "desc": "Permitir que o técnico acesse a Situação PEC antes do atendimento para conferir se os dados foram baixados." },
+      { "id": "#13171", "type": "feat", "title": "Visualizar documento antes da assinatura", "desc": "Ajuste do fluxo de assinatura digital permitindo visualizar o documento antes de assinar." },
+      { "id": "#13262", "type": "feat", "title": "Obrigar assinatura do consultor", "desc": "Obrigar a coleta da assinatura do técnico a cada geração de documento, configurável por projeto." },
+      { "id": "#13348", "type": "feat", "title": "Ajustar tipo de atendimento - Protocolo", "desc": "Corrigir o tipo de atendimento gerado para reprodutivos com protocolo para o tipo Protocolo." },
+      { "id": "#13346", "type": "feat", "title": "Atualizar app para SDK 36", "desc": "Atualização do app e variações para o SDK 36 e lançamento de versão." },
+      { "id": "#13309", "type": "fix", "title": "Categoria Animal não aparece [PEC]", "desc": "Exibir a categoria correta (ex: Novilha) conforme o intervalo de idade e sexo no cadastro do animal." },
+      { "id": "#13431", "type": "feat", "title": "Relatório de DG - PEC", "desc": "Ajuste da tela de Relatório de Acompanhamento de Diagnóstico removendo filtros de protocolo/diagnóstico IATF." }
+    ]
+  }
+}

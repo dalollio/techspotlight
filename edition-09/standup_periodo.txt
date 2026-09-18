@@ -1,0 +1,302 @@
+**[Mobile] Standup 31/08/2026**
+📆 Briefing Inicial
+📆 Reunião Mobile
+
+**Agrotrace**
+- [Matheus] In Progress: #13172 - Acesso ao Módulo PEC
+- [Elias] Done: #13204 - Dados de técnico estão pendentes.
+  - Realizado analise no backup de técnico e chegado a conclusão que o mesmo problema 404 da API acabou afetando esse técnico também.
+  - Reativado os dados, adicionado na fila de envio e enviado para servidor todos os dados que estavam ao meu alcance.
+  - Passado instruções para o time de suporte para enviar dados pendentes que contém anexos diretamente do dispositivo do técnico.
+- [Elias] Done: #12945 - Relatório de Atendimento com problemas no iOS.
+  - Investigado motivo da não renderização de imagens no relatório e descoberto que a dificuldade ocorre em uma API nativa do iOS.
+  - Adicionado estratégia de converter imagens para base64 ao invés de renderiza-las utilizando o caminho interno até o arquivo original.
+  - Enviado nova versão (hotfix) para a loja do iOS para corrigir o problema o mais rápido possível e liberar os usuários.
+- [Matheus] Done: #13253 - Melhorando feat de pesagem em lotes com novas tabelas
+
+**CheckWork**
+- [Carlos] In Progress: #13277 - Validar recursos principais da nova versão 
+- [Carlos] Done: #13276 - Ajustar ícones do menu 
+- [Carlos] Done: #11387 - Ajustar a tela de despesas com as opções adicionadas ao longo do desenvolvimento 
+
+☎️ [Carlos] Com Ricardo, Ronaldo e Thielson sobre análise de Atendimentos com IA.
+☎️ [Carlos] Com Sartori sobre dificuldade na impressão do RAT no iOS e ajustes necessários na assinatura.
+☎️ [Elias] Com Carlos para alinhar dúvidas e melhorias no aplicativo.
+☎️ [Elias] Com Gustavo para ajuda com login no aplicativo e em certificadoras com 2FA.
+☎️ [Elias] Com Thayse sobre feedback de envio de dados pendentes de técnico.
+☎️ [Matheus] Com Thielson, sobre alterações para melhoria na feat de pesagem em lote no Agrotrace.
+
+
+**[Mobile] Standup 01/09/2026**
+📅 [Carlos] Syncup CheckMilk - Matheus Magalhães
+📅 [Carlos] Reunião EcoInvest
+
+**Agrotrace:**
+- [Elias] In Progress: #13297 - Melhora de performance em componente do formulário dinâmico.
+  - Analisando código atual do componente para encontrar uma melhor estratégia para a implementação de melhoria de performance.
+- [Matheus] In Progress #13262 - Sempre obrigar coleta da assinatura do Consultor
+- [Elias] Done: #13278 - Recibo não mostrando valores de variáveis.
+  - Analisado dificuldade e entendido que o problema estava no método de `replace` do JavaScript que fazia a substituição apenas da primeira variável encontrada.
+  - Implementado melhoria para que a função built in `replace` do JavaScript faça um replace de forma global através do Regex.
+- [Matheus] Done #13172 - Acesso ao Módulo PEC
+- [Matheus] Done #13171 - Permitir visualização do Documento antes da assinatura
+
+**CheckWork**
+- [Carlos] In Progress: #13277 - Validar recursos principais da nova versão:
+  - ajustando compatibilidade com processo de aprovação de despesas e inclusão no Event Broker.
+
+☎️ [Carlos] Com Sartori sobre publicação e integração com laboratório de análise de solo.
+☎️ [Carlos] Com Thayse sobre recibo do Cacau.
+☎️ [Elias] Com Thayse sobre feedback de testes e melhorias.
+☎️ [Matheus] Com Thayse, sobre locais de uso de assinatura digital no Agrotrace.
+
+**[Mobile] Standup 02/09/2026**
+
+**Agrotrace**
+- [Carlos] Done: #13312 - Cadastrar novo modelo de RAT para atendimento Reprodutivo com datas de D9 e D11.
+- [Elias] In Progress: #13297 - Melhora de performance em componente do formulário dinâmico.
+  - Implementado melhoria no sistema de prosseguir para próxima pergunta de forma automática após ação de responder.
+  - Trabalhando na melhoria de performance sobre refrescar os dados dos agrupadores e estruturas.
+- [Matheus] In Progress #13298 - Adicionar importação de Lotes
+  - Adicionado leitura de CSV ✅ 
+  - Adicionando fluxo de visualização/edição e cadastro do lote com base nos dados importados
+- [Matheus] Done #13262 - Sempre obrigar coleta da assinatura do Consultor
+
+**CheckWork**
+- [Carlos] In Progress: #13277 - Validar recursos principais da nova versão:
+  - Verificando dificuldade com permissão na aprovação de RD.
+
+☎️ [Carlos] Com Matheus M. para ajudar com pontos de melhoria no Pectrace.
+☎️ [Carlos] Com Sartori para traçar uma estratégia para minimizar o impacto gerado pelo consultor que coletou assinatura errada nos RATs.
+☎️ [Carlos] Com Liliane para ajudar com RD de consultor.
+☎️ [Elias] Com Thayse sobre abertura de novas tarefas.
+☎️ [Elias] Com Matheus para ajuda com dúvida no formulário dinâmico.
+☎️ [Matheus] Com Elias, sobre duvidas no form dinamico, Agrotrace.
+☎️ [Matheus] Com Gustavo, sobre ajuste de algumas imagens de relatorio, Agrotrace.
+
+**[Mobile] Standup 03/09/2026**
+
+**Agrotrace:**
+- [Elias] In Progress: #13297 - Melhora de performance em componente do formulário dinâmico.
+  - Movido a lógica de seguir para a próxima pergunta de forma automática para a tela de agrupadores para ter mais um ganho de performance.
+  - Corrigido dificuldade de não atualizar e exibir os dados corretos quando o usuário respondia uma pergunta.
+  -  Trabalhando na refatoração do componente para utilizar o repositório como fonte da verdade ao invés o store do React.
+- [Elias] Done: #13306 - Dificuldade em anexar PDF nos dados complementares.
+  - Adicionado função para sanitizar a URI do arquivo de cachê devolvido pela biblioteca de documentos.
+- [Matheus] Done: #13298 - Adicionar importação de Lotes
+  - Adicionado fluxo de visualização/edição e cadastro do lote com base nos dados importados ✅
+
+**CheckWork**
+- [Carlos] In Progress: #10768 - Adicionando novo recurso para auditoria das despesas:
+  - White & BlackList de produtos permitidos.
+  - Modificado entidades:
+    - ExpenseType;
+    - Expense;
+- [Carlos] Done: #13277 - Validar recursos principais da nova versão:
+  - Verificando dificuldade com permissão na aprovação de RD.
+
+☎️ [Carlos] Com Isabelle sobre início dos atendimentos do PEC na plataforma Pectrace (Leite & Genética - 15/09)
+☎️ [Carlos] Com Thayse sobre dificuldade de dados duplicados no form-dinâmico.
+☎️ [Carlos] Com Matheus sobre características do processo de importação da planilha Gado Pesado.
+☎️ [Carlos] Com Sartori sobre envio de planilhas do Plante Certo.
+☎️ [Carlos] Com Cláudio sobre usuário no CheckWork.
+☎️ [Elias] Com Thayse sobre correção de dificuldade nos dados complementares.
+☎️ [Matheus] Com Thielson, sobre problemas no cadastro de caracteristicas do lote no front, Agrotrace.
+
+**[Mobile] Standup 04/09/2026**
+📅 [Carlos] Painel JBS + IA Conversacional + Gado Pesado + Lab 
+📅 Tech Spotlight - WEB
+
+**Agrotrace**
+- [Elias] In Progress: #13297 - Melhora de performance em componente do formulário dinâmico.
+  - Migrado a lógica da store do react para os repositórios que tem acesso direto ao banco e aos dados atualizados.
+  - Corrigido dificuldade das perguntas referenciadas no avanço automático.
+  - Corrigido dificuldade no componente de pergunta de texto causado por mudança na lógica da store mencionada no item acima.
+  - Melhorado a performance de perguntas que possuem variáveis através de carregar as respostas por lazy loading.
+  - Corrigido lógica de busca por resposta referencia para perguntas que podem utilizar respostas de outras perguntas como referencia.
+  - Realizando testes finais utilizando os dados das principais certificadoras que utilizam o formulário dinâmico para validar se tudo está funcionando corretamente.
+- [Matheus] Done: #13342 - Adicionar Tipo de Criação, Categoria no lote e pergunta de número de animais
+- [Matheus] Done: #13309 - Categoria Animal não aparece [PEC]
+
+**CheckWork**
+- [Carlos] In Progress: #10768 - Adicionando novo recurso para auditoria das despesas:
+  - Adicionando instruções na IA com a BlackList e/ou WhiteList de produtos/termos.
+  - Melhorando o indicador de SCORE da resposta da IA.
+  - Modificando tabelas para salvar o custo de tokens consumidos durante a análise das imagens.
+
+  **[Mobile] Standup 08/09/2026**
+📆 Syncup CheckMilk - Matheus M. e Isabelle
+📅 INPI - Sidney
+📆 Mobile Meeting
+📆 Planning Meeting
+
+**Agrotrace:**
+- [Elias] In Progress: #13315 - Talhões duplicando no envio de dados.
+  - Investigando o possível motivo da duplicação e onde em qual plataforma foi ocasionada.
+- [Matheus] In Progress: #13331 - Recomendação de Solo
+- [Elias] Done: #13297 - Melhora de performance em componente do formulário dinâmico.
+  - Finalizado testes em certificadoras com principais formulários dinâmicos.
+- [Carlos] Done: #13356 - Gerar hash atualizada contendo os dois projetos: Web + Mobile para cadastro no INPI.
+- [Carlos] Done: #13357 - Cadastrar variável ECC para dar suporte nos RATs.
+- [Matheus] Done: #13346 - Atualizar app e suas variações para o SDK 36 e lançar versão
+- [Matheus] Done: #13348 - Ajustar tipo de atendimento - Protocolo
+
+**CheckWork**
+- [Carlos] In Progress: #10768 - Adicionando novo recurso para auditoria das despesas:
+  - Modificando tabelas para salvar o custo de tokens consumidos durante a análise das imagens.
+
+☎️ [Carlos] Com Liliane para criar cadastro da Priscila e vinculá-la aos projetos como Coordenadora.
+☎️ [Carlos] Com Sartori sobre dúvidas e alinhamentos no Pectrace.
+☎️ [Matheus] Com Thielson, sobre extração de dados para recomendação de atendimento anterior Agrotrace.
+☎️ [Matheus] Com Gustavo, sobre testes no Agrotrace.
+☎️ [Matheus] Com Ronaldo, sobre adição de coluna sincronizado_em nas tabelas do Agrotrace.
+
+**[Mobile] Standup 09/09/2026**
+📅 [Carlos] Alinhamento - Lab Solos E Plantas
+
+**Agrotrace**
+- [Matheus] In Progress: #13331 - Recomendação de Solo
+  - Adicionado entidades ✅ 
+  - Adicionando telas para analise de solo
+- [Elias] Done: #13315 - Talhões duplicando no envio de dados.
+  - Depois de uma longa analise com o time da web, chegamos a conclusão que o problema está em uma funcionalidade do cliente da web que criava o form-bloco-repetivel-resposta de forma automática ao carregar o componente.
+  - Foi adicionado uma correção de idempotência que valida se o dado já não existe antes de inserir um novo.
+- [Elias] Done: #13203 - Utilizar dados de respostas de perfil da safra anterior.
+  - Adicionado novo botão no parte superior direita da tela de listagem de perfis para habilitar o técnico a utilizar respostas da safra anterior.
+  - O novo botão fica disponível somente se existir respostas na safra anterior a safra atual.
+- [Elias] Done: #13374 - Validar idempotência do bloco repetível resposta.
+  - Realizado testes na melhoria que adiciona idempotência no bloco repetível resposta e reportado resultado para a equipe web.
+
+**CheckWork**
+- [Carlos] Done: #10768 - Adicionando novo recurso para auditoria das despesas
+
+☎️ [Carlos] Com Ronaldo sobre dúvidas e ajustes no Agrotrace.
+☎️ [Carlos] Com Sartori para tirar dúvidas sobre o processo de coleta de análise de solo no JBS.
+☎️ [Elias] Com Thielson para ajuda na investigação do erro de duplicação de form-bloco-repetivel-resposta.
+☎️ [Elias] Com Thayse sobre feedback de testes e dúvidas sobre o formulário dinâmico.
+☎️ [Matheus] Com Carlos e Elias, mini planning sobre modificações no processo de Offline First.
+☎️ [Matheus] Com Thayse, sobre feedback dos testes no Agrotrace..
+☎️ [Matheus] Com Ronaldo, sobre unicidade no UUID de tabelas do Agrotrace.
+
+**[Mobile] Standup 10/09/2026**
+
+**Agrotrace**
+- [Elias] In Progress: #13202 - Utilizar dados do croqui da safra anterior.
+  - Adicionado novo botão na parte superior direita da tela de croqui para reutilizar dados da safra anterior (o botão só deve ser exibido se existir dados na safra anterior e se nenhum dado foi coletado na safra atual).
+  - Implementando função para verificar se existe safra anterior e se existe dados disponíveis para reutilização.
+- [Matheus] In Progress #13331 - Recomendação de Solo 
+  - Adicionado tela para analise de solo ✅ 
+  - Adicionado tela de aplicação ✅ 
+  - Adicionando tela de recomendações 
+
+**CheckWork**
+- [Carlos] In Progress: #13390 - Confirmar Envs e lançar nova versão:
+  - Validando recursos de abertura e fechamento de RDs.
+  - Adicionando integração com o Agrotrace para consulta do RA.
+
+☎️ [Carlos] Com Liliane sobre ajustes nos RDs.
+☎️ [Carlos] Com Sartori para alinhamento de data da reunião.
+☎️ [Elias] Com Thielson para novos testes em melhoria no formulário dinâmico da web.
+☎️ [Elias] Com Thayse sobre feedback de testes e dúvidas em tarefas.
+☎️ [Matheus] Com Thayse, sobre feedback dos testes no Agrotrace..
+☎️ [Matheus] Com Ronaldo, sobre funcionamento da feat de analise de solo mo Agrotrace.
+
+**[Mobile] Standup 11/09/2026 🇺🇸🇦🇫**
+📅 DevOps Spotlight
+
+**Agrotrace**
+- [Elias] In Progress: #13395 - Logo da certificadora não sendo exibido no recibo.
+  - Realizando debug para tentar reproduzir dificuldade e encontrar possível motivo da não exibição da logo.
+- [Matheus] Almost Done #13331 - Recomendação de Solo 
+  - Adicionado tela de Recomendações ✅
+  - Adicionado tela de Orçamentos ✅
+  - Adicionado tela de Formulação NPK ✅
+  - Call com Ronaldo para validar todo Fluxo.
+- [Elias] Done: #13202 - Utilizar dados do croqui da safra anterior.
+  - Finalizado implementação da funcionalidade. Exibindo o novo botão somente se existir dados na safra anterior e se não houve coleta de dados na safra atual; Exibe modal de confirmação alertando o usuário que a operação vai colar os dados da safra anterior; Adicionado transação na operação de clonagem dos dados para melhor garantia e eficiência.
+
+**CheckWork**
+- [Carlos] In Progress: #13390 - Confirmar Envs e lançar nova versão:
+  - Ajustando integração com Agrotrace
+  - Ajustando CORS
+
+☎️ [Carlos] Com Ronaldo sobre tarefas no Agrotrace.
+☎️ [Carlos] Com Bruno sobre possibilidade de liberar duas rotas para consumo usando a API-KEY
+☎️ [Carlos] Com Thayse sobre Recibo do 3S.
+☎️ [Elias] Com Thayse sobre dificuldade na exibição da logo da certificadora no recibo.
+☎️ [Matheus] Com Elias, sobre migração do Expo no Agrotrace.
+☎️ [Matheus] Com Ronaldo, sobre funcionamento da feat de analise de solo mo Agrotrace.
+
+**[Mobile] Standup 14/09/2026**
+📅 Briefing Inicial
+📅 Reunião Mobile
+
+**Agrotrace**
+- [Matheus] In Progress #13414: - Adicionar cadastro de etiquetas de amostra de solo
+- [Carlos] Done: #13394 - Validar API keys globais nas rotas de atendimento-tipo e usuário
+- [Elias] Done: #13395 - Logo da certificadora não sendo exibido no recibo.
+  - Após análises e testes foi descoberto que o problema não estava no aplicativo mas sim no arquivo HTML usado pelo registro.
+  - Enviado instruções para o time de suporte de como corrigir o problema pelo HTML do registro certificadora
+- [Matheus] Done: #13331 - Recomendação de Solo 
+
+**CheckWork**
+- [Carlos] In Progress: #13390 - Confirmar Envs e lançar nova versão:
+  - Testando nova integraçao com Agrotrace.
+  - Testando Plataforma em DEV.
+  - Ajustando cores do tema Dark.
+
+☎️ [Carlos] Com Bruno para dar o feedback nos testes da implementação na rota `/usuario/by-email`.
+☎️ [Carlos] Com Sartori para alinhar reunião. 
+☎️ [Carlos] Com Thielson sobre dúvida no comportamento esperado na melhoria de exibição dos reprodutores do PEC.
+☎️ [Matheus] Com Carlos, sobre cadastro de etiquetas de amostra de solo, Agrotrace.
+☎️ [Matheus] Com Ronaldo, sobre funcionamento da feat de analise de solo no Agrotrace.
+☎️ [Matheus] Com Thielson, sobre feat de reprodutor por certificadora, Agrotrace.
+☎️ [Elias] Com Thayse sobre dificuldade na exibição da logo da certificadora no recibo.
+☎️ [Elias] Com Carlos para alinhar dúvidas sobre tarefas.
+
+**[Mobile] Standup 15/09/2026**
+📅 Syncup CheckMilk - Matheus M e Isabelle
+
+**Agrotrace**
+- [Elias] In Progress: #13187 - Integração no WhatsApp
+  - In Progress: #13420 - Implementar rotas na API para tornar dados já filtrados e ordenados
+- [Matheus] In Progress: #13425 - Melhoria em espaço para assinatura do relatorio do form dinamico
+- [Elias] Done: #13398 - Publicar nova versão nas lojas.
+  - Enviado nova versão contendo as alterações da sprint recém finalizada.
+- [Matheus] Done: #13427 - Adicionar reprodutores por certificadora no IATF
+- [Matheus] Done: #13414 - Adicionar cadastro de etiquetas de amostra de solo
+
+**CheckWork**
+- [Carlos] Done: #13390 - Confirmar Envs e lançar nova versão
+
+☎️ [Carlos] Com Gustavo sobre ajuste na impressão do Laudo.
+☎️ [Elias] Com Calos para alinhar fluxo e dúvidas sobre automação no WhatsApp
+☎️ [Elias] Com Bruno para tirar dúvidas e solicitar melhorias na API
+☎️ [Elias] Com Thyase para feedback de publicação de nova versão
+☎️ [Matheus] Com Carlos, sobre cadastro de etiquetas de amostra de solo, Agrotrace.
+☎️ [Matheus] Com Ronaldo, sobre mudanças na feat de analise de solo no Agrotrace.
+☎️ [Matheus] Com Thielson, sobre feat de reprodutor por certificadora, Agrotrace.
+
+**[Mobile] Standup 16/09/2026**
+
+**Agrotrace**
+- [Carlos] In Progress: 12672 - Modelar a ferramenta considerando características identificadas
+- [Elias] In Progress: #13187 - Integração no WhatsApp
+  - In Progress: #13420 - Implementar rotas na API para tornar dados já filtrados e ordenados
+    - Implementado rota de identificar o produtor que está enviando a mensagem;
+    - Implementado rota para listagem dos atendimentos agendado do produtor;
+    - Implementado rota para listagem de atendimentos concluídos do produtor;
+    - Implementado rota para listar detalhes de um atendimento específico que o produtor selecionar.
+- [Matheus] In Progress: #13434 - Deixar nome obrigatório ao invés de brinco em cadastro de animal
+- [Matheus] Done: Verificar consistência no relatório de Diagnóstico no Pectrace.
+- [Matheus] Done: #13425 - Melhoria em espaço para assinatura do relatorio do form dinamico
+- [Matheus] Done: #13431 - Relatório de DG - PEC
+
+☎️ [Carlos] Com Thayse sobre dificuldade persistente no envio do Form Dinâmico.
+☎️ [Carlos] Com Matheus M. e Isabelle sobre dificuldade no relatório PEC.
+☎️ [Carlos] Com Matheus M. sobre dificuldade repentina no acesso do usuário.
+☎️ [Carlos] Com Gustavo sobre variáveis de ambiente no CheckWork.
+☎️ [Elias] Com Bruno sobre melhorias e ajuda com dúvidas sobre a API
+☎️ [Elias] Com Thyase para feedback de testes no formulário dinâmico.
+☎️ [Matheus] Com Carlos, sobre filtros no relatorio PEC e novas demandas, Agrotrace.
+☎️ [Matheus] Com Thielson, sobre coluna nova de sincronizado_em nas tableas PEC, Agrotrace.

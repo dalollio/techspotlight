@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-EL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumo de Cards — Mobile Team · Set 2026</title>
+<link rel="icon" type="image/svg+xml" href="../assets/web-team.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #0f1117;
+    --bg2:      #181c27;
+    --bg3:      #1e2235;
+    --bg4:      #252a40;
+    --border:   #2d3348;
+    --border2:  #3d4460;
+    --text:     #e8eaf2;
+    --text2:    #8b90a8;
+    --text3:    #555b78;
+    --ro:       #7c6af7;
+    --ro-bg:    #1a1640;
+    --ro-bd:    #3d3580;
+    --br:       #f0a855;
+    --br-bg:    #2a1e08;
+    --br-bd:    #7a5020;
+    --th:       #3ecf8e;
+    --th-bg:    #082418;
+    --th-bd:    #1a6845;
+    --ca:       #7c6af7;
+    --ca-bg:    #1a1640;
+    --ca-bd:    #3d3580;
+    --el:       #f0a855;
+    --el-bg:    #2a1e08;
+    --el-bd:    #7a5020;
+    --ma:       #3ecf8e;
+    --ma-bg:    #082418;
+    --ma-bd:    #1a6845;
+    --feat:     #60adf5;
+    --feat-bg:  #0c1e35;
+    --fix:      #f97070;
+    --fix-bg:   #2a0f0f;
+    --ref:      #f0c040;
+    --ref-bg:   #261e04;
+    --test:     #52d98a;
+    --test-bg:  #082418;
+    --radius:   6px;
+    --radius-lg:10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .hero {
+    padding: 56px 48px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,106,247,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .hero-title {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-names {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hero-names .dot {
+    color: var(--text3);
+    font-weight: 400;
+    font-size: 24px;
+  }
+
+  .hero-names .accent-ro { color: var(--ca); }
+  .hero-names .accent-br { color: var(--el); }
+  .hero-names .accent-th { color: var(--ma); }
+
+  .hero-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text2);
+    margin-bottom: 32px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .stat-chip {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 10px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+  }
+
+  .stat-val {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .stat-lbl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+  }
+
+  .controls {
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+    max-width: 360px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text3);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    pointer-events: none;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 8px 12px 8px 32px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .search-wrap input:focus { border-color: var(--border2); }
+  .search-wrap input::placeholder { color: var(--text3); }
+
+  .filter-group {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .fbtn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .fbtn:hover { background: var(--bg4); color: var(--text); }
+
+  .fbtn.on-feat  { background: var(--feat-bg); color: var(--feat);  border-color: var(--feat); }
+  .fbtn.on-fix   { background: var(--fix-bg);  color: var(--fix);   border-color: var(--fix); }
+  .fbtn.on-ref   { background: var(--ref-bg);  color: var(--ref);   border-color: var(--ref); }
+  .fbtn.on-test  { background: var(--test-bg); color: var(--test);  border-color: var(--test); }
+  .fbtn.on-all   { background: var(--bg4); color: var(--text); border-color: var(--border2); }
+  .fbtn.on-ro    { background: var(--ca-bg);  color: var(--ca);  border-color: var(--ca-bd); }
+  .fbtn.on-br    { background: var(--el-bg);  color: var(--el);  border-color: var(--el-bd); }
+  .fbtn.on-th    { background: var(--ma-bg);  color: var(--ma);  border-color: var(--ma-bd); }
+
+  .sep { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
+
+  .result-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .content {
+    padding: 32px 48px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .member-section { display: flex; flex-direction: column; gap: 0; }
+  .member-section.hidden { display: none; }
+
+  .member-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .member-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .av-ca { background: var(--ca-bg); color: var(--ca); border: 1px solid var(--ca-bd); }
+  .av-el { background: var(--el-bg); color: var(--el); border: 1px solid var(--el-bd); }
+  .av-ma { background: var(--ma-bg); color: var(--ma); border: 1px solid var(--ma-bd); }
+
+  .member-name {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .member-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    margin-left: 4px;
+  }
+
+  .member-bar {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .cards-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .cards-table thead th {
+    background: var(--bg3);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cards-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.12s;
+    animation: rowIn 0.3s ease both;
+  }
+
+  @keyframes rowIn {
+    from { opacity: 0; transform: translateX(-6px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .cards-table tbody tr:last-child { border-bottom: none; }
+  .cards-table tbody tr:hover { background: var(--bg3); }
+  .cards-table tbody tr.hidden { display: none; }
+
+  .cards-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+  }
+
+  .col-id {
+    width: 110px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    white-space: nowrap;
+  }
+
+  .col-id a {
+    color: var(--text3);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .col-id a:hover {
+    color: var(--ca);
+    text-decoration: underline;
+  }
+
+  .col-id .no-link {
+    color: var(--text3);
+    cursor: default;
+  }
+
+  .col-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .col-desc {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.55;
+  }
+
+  .col-type { width: 90px; }
+
+  .badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .badge-feat { background: var(--feat-bg); color: var(--feat); border: 1px solid #1a3d60; }
+  .badge-fix  { background: var(--fix-bg);  color: var(--fix);  border: 1px solid #5a1818; }
+  .badge-ref  { background: var(--ref-bg);  color: var(--ref);  border: 1px solid #5a4010; }
+  .badge-test { background: var(--test-bg); color: var(--test); border: 1px solid #0f5030; }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text3);
+    display: none;
+  }
+
+  .empty-state.visible { display: block; }
+
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-left {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 8px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+  }
+
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow" style="display:flex; align-items:center; gap:16px; justify-content:space-between">
+    <span>// web-team · agrotrace-v3 · ater-digital · sprint review</span>
+    <a href="../index.html" style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text3); text-decoration:none; border:1px solid var(--border); padding:3px 10px; border-radius:4px; transition:all 0.15s; letter-spacing:0" onmouseover="this.style.color='#e8eaf2';this.style.borderColor='#3d4460'" onmouseout="this.style.color='var(--text3)';this.style.borderColor='var(--border)'">⌂ Hub</a>
+  </div>
+  <h1 class="hero-title">Resumo de Cards</h1>
+  <div class="hero-names">
+    <span class="accent-ro">Carlos</span>
+    <span class="dot">·</span>
+    <span class="accent-br">Elias</span>
+    <span class="dot">·</span>
+    <span class="accent-th">Matheus</span>
+  </div>
+  <div class="hero-sub">29/08 – 18/09/2026 &nbsp;·&nbsp; Tech Spotlight #09 &nbsp;·&nbsp; 3 semanas</div>
+
+  <div class="stats-row">
+    <div class="stat-chip">
+      <div class="stat-val" id="s-total">30</div>
+      <div class="stat-lbl">total</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--feat)" id="s-feat">20</div>
+      <div class="stat-lbl">features</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--fix)" id="s-fix">6</div>
+      <div class="stat-lbl">fixes</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--ref)" id="s-ref">4</div>
+      <div class="stat-lbl">refactors</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--test)" id="s-test">0</div>
+      <div class="stat-lbl">testes</div>
+    </div>
+    <div class="stat-chip" style="margin-left:auto">
+      <div class="stat-val" style="color:var(--ca)" id="s-ro">8</div>
+      <div class="stat-lbl">Carlos</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--el)" id="s-br">9</div>
+      <div class="stat-lbl">Elias</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--ma)" id="s-th">13</div>
+      <div class="stat-lbl">Matheus</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="searchInput" placeholder="Buscar por título ou #card..." oninput="applyFilters()">
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="filter-group" id="typeFilters">
+    <button class="fbtn on-all" data-filter="type" data-val="all" onclick="setFilter('type','all',this)">Todos</button>
+    <button class="fbtn" data-filter="type" data-val="feat" onclick="setFilter('type','feat',this)">feature</button>
+    <button class="fbtn" data-filter="type" data-val="fix"  onclick="setFilter('type','fix',this)">fix</button>
+    <button class="fbtn" data-filter="type" data-val="ref"  onclick="setFilter('type','ref',this)">refactor</button>
+    <button class="fbtn" data-filter="type" data-val="test" onclick="setFilter('type','test',this)">teste</button>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="filter-group" id="memberFilters">
+    <button class="fbtn on-all" data-filter="member" data-val="all" onclick="setFilter('member','all',this)">Todos</button>
+    <button class="fbtn" data-filter="member" data-val="ro" onclick="setFilter('member','ro',this)">Carlos</button>
+    <button class="fbtn" data-filter="member" data-val="br" onclick="setFilter('member','br',this)">Elias</button>
+    <button class="fbtn" data-filter="member" data-val="th" onclick="setFilter('member','th',this)">Matheus</button>
+  </div>
+
+  <div class="result-count" id="resultCount">30 cards</div>
+</div>
+
+<!-- CONTENT -->
+<div class="content" id="content"></div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">Web Team · Agrotrace v3 + ATER Digital · gerado em 18/09/2026</div>
+  <div class="footer-right">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--feat)"></div>feature</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--fix)"></div>fix</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--ref)"></div>refactor</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--test)"></div>teste</div>
+  </div>
+</div>
+
+<script>
+const DATA = {
+  ro: {
+    name: 'Carlos',
+    avClass: 'av-ca',
+    avInit: 'CA',
+    nameColor: 'var(--ca)',
+    cards: [
+      { id:'#13325', type:'ref', title:'Auditoria de despesas com IA', desc:'Novo recurso de auditoria de despesas no CheckWork com White/BlackList de produtos, indicador de SCORE da resposta da IA e registro de custo de tokens.' },
+      { id:'#11387', type:'ref', title:'Ajustar tela de despesas', desc:'Implementação das alterações de tela de despesas adicionadas ao longo do desenvolvimento e não previstas inicialmente.' },
+      { id:'#13276', type:'ref', title:'Ajustar ícones do menu', desc:'Ajuste dos ícones da sidebar melhorando o entendimento dos contextos.' },
+      { id:'#13390', type:'ref', title:'Confirmar Envs e lançar nova versão', desc:'Validação de abertura/fechamento de RDs, integração com Agrotrace para consulta de RA e ajustes de CORS.' },
+      { id:'#13357', type:'feat', title:'Cadastrar var ECC nos modelos PEC', desc:'Cadastro da variável ECC nos modelos de atendimento do PEC para dar suporte nos RATs.' },
+      { id:'#13312', type:'feat', title:'Cadastrar novo modelo D9/D11', desc:'Novo modelo de RAT reprodutivo para contemplar as datas do D9/D11.' },
+      { id:'#13356', type:'feat', title:'Hash Web + Mobile para INPI', desc:'Geração de hash atualizada contendo os projetos Web e Mobile para cadastro no INPI.' },
+      { id:'#13277', type:'ref', title:'Validar recursos da nova versão', desc:'Validação dos recursos principais da nova versão, incluindo aprovação de despesas e Event Broker.' }
+    ]
+  },
+  br: {
+    name: 'Elias',
+    avClass: 'av-el',
+    avInit: 'EL',
+    nameColor: 'var(--el)',
+    cards: [
+      { id:'#13249', type:'ref', title:'Analisar backup técnico João Aranha', desc:'Análise de backup do técnico, reativação e reenvio de dados pendentes afetados pelo erro 404 da API.' },
+      { id:'#13420', type:'feat', title:'Rotas de API filtradas e ordenadas', desc:'Implementação de rotas na API para retornar dados já filtrados e ordenados, base da integração com WhatsApp.' },
+      { id:'#13395', type:'fix', title:'Logo do recibo não sai', desc:'Investigação da não exibição da logo no recibo; descoberto que o problema estava no HTML do registro, não no app.' },
+      { id:'#13306', type:'fix', title:'Não anexa PDF em info complementares', desc:'Correção do anexo de PDFs nas respostas de informações complementares via sanitização da URI do arquivo de cache.' },
+      { id:'#13204', type:'fix', title:'Problema para enviar todas as respostas', desc:'Correção do envio incompleto de respostas do bloco repetível no formulário dinâmico.' },
+      { id:'#13278', type:'feat', title:'Recibo não mostra variáveis corretamente', desc:'Correção da substituição de variáveis repetidas no recibo usando replace global via Regex.' },
+      { id:'#12945', type:'fix', title:'RAT no iOS não exibe imagens', desc:'Correção da renderização de logos no RAT do iOS convertendo imagens para base64; hotfix publicado na loja.' },
+      { id:'#13376', type:'fix', title:'Validar campo filial/grupo no cadastro', desc:'Correção da validação do campo obrigatório filiais no cadastro de produtor/propriedade.' },
+      { id:'#13428', type:'feat', title:'Publicar nova versão nas lojas', desc:'Publicação de nova versão com as alterações da sprint recém finalizada.' }
+    ]
+  },
+  th: {
+    name: 'Matheus',
+    avClass: 'av-ma',
+    avInit: 'MA',
+    nameColor: 'var(--ma)',
+    cards: [
+      { id:'#13298', type:'feat', title:'Adicionar importação de Lotes', desc:'Processo de importação de planilha do Gado Pesado (CSV) criando lotes automaticamente com as pesagens e previsão de abate.' },
+      { id:'#13176', type:'feat', title:'Lançamento - Pesagem de Lotes', desc:'Coleta de dados de lotes com cálculo automático da data prevista de abate a partir de peso, GMD e peso alvo.' },
+      { id:'#13253', type:'feat', title:'Melhorar feat de pesagem com novas tabelas', desc:'Evolução da feature de pesagem em lotes com novas tabelas de suporte.' },
+      { id:'#13342', type:'feat', title:'Tipo de Criação e categoria no lote', desc:'Adição de tipo de criação, categoria e número de animais no cadastro do lote.' },
+      { id:'#13123', type:'feat', title:'Microserviço Python de imagens de satélite', desc:'Criação de microserviço em Python para analisar imagens de satélite.' },
+      { id:'#13228', type:'feat', title:'Visualização/gatilho de imagem de satélite', desc:'Visualização e gatilho para análise de imagem de satélite no front do Agrotrace.' },
+      { id:'#13172', type:'feat', title:'Acesso ao Módulo PEC', desc:'Permitir que o técnico acesse a Situação PEC antes do atendimento para conferir se os dados foram baixados.' },
+      { id:'#13171', type:'feat', title:'Visualizar documento antes da assinatura', desc:'Ajuste do fluxo de assinatura digital permitindo visualizar o documento antes de assinar.' },
+      { id:'#13262', type:'feat', title:'Obrigar assinatura do consultor', desc:'Obrigar a coleta da assinatura do técnico a cada geração de documento, configurável por projeto.' },
+      { id:'#13348', type:'feat', title:'Ajustar tipo de atendimento - Protocolo', desc:'Corrigir o tipo de atendimento gerado para reprodutivos com protocolo para o tipo Protocolo.' },
+      { id:'#13346', type:'feat', title:'Atualizar app para SDK 36', desc:'Atualização do app e variações para o SDK 36 e lançamento de versão.' },
+      { id:'#13309', type:'fix', title:'Categoria Animal não aparece [PEC]', desc:'Exibir a categoria correta (ex: Novilha) conforme o intervalo de idade e sexo no cadastro do animal.' },
+      { id:'#13431', type:'feat', title:'Relatório de DG - PEC', desc:'Ajuste da tela de Relatório de Acompanhamento de Diagnóstico removendo filtros de protocolo/diagnóstico IATF.' }
+    ]
+  }
+};
+
+const members = ['ro','br','th'];
+let activeType   = 'all';
+let activeMember = 'all';
+
+function badgeClass(type) {
+  return { feat:'badge-feat', fix:'badge-fix', ref:'badge-ref', test:'badge-test' }[type];
+}
+
+function badgeLabel(type) {
+  return { feat:'feature', fix:'fix', ref:'refactor', test:'teste' }[type];
+}
+
+function isAzureCard(id) {
+  return /^#\d+/.test(id);
+}
+
+function render() {
+  const root = document.getElementById('content');
+  root.innerHTML = '';
+
+  members.forEach(m => {
+    const d = DATA[m];
+    const section = document.createElement('div');
+    section.className = 'member-section';
+    section.id = 'sec-' + m;
+
+    section.innerHTML = `
+      <div class="member-header">
+        <div class="member-avatar ${d.avClass}">${d.avInit}</div>
+        <span class="member-name" style="color:${d.nameColor}">${d.name}</span>
+        <span class="member-meta" id="meta-${m}">${d.cards.length} cards</span>
+        <div class="member-bar"></div>
+      </div>
+      <table class="cards-table" id="tbl-${m}">
+        <thead>
+          <tr>
+            <th style="width:110px">#Card</th>
+            <th>Título &amp; Descrição</th>
+            <th style="width:90px">Tipo</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-${m}"></tbody>
+      </table>
+      <div class="empty-state" id="empty-${m}">Nenhum card encontrado.</div>
+    `;
+
+    root.appendChild(section);
+
+    const tbody = document.getElementById('tbody-' + m);
+    d.cards.forEach(c => {
+      const tr = document.createElement('tr');
+      tr.dataset.type   = c.type;
+      tr.dataset.member = m;
+      tr.dataset.search = (c.id + ' ' + c.title + ' ' + c.desc).toLowerCase();
+
+      const idCell = isAzureCard(c.id)
+        ? `<a href="https://dev.azure.com/ibsbiosistemico/AGROTRACE/_workitems/edit/${c.id.replace('#','')}" target="_blank" title="Abrir no Azure DevOps">${c.id}</a>`
+        : `<span class="no-link" title="Marco interno (sem card Azure)">${c.id}</span>`;
+
+      tr.innerHTML = `
+        <td class="col-id">${idCell}</td>
+        <td>
+          <div class="col-title">${c.title}</div>
+          <div class="col-desc">${c.desc}</div>
+        </td>
+        <td class="col-type"><span class="badge ${badgeClass(c.type)}">${badgeLabel(c.type)}</span></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  });
+
+  applyFilters();
+}
+
+function setFilter(group, val, btn) {
+  document.querySelectorAll(`[data-filter="${group}"]`).forEach(b => {
+    b.className = 'fbtn';
+  });
+  btn.classList.add('on-' + (val === 'all' ? 'all' : val));
+
+  if (group === 'type')   activeType   = val;
+  if (group === 'member') activeMember = val;
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  let total = 0, feat = 0, fix = 0, ref = 0, test = 0;
+  const perM = { ro:0, br:0, th:0 };
+
+  members.forEach(m => {
+    const sec   = document.getElementById('sec-' + m);
+    const empty = document.getElementById('empty-' + m);
+    const memberMatch = activeMember === 'all' || activeMember === m;
+
+    if (!memberMatch) {
+      sec.classList.add('hidden');
+      return;
+    }
+    sec.classList.remove('hidden');
+
+    let vis = 0;
+    sec.querySelectorAll('tbody tr').forEach(row => {
+      const typeOk   = activeType === 'all' || row.dataset.type === activeType;
+      const searchOk = !q || row.dataset.search.includes(q);
+      const show = typeOk && searchOk;
+      row.classList.toggle('hidden', !show);
+      if (show) {
+        vis++;
+        total++;
+        const t = row.dataset.type;
+        if (t === 'feat') feat++;
+        if (t === 'fix')  fix++;
+        if (t === 'ref')  ref++;
+        if (t === 'test') test++;
+        perM[m]++;
+      }
+    });
+
+    document.getElementById('meta-' + m).textContent = vis + ' card' + (vis !== 1 ? 's' : '');
+    empty.classList.toggle('visible', vis === 0);
+  });
+
+  document.getElementById('resultCount').textContent = total + ' card' + (total !== 1 ? 's' : '');
+  document.getElementById('s-total').textContent = total;
+  document.getElementById('s-feat').textContent  = feat;
+  document.getElementById('s-fix').textContent   = fix;
+  document.getElementById('s-ref').textContent   = ref;
+  document.getElementById('s-test').textContent  = test;
+  document.getElementById('s-ro').textContent    = perM.ro;
+  document.getElementById('s-br').textContent    = perM.br;
+  document.getElementById('s-th').textContent    = perM.th;
+}
+
+render();
+</script>
+</body>
+</html>

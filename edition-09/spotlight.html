@@ -1,0 +1,5035 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Spotlight — Mobile Team | 18/09/2026</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/web-team.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0d1117;
+        --bg2: #161b22;
+        --bg3: #1c2128;
+        --bg4: #21262d;
+        --border: #30363d;
+        --border2: #484f58;
+        --text: #e6edf3;
+        --text2: #8b949e;
+        --text3: #6e7681;
+        --purple: #a78bfa;
+        --purple-d: #7c3aed;
+        --purple-bg: #1a1033;
+        --teal: #34d399;
+        --teal-bg: #0a2218;
+        --coral: #fb923c;
+        --coral-bg: #2a1100;
+        --blue: #60a5fa;
+        --blue-bg: #0c1a2e;
+        --amber: #fbbf24;
+        --amber-bg: #241a00;
+        --green: #4ade80;
+        --red: #f87171;
+        --pink: #f472b6;
+        --font-mono: "JetBrains Mono", monospace;
+        --font-sans: "Space Grotesk", sans-serif;
+        --radius: 8px;
+        --radius-lg: 12px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-sans);
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── TOPBAR ── */
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        height: 38px;
+        padding: 0;
+        flex-shrink: 0;
+      }
+
+      .topbar-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 16px;
+        border-right: 1px solid var(--border);
+        height: 100%;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--text2);
+      }
+
+      .topbar-logo .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .dot-red {
+        background: #ff5f57;
+      }
+      .dot-amber {
+        background: #febc2e;
+      }
+      .dot-green {
+        background: #28c840;
+      }
+
+      .tabs-bar {
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        height: 100%;
+        flex: 1;
+      }
+      .tabs-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tab-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 16px;
+        height: 100%;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--text3);
+        border-right: 1px solid var(--border);
+        cursor: pointer;
+        white-space: nowrap;
+        transition:
+          background 0.15s,
+          color 0.15s;
+        position: relative;
+      }
+      .tab-item:hover {
+        background: var(--bg3);
+        color: var(--text2);
+      }
+      .tab-item.active {
+        background: var(--bg);
+        color: var(--text);
+      }
+      .tab-item.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--purple);
+      }
+
+      .tab-icon {
+        font-size: 12px;
+      }
+
+      .topbar-right {
+        margin-left: auto;
+        padding: 0 16px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--text3);
+        border-left: 1px solid var(--border);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+      }
+
+      /* ── MAIN LAYOUT ── */
+      .main {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      /* ── SIDEBAR ── */
+      .sidebar {
+        width: 220px;
+        background: var(--bg2);
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        overflow-y: auto;
+      }
+
+      .sidebar-section {
+        padding: 0;
+      }
+
+      .sidebar-header {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--text3);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 14px 16px 6px;
+      }
+
+      .sidebar-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 5px 16px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--text2);
+        cursor: pointer;
+        transition:
+          background 0.12s,
+          color 0.12s;
+        border-left: 2px solid transparent;
+      }
+      .sidebar-item:hover {
+        background: var(--bg3);
+        color: var(--text);
+      }
+      .sidebar-item.active {
+        background: var(--bg4);
+        color: var(--text);
+        border-left-color: var(--purple);
+      }
+
+      .sidebar-icon {
+        width: 14px;
+        text-align: center;
+        font-size: 11px;
+      }
+
+      .sidebar-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 8px 0;
+      }
+
+      .sidebar-team {
+        padding: 8px 16px 14px;
+      }
+
+      .member {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 0;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--text2);
+      }
+
+      .member-avatar {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: 700;
+      }
+      .av-r {
+        background: var(--purple-bg);
+        color: var(--purple);
+      }
+      .av-b {
+        background: var(--blue-bg);
+        color: var(--blue);
+      }
+      .av-t {
+        background: var(--teal-bg);
+        color: var(--teal);
+      }
+
+      .member-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--teal);
+        margin-left: auto;
+      }
+
+      /* ── CONTENT ── */
+      .content {
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .slide {
+        display: none;
+        flex: 1;
+        overflow-y: auto;
+        padding: 40px 56px;
+        animation: fadeIn 0.25s ease;
+      }
+      .slide.active {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── STATUSBAR ── */
+      .statusbar {
+        height: 24px;
+        background: var(--purple-d);
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        gap: 20px;
+        flex-shrink: 0;
+      }
+
+      .status-item {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.85);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      /* ── TIMER WIDGET ── */
+      .timer-widget {
+        position: fixed;
+        top: 46px;
+        right: 16px;
+        z-index: 900;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 6px 14px;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.2s;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+      }
+      .timer-widget:hover {
+        border-color: var(--border2);
+        background: var(--bg3);
+      }
+      .timer-icon {
+        font-size: 12px;
+        color: var(--text3);
+        transition: color 0.2s;
+      }
+      .timer-display {
+        font-family: var(--font-mono);
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--text3);
+        letter-spacing: 0.05em;
+        transition: color 0.2s;
+      }
+      .timer-widget.running .timer-icon {
+        color: var(--teal);
+      }
+      .timer-widget.running .timer-display {
+        color: var(--teal);
+      }
+      .timer-widget.warning .timer-display {
+        color: var(--amber);
+      }
+      .timer-widget.warning .timer-icon {
+        color: var(--amber);
+      }
+      .timer-widget.overtime .timer-display {
+        color: var(--red);
+      }
+      .timer-widget.overtime .timer-icon {
+        color: var(--red);
+      }
+
+      /* ── CODE BLOCK ── */
+      .code-block {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      .code-block-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: var(--bg3);
+        border-bottom: 1px solid var(--border);
+        font-size: 13px;
+        color: var(--text2);
+      }
+
+      .code-body {
+        display: flex;
+        overflow-x: auto;
+      }
+
+      .line-numbers {
+        padding: 14px 12px;
+        color: var(--text3);
+        text-align: right;
+        user-select: none;
+        border-right: 1px solid var(--border);
+        min-width: 42px;
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .code-lines {
+        padding: 14px 18px;
+        flex: 1;
+      }
+
+      .kw {
+        color: #c792ea;
+      }
+      .str {
+        color: #c3e88d;
+      }
+      .cmt {
+        color: #546e7a;
+        font-style: italic;
+      }
+      .num {
+        color: #f78c6c;
+      }
+      .fn {
+        color: #82aaff;
+      }
+      .prop {
+        color: #89ddff;
+      }
+      .tag {
+        color: var(--amber);
+      }
+      .ok {
+        color: var(--teal);
+      }
+      .err {
+        color: var(--red);
+      }
+      .punc {
+        color: var(--text2);
+      }
+
+      /* ── SLIDE COMPONENTS ── */
+      .slide-title {
+        font-family: var(--font-sans);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text3);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .slide-heading {
+        font-family: var(--font-sans);
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 24px;
+        line-height: 1.2;
+      }
+
+      .slide-heading span {
+        color: var(--purple);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: 500;
+      }
+      .badge-purple {
+        background: var(--purple-bg);
+        color: var(--purple);
+        border: 1px solid #4c1d95;
+      }
+      .badge-teal {
+        background: var(--teal-bg);
+        color: var(--teal);
+        border: 1px solid #065f46;
+      }
+      .badge-blue {
+        background: var(--blue-bg);
+        color: var(--blue);
+        border: 1px solid #1e3a5f;
+      }
+      .badge-amber {
+        background: var(--amber-bg);
+        color: var(--amber);
+        border: 1px solid #78350f;
+      }
+      .badge-coral {
+        background: var(--coral-bg);
+        color: var(--coral);
+        border: 1px solid #7c2d12;
+      }
+      .badge-green {
+        background: #0a2218;
+        color: var(--green);
+        border: 1px solid #14532d;
+      }
+      .badge-red {
+        background: #2a0f0f;
+        color: var(--red);
+        border: 1px solid #7f1d1d;
+      }
+
+      .card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 16px 20px;
+      }
+
+      .card-accent-purple {
+        border-left: 3px solid var(--purple);
+      }
+      .card-accent-teal {
+        border-left: 3px solid var(--teal);
+      }
+      .card-accent-blue {
+        border-left: 3px solid var(--blue);
+      }
+      .card-accent-coral {
+        border-left: 3px solid var(--coral);
+      }
+      .card-accent-amber {
+        border-left: 3px solid var(--amber);
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+      }
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+
+      .metric {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 14px 16px;
+        text-align: center;
+      }
+      .metric-val {
+        font-family: var(--font-mono);
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--purple);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .metric-lbl {
+        font-size: 14px;
+        color: var(--text3);
+      }
+
+      .flex-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .mb-4 {
+        margin-bottom: 4px;
+      }
+      .mb-8 {
+        margin-bottom: 8px;
+      }
+      .mb-12 {
+        margin-bottom: 12px;
+      }
+      .mb-16 {
+        margin-bottom: 16px;
+      }
+      .mb-20 {
+        margin-bottom: 20px;
+      }
+      .mb-24 {
+        margin-bottom: 24px;
+      }
+      .mt-16 {
+        margin-top: 16px;
+      }
+      .mt-20 {
+        margin-top: 20px;
+      }
+
+      .section-block {
+        margin-bottom: 18px;
+      }
+
+      .section-label {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text3);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .tag-list {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .chip {
+        background: var(--bg4);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 3px 12px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text2);
+      }
+
+      .flow {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--text2);
+      }
+
+      .flow-step {
+        background: var(--bg4);
+        border: 1px solid var(--border2);
+        border-radius: var(--radius);
+        padding: 8px 16px;
+        color: var(--text);
+        font-size: 15px;
+      }
+
+      .flow-arrow {
+        color: var(--text3);
+        font-size: 18px;
+      }
+
+      .win-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 16px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .win-icon {
+        font-size: 24px;
+      }
+
+      .win-who {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .win-text {
+        font-size: 16px;
+        color: var(--text2);
+        line-height: 1.6;
+      }
+
+      .todo-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 16px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 8px;
+      }
+
+      .todo-check {
+        width: 16px;
+        height: 16px;
+        border: 1.5px solid var(--border2);
+        border-radius: 3px;
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+
+      .todo-content {
+        flex: 1;
+      }
+      .todo-title {
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+      .todo-desc {
+        font-size: 14px;
+        color: var(--text3);
+      }
+      .todo-who {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        padding: 3px 10px;
+        border-radius: 3px;
+      }
+
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: relative;
+      }
+
+      .tl-item {
+        display: flex;
+        gap: 16px;
+        padding-bottom: 16px;
+      }
+
+      .tl-line {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+
+      .tl-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--purple);
+        flex-shrink: 0;
+        margin-top: 4px;
+      }
+
+      .tl-connector {
+        width: 2px;
+        flex: 1;
+        background: var(--border);
+        min-height: 20px;
+      }
+
+      .tl-body {
+        flex: 1;
+      }
+
+      .tl-time {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text3);
+        margin-bottom: 4px;
+      }
+
+      .tl-text {
+        font-size: 16px;
+        color: var(--text2);
+        line-height: 1.5;
+      }
+
+      /* ── NAV CONTROLS ── */
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 10px;
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        flex-shrink: 0;
+      }
+
+      .nav-btn {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        color: var(--text2);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        padding: 8px 20px;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .nav-btn:hover {
+        background: var(--bg4);
+        color: var(--text);
+        border-color: var(--border2);
+      }
+      .nav-btn:active {
+        transform: scale(0.97);
+      }
+
+      .nav-dots {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+
+      .nav-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--border2);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .nav-dot.active {
+        background: var(--purple);
+        transform: scale(1.4);
+      }
+
+      .slide-counter {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text3);
+        min-width: 60px;
+        text-align: center;
+      }
+
+      /* ── COVER ── */
+      .cover-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        max-width: 1100px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .cover-icon {
+        width: 72px;
+        height: 72px;
+        display: block;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 4px 16px rgba(127, 119, 221, 0.3));
+      }
+
+      .cover-tag {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--purple);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      .cover-title {
+        font-size: 52px;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 12px;
+      }
+
+      .cover-title .accent {
+        color: var(--purple);
+      }
+
+      .cover-subtitle {
+        font-family: var(--font-mono);
+        font-size: 16px;
+        color: var(--text2);
+        margin-bottom: 24px;
+      }
+
+      .cover-code {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        font-family: var(--font-mono);
+        font-size: 15px;
+      }
+
+      .cover-code-header {
+        background: var(--bg3);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 16px;
+        font-size: 13px;
+        color: var(--text3);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .cover-code-body {
+        padding: 16px 18px;
+        line-height: 1.8;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        padding: 6px 14px;
+        border-radius: 20px;
+        background: var(--bg4);
+        border: 1px solid var(--border);
+        color: var(--text2);
+      }
+
+      .progress-bar {
+        height: 4px;
+        background: var(--border);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-top: 8px;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--purple), var(--blue));
+        border-radius: 2px;
+        transition: width 0.5s ease;
+      }
+
+      kbd {
+        display: inline-block;
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        border-radius: 4px;
+        padding: 1px 6px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--text2);
+      }
+
+      /* scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border2);
+        border-radius: 3px;
+      }
+
+      /* ── CLICKABLE METRICS ── */
+      .metric-click {
+        cursor: pointer;
+        transition: all 0.2s;
+        position: relative;
+      }
+      .metric-click:hover {
+        border-color: var(--border2);
+        background: var(--bg4);
+        transform: translateY(-2px);
+      }
+      .metric-click::after {
+        content: "▾ ver cards";
+        position: absolute;
+        bottom: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--font-mono);
+        font-size: 9px;
+        color: var(--text3);
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .metric-click:hover::after {
+        opacity: 1;
+      }
+
+      /* ── KPI MODAL ── */
+      .kpi-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+      .kpi-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .kpi-modal {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        width: 90%;
+        max-width: 800px;
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(10px);
+        transition: transform 0.2s;
+      }
+      .kpi-overlay.open .kpi-modal {
+        transform: translateY(0);
+      }
+
+      .kpi-modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+      .kpi-modal-title {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .kpi-modal-close {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text2);
+        font-size: 14px;
+        padding: 4px 12px;
+        cursor: pointer;
+      }
+      .kpi-modal-close:hover {
+        background: var(--bg4);
+        color: var(--text);
+      }
+
+      .kpi-modal-body {
+        overflow-y: auto;
+        padding: 0;
+      }
+
+      .kpi-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      .kpi-table thead th {
+        background: var(--bg3);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--text3);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 10px 16px;
+        text-align: left;
+        position: sticky;
+        top: 0;
+      }
+      .kpi-table tbody tr {
+        border-bottom: 1px solid var(--border);
+        transition: background 0.1s;
+      }
+      .kpi-table tbody tr:hover {
+        background: var(--bg3);
+      }
+      .kpi-table td {
+        padding: 10px 16px;
+        color: var(--text2);
+      }
+      .kpi-table td:first-child {
+        color: var(--text);
+        font-family: var(--font-mono);
+        font-size: 13px;
+      }
+      .kpi-table .kpi-badge {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 12px;
+      }
+
+      /* ── OVERVIEW CARDS ── */
+      .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        align-content: start;
+      }
+
+      .overview-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 12px 14px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        position: relative;
+      }
+      .overview-card:hover {
+        border-color: var(--purple);
+        background: var(--bg3);
+        transform: translateY(-2px);
+      }
+
+      .overview-card-id {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--text3);
+      }
+
+      .overview-card-title {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text);
+        line-height: 1.35;
+        padding-right: 50px;
+      }
+
+      .overview-card-hint {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--text3);
+        margin-top: 4px;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .overview-card:hover .overview-card-hint {
+        opacity: 1;
+      }
+
+      .overview-card-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      /* ── ATER DIGITAL VISUALS ── */
+      .ater-visual-panel {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 0;
+      }
+
+      .ater-visual-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .ater-visual-title {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text3);
+      }
+
+      .ater-shot-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .ater-shot {
+        background: #f8faf9;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        min-height: 140px;
+        position: relative;
+      }
+
+      .ater-shot img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+      }
+
+      .ater-shot.tall img {
+        object-position: top center;
+      }
+
+      .ater-shot.wide {
+        grid-column: 1 / -1;
+      }
+
+      .ater-shot.wide img {
+        height: 190px;
+      }
+
+      .ater-shot-caption {
+        position: absolute;
+        left: 8px;
+        bottom: 8px;
+        right: 8px;
+        background: rgba(13, 17, 23, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 4px;
+        padding: 4px 6px;
+        font-family: var(--font-mono);
+        font-size: 9px;
+        color: var(--text2);
+      }
+
+      /* ── SCREENSHOT MODAL ── */
+      .ss-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        z-index: 1100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+      .ss-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .ss-modal {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        width: 92%;
+        max-width: 1100px;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(10px);
+        transition: transform 0.2s;
+      }
+      .ss-overlay.open .ss-modal {
+        transform: translateY(0);
+      }
+
+      .ss-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        gap: 12px;
+      }
+
+      .ss-header-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .ss-card-id {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--purple);
+        flex-shrink: 0;
+      }
+
+      .ss-title {
+        font-size: 15px;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .ss-close {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text2);
+        font-size: 14px;
+        padding: 4px 12px;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+      .ss-close:hover {
+        background: var(--bg4);
+        color: var(--text);
+      }
+
+      .ss-body {
+        overflow: auto;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        min-height: 200px;
+      }
+
+      .ss-body img {
+        max-width: 100%;
+        max-height: 70vh;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+      }
+
+      /* Modo "tall" — screenshots de celular muito altos:
+         largura travada (mimetiza viewport mobile), altura livre,
+         body rola verticalmente. Botões/contador passam a fixed
+         pra continuarem visíveis durante o scroll. */
+      .ss-body.tall {
+        align-items: flex-start;
+      }
+      .ss-body.tall img {
+        max-width: 380px;
+        max-height: none;
+        width: 100%;
+      }
+      .ss-body.tall .ss-carousel-btn {
+        position: fixed;
+        top: 50%;
+      }
+      .ss-body.tall .ss-carousel-btn.prev {
+        left: 30px;
+      }
+      .ss-body.tall .ss-carousel-btn.next {
+        right: 30px;
+      }
+      .ss-body.tall .ss-counter {
+        position: fixed;
+        bottom: 5vh;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .ss-carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        color: var(--text);
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          opacity 0.2s ease,
+          background 0.15s,
+          border-color 0.15s;
+        z-index: 2;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .ss-body:hover .ss-carousel-btn,
+      .ss-carousel-btn:focus-visible {
+        opacity: 0.8;
+        pointer-events: auto;
+      }
+      .ss-carousel-btn:hover {
+        background: var(--bg4);
+        border-color: var(--purple);
+        opacity: 1;
+      }
+      .ss-carousel-btn.prev {
+        left: 12px;
+      }
+      .ss-carousel-btn.next {
+        right: 12px;
+      }
+
+      .ss-counter {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 4px 14px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text2);
+        z-index: 2;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+      }
+      .ss-body:hover .ss-counter {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .ss-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--border2);
+        transition: all 0.2s;
+      }
+      .ss-dot.active {
+        background: var(--purple);
+        transform: scale(1.4);
+      }
+
+      .ss-empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 48px;
+        color: var(--text3);
+        font-family: var(--font-mono);
+        font-size: 14px;
+      }
+
+      .ss-empty-icon {
+        font-size: 40px;
+        opacity: 0.5;
+      }
+
+      /* ── STATS FILTER ── */
+      .stats-filter {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        padding: 4px 14px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        background: var(--bg3);
+        color: var(--text2);
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .stats-filter:hover {
+        border-color: var(--border2);
+        color: var(--text);
+      }
+      .stats-filter.active {
+        background: var(--f-color, var(--purple-d));
+        border-color: var(--f-color, var(--purple-d));
+        color: #fff;
+      }
+
+      /* ── TERMINAL DEMO ── */
+      .term-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s;
+      }
+      .term-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .term-window {
+        background: #0d1117;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        width: 90%;
+        max-width: 820px;
+        max-height: 82vh;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(12px) scale(0.97);
+        transition: transform 0.25s;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+      }
+      .term-overlay.open .term-window {
+        transform: translateY(0) scale(1);
+      }
+
+      .term-titlebar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: var(--bg3);
+        border-bottom: 1px solid var(--border);
+        border-radius: 10px 10px 0 0;
+      }
+      .term-titlebar .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .term-titlebar-text {
+        flex: 1;
+        text-align: center;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text3);
+      }
+      .term-close-btn {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text3);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        padding: 2px 10px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .term-close-btn:hover {
+        background: var(--bg4);
+        color: var(--text);
+      }
+
+      .term-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px 20px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text2);
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .term-body .t-prompt {
+        color: var(--teal);
+      }
+      .term-body .t-cmd {
+        color: #e6edf3;
+        font-weight: 700;
+      }
+      .term-body .t-info {
+        color: var(--blue);
+      }
+      .term-body .t-header {
+        color: var(--amber);
+        font-weight: 700;
+      }
+      .term-body .t-label {
+        color: var(--purple);
+      }
+      .term-body .t-ok {
+        color: var(--teal);
+        font-weight: 700;
+      }
+      .term-body .t-h2 {
+        color: var(--amber);
+        font-weight: 700;
+      }
+      .term-body .t-check {
+        color: var(--text3);
+      }
+      .term-body .t-link {
+        color: var(--blue);
+        text-decoration: underline;
+      }
+      .term-body .t-dim {
+        color: var(--text3);
+      }
+      .term-body .t-sparkle {
+        color: #c15f3c;
+        font-weight: 700;
+      }
+      .term-body .t-step-pipe {
+        color: var(--text3);
+        display: inline;
+      }
+      .term-body .t-spin-dot {
+        color: #e5a94e;
+        font-weight: 700;
+        display: inline;
+      }
+      .term-body .t-spin-text {
+        color: var(--text3);
+        display: inline;
+      }
+      .term-body .t-done-dot {
+        color: var(--teal);
+        font-weight: 700;
+        display: inline;
+      }
+      .term-body .t-done-text {
+        color: var(--text3);
+        display: inline;
+      }
+      .term-body .t-cyan {
+        color: var(--blue);
+        font-weight: 700;
+      }
+      .term-body .t-bold {
+        color: #e6edf3;
+        font-weight: 700;
+      }
+      @keyframes termPulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+      .term-body .t-cursor {
+        display: inline-block;
+        width: 8px;
+        height: 15px;
+        background: var(--teal);
+        vertical-align: text-bottom;
+        animation: blink 0.8s step-end infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .term-play-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--bg4);
+        border: 1px solid var(--border2);
+        border-radius: var(--radius);
+        color: var(--amber);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .term-play-btn:hover {
+        background: var(--amber-bg);
+        border-color: var(--amber);
+        color: var(--text);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TIMER WIDGET -->
+    <div
+      class="timer-widget"
+      id="timerBtn"
+      onclick="toggleTimer()"
+      title="Clique para iniciar (ou pressione T)"
+    >
+      <span class="timer-icon" id="timerIcon">▶</span>
+      <span class="timer-display" id="timerDisplay">00:00</span>
+    </div>
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <a
+        href="../index.html"
+        class="topbar-logo"
+        style="text-decoration: none; color: var(--text2)"
+        title="Voltar ao índice"
+      >
+        <div class="dot dot-red"></div>
+        <div class="dot dot-amber"></div>
+        <div class="dot dot-green"></div>
+        &nbsp;⌂ hub
+      </a>
+      <div class="tabs-bar" id="tabsBar"></div>
+      <div class="topbar-right">
+        <span>UTF-8</span>
+        <span>TypeScript</span>
+        <span>Git: main</span>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-header">Explorer</div>
+
+          <div class="sidebar-item active" onclick="goTo(0)" id="si-0">
+            <span class="sidebar-icon">📋</span> README.md
+          </div>
+          <div class="sidebar-item" onclick="goTo(1)" id="si-1">
+            <span class="sidebar-icon">📅</span> agenda.ts
+          </div>
+          <div class="sidebar-item" onclick="goTo(2)" id="si-2">
+            <span class="sidebar-icon">📊</span> stats.json
+          </div>
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header">Elias</div>
+
+          <div class="sidebar-item" onclick="goTo(3)" id="si-3">
+            <span class="sidebar-icon">🤖</span> biome.json
+          </div>
+          <div class="sidebar-item" onclick="goTo(6)" id="si-6">
+            <span class="sidebar-icon">📸</span> overview-elias.md
+          </div>
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header">Matheus</div>
+
+          <div class="sidebar-item" onclick="goTo(4)" id="si-4">
+            <span class="sidebar-icon">⚡</span> protocolo-importacao.service.ts
+          </div>
+          <div class="sidebar-item" onclick="goTo(8)" id="si-8">
+            <span class="sidebar-icon">📸</span> overview-matheus.md
+          </div>
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header">Carlos</div>
+
+          <div class="sidebar-item" onclick="goTo(5)" id="si-5">
+            <span class="sidebar-icon">📊</span> carbon-dashboard.component.ts
+          </div>
+          <div class="sidebar-item" onclick="goTo(9)" id="si-9">
+            <span class="sidebar-icon">📸</span> overview-carlos.md
+          </div>
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header">Lightning</div>
+
+          <div class="sidebar-item" onclick="goTo(7)" id="si-7">
+            <span class="sidebar-icon">⚡</span> agro-orchestrator.agent.ts
+          </div>
+
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-header">Wrap-up</div>
+
+          <div class="sidebar-item" onclick="goTo(10)" id="si-10">
+            <span class="sidebar-icon">🏆</span> wins.log
+          </div>
+          <div class="sidebar-item" onclick="goTo(11)" id="si-11">
+            <span class="sidebar-icon">🗺️</span> roadmap.todo
+          </div>
+          <div class="sidebar-item" onclick="goTo(12)" id="si-12">
+            <span class="sidebar-icon">👋</span> exit.ts
+          </div>
+        </div>
+
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-team">
+          <div class="sidebar-header" style="padding: 0 0 6px">Time Mobile</div>
+          <div class="member">
+            <div class="member-avatar av-r">CA</div>
+            Carlos
+            <div class="member-dot"></div>
+          </div>
+          <div class="member">
+            <div class="member-avatar av-b">EL</div>
+            Elias
+            <div class="member-dot"></div>
+          </div>
+          <div class="member">
+            <div class="member-avatar av-t">MA</div>
+            Matheus
+            <div class="member-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="content">
+        <!-- ─── SLIDE 0: CAPA ─── -->
+        <div class="slide active" id="slide-0">
+          <div class="cover-grid">
+            <div>
+              <img
+                src="../assets/web-team.svg"
+                alt="Mobile Team"
+                class="cover-icon"
+              />
+              <div class="cover-tag">// Tech Spotlight — Edition 09</div>
+              <div class="cover-title">
+                Mobile<br /><span class="accent">Engineering</span><br />Team
+              </div>
+              <div class="cover-subtitle">
+                18 de setembro de 2026 · 30 min (target)
+              </div>
+
+              <div class="flex-row mb-20">
+                <span class="pill">🧑‍💻 Carlos</span>
+                <span class="pill">🧑‍💻 Elias</span>
+                <span class="pill">🧑‍💻 Matheus</span>
+              </div>
+
+              <div class="tag-list">
+                <span class="badge badge-purple">React Native</span>
+                <span class="badge badge-blue">TypeScript</span>
+                <span class="badge badge-teal">Expo</span>
+                <span class="badge badge-amber">Python</span>
+                <span class="badge badge-coral">BiomeJS</span>
+                <span class="badge badge-green">offline-first</span>
+              </div>
+            </div>
+
+            <div class="cover-code">
+              <div class="cover-code-header">📄 README.md — agrotrace-v3</div>
+              <div class="cover-code-body">
+                <span class="cmt"># Tech Spotlight</span><br />
+                <span class="cmt">## 29/08 – 18/09/2026</span><br /><br />
+                <span class="kw">class</span>
+                <span class="fn">TechSpotlight</span> {<br />
+                &nbsp;&nbsp;<span class="prop">edition</span>:
+                <span class="num">9</span><br />
+                &nbsp;&nbsp;<span class="prop">team</span>:
+                <span class="str">"Mobile"</span><br />
+                &nbsp;&nbsp;<span class="prop">cards</span>:
+                <span class="num">30</span><br />
+                &nbsp;&nbsp;<span class="prop">topics</span>: [<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
+                  >"Importação de Lotes + Solo"</span
+                >,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
+                  >"Auditoria de despesas com IA"</span
+                >,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
+                  >"BiomeJS + LLM agents"</span
+                >,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str"
+                  >"Form-Dinâmico offline-first"</span
+                ><br />
+                &nbsp;&nbsp;]<br />
+                }
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: auto;
+              padding-top: 24px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 12px;
+              font-family: var(--font-mono);
+              font-size: 11px;
+              color: var(--text3);
+            "
+          >
+            Use <kbd>←</kbd> <kbd>→</kbd> para navegar &nbsp;·&nbsp;
+            <kbd>F</kbd> tela cheia &nbsp;·&nbsp; <kbd>T</kbd> cronômetro
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 1: AGENDA ─── -->
+        <div class="slide" id="slide-1">
+          <div class="slide-title">// agenda.ts</div>
+          <div class="slide-heading">Agenda de <span>hoje</span></div>
+
+          <div
+            style="
+              margin-bottom: 16px;
+              padding: 8px 14px;
+              background: var(--amber-bg);
+              border: 1px solid #78350f;
+              border-radius: var(--radius);
+              font-family: var(--font-mono);
+              font-size: 13px;
+              color: var(--amber);
+              display: inline-block;
+            "
+          >
+            ⏱ Programado: 23min · Cap: 30min · Buffer: 7min para overshoot
+          </div>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--text2)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">00:00 – 02:00 · Carlos · 2min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-purple">Abertura</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >Métricas do período</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--blue)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">02:00 – 07:00 · Matheus · 5min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-teal">Spotlight 1</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >Importação de Lotes + Calculadora de Solo</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--teal)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">07:00 – 12:00 · Carlos · 5min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-purple">Spotlight 2</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >Auditoria de despesas com IA — White/BlackList + SCORE</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--purple)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">12:00 – 17:00 · Elias · 5min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-blue">Spotlight 3</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >BiomeJS no projeto — padronização para agentes LLM</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--amber)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">17:00 – 20:00 · Matheus · 3min</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span class="badge badge-amber">Lightning Tech</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >Microserviço Python — análise de imagens de satélite</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--green)"></div>
+                <div class="tl-connector"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">20:00 – 22:00 · Carlos · 2min</div>
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <span class="badge badge-green">Wins</span>
+                  <span style="font-size: 16px; color: var(--text)"
+                    >3 conquistas do período</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="tl-item" style="padding-bottom: 0">
+              <div class="tl-line">
+                <div class="tl-dot" style="background: var(--text3)"></div>
+              </div>
+              <div class="tl-body">
+                <div class="tl-time">22:00 – 24:00 · Carlos · 2min</div>
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <span
+                    class="badge"
+                    style="
+                      background: var(--bg3);
+                      color: var(--text2);
+                      border: 1px solid var(--border);
+                    "
+                    >Roadmap + Close</span
+                  >
+                  <span style="font-size: 16px; color: var(--text)"
+                    >Próximas prioridades e encerramento</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 2: STATS ─── -->
+        <div class="slide" id="slide-2">
+          <div class="slide-title">// stats.json</div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 16px;
+              margin-bottom: 20px;
+              flex-wrap: wrap;
+            "
+          >
+            <div class="slide-heading" style="margin-bottom: 0">
+              Métricas do <span>período</span>
+            </div>
+            <div
+              style="
+                font-family: var(--font-mono);
+                font-size: 18px;
+                color: var(--text2);
+                margin-bottom: 0;
+                letter-spacing: 0.03em;
+              "
+            >
+              📅 29/08 – 18/09/2026
+            </div>
+            <div
+              style="
+                display: flex;
+                gap: 6px;
+                margin-left: auto;
+                align-items: center;
+              "
+            >
+              <button
+                class="stats-filter active"
+                data-member="all"
+                onclick="filterStats('all')"
+              >
+                Todos
+              </button>
+              <button
+                class="stats-filter"
+                data-member="Carlos"
+                onclick="filterStats('Carlos')"
+                style="--f-color: var(--purple)"
+              >
+                Carlos
+              </button>
+              <button
+                class="stats-filter"
+                data-member="Elias"
+                onclick="filterStats('Elias')"
+                style="--f-color: var(--blue)"
+              >
+                Elias
+              </button>
+              <button
+                class="stats-filter"
+                data-member="Matheus"
+                onclick="filterStats('Matheus')"
+                style="--f-color: var(--teal)"
+              >
+                Matheus
+              </button>
+              <span
+                id="statsCount"
+                style="
+                  font-family: var(--font-mono);
+                  font-size: 12px;
+                  color: var(--text3);
+                  margin-left: 8px;
+                "
+                >30 cards</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="grid-4 mb-24"
+            style="grid-template-columns: repeat(5, 1fr)"
+          >
+            <div
+              class="metric metric-click"
+              data-kpi="all"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-all" style="color: var(--purple)">
+                30
+              </div>
+              <div class="metric-lbl">cards entregues</div>
+            </div>
+            <div
+              class="metric metric-click"
+              data-kpi="feat"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-feat" style="color: var(--teal)">
+                18
+              </div>
+              <div class="metric-lbl">features</div>
+            </div>
+            <div
+              class="metric metric-click"
+              data-kpi="fix"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-fix" style="color: var(--coral)">
+                6
+              </div>
+              <div class="metric-lbl">bugs corrigidos</div>
+            </div>
+            <div
+              class="metric metric-click"
+              data-kpi="ref"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-ref" style="color: var(--blue)">
+                6
+              </div>
+              <div class="metric-lbl">refactors/migração</div>
+            </div>
+            <div
+              class="metric metric-click"
+              data-kpi="test"
+              title="Clique para ver os cards"
+            >
+              <div class="metric-val" id="mv-test" style="color: var(--amber)">
+                0
+              </div>
+              <div class="metric-lbl">tests</div>
+            </div>
+          </div>
+
+          <div class="grid-2" style="gap: 20px">
+            <div>
+              <div class="section-label">sistemas atendidos</div>
+              <div class="tag-list mb-16">
+                <span class="badge badge-purple">Agrotrace-v3</span>
+                <span class="badge badge-blue">PEC/Pectrace</span>
+                <span class="badge badge-teal">CheckWork</span>
+                <span class="badge badge-amber">Checkmilk</span>
+                <span class="badge badge-coral">API Agrotrace</span>
+              </div>
+
+              <div class="section-label">stack utilizada</div>
+              <div class="tag-list mb-16">
+                <span class="chip">React Native</span>
+                <span class="chip">TypeScript</span>
+                <span class="chip">Expo</span>
+                <span class="chip">SQLite / offline-first</span>
+                <span class="chip">Python</span>
+                <span class="chip">NestJS</span>
+                <span class="chip">BiomeJS</span>
+                <span class="chip">iOS / Android</span>
+              </div>
+
+              <div class="section-label">cards por dev</div>
+              <div style="display: flex; gap: 10px">
+                <div
+                  class="metric"
+                  style="cursor: pointer; flex: 1; padding: 10px 12px"
+                  onclick="filterStats('Carlos')"
+                >
+                  <div
+                    class="metric-val"
+                    id="mv-carlos"
+                    style="
+                      color: var(--purple);
+                      font-size: 22px;
+                      margin-bottom: 2px;
+                    "
+                  >
+                    8
+                  </div>
+                  <div class="metric-lbl" style="font-size: 12px">carlos</div>
+                </div>
+                <div
+                  class="metric"
+                  style="cursor: pointer; flex: 1; padding: 10px 12px"
+                  onclick="filterStats('Elias')"
+                >
+                  <div
+                    class="metric-val"
+                    id="mv-elias"
+                    style="
+                      color: var(--blue);
+                      font-size: 22px;
+                      margin-bottom: 2px;
+                    "
+                  >
+                    9
+                  </div>
+                  <div class="metric-lbl" style="font-size: 12px">elias</div>
+                </div>
+                <div
+                  class="metric"
+                  style="cursor: pointer; flex: 1; padding: 10px 12px"
+                  onclick="filterStats('Matheus')"
+                >
+                  <div
+                    class="metric-val"
+                    id="mv-matheus"
+                    style="
+                      color: var(--teal);
+                      font-size: 22px;
+                      margin-bottom: 2px;
+                    "
+                  >
+                    13
+                  </div>
+                  <div class="metric-lbl" style="font-size: 12px">matheus</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <div class="code-block-header">📊 distribuição por tipo</div>
+              <div class="code-body">
+                <div
+                  class="code-lines"
+                  style="padding: 14px 18px"
+                  id="statsDistribution"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 3: SPOTLIGHT 1 — Elias ─── -->
+        <div class="slide" id="slide-3">
+          <div class="slide-title">// spotlight 1 — Elias — 5 min ⏱</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-blue">🤖 feature/tooling</span>
+            <span class="badge badge-green">BiomeJS</span>
+            <span class="badge badge-amber">DX</span>
+            <span class="badge badge-coral">LLM</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >biome.json</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            BiomeJS no projeto — padronização para <span>agentes LLM</span>
+          </div>
+
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div class="card card-accent-coral">
+                <div class="section-label" style="color: var(--coral)">
+                  ❌ problema
+                </div>
+                <div
+                  style="font-size: 16px; color: var(--text2); line-height: 1.7"
+                >
+                  Codebase sem padronização consistente de lint/format gerava
+                  ruído e diffs inflados; agentes LLM (assistentes de código)
+                  recebiam contexto sujo e inconsistente, reduzindo a qualidade
+                  das sugestões.
+                </div>
+              </div>
+
+              <div class="card card-accent-purple">
+                <div class="section-label" style="color: var(--purple)">
+                  ✓ solução
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    font-size: 16px;
+                    color: var(--text2);
+                  "
+                >
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >→</span
+                    >
+                    <span
+                      >Adoção do BiomeJS como linter + formatter único (substitui
+                      ESLint+Prettier)</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >→</span
+                    >
+                    <span>Regras padronizadas no repo</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >→</span
+                    >
+                    <span>Formatação/lint rapidíssimos em Rust</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >→</span
+                    >
+                    <span>Integração no fluxo de desenvolvimento</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-teal">
+                <div class="section-label" style="color: var(--teal)">
+                  📈 resultado
+                </div>
+                <div
+                  style="font-size: 16px; color: var(--text2); line-height: 1.7"
+                >
+                  Diffs menores e previsíveis, menos ruído em PRs, e melhor
+                  assistência dos agentes LLM por consumirem código padronizado.
+                  <strong style="color: var(--text)"
+                    >Bônus:</strong
+                  >
+                  melhoria de performance do Form-Dinâmico (#13297) com
+                  refatoração offline-first (repositório como fonte da verdade).
+                </div>
+              </div>
+            </div>
+
+            <div class="code-block" style="height: fit-content">
+              <div class="code-block-header">⚡ biome.json</div>
+              <div class="code-body">
+                <div class="line-numbers">
+                  1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17
+                </div>
+                <div class="code-lines">
+                  <span class="cmt">// biome.json — configuração do projeto</span><br />
+                  {<br />
+                  &nbsp;&nbsp;<span class="prop">$schema</span>:
+                  <span class="str">"https://biomejs.dev/schemas/1.9.0/schema.json"</span>,<br />
+                  &nbsp;&nbsp;<span class="prop">organizeImports</span>: {<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">enabled</span>:
+                  <span class="kw">true</span><br />
+                  &nbsp;&nbsp;},<br />
+                  &nbsp;&nbsp;<span class="prop">linter</span>: {<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">enabled</span>:
+                  <span class="kw">true</span>,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">rules</span>: {<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">recommended</span>:
+                  <span class="kw">true</span><br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                  &nbsp;&nbsp;},<br />
+                  &nbsp;&nbsp;<span class="prop">formatter</span>: {<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">enabled</span>:
+                  <span class="kw">true</span>,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">indentStyle</span>:
+                  <span class="str">"space"</span>,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">indentWidth</span>:
+                  <span class="num">2</span><br />
+                  &nbsp;&nbsp;}<br />
+                  }<br /><br />
+                  <span class="cmt">// biome check --write</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 4: SPOTLIGHT 2 — Matheus ─── -->
+        <div class="slide" id="slide-4">
+          <div class="slide-title">// spotlight 2 — Matheus — 5 min ⏱</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-teal">⚡ feature</span>
+            <span class="badge badge-green">#13298</span>
+            <span class="badge badge-green">#13176</span>
+            <span class="badge badge-green">#13331</span>
+            <span class="badge badge-amber">CSV</span>
+            <span class="badge badge-coral">Agro</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >importacao-lotes.service.ts</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Importação de Lotes + <span>Calculadora de Solo</span>
+          </div>
+
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div class="card card-accent-coral">
+                <div class="section-label" style="color: var(--coral)">
+                  ❌ problema
+                </div>
+                <div
+                  style="font-size: 16px; color: var(--text2); line-height: 1.7"
+                >
+                  Cadastro manual de lotes de gado pesado e recomendação de solo
+                  era trabalhoso e sujeito a erro; produtores/técnicos precisavam
+                  calcular previsão de abate manualmente.
+                </div>
+              </div>
+
+              <div class="card card-accent-purple">
+                <div class="section-label" style="color: var(--purple)">
+                  ✓ solução
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    font-size: 16px;
+                    color: var(--text2);
+                  "
+                >
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >1.</span
+                    >
+                    <span
+                      ><strong style="color: var(--text)"
+                        >Importação de Lotes</strong
+                      >
+                      via planilha/CSV do Gado Pesado, criando lotes
+                      automaticamente com as pesagens e preenchendo a previsão
+                      de abate.</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >2.</span
+                    >
+                    <span
+                      ><strong style="color: var(--text)"
+                        >Calculadora/Recomendação de Solo</strong
+                      >
+                      com telas de análise de solo, aplicação, recomendações,
+                      orçamentos e formulação NPK.</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-teal">
+                <div class="section-label" style="color: var(--teal)">
+                  📈 resultado
+                </div>
+                <div
+                  style="font-size: 16px; color: var(--text2); line-height: 1.7"
+                >
+                  Fluxo de cadastro muito mais simples e rápido, previsão de
+                  abate automática usada pela JBS, e nova capacidade de
+                  recomendação de solo/NPK no app.
+                </div>
+              </div>
+            </div>
+
+            <div class="code-block" style="height: fit-content">
+              <div class="code-block-header">⚡ calculo-previsao-abate.ts</div>
+              <div class="code-body">
+                <div class="line-numbers">
+                  1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11
+                </div>
+                <div class="code-lines">
+                  <span class="cmt"
+                    >// Data de abate = Data da pesagem + ceil((PAB - PT/N) /
+                    GMD)</span
+                  ><br /><br />
+                  <span class="kw">function</span>
+                  <span class="fn">calcularPrevisaoAbate</span>(<span
+                    class="arg"
+                    >dataPesagem</span
+                  >, <span class="arg">pesoAlvoAbate</span>, <span
+                    class="arg"
+                    >pesoTotal</span
+                  >, <span class="arg">numCabecas</span>, <span class="arg"
+                    >ganhoMedioDiario</span
+                  >) {<br />
+                  &nbsp;&nbsp;<span class="kw">const</span>
+                  <span class="prop">pesoMedio</span> =
+                  <span class="prop">pesoTotal</span> /
+                  <span class="prop">numCabecas</span><br />
+                  &nbsp;&nbsp;<span class="kw">const</span>
+                  <span class="prop">kgFaltantes</span> =
+                  <span class="prop">pesoAlvoAbate</span> -
+                  <span class="prop">pesoMedio</span><br />
+                  &nbsp;&nbsp;<span class="kw">const</span>
+                  <span class="prop">diasNecessarios</span> =
+                  <span class="fn">Math</span>.<span class="fn">ceil</span>(<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">kgFaltantes</span> /
+                  <span class="prop">ganhoMedioDiario</span><br />
+                  &nbsp;&nbsp;)<br />
+                  &nbsp;&nbsp;<span class="kw">const</span>
+                  <span class="prop">dataAbate</span> =
+                  <span class="fn">addDays</span>(<span class="arg"
+                    >dataPesagem</span
+                  >, <span class="prop">diasNecessarios</span>)<br />
+                  &nbsp;&nbsp;<span class="kw">return</span>
+                  <span class="prop">dataAbate</span><br />
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 14px;
+              padding: 10px 14px;
+              background: var(--teal-bg);
+              border: 1px solid #065f46;
+              border-radius: var(--radius);
+              font-family: var(--font-mono);
+              font-size: 14px;
+              color: var(--teal);
+            "
+          >
+            🎬 Tela de importação de lotes e calculadora de solo em ação
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 5: SPOTLIGHT 3 — Carlos ─── -->
+        <div class="slide" id="slide-5">
+          <div class="slide-title">// spotlight 3 — Carlos — 5 min ⏱</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-purple">⚡ feature</span>
+            <span class="badge badge-green">#13325</span>
+            <span class="badge badge-amber">IA</span>
+            <span class="badge badge-coral">CheckWork</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >auditoria-despesas.service.ts</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Auditoria de <span>despesas com IA</span>
+          </div>
+
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div class="card card-accent-coral">
+                <div class="section-label" style="color: var(--coral)">
+                  ❌ problema
+                </div>
+                <div
+                  style="font-size: 16px; color: var(--text2); line-height: 1.7"
+                >
+                  Auditoria manual de despesas (notas/recibos) no CheckWork era
+                  lenta e sujeita a fraude/erro; sem controle de itens permitidos
+                  nem visibilidade do custo de IA.
+                </div>
+              </div>
+
+              <div class="card card-accent-purple">
+                <div class="section-label" style="color: var(--purple)">
+                  ✓ solução
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    font-size: 16px;
+                    color: var(--text2);
+                  "
+                >
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >→</span
+                    >
+                    <span
+                      >Instruções de IA com White/BlackList de produtos/termos
+                      permitidos</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >→</span
+                    >
+                    <span>Indicador de SCORE de confiança da resposta da IA</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >→</span
+                    >
+                    <span
+                      >Registro do custo de tokens consumidos na análise de
+                      imagens</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--teal); font-family: var(--font-mono)"
+                      >→</span
+                    >
+                    <span>Modelagem das entidades ExpenseType e Expense</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-teal">
+                <div class="section-label" style="color: var(--teal)">
+                  📈 resultado
+                </div>
+                <div
+                  style="font-size: 16px; color: var(--text2); line-height: 1.7"
+                >
+                  Auditoria automatizada com controle por lista, transparência de
+                  custo por análise e maior confiabilidade na aprovação de
+                  despesas.
+                </div>
+              </div>
+            </div>
+
+            <div class="code-block" style="height: fit-content">
+              <div class="code-block-header">⚡ auditoria-despesas.types.ts</div>
+              <div class="code-body">
+                <div class="line-numbers">
+                  1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17
+                </div>
+                <div class="code-lines">
+                  <span class="kw">interface</span>
+                  <span class="fn">ExpenseType</span> {<br />
+                  &nbsp;&nbsp;<span class="prop">id</span>:
+                  <span class="fn">string</span><br />
+                  &nbsp;&nbsp;<span class="prop">nome</span>:
+                  <span class="fn">string</span><br />
+                  &nbsp;&nbsp;<span class="prop">whitelistTags</span>:
+                  <span class="fn">string</span>[]<br />
+                  &nbsp;&nbsp;<span class="prop">blacklistTags</span>:
+                  <span class="fn">string</span>[]<br />
+                  }<br /><br />
+                  <span class="kw">interface</span>
+                  <span class="fn">AuditResult</span> {<br />
+                  &nbsp;&nbsp;<span class="prop">expenseId</span>:
+                  <span class="fn">string</span><br />
+                  &nbsp;&nbsp;<span class="prop">scoreConfianca</span>:
+                  <span class="fn">number</span>
+                  <span class="cmt">// 0.0 - 1.0</span><br />
+                  &nbsp;&nbsp;<span class="prop">tokensConsumidos</span>:
+                  <span class="fn">number</span><br />
+                  &nbsp;&nbsp;<span class="prop">custoEstimado</span>:
+                  <span class="fn">number</span><br />
+                  &nbsp;&nbsp;<span class="prop">aprovado</span>:
+                  <span class="fn">boolean</span><br />
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 14px;
+              padding: 10px 14px;
+              background: var(--teal-bg);
+              border: 1px solid #065f46;
+              border-radius: var(--radius);
+              font-family: var(--font-mono);
+              font-size: 14px;
+              color: var(--teal);
+            "
+          >
+            🎬 Tela de auditoria de despesas com score e controle de tokens
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 6: OVERVIEW — Elias ─── -->
+        <div class="slide" id="slide-6">
+          <div class="slide-title">// overview — Elias</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-blue">📸 overview</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >overview-elias.md</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Entregas em <span>destaque</span> — Elias
+          </div>
+
+          <div class="overview-grid">
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13204', 'Problema para enviar todas as respostas')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-red"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >fix</span
+                >
+              </div>
+              <div class="overview-card-id">#13204</div>
+              <div class="overview-card-title">
+                Problema para enviar todas as respostas — correção do envio
+                incompleto no formulário dinâmico
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13420', 'Rotas de API filtradas e ordenadas')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13420</div>
+              <div class="overview-card-title">
+                Rotas de API filtradas e ordenadas — base da integração com
+                WhatsApp
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13395', 'Logo do recibo não sai')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-red"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >fix</span
+                >
+              </div>
+              <div class="overview-card-id">#13395</div>
+              <div class="overview-card-title">
+                Logo do recibo não sai — investigação e correção
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('12945', 'RAT no iOS não exibe imagens')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-red"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >fix</span
+                >
+              </div>
+              <div class="overview-card-id">#12945</div>
+              <div class="overview-card-title">
+                RAT no iOS não exibe imagens — correção com base64, hotfix na
+                loja
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13376', 'Validar campo filial/grupo no cadastro')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-red"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >fix</span
+                >
+              </div>
+              <div class="overview-card-id">#13376</div>
+              <div class="overview-card-title">
+                Validar campo filial/grupo no cadastro — correção de validação
+                obrigatória
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13278', 'Recibo não mostra variáveis corretamente')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13278</div>
+              <div class="overview-card-title">
+                Recibo não mostra variáveis corretamente — correção com Regex
+                global
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 7: LIGHTNING TECH — Matheus ─── -->
+        <div class="slide" id="slide-7">
+          <div class="slide-title">// lightning — Matheus — 3 min ⏱</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-amber">⚡ Lightning</span>
+            <span class="badge badge-green">Python</span>
+            <span class="badge badge-teal">Agrotrace</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >satellite-analyzer.service.py</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Microserviço Python — análise de <span>imagens de satélite</span>
+          </div>
+
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div class="code-block" style="height: fit-content">
+              <div class="code-block-header">⚡ satellite-analyzer.service.py</div>
+              <div class="code-body">
+                <div class="line-numbers">
+                  1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16
+                </div>
+                <div class="code-lines">
+                  <span class="kw">from</span>
+                  <span class="fn">fastapi</span>
+                  <span class="kw">import</span>
+                  FastAPI<br />
+                  <span class="kw">from</span>
+                  <span class="fn">satellite_lib</span>
+                  <span class="kw">import</span>
+                  <span class="fn">fetch_satellite_image</span>,
+                  <span class="fn">analyze_ndvi</span><br /><br />
+                  <span class="prop">app</span> =
+                  <span class="fn">FastAPI</span>()<br /><br />
+                  <span class="cmt"># Endpoint para análise de imagem de satélite</span
+                  ><br />
+                  <span class="kw">@app</span>.<span class="fn">post</span>(<span
+                    class="str">"/analyze"</span>)<br />
+                  <span class="kw">async def</span>
+                  <span class="fn">analyze</span>(<span class="prop">farm_id</span>:
+                  <span class="fn">str</span>, <span class="prop">date</span>:
+                  <span class="fn">str</span>):<br />
+                  &nbsp;&nbsp;<span class="cmt"># 1. Busca imagem da propriedade</span
+                  ><br />
+                  &nbsp;&nbsp;<span class="prop">image</span> =
+                  <span class="fn">fetch_satellite_image</span>(<span class="prop"
+                    >farm_id</span
+                  >, <span class="prop">date</span>)<br /><br />
+                  &nbsp;&nbsp;<span class="cmt"># 2. Calcula índices (NDVI, EVI)</span
+                  ><br />
+                  &nbsp;&nbsp;<span class="prop">ndvi</span> =
+                  <span class="fn">analyze_ndvi</span>(<span class="prop"
+                    >image</span>)<br />
+                  &nbsp;&nbsp;<span class="prop">evi</span> =
+                  <span class="fn">analyze_evi</span>(<span class="prop"
+                    >image</span>)<br /><br />
+                  &nbsp;&nbsp;<span class="cmt"># 3. Retorna análise completa</span
+                  ><br />
+                  &nbsp;&nbsp;<span class="kw">return</span> {<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">farm_id</span>:
+                  <span class="prop">farm_id</span>,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">ndvi</span>:
+                  <span class="prop">ndvi</span>,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">evi</span>:
+                  <span class="prop">evi</span>,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">recommendations</span>:
+                  <span class="fn">generate_recommendations</span>(<span
+                    class="prop"
+                    >ndvi</span
+                  >)<br />
+                  &nbsp;&nbsp;}<br /><br />
+                  <span class="cmt"># Cards: #13123 (microserviço) + #13228 (front)</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div class="card card-accent-amber">
+                <div class="section-label" style="color: var(--amber)">
+                  O que faz
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    font-size: 15px;
+                    color: var(--text2);
+                  "
+                >
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--amber); font-family: var(--font-mono)"
+                      >1.</span
+                    >
+                    <span
+                      >Microserviço em <strong style="color: var(--text)"
+                        >Python</strong
+                      >
+                      (FastAPI) para analisar imagens de satélite (#13123)</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--amber); font-family: var(--font-mono)"
+                      >2.</span
+                    >
+                    <span
+                      >Cálculo de índices vegetativos:
+                      <strong style="color: var(--text)">NDVI, EVI</strong></span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--amber); font-family: var(--font-mono)"
+                      >3.</span
+                    >
+                    <span
+                      >Geração de
+                      <strong style="color: var(--text)"
+                        >recomendações</strong
+                      >
+                      baseadas na análise</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-blue">
+                <div class="section-label" style="color: var(--blue)">
+                  Stack + Integração
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                    font-size: 15px;
+                    color: var(--text2);
+                  "
+                >
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--blue); font-family: var(--font-mono)"
+                      >→</span
+                    >
+                    <span
+                      ><strong style="color: var(--text)">Python</strong> com
+                      FastAPI para endpoints REST</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--blue); font-family: var(--font-mono)"
+                      >→</span
+                    >
+                    <span
+                      >Integração com front do
+                      <strong style="color: var(--text)">Agrotrace</strong>
+                      (#13228) para visualização e gatilho da análise</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span
+                      style="color: var(--blue); font-family: var(--font-mono)"
+                      >→</span
+                    >
+                    <span
+                      >Consumo de APIs de imagens de satélite externas</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="tag-list">
+                <span class="chip">Python</span>
+                <span class="chip">FastAPI</span>
+                <span class="chip">Satélite</span>
+                <span class="chip">NDVI</span>
+                <span class="chip">Agrotrace</span>
+                <span class="chip">#13123</span>
+                <span class="chip">#13228</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 8: OVERVIEW — Matheus ─── -->
+        <div class="slide" id="slide-8">
+          <div class="slide-title">// overview — Matheus</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-teal">📸 overview</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >overview-matheus.md</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Entregas em <span>destaque</span> — Matheus
+          </div>
+
+          <div class="overview-grid">
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13298', 'Adicionar importação de Lotes')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13298</div>
+              <div class="overview-card-title">
+                Adicionar importação de Lotes — CSV do Gado Pesado com pesagens e
+                previsão de abate
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13176', 'Lançamento - Pesagem de Lotes')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13176</div>
+              <div class="overview-card-title">
+                Lançamento - Pesagem de Lotes — cálculo automático da data de
+                abate
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13253', 'Melhorar feat de pesagem com novas tabelas')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13253</div>
+              <div class="overview-card-title">
+                Melhorar feat de pesagem com novas tabelas — suporte avançado
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13342', 'Tipo de Criação e categoria no lote')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13342</div>
+              <div class="overview-card-title">
+                Tipo de Criação e categoria no lote — dados completos do
+                cadastro
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13123', 'Microserviço Python de imagens de satélite')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13123</div>
+              <div class="overview-card-title">
+                Microserviço Python de imagens de satélite — análise NDVI/EVI
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13228', 'Visualização/gatilho de imagem de satélite')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13228</div>
+              <div class="overview-card-title">
+                Visualização/gatilho de imagem de satélite — front Agrotrace
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 9: OVERVIEW — Carlos ─── -->
+        <div class="slide" id="slide-9">
+          <div class="slide-title">// overview — Carlos</div>
+          <div class="flex-row mb-8">
+            <span class="badge badge-purple">📸 overview</span>
+            <span
+              style="
+                font-size: 14px;
+                color: var(--text3);
+                font-family: var(--font-mono);
+              "
+              >overview-carlos.md</span
+            >
+          </div>
+          <div
+            class="slide-heading"
+            style="font-size: 28px; margin-bottom: 20px"
+          >
+            Entregas em <span>destaque</span> — Carlos
+          </div>
+
+          <div class="overview-grid">
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13325', 'Auditoria de despesas com IA')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13325</div>
+              <div class="overview-card-title">
+                Auditoria de despesas com IA — White/BlackList, SCORE e controle
+                de tokens
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13390', 'Confirmar Envs e lançar nova versão')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13390</div>
+              <div class="overview-card-title">
+                Confirmar Envs e lançar nova versão — RDs, Agrotrace e CORS
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13357', 'Cadastrar var ECC nos modelos PEC')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13357</div>
+              <div class="overview-card-title">
+                Cadastrar var ECC nos modelos PEC — suporte aos RATs
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13312', 'Cadastrar novo modelo D9/D11')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-green"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >feat</span
+                >
+              </div>
+              <div class="overview-card-id">#13312</div>
+              <div class="overview-card-title">
+                Cadastrar novo modelo D9/D11 — RAT reprodutivo com datas
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13277', 'Validar recursos da nova versão')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-red"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >fix</span
+                >
+              </div>
+              <div class="overview-card-id">#13277</div>
+              <div class="overview-card-title">
+                Validar recursos da nova versão — aprovação de despesas e Event
+                Broker
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+            <div
+              class="overview-card"
+              onclick="openScreenshot('13276', 'Ajustar ícones do menu')"
+            >
+              <div class="overview-card-badge">
+                <span
+                  class="badge badge-red"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >fix</span
+                >
+              </div>
+              <div class="overview-card-id">#13276</div>
+              <div class="overview-card-title">
+                Ajustar ícones do menu — melhor entendimento dos contextos
+              </div>
+              <div class="overview-card-hint">
+                📷 clique para ver screenshot
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 10: WINS ─── -->
+        <div class="slide" id="slide-10">
+          <div class="slide-title">// wins.log — 2 min ⏱</div>
+          <div class="slide-heading">Engineering <span>Wins</span></div>
+
+          <div class="grid-3" style="flex: 1">
+            <div class="win-card" style="border-left: 3px solid var(--blue)">
+              <div
+                class="flex-row"
+                style="justify-content: space-between; align-items: center"
+              >
+                <div class="win-icon">🤖</div>
+                <span
+                  class="badge badge-blue"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >#13297 + biome</span
+                >
+              </div>
+              <div class="win-who" style="color: var(--blue)">
+                ELIAS
+              </div>
+              <div class="win-text">
+                <strong style="color: var(--text)"
+                  >BiomeJS padronizando o codebase</strong
+                >
+                — linter + formatter único em Rust, diffs menores e contexto
+                limpo para agentes LLM. <strong style="color: var(--text)"
+                  >Bônus:</strong
+                >
+                Form-Dinâmico offline-first (#13297) com melhor performance e
+                garantia de resultados.
+              </div>
+            </div>
+
+            <div class="win-card" style="border-left: 3px solid var(--teal)">
+              <div
+                class="flex-row"
+                style="justify-content: space-between; align-items: center"
+              >
+                <div class="win-icon">📦</div>
+                <span
+                  class="badge badge-teal"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >#13298 #13176</span
+                >
+              </div>
+              <div class="win-who" style="color: var(--teal)">
+                MATHEUS
+              </div>
+              <div class="win-text">
+                <strong style="color: var(--text)"
+                  >Importação de Lotes + Previsão de Abate</strong
+                >
+                automática usada pela JBS, Calculadora de Solo com análise NPK —
+                fluxo de cadastro muito mais simples e rápido.
+              </div>
+            </div>
+
+            <div class="win-card" style="border-left: 3px solid var(--purple)">
+              <div
+                class="flex-row"
+                style="justify-content: space-between; align-items: center"
+              >
+                <div class="win-icon">💰</div>
+                <span
+                  class="badge badge-purple"
+                  style="font-size: 11px; padding: 2px 8px"
+                  >#13325</span
+                >
+              </div>
+              <div class="win-who" style="color: var(--purple)">
+                CARLOS
+              </div>
+              <div class="win-text">
+                <strong style="color: var(--text)"
+                  >Auditoria de despesas com IA</strong
+                >
+                — White/BlackList, SCORE de confiança e transparência de custo
+                por token consumidos na análise de imagens.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 11: ROADMAP ─── -->
+        <div class="slide" id="slide-11">
+          <div class="slide-title">
+            // roadmap.todo — Edition #10 (próximo período) — 2 min ⏱
+          </div>
+          <div class="slide-heading">Próximas <span>prioridades</span></div>
+
+          <div style="display: flex; flex-direction: column; gap: 0; flex: 1">
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">Integração WhatsApp (#13187)</div>
+                <div class="todo-desc">
+                  Canal WhatsApp para o produtor consultar atendimentos, com
+                  rotas de API já filtradas e ordenadas (#13420).
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--blue-bg); color: var(--blue)"
+                  >@elias</span
+                >
+                <span
+                  class="todo-who"
+                  style="
+                    background: var(--bg2);
+                    color: var(--text2);
+                    border: 1px solid var(--border);
+                  "
+                  >#13187</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">Rotas de API filtradas e ordenadas</div>
+                <div class="todo-desc">
+                  Finalização das rotas filtradas para suportar integrações
+                  externas e integrações com WhatsApp.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--blue-bg); color: var(--blue)"
+                  >@elias</span
+                >
+                <span
+                  class="todo-who"
+                  style="
+                    background: var(--bg2);
+                    color: var(--text2);
+                    border: 1px solid var(--border);
+                  "
+                  >#13420</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">Etiqueta de Amostra de Solo</div>
+                <div class="todo-desc">
+                  Implementação de etiqueta para amostras de solo no app,
+                  facilitando logística de laboratório.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--teal-bg); color: var(--teal)"
+                  >@matheus</span
+                >
+                <span
+                  class="todo-who"
+                  style="
+                    background: var(--bg2);
+                    color: var(--text2);
+                    border: 1px solid var(--border);
+                  "
+                  >#13414</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">Migração Expo — SDK mais recente</div>
+                <div class="todo-desc">
+                  Atualização do app mobile para a versão mais recente do Expo e
+                  SDK, garantindo suporte e performance.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--teal-bg); color: var(--teal)"
+                  >@matheus</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">Reprodutor por Certificadora</div>
+                <div class="todo-desc">
+                  Funcionalidade para buscar e adicionar reprodutores por
+                  certificadora no módulo PEC.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--purple-bg); color: var(--purple)"
+                  >@carlos</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">Offline-first — validações e sync</div>
+                <div class="todo-desc">
+                  Aprimoramentos no modo offline: validações local, sync
+                  inteligente e resolução de conflitos.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--blue-bg); color: var(--blue)"
+                  >@elias</span
+                >
+                <span
+                  class="todo-who"
+                  style="background: var(--teal-bg); color: var(--teal)"
+                  >@matheus</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: auto;
+              padding-top: 14px;
+              font-family: var(--font-mono);
+              font-size: 13px;
+              color: var(--text3);
+              text-align: center;
+            "
+          >
+            Próxima Web: <span style="color: var(--purple)">08/10/2026</span> —
+            ciclo de 3 semanas
+          </div>
+        </div>
+
+        <!-- ─── SLIDE 12: EXIT ─── -->
+        <div class="slide" id="slide-12">
+          <div
+            style="
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              gap: 24px;
+            "
+          >
+            <div
+              style="
+                font-family: var(--font-mono);
+                font-size: 14px;
+                color: var(--text3);
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+              "
+            >
+              // exit.ts
+            </div>
+
+            <div style="font-size: 48px; font-weight: 700; line-height: 1.15">
+              Obrigado pela<br /><span style="color: var(--purple)"
+                >presença!</span
+              >
+            </div>
+
+            <div class="code-block" style="max-width: 720px; width: 100%">
+              <div class="code-block-header">👋 exit.ts</div>
+              <div class="code-body">
+                <div class="line-numbers">
+                  1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13
+                </div>
+                <div class="code-lines">
+                  <span class="cmt">// exit.ts</span><br />
+                  <span class="kw">import</span> {
+                  <span class="prop">team</span> } <span class="kw">from</span>
+                  <span class="str">'./web-engineering'</span><br /><br />
+                  <span class="prop">console</span>.<span class="fn">log</span
+                  >(<span class="str">"Obrigado pela presença!"</span>)<br />
+                  <span class="prop">console</span>.<span class="fn">log</span
+                  >(<span class="str"
+                    >`Próximo spotlight: ${team.nextDate}`</span
+                  >)<br /><br />
+                  <span class="cmt">// Dúvidas?</span><br />
+                  <span class="cmt">// → Carlos, Elias ou Matheus</span><br />
+                  <span class="cmt">// → #web-engineering no Discord</span
+                  ><br /><br />
+                  <span class="prop">process</span>.<span class="fn">exit</span
+                  >(<span class="num">0</span>)
+                  <span class="cmt">// até a próxima! 👋</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-row" style="justify-content: center; gap: 8px">
+              <span
+                class="pill"
+                style="border-color: var(--border2); color: var(--text3)"
+                >✓ Edition #09 concluída</span
+              >
+              <span
+                class="pill"
+                style="border-color: #4c1d95; color: var(--purple)"
+                >→ Edition #10 — 18/09/2026</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /content -->
+    </div>
+    <!-- /main -->
+
+    <!-- NAV -->
+    <div class="nav-controls">
+      <button class="nav-btn" onclick="prev()">← prev</button>
+      <div class="nav-dots" id="navDots"></div>
+      <span class="slide-counter" id="slideCounter">1 / 13</span>
+      <button class="nav-btn" onclick="next()">next →</button>
+    </div>
+
+    <!-- STATUSBAR -->
+    <div class="statusbar">
+      <div class="status-item">🌿 main</div>
+      <div class="status-item" id="statusFile">README.md</div>
+      <div class="status-item">Tech Spotlight — Mobile Team</div>
+      <div class="status-item" style="margin-left: auto">18/09/2026</div>
+    </div>
+
+    <!-- KPI MODAL -->
+    <div
+      class="kpi-overlay"
+      id="kpiOverlay"
+      onclick="if (event.target === this) closeKpiModal();"
+    >
+      <div class="kpi-modal">
+        <div class="kpi-modal-header">
+          <div class="kpi-modal-title" id="kpiTitle">Cards</div>
+          <button class="kpi-modal-close" onclick="closeKpiModal()">
+            ✕ Fechar
+          </button>
+        </div>
+        <div class="kpi-modal-body">
+          <table class="kpi-table">
+            <thead>
+              <tr>
+                <th>#Card</th>
+                <th>Título</th>
+                <th>Tipo</th>
+                <th>Responsável</th>
+              </tr>
+            </thead>
+            <tbody id="kpiBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREENSHOT MODAL -->
+    <div
+      class="ss-overlay"
+      id="ssOverlay"
+      onclick="if (event.target === this) closeScreenshot();"
+    >
+      <div class="ss-modal">
+        <div class="ss-header">
+          <div class="ss-header-left">
+            <span class="ss-card-id" id="ssCardId">#00000</span>
+            <span class="ss-title" id="ssTitle">Título</span>
+          </div>
+          <button class="ss-close" onclick="closeScreenshot()">✕ Fechar</button>
+        </div>
+        <div class="ss-body" id="ssBody"></div>
+      </div>
+    </div>
+
+    <!-- TERMINAL DEMO MODAL -->
+    <div
+      class="term-overlay"
+      id="termOverlay"
+      onclick="if (event.target === this) closeTermDemo();"
+    >
+      <div class="term-window">
+        <div class="term-titlebar">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-amber"></div>
+          <div class="dot dot-green"></div>
+          <div class="term-titlebar-text" id="termTitle">Terminal</div>
+          <button class="term-close-btn" onclick="closeTermDemo()">
+            ✕ Fechar
+          </button>
+        </div>
+        <div class="term-body" id="termBody"></div>
+      </div>
+    </div>
+
+    <script>
+      /* ── TERMINAL DEMO ANIMATION ── */
+      const TERM_SEQUENCES = {};
+
+      const TERM_CLASSES = {
+        prompt: "t-prompt",
+        cmd: "t-cmd",
+        info: "t-info",
+        header: "t-header",
+        label: "t-label",
+        ok: "t-ok",
+        h2: "t-h2",
+        check: "t-check",
+        link: "t-link",
+        dim: "t-dim",
+        text: "",
+        sparkle: "t-sparkle",
+        cyan: "t-cyan",
+        bold: "t-bold",
+      };
+
+      let termAnimId = 0;
+
+      async function openTermDemo(which) {
+        const overlay = document.getElementById("termOverlay");
+        const body = document.getElementById("termBody");
+        const title = document.getElementById("termTitle");
+        title.textContent = "Terminal — " + which;
+        body.innerHTML = "";
+        overlay.classList.add("open");
+
+        const seq = TERM_SEQUENCES[which];
+        if (!seq) return;
+        const runId = ++termAnimId;
+
+        for (const step of seq) {
+          if (runId !== termAnimId) return;
+
+          if (step.delay) {
+            await new Promise((r) => setTimeout(r, step.delay));
+            continue;
+          }
+
+          if (step.type === "spin") {
+            const line = document.createElement("div");
+            const pipe = document.createElement("span");
+            pipe.className = "t-step-pipe";
+            pipe.textContent = "  │ ";
+            const dot = document.createElement("span");
+            dot.className = "t-spin-dot";
+            dot.textContent = "●";
+            dot.style.animation = "termPulse .6s ease-in-out infinite";
+            const txt = document.createElement("span");
+            txt.className = "t-spin-text";
+            txt.textContent = " " + step.spinText;
+            line.append(pipe, dot, txt);
+            body.appendChild(line);
+            body.scrollTop = body.scrollHeight;
+
+            await new Promise((r) => setTimeout(r, step.spinDuration || 500));
+            if (runId !== termAnimId) return;
+
+            dot.style.animation = "";
+            dot.className = "t-done-dot";
+            dot.textContent = "✓";
+            txt.className = "t-done-text";
+            txt.textContent = " " + step.doneText;
+            body.scrollTop = body.scrollHeight;
+            await new Promise((r) => setTimeout(r, 80));
+          } else if (step.type === "cmd" && step.typeSpeed) {
+            const line = document.createElement("div");
+            const span = document.createElement("span");
+            span.className = TERM_CLASSES[step.type] || "";
+            line.appendChild(span);
+            body.appendChild(line);
+
+            for (let i = 0; i < step.text.length; i++) {
+              if (runId !== termAnimId) return;
+              span.textContent += step.text[i];
+              body.scrollTop = body.scrollHeight;
+              await new Promise((r) => setTimeout(r, step.typeSpeed));
+            }
+          } else {
+            const line = document.createElement("div");
+            const span = document.createElement("span");
+            span.className = TERM_CLASSES[step.type] || "";
+            span.textContent = step.text;
+            line.appendChild(span);
+            body.appendChild(line);
+            body.scrollTop = body.scrollHeight;
+            await new Promise((r) => setTimeout(r, 45));
+          }
+        }
+
+        if (runId === termAnimId) {
+          const cursor = document.createElement("div");
+          cursor.style.marginTop = "8px";
+          const prompt = document.createElement("span");
+          prompt.className = "t-prompt";
+          prompt.textContent = "~/agrotrace-v3 ";
+          cursor.appendChild(prompt);
+          const blk = document.createElement("span");
+          blk.className = "t-cursor";
+          cursor.appendChild(blk);
+          body.appendChild(cursor);
+          body.scrollTop = body.scrollHeight;
+        }
+      }
+
+      function closeTermDemo() {
+        termAnimId++;
+        document.getElementById("termOverlay").classList.remove("open");
+      }
+
+      const KPI_CARDS = [
+        // === CARLOS ===
+        {
+          id: "#13325",
+          type: "ref",
+          title: "Auditoria de despesas com IA",
+          who: "Carlos",
+        },
+        {
+          id: "#11387",
+          type: "ref",
+          title: "Ajustar tela de despesas",
+          who: "Carlos",
+        },
+        {
+          id: "#13276",
+          type: "ref",
+          title: "Ajustar ícones do menu",
+          who: "Carlos",
+        },
+        {
+          id: "#13390",
+          type: "ref",
+          title: "Confirmar Envs e lançar nova versão",
+          who: "Carlos",
+        },
+        {
+          id: "#13357",
+          type: "feat",
+          title: "Cadastrar var ECC nos modelos PEC",
+          who: "Carlos",
+        },
+        {
+          id: "#13312",
+          type: "feat",
+          title: "Cadastrar novo modelo D9/D11",
+          who: "Carlos",
+        },
+        {
+          id: "#13356",
+          type: "feat",
+          title: "Hash Web + Mobile para INPI",
+          who: "Carlos",
+        },
+        {
+          id: "#13277",
+          type: "ref",
+          title: "Validar recursos da nova versão",
+          who: "Carlos",
+        },
+        // === ELIAS ===
+        {
+          id: "#13249",
+          type: "ref",
+          title: "Analisar backup técnico João Aranha",
+          who: "Elias",
+        },
+        {
+          id: "#13420",
+          type: "feat",
+          title: "Rotas de API filtradas e ordenadas",
+          who: "Elias",
+        },
+        {
+          id: "#13395",
+          type: "fix",
+          title: "Logo do recibo não sai",
+          who: "Elias",
+        },
+        {
+          id: "#13306",
+          type: "fix",
+          title: "Não anexa PDF em info complementares",
+          who: "Elias",
+        },
+        {
+          id: "#13204",
+          type: "fix",
+          title: "Problema para enviar todas as respostas",
+          who: "Elias",
+        },
+        {
+          id: "#13278",
+          type: "feat",
+          title: "Recibo não mostra variáveis corretamente",
+          who: "Elias",
+        },
+        {
+          id: "#12945",
+          type: "fix",
+          title: "RAT no iOS não exibe imagens",
+          who: "Elias",
+        },
+        {
+          id: "#13376",
+          type: "fix",
+          title: "Validar campo filial/grupo no cadastro",
+          who: "Elias",
+        },
+        {
+          id: "#13428",
+          type: "feat",
+          title: "Publicar nova versão nas lojas",
+          who: "Elias",
+        },
+        // === MATHEUS ===
+        {
+          id: "#13298",
+          type: "feat",
+          title: "Adicionar importação de Lotes",
+          who: "Matheus",
+        },
+        {
+          id: "#13176",
+          type: "feat",
+          title: "Lançamento - Pesagem de Lotes",
+          who: "Matheus",
+        },
+        {
+          id: "#13253",
+          type: "feat",
+          title: "Melhorar feat de pesagem com novas tabelas",
+          who: "Matheus",
+        },
+        {
+          id: "#13342",
+          type: "feat",
+          title: "Tipo de Criação e categoria no lote",
+          who: "Matheus",
+        },
+        {
+          id: "#13123",
+          type: "feat",
+          title: "Microserviço Python de imagens de satélite",
+          who: "Matheus",
+        },
+        {
+          id: "#13228",
+          type: "feat",
+          title: "Visualização/gatilho de imagem de satélite",
+          who: "Matheus",
+        },
+        {
+          id: "#13172",
+          type: "feat",
+          title: "Acesso ao Módulo PEC",
+          who: "Matheus",
+        },
+        {
+          id: "#13171",
+          type: "feat",
+          title: "Visualizar documento antes da assinatura",
+          who: "Matheus",
+        },
+        {
+          id: "#13262",
+          type: "feat",
+          title: "Obrigar assinatura do consultor",
+          who: "Matheus",
+        },
+        {
+          id: "#13348",
+          type: "feat",
+          title: "Ajustar tipo de atendimento - Protocolo",
+          who: "Matheus",
+        },
+        {
+          id: "#13346",
+          type: "feat",
+          title: "Atualizar app para SDK 36",
+          who: "Matheus",
+        },
+        {
+          id: "#13309",
+          type: "fix",
+          title: "Categoria Animal não aparece [PEC]",
+          who: "Matheus",
+        },
+        {
+          id: "#13431",
+          type: "feat",
+          title: "Relatório de DG - PEC",
+          who: "Matheus",
+        },
+      ];
+
+      const KPI_LABELS = {
+        all: "Todos os Cards",
+        feat: "Features",
+        fix: "Bugs Corrigidos",
+        ref: "Refactors/Migração",
+        test: "Tests",
+      };
+      const KPI_COLORS = {
+        feat: "var(--teal)",
+        fix: "var(--coral)",
+        ref: "var(--blue)",
+        test: "var(--amber)",
+      };
+      const KPI_BG = {
+        feat: "var(--teal-bg)",
+        fix: "var(--coral-bg)",
+        ref: "var(--blue-bg)",
+        test: "var(--amber-bg)",
+      };
+      const KPI_NAMES = {
+        feat: "feature",
+        fix: "fix",
+        ref: "refactor",
+        test: "test",
+      };
+
+      // ── Stats filter by member ──
+      let statsMember = "all";
+
+      function filterStats(member) {
+        statsMember = member;
+        document.querySelectorAll(".stats-filter").forEach((b) => {
+          b.classList.toggle("active", b.dataset.member === member);
+        });
+        const cards =
+          member === "all"
+            ? KPI_CARDS
+            : KPI_CARDS.filter((c) => c.who === member);
+        const total = cards.length;
+        const feat = cards.filter((c) => c.type === "feat").length;
+        const fix = cards.filter((c) => c.type === "fix").length;
+        const ref = cards.filter((c) => c.type === "ref").length;
+        const test = cards.filter((c) => c.type === "test").length;
+
+        document.getElementById("mv-all").textContent = total;
+        document.getElementById("mv-feat").textContent = feat;
+        document.getElementById("mv-fix").textContent = fix;
+        document.getElementById("mv-ref").textContent = ref;
+        document.getElementById("mv-test").textContent = test;
+        document.getElementById("statsCount").textContent = total + " cards";
+
+        // Update per-dev counts
+        const devR = (member === "all" ? KPI_CARDS : cards).filter(
+          (c) => c.who === "Carlos",
+        ).length;
+        const devB = (member === "all" ? KPI_CARDS : cards).filter(
+          (c) => c.who === "Elias",
+        ).length;
+        const devT = (member === "all" ? KPI_CARDS : cards).filter(
+          (c) => c.who === "Matheus",
+        ).length;
+        document.getElementById("mv-carlos").textContent = devR;
+        document.getElementById("mv-elias").textContent = devB;
+        document.getElementById("mv-matheus").textContent = devT;
+
+        // Update distribution bars
+        const dist = document.getElementById("statsDistribution");
+        const bars = [
+          {
+            label: "features",
+            count: feat,
+            color: "var(--purple)",
+            grad: "linear-gradient(90deg, var(--purple), var(--blue))",
+          },
+          {
+            label: "fixes",
+            count: fix,
+            color: "var(--red)",
+            grad: "linear-gradient(90deg, var(--red), var(--coral))",
+          },
+          {
+            label: "refactors",
+            count: ref,
+            color: "var(--teal)",
+            grad: "linear-gradient(90deg, var(--teal), var(--blue))",
+          },
+          {
+            label: "infra",
+            count: test,
+            color: "var(--amber)",
+            grad: "linear-gradient(90deg, var(--amber), var(--coral))",
+          },
+        ];
+        dist.innerHTML = bars
+          .map((b, i) => {
+            const pct = total > 0 ? Math.round((b.count / total) * 100) : 0;
+            return `<div style="margin-bottom:${i < 3 ? "10px" : "0"}">
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+        <span style="color:${b.color}">${b.label} (${b.count})</span>
+        <span class="num">${pct}%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${b.grad};transition:width 0.4s"></div></div>
+    </div>`;
+          })
+          .join("");
+      }
+
+      // Render initial stats
+      filterStats("all");
+
+      function openKpiModal(kpi) {
+        let base =
+          statsMember === "all"
+            ? KPI_CARDS
+            : KPI_CARDS.filter((c) => c.who === statsMember);
+        const filtered =
+          kpi === "all" ? base : base.filter((c) => c.type === kpi);
+        document.getElementById("kpiTitle").textContent = KPI_LABELS[kpi];
+        const tbody = document.getElementById("kpiBody");
+        tbody.innerHTML = filtered
+          .map((c) => {
+            const num = c.id.replace("#", "").replace("b", "");
+            return `<tr>
+      <td><a href="https://dev.azure.com/ibsbiosistemico/AGROTRACE/_workitems/edit/${num}" target="_blank" style="color:var(--text);text-decoration:none;transition:color 0.15s" onmouseover="this.style.color='var(--purple)'" onmouseout="this.style.color='var(--text)'">${c.id}</a></td>
+      <td>${c.title}</td>
+      <td><span class="kpi-badge" style="background:${KPI_BG[c.type]};color:${KPI_COLORS[c.type]}">${KPI_NAMES[c.type]}</span></td>
+      <td>${c.who}</td>
+    </tr>`;
+          })
+          .join("");
+        document.getElementById("kpiOverlay").classList.add("open");
+      }
+
+      function closeKpiModal() {
+        document.getElementById("kpiOverlay").classList.remove("open");
+      }
+
+      document.querySelectorAll(".metric-click").forEach((el) => {
+        el.addEventListener("click", () => openKpiModal(el.dataset.kpi));
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          if (
+            document.getElementById("termOverlay").classList.contains("open")
+          ) {
+            closeTermDemo();
+            e.stopPropagation();
+            return;
+          }
+          if (document.getElementById("ssOverlay").classList.contains("open")) {
+            closeScreenshot();
+            e.stopPropagation();
+            return;
+          }
+          if (
+            document.getElementById("kpiOverlay").classList.contains("open")
+          ) {
+            closeKpiModal();
+            e.stopPropagation();
+          }
+        }
+      });
+
+      // ── Screenshot carousel ──
+      let ssImages = [];
+      let ssIndex = 0;
+      let ssCardId = "";
+
+      function openScreenshot(cardId, title) {
+        ssCardId = cardId;
+        ssImages = [];
+        ssIndex = 0;
+        document.getElementById("ssCardId").textContent = "#" + cardId;
+        document.getElementById("ssTitle").textContent = title;
+        const body = document.getElementById("ssBody");
+        body.innerHTML =
+          '<div class="ss-empty"><div class="ss-empty-icon">⏳</div>Carregando...</div>';
+        document.getElementById("ssOverlay").classList.add("open");
+
+        const single = new Image();
+        single.src = "assets/" + cardId + ".png";
+        single.onload = () => {
+          ssImages = [single.src];
+          probeNext(cardId, 2, () => renderCarousel());
+        };
+        single.onerror = () => {
+          const first = new Image();
+          first.src = "assets/" + cardId + "-1.png";
+          first.onload = () => {
+            ssImages = [first.src];
+            probeNext(cardId, 2, () => renderCarousel());
+          };
+          first.onerror = () => {
+            body.innerHTML =
+              '<div class="ss-empty"><div class="ss-empty-icon">📷</div>Screenshot ainda não adicionado<br><span style="font-size:12px;color:var(--text3)">Salve em assets/' +
+              cardId +
+              ".png ou assets/" +
+              cardId +
+              "-1.png, -2.png, ...</span></div>";
+          };
+        };
+      }
+
+      function probeNext(cardId, n, done) {
+        const img = new Image();
+        img.src = "assets/" + cardId + "-" + n + ".png";
+        img.onload = () => {
+          ssImages.push(img.src);
+          probeNext(cardId, n + 1, done);
+        };
+        img.onerror = done;
+      }
+
+      function renderCarousel() {
+        const body = document.getElementById("ssBody");
+        body.classList.remove("tall");
+        body.scrollTop = 0;
+        const img = document.createElement("img");
+        img.src = ssImages[ssIndex];
+        img.alt = "#" + ssCardId + " — imagem " + (ssIndex + 1);
+        const applyTallIfNeeded = () => {
+          if (img.naturalWidth && img.naturalHeight) {
+            if (img.naturalHeight / img.naturalWidth > 1.5) {
+              body.classList.add("tall");
+            }
+          }
+        };
+        img.addEventListener("load", applyTallIfNeeded);
+        if (img.complete) applyTallIfNeeded();
+        body.innerHTML = "";
+        body.appendChild(img);
+
+        body
+          .querySelectorAll(".ss-carousel-btn, .ss-counter")
+          .forEach((el) => el.remove());
+
+        if (ssImages.length > 1) {
+          const prev = document.createElement("button");
+          prev.className = "ss-carousel-btn prev";
+          prev.innerHTML = "‹";
+          prev.onclick = (e) => {
+            e.stopPropagation();
+            ssNav(-1);
+          };
+
+          const next = document.createElement("button");
+          next.className = "ss-carousel-btn next";
+          next.innerHTML = "›";
+          next.onclick = (e) => {
+            e.stopPropagation();
+            ssNav(1);
+          };
+
+          const counter = document.createElement("div");
+          counter.className = "ss-counter";
+          counter.innerHTML =
+            ssImages
+              .map(
+                (_, i) =>
+                  '<div class="ss-dot' +
+                  (i === ssIndex ? " active" : "") +
+                  '"></div>',
+              )
+              .join("") +
+            "<span>" +
+            (ssIndex + 1) +
+            " / " +
+            ssImages.length +
+            "</span>";
+
+          body.appendChild(prev);
+          body.appendChild(next);
+          body.appendChild(counter);
+        }
+      }
+
+      function ssNav(dir) {
+        ssIndex = (ssIndex + dir + ssImages.length) % ssImages.length;
+        renderCarousel();
+      }
+
+      function closeScreenshot() {
+        document.getElementById("ssOverlay").classList.remove("open");
+        ssImages = [];
+        ssIndex = 0;
+      }
+
+      const slides = document.querySelectorAll(".slide");
+      const sidebarItems = document.querySelectorAll('[id^="si-"]');
+      const total = slides.length;
+      let cur = 0;
+
+      const labels = [
+        "README.md",
+        "agenda.ts",
+        "stats.json",
+        "ater-digital.config.ts",
+        "protocolo-importacao.service.ts",
+        "carbon-dashboard.component.ts",
+        "overview-elias.md",
+        "agro-orchestrator.agent.ts",
+        "overview-matheus.md",
+        "overview-carlos.md",
+        "wins.log",
+        "roadmap.todo",
+        "exit.ts",
+      ];
+
+      // Build tabs
+      const tabsBar = document.getElementById("tabsBar");
+      const icons = [
+        "📋",
+        "📅",
+        "📊",
+        "🤖",
+        "⚡",
+        "📊",
+        "📸",
+        "⚡",
+        "📸",
+        "📸",
+        "🏆",
+        "🗺️",
+        "👋",
+      ];
+      labels.forEach((l, i) => {
+        const t = document.createElement("div");
+        t.className = "tab-item" + (i === 0 ? " active" : "");
+        t.innerHTML = `<span class="tab-icon">${icons[i]}</span>${l}`;
+        t.onclick = () => goTo(i);
+        t.id = "tab-" + i;
+        tabsBar.appendChild(t);
+      });
+
+      // Build dots
+      const dotsEl = document.getElementById("navDots");
+      for (let i = 0; i < total; i++) {
+        const d = document.createElement("div");
+        d.className = "nav-dot" + (i === 0 ? " active" : "");
+        d.onclick = () => goTo(i);
+        d.id = "dot-" + i;
+        dotsEl.appendChild(d);
+      }
+
+      function goTo(n) {
+        slides[cur].classList.remove("active");
+        document.getElementById("tab-" + cur)?.classList.remove("active");
+        document.getElementById("dot-" + cur)?.classList.remove("active");
+        document.getElementById("si-" + cur)?.classList.remove("active");
+
+        cur = (n + total) % total;
+
+        slides[cur].classList.add("active");
+        document.getElementById("tab-" + cur)?.classList.add("active");
+        document.getElementById("dot-" + cur)?.classList.add("active");
+        document.getElementById("si-" + cur)?.classList.add("active");
+
+        document.getElementById("slideCounter").textContent =
+          cur + 1 + " / " + total;
+        document.getElementById("statusFile").textContent = labels[cur];
+
+        const tab = document.getElementById("tab-" + cur);
+        if (tab)
+          tab.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center",
+          });
+      }
+
+      function next() {
+        goTo(cur + 1);
+      }
+      function prev() {
+        goTo(cur - 1);
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (document.getElementById("ssOverlay").classList.contains("open")) {
+          if (ssImages.length > 1) {
+            if (e.key === "ArrowRight") {
+              ssNav(1);
+              e.stopPropagation();
+              return;
+            }
+            if (e.key === "ArrowLeft") {
+              ssNav(-1);
+              e.stopPropagation();
+              return;
+            }
+          }
+          return;
+        }
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") next();
+        if (e.key === "ArrowLeft" || e.key === "ArrowUp") prev();
+        if (e.key === "f" || e.key === "F") {
+          if (!document.fullscreenElement)
+            document.documentElement.requestFullscreen();
+          else document.exitFullscreen();
+        }
+        if (e.key === "t" || e.key === "T") toggleTimer();
+        if (e.key === "r" || e.key === "R") toggleRemote();
+      });
+
+      // ── Timer / Cronômetro ──
+      let timerInterval = null;
+      let timerStart = null;
+      let timerElapsed = 0;
+      let timerRunning = false;
+
+      function toggleTimer() {
+        if (!timerRunning) {
+          timerStart = Date.now() - timerElapsed;
+          timerInterval = setInterval(updateTimer, 1000);
+          timerRunning = true;
+          document.getElementById("timerIcon").textContent = "⏸";
+          document.getElementById("timerBtn").classList.add("running");
+          document.getElementById("timerBtn").title =
+            "Clique para pausar (ou pressione T)";
+        } else {
+          clearInterval(timerInterval);
+          timerElapsed = Date.now() - timerStart;
+          timerRunning = false;
+          document.getElementById("timerIcon").textContent = "▶";
+          document.getElementById("timerBtn").classList.remove("running");
+          document.getElementById("timerBtn").title =
+            "Clique para retomar (ou pressione T)";
+        }
+      }
+
+      function updateTimer() {
+        timerElapsed = Date.now() - timerStart;
+        const totalSec = Math.floor(timerElapsed / 1000);
+        const min = Math.floor(totalSec / 60);
+        const sec = totalSec % 60;
+        const display =
+          String(min).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
+        document.getElementById("timerDisplay").textContent = display;
+
+        const btn = document.getElementById("timerBtn");
+        btn.classList.remove("warning", "overtime");
+        if (min >= 50) {
+          btn.classList.add("overtime");
+        } else if (min >= 40) {
+          btn.classList.add("warning");
+        }
+      }
+
+      // ── WebSocket Remote Control (host/guest com delegação) ──
+      // Protocolo novo: cada cliente entra com role=host|guest e name.
+      // Somente quem tem `controlOwnerId` pode navegar/disparar ações.
+      // O host (4=Carlos) pode delegar controle com as teclas 4/5/6.
+      // Se o guest com controle cai, volta pro host automaticamente.
+
+      const urlParams = new URLSearchParams(location.search);
+      const myRole =
+        (urlParams.get("role") || "host").toLowerCase() === "guest"
+          ? "guest"
+          : "host";
+      const myName =
+        urlParams.get("name") || (myRole === "host" ? "Carlos" : "Guest");
+
+      // Mapeamento das teclas de delegação (sem modificador, só o número)
+      const HANDOFF_KEYS = {
+        4: "Carlos",
+        5: "Elias",
+        6: "Matheus",
+      };
+
+      let remoteWs = null;
+      let remoteConnected = false;
+      let applyingFromRemote = false;
+      let myId = null;
+      let hostId = null;
+      let controlOwnerId = null;
+      let peers = [];
+
+      function iHaveControl() {
+        return myId != null && myId === controlOwnerId;
+      }
+      function iAmHost() {
+        return myId != null && myId === hostId;
+      }
+      function canActLocally() {
+        // Antes de o handshake chegar, deixa agir normalmente (sessão ainda não conhecida).
+        if (applyingFromRemote) return true;
+        if (!remoteConnected) return true;
+        if (controlOwnerId == null) return true;
+        return iHaveControl();
+      }
+
+      function toggleRemote() {
+        if (remoteConnected) disconnectRemote();
+        else connectRemote();
+      }
+
+      function connectRemote(url) {
+        if (!url) {
+          if (location.protocol === "file:") return;
+          const wsProto = location.protocol === "https:" ? "wss:" : "ws:";
+          url = `${wsProto}//${location.host}`;
+        }
+        try {
+          remoteWs = new WebSocket(url);
+        } catch {
+          updatePeersUI();
+          return;
+        }
+
+        remoteWs.onopen = () => {
+          remoteWs.send(
+            JSON.stringify({
+              type: "join",
+              role: myRole,
+              name: myName,
+              totalSlides: total,
+              currentSlide: cur,
+            }),
+          );
+          remoteConnected = true;
+          updatePeersUI();
+        };
+
+        remoteWs.onmessage = (e) => {
+          let msg;
+          try {
+            msg = JSON.parse(e.data);
+          } catch {
+            return;
+          }
+
+          if (msg.type === "session") {
+            if (typeof msg.myId === "number") myId = msg.myId;
+            hostId = msg.hostId;
+            controlOwnerId = msg.controlOwnerId;
+            peers = Array.isArray(msg.clients) ? msg.clients : [];
+            // Guests recém-conectados: sincroniza pro slide atual do host.
+            if (
+              myRole === "guest" &&
+              typeof msg.currentSlide === "number" &&
+              msg.currentSlide !== cur
+            ) {
+              applyingFromRemote = true;
+              try {
+                goTo(msg.currentSlide);
+              } finally {
+                applyingFromRemote = false;
+              }
+            }
+            updatePeersUI();
+            return;
+          }
+
+          if (msg.type === "slide-update") {
+            if (
+              typeof msg.currentSlide === "number" &&
+              msg.currentSlide !== cur
+            ) {
+              applyingFromRemote = true;
+              try {
+                goTo(msg.currentSlide);
+              } finally {
+                applyingFromRemote = false;
+              }
+            }
+            return;
+          }
+
+          if (msg.type === "navigate") {
+            applyingFromRemote = true;
+            try {
+              if (msg.action === "next") next();
+              else if (msg.action === "prev") prev();
+              else if (msg.action === "goto" && typeof msg.slide === "number")
+                goTo(msg.slide);
+            } finally {
+              applyingFromRemote = false;
+            }
+            return;
+          }
+
+          if (msg.type === "action") {
+            applyingFromRemote = true;
+            try {
+              handleRemoteAction(msg.action, msg.params || {});
+            } finally {
+              applyingFromRemote = false;
+            }
+            return;
+          }
+
+          if (msg.type === "error") {
+            flashPeersStatus(msg.error || "erro");
+            return;
+          }
+        };
+
+        remoteWs.onerror = () => {};
+
+        remoteWs.onclose = () => {
+          remoteConnected = false;
+          myId = null;
+          hostId = null;
+          controlOwnerId = null;
+          peers = [];
+          updatePeersUI();
+          setTimeout(() => {
+            if (!remoteConnected)
+              try {
+                connectRemote(url);
+              } catch (e) {}
+          }, 5000);
+        };
+      }
+
+      function disconnectRemote() {
+        if (remoteWs) {
+          remoteWs.close();
+          remoteWs = null;
+        }
+        remoteConnected = false;
+        myId = null;
+        hostId = null;
+        controlOwnerId = null;
+        peers = [];
+        updatePeersUI();
+      }
+
+      // Map of actions available per slide
+      const SLIDE_ACTIONS = {
+        6: [
+          // overview-elias.md
+          {
+            id: "ss-13204",
+            label: "📷 #13204 — Envio de respostas",
+            action: "openScreenshot",
+            params: {
+              cardId: "13204",
+              title: "Problema para enviar todas as respostas",
+            },
+          },
+          {
+            id: "ss-13420",
+            label: "📷 #13420 — Rotas filtradas",
+            action: "openScreenshot",
+            params: {
+              cardId: "13420",
+              title: "Rotas de API filtradas e ordenadas",
+            },
+          },
+        ],
+        8: [
+          // overview-matheus.md
+          {
+            id: "ss-13298",
+            label: "📷 #13298 — Importação de Lotes",
+            action: "openScreenshot",
+            params: {
+              cardId: "13298",
+              title: "Adicionar importação de Lotes",
+            },
+          },
+          {
+            id: "ss-13176",
+            label: "📷 #13176 — Pesagem de Lotes",
+            action: "openScreenshot",
+            params: {
+              cardId: "13176",
+              title: "Lançamento - Pesagem de Lotes",
+            },
+          },
+          {
+            id: "ss-13123",
+            label: "📷 #13123 — Satélite Python",
+            action: "openScreenshot",
+            params: {
+              cardId: "13123",
+              title: "Microserviço Python de imagens de satélite",
+            },
+          },
+        ],
+        9: [
+          // overview-carlos.md
+          {
+            id: "ss-13325",
+            label: "📷 #13325 — Auditoria IA",
+            action: "openScreenshot",
+            params: {
+              cardId: "13325",
+              title: "Auditoria de despesas com IA",
+            },
+          },
+          {
+            id: "ss-13390",
+            label: "📷 #13390 — Lançamento versão",
+            action: "openScreenshot",
+            params: {
+              cardId: "13390",
+              title: "Confirmar Envs e lançar nova versão",
+            },
+          },
+        ],
+      };
+
+      function getSlideActions() {
+        return SLIDE_ACTIONS[cur] || [];
+      }
+
+      function handleRemoteAction(action, params) {
+        switch (action) {
+          case "openScreenshot":
+            openScreenshot(params.cardId, params.title);
+            break;
+          case "closeModals":
+            if (document.getElementById("ssOverlay").classList.contains("open"))
+              closeScreenshot();
+            if (
+              document.getElementById("kpiOverlay").classList.contains("open")
+            )
+              closeKpiModal();
+            break;
+          case "ssNav":
+            if (ssImages.length > 1) ssNav(params.dir);
+            break;
+          case "toggleTimer":
+            toggleTimer();
+            break;
+          case "openKpiModal":
+            openKpiModal(params.kpi || "all");
+            break;
+          case "closeKpiModal":
+            closeKpiModal();
+            break;
+          case "filterStats":
+            filterStats(params.member || "all");
+            break;
+        }
+      }
+
+      function emitSlideUpdate() {
+        if (!remoteWs || remoteWs.readyState !== 1) return;
+        if (applyingFromRemote) return;
+        if (!iHaveControl()) return;
+        remoteWs.send(
+          JSON.stringify({
+            type: "slide-update",
+            currentSlide: cur,
+            slideLabel: labels[cur] || "",
+            slideActions: getSlideActions(),
+          }),
+        );
+      }
+
+      function emitAction(action, params) {
+        if (!remoteWs || remoteWs.readyState !== 1) return;
+        if (applyingFromRemote) return;
+        if (!iHaveControl()) return;
+        remoteWs.send(
+          JSON.stringify({
+            type: "action",
+            action,
+            params: params || {},
+          }),
+        );
+      }
+
+      // ── Wrap das funções locais para aplicar regras de controle + broadcast ──
+      const _origGoTo = goTo;
+      goTo = function (n) {
+        if (!canActLocally()) {
+          flashPeersStatus("sem controle — aguarde handoff");
+          return;
+        }
+        _origGoTo(n);
+        emitSlideUpdate();
+      };
+
+      const _origOpenScreenshot = openScreenshot;
+      openScreenshot = function (cardId, title) {
+        if (!canActLocally()) {
+          flashPeersStatus("sem controle");
+          return;
+        }
+        _origOpenScreenshot(cardId, title);
+        emitAction("openScreenshot", { cardId, title });
+      };
+
+      const _origCloseScreenshot = closeScreenshot;
+      closeScreenshot = function () {
+        if (!canActLocally()) return;
+        _origCloseScreenshot();
+        emitAction("closeModals");
+      };
+
+      const _origSsNav = ssNav;
+      ssNav = function (dir) {
+        if (!canActLocally()) return;
+        _origSsNav(dir);
+        emitAction("ssNav", { dir });
+      };
+
+      const _origToggleTimer = toggleTimer;
+      toggleTimer = function () {
+        // Timer pode ser sincronizado, mas não bloqueia guest (cada um vê o seu próprio)
+        _origToggleTimer();
+        emitAction("toggleTimer");
+      };
+
+      const _origOpenKpiModal = openKpiModal;
+      openKpiModal = function (kpi) {
+        if (!canActLocally()) {
+          flashPeersStatus("sem controle");
+          return;
+        }
+        _origOpenKpiModal(kpi);
+        emitAction("openKpiModal", { kpi });
+      };
+
+      const _origCloseKpiModal = closeKpiModal;
+      closeKpiModal = function () {
+        if (!canActLocally()) return;
+        _origCloseKpiModal();
+        emitAction("closeModals");
+      };
+
+      const _origFilterStats = filterStats;
+      filterStats = function (member) {
+        if (!canActLocally()) {
+          flashPeersStatus("sem controle");
+          return;
+        }
+        _origFilterStats(member);
+        emitAction("filterStats", { member });
+      };
+
+      // ── Teclas de delegação (apenas host): 4=Carlos, 5=Elias, 6=Matheus ──
+      document.addEventListener("keydown", (e) => {
+        if (!iAmHost()) return;
+        if (document.getElementById("ssOverlay")?.classList.contains("open"))
+          return;
+        if (document.getElementById("kpiOverlay")?.classList.contains("open"))
+          return;
+        if (e.ctrlKey || e.altKey || e.metaKey || e.shiftKey) return;
+        const targetName = HANDOFF_KEYS[e.key];
+        if (!targetName) return;
+        if (!remoteWs || remoteWs.readyState !== 1) return;
+        const target = peers.find(
+          (p) => p.name.toLowerCase() === targetName.toLowerCase(),
+        );
+        if (!target) {
+          flashPeersStatus(`${targetName} nao esta conectado`);
+          e.preventDefault();
+          return;
+        }
+        if (target.id === controlOwnerId) {
+          flashPeersStatus(`${targetName} ja esta no controle`);
+          e.preventDefault();
+          return;
+        }
+        remoteWs.send(
+          JSON.stringify({
+            type: "control-handoff",
+            targetId: target.id,
+            targetName,
+          }),
+        );
+        flashPeersStatus(`controle → ${targetName}`);
+        e.preventDefault();
+      });
+
+      // ── UI: barra de peers/controle ──
+      function updatePeersUI() {
+        let el = document.getElementById("peersBar");
+        if (!el) {
+          el = document.createElement("div");
+          el.id = "peersBar";
+          el.style.cssText =
+            "position:fixed;bottom:32px;right:16px;font-family:JetBrains Mono,monospace;font-size:0.7rem;padding:6px 12px;border-radius:6px;z-index:9999;background:rgba(30,30,30,0.92);border:1px solid #3e3e42;color:#cccccc;display:flex;gap:10px;align-items:center;cursor:pointer;transition:opacity 0.3s";
+          el.onclick = toggleRemote;
+          el.title = "Clique para reconectar (ou pressione R)";
+          document.body.appendChild(el);
+        }
+        if (!remoteConnected) {
+          el.innerHTML = `<span style="color:#f87171">● offline</span> <span style="opacity:0.6">${myRole}:${myName}</span>`;
+          return;
+        }
+        const parts = [];
+        parts.push(
+          `<span style="color:#34d399">●</span> <span style="opacity:0.6">você:</span> <span>${myName}</span>`,
+        );
+        if (peers.length) {
+          parts.push(`<span style="opacity:0.3">│</span>`);
+          const tags = peers
+            .map((p) => {
+              const isHost = p.id === hostId;
+              const hasControl = p.id === controlOwnerId;
+              const isMe = p.id === myId;
+              let color = "#9ca3af";
+              if (hasControl) color = "#fbbf24";
+              else if (isMe) color = "#60a5fa";
+              const prefix = isHost ? "★" : "";
+              const suffix = hasControl ? "◉" : "";
+              return `<span style="color:${color}">${prefix}${p.name}${suffix}</span>`;
+            })
+            .join(" ");
+          parts.push(tags);
+        }
+        if (iAmHost()) {
+          parts.push(
+            '<span style="opacity:0.3">│</span>',
+            '<span style="opacity:0.5">[4/5/6]</span>',
+          );
+        } else if (!iHaveControl()) {
+          parts.push(
+            '<span style="opacity:0.3">│</span>',
+            '<span style="opacity:0.5">modo view</span>',
+          );
+        }
+        el.innerHTML = parts.join(" ");
+        el.style.opacity = "1";
+      }
+
+      let _peersFlashTimer = null;
+      function flashPeersStatus(text) {
+        const el = document.getElementById("peersBar");
+        if (!el) return;
+        el.innerHTML = `<span style="color:#fbbf24">⚠ ${text}</span>`;
+        if (_peersFlashTimer) clearTimeout(_peersFlashTimer);
+        _peersFlashTimer = setTimeout(() => updatePeersUI(), 2000);
+      }
+
+      // Auto-connect on load
+      const initialSlideFromHash = Number(
+        (location.hash.match(/\d+/) || [])[0],
+      );
+      if (
+        Number.isInteger(initialSlideFromHash) &&
+        initialSlideFromHash >= 0 &&
+        initialSlideFromHash < total
+      ) {
+        _origGoTo(initialSlideFromHash);
+      }
+      updatePeersUI();
+      try {
+        connectRemote();
+      } catch (e) {}
+    </script>
+  </body>
+</html>
