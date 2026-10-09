@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumo de Cards — Mobile Team · Edição #10</title>
+<link rel="icon" type="image/svg+xml" href="../assets/web-team.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #0f1117;
+    --bg2:      #181c27;
+    --bg3:      #1e2235;
+    --bg4:      #252a40;
+    --border:   #2d3348;
+    --border2:  #3d4460;
+    --text:     #e8eaf2;
+    --text2:    #8b90a8;
+    --text3:    #555b78;
+    --ca:       #7c6af7;
+    --ca-bg:    #1a1640;
+    --ca-bd:    #3d3580;
+    --el:       #f0a855;
+    --el-bg:    #2a1e08;
+    --el-bd:    #7a5020;
+    --ma:       #3ecf8e;
+    --ma-bg:    #082418;
+    --ma-bd:    #1a6845;
+    --feat:     #60adf5;
+    --feat-bg:  #0c1e35;
+    --fix:      #f97070;
+    --fix-bg:   #2a0f0f;
+    --ref:      #f0c040;
+    --ref-bg:   #261e04;
+    --test:     #52d98a;
+    --test-bg:  #082418;
+    --radius:   6px;
+    --radius-lg:10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .hero {
+    padding: 56px 48px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,106,247,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .hero-title {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-names {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hero-names .dot {
+    color: var(--text3);
+    font-weight: 400;
+    font-size: 24px;
+  }
+
+  .hero-names .accent-ro { color: var(--ca); }
+  .hero-names .accent-br { color: var(--el); }
+  .hero-names .accent-th { color: var(--ma); }
+
+  .hero-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text2);
+    margin-bottom: 32px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .stat-chip {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 10px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+  }
+
+  .stat-val {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .stat-lbl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+  }
+
+  .controls {
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+    max-width: 360px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text3);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    pointer-events: none;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 8px 12px 8px 32px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .search-wrap input:focus { border-color: var(--border2); }
+  .search-wrap input::placeholder { color: var(--text3); }
+
+  .filter-group {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .fbtn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .fbtn:hover { background: var(--bg4); color: var(--text); }
+
+  .fbtn.on-feat  { background: var(--feat-bg); color: var(--feat);  border-color: var(--feat); }
+  .fbtn.on-fix   { background: var(--fix-bg);  color: var(--fix);   border-color: var(--fix); }
+  .fbtn.on-ref   { background: var(--ref-bg);  color: var(--ref);   border-color: var(--ref); }
+  .fbtn.on-test  { background: var(--test-bg); color: var(--test);  border-color: var(--test); }
+  .fbtn.on-all   { background: var(--bg4); color: var(--text); border-color: var(--border2); }
+  .fbtn.on-ro    { background: var(--ca-bg);  color: var(--ca);  border-color: var(--ca-bd); }
+  .fbtn.on-br    { background: var(--el-bg);  color: var(--el);  border-color: var(--el-bd); }
+  .fbtn.on-th    { background: var(--ma-bg);  color: var(--ma);  border-color: var(--ma-bd); }
+
+  .sep { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
+
+  .result-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .content {
+    padding: 32px 48px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .member-section { display: flex; flex-direction: column; gap: 0; }
+  .member-section.hidden { display: none; }
+
+  .member-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .member-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .av-ca { background: var(--ca-bg); color: var(--ca); border: 1px solid var(--ca-bd); }
+  .av-el { background: var(--el-bg); color: var(--el); border: 1px solid var(--el-bd); }
+  .av-ma { background: var(--ma-bg); color: var(--ma); border: 1px solid var(--ma-bd); }
+
+  .member-name {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .member-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    margin-left: 4px;
+  }
+
+  .member-bar {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .cards-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .cards-table thead th {
+    background: var(--bg3);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cards-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.12s;
+    animation: rowIn 0.3s ease both;
+  }
+
+  @keyframes rowIn {
+    from { opacity: 0; transform: translateX(-6px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .cards-table tbody tr:last-child { border-bottom: none; }
+  .cards-table tbody tr:hover { background: var(--bg3); }
+  .cards-table tbody tr.hidden { display: none; }
+
+  .cards-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+  }
+
+  .col-id {
+    width: 110px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    white-space: nowrap;
+  }
+
+  .col-id a {
+    color: var(--text3);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .col-id a:hover {
+    color: var(--ca);
+    text-decoration: underline;
+  }
+
+  .col-id .no-link {
+    color: var(--text3);
+    cursor: default;
+  }
+
+  .col-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .col-desc {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.55;
+  }
+
+  .col-type { width: 90px; }
+
+  .badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .badge-feat { background: var(--feat-bg); color: var(--feat); border: 1px solid #1a3d60; }
+  .badge-fix  { background: var(--fix-bg);  color: var(--fix);  border: 1px solid #5a1818; }
+  .badge-ref  { background: var(--ref-bg);  color: var(--ref);  border: 1px solid #5a4010; }
+  .badge-test { background: var(--test-bg); color: var(--test); border: 1px solid #0f5030; }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text3);
+    display: none;
+  }
+
+  .empty-state.visible { display: block; }
+
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-left {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 8px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+  }
+
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow" style="display:flex; align-items:center; gap:16px; justify-content:space-between">
+    <span>// mobile-team · edição 10 · sprint review</span>
+    <a href="../index.html" style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text3); text-decoration:none; border:1px solid var(--border); padding:3px 10px; border-radius:4px; transition:all 0.15s; letter-spacing:0" onmouseover="this.style.color='#e8eaf2';this.style.borderColor='#3d4460'" onmouseout="this.style.color='var(--text3)';this.style.borderColor='var(--border)'">⌂ Hub</a>
+  </div>
+  <h1 class="hero-title">Resumo de Cards</h1>
+  <div class="hero-names">
+    <span class="accent-ro">Carlos</span>
+    <span class="dot">·</span>
+    <span class="accent-br">Elias</span>
+    <span class="dot">·</span>
+    <span class="accent-th">Matheus</span>
+  </div>
+  <div class="hero-sub">19/09 – 09/10/2026 &nbsp;·&nbsp; Tech Spotlight #10 &nbsp;·&nbsp; 3 semanas</div>
+
+  <div class="stats-row">
+    <div class="stat-chip">
+      <div class="stat-val" id="s-total">40</div>
+      <div class="stat-lbl">total</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--feat)" id="s-feat">31</div>
+      <div class="stat-lbl">features</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--fix)" id="s-fix">1</div>
+      <div class="stat-lbl">fixes</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--ref)" id="s-ref">8</div>
+      <div class="stat-lbl">refactors</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--test)" id="s-test">0</div>
+      <div class="stat-lbl">testes</div>
+    </div>
+    <div class="stat-chip" style="margin-left:auto">
+      <div class="stat-val" style="color:var(--ca)" id="s-ro">12</div>
+      <div class="stat-lbl">Carlos</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--el)" id="s-br">13</div>
+      <div class="stat-lbl">Elias</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--ma)" id="s-th">15</div>
+      <div class="stat-lbl">Matheus</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="searchInput" placeholder="Buscar por título ou #card..." oninput="applyFilters()">
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="filter-group" id="typeFilters">
+    <button class="fbtn on-all" data-filter="type" data-val="all" onclick="setFilter('type','all',this)">Todos</button>
+    <button class="fbtn" data-filter="type" data-val="feat" onclick="setFilter('type','feat',this)">feature</button>
+    <button class="fbtn" data-filter="type" data-val="fix"  onclick="setFilter('type','fix',this)">fix</button>
+    <button class="fbtn" data-filter="type" data-val="ref"  onclick="setFilter('type','ref',this)">refactor</button>
+    <button class="fbtn" data-filter="type" data-val="test" onclick="setFilter('type','test',this)">teste</button>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="filter-group" id="memberFilters">
+    <button class="fbtn on-all" data-filter="member" data-val="all" onclick="setFilter('member','all',this)">Todos</button>
+    <button class="fbtn" data-filter="member" data-val="ro" onclick="setFilter('member','ro',this)">Carlos</button>
+    <button class="fbtn" data-filter="member" data-val="br" onclick="setFilter('member','br',this)">Elias</button>
+    <button class="fbtn" data-filter="member" data-val="th" onclick="setFilter('member','th',this)">Matheus</button>
+  </div>
+
+  <div class="result-count" id="resultCount">40 cards</div>
+</div>
+
+<!-- CONTENT -->
+<div class="content" id="content"></div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">Mobile Team · Edição #10 · gerado em 09/10/2026</div>
+  <div class="footer-right">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--feat)"></div>feature</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--fix)"></div>fix</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--ref)"></div>refactor</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--test)"></div>teste</div>
+  </div>
+</div>
+
+<script>
+const DATA = {
+  "ro": {
+    "name": "Carlos",
+    "avClass": "av-ca",
+    "avInit": "CA",
+    "nameColor": "var(--ca)",
+    "cards": [
+      {
+        "id": "#13491",
+        "type": "feat",
+        "title": "Ajuda com tamanho da assinatura",
+        "desc": "Ajuda com tamanho da assinatura Solicitante Thayse Descrição Ajudar na formatação - tamanho da assinatura digital no Recibo."
+      },
+      {
+        "id": "#13638",
+        "type": "feat",
+        "title": "Ajustar menu do usuário",
+        "desc": "Ajustar menu do usuário Adicionado edição dos dados da conta do usuário logado."
+      },
+      {
+        "id": "#13639",
+        "type": "feat",
+        "title": "Ajustar RD do Marcos: Desativar todas as despesas",
+        "desc": "Ajustar RD do Marcos: Desativar todas as despesas"
+      },
+      {
+        "id": "#13675",
+        "type": "feat",
+        "title": "Ajustes gerais e documentação",
+        "desc": "Ajustes gerais e documentação Correção da paginação das tabelas no web.  Ajustes de schema GraphQL e lint nas despesas."
+      },
+      {
+        "id": "#13673",
+        "type": "feat",
+        "title": "Auditoria automática do RD e revisão do Gestor",
+        "desc": "Auditoria automática do RD e revisão do Gestor RD avança sozinho após as decisões do Financeiro e do Gestor; o Gestor aprova ou recusa pelo modal da despesa.  \"Aprovar RD\" manual só para RD fechado, sem pendências e não reprovado."
+      },
+      {
+        "id": "#13578",
+        "type": "feat",
+        "title": "Cadastrar Relatório de Análise de IA do Atendimento",
+        "desc": "Cadastrar Relatório de Análise de IA do Atendimento Solicitante Matheus M.  Descrição O Matheus solicitou um relatório que fosse possível extrair os dados dos atendimentos junto com a análise de IA que é realizada pela plataforma."
+      },
+      {
+        "id": "#13509",
+        "type": "feat",
+        "title": "Criando e configurando conta na Meta Developer",
+        "desc": "Criando e configurando conta na Meta Developer"
+      },
+      {
+        "id": "#13657",
+        "type": "ref",
+        "title": "Dificuldade ao salvar os dados do usuário no CheckWork",
+        "desc": "Dificuldade ao salvar os dados do usuário no CheckWork"
+      },
+      {
+        "id": "#13640",
+        "type": "feat",
+        "title": "Melhoria na restrição de informações do perfil Manager",
+        "desc": "Melhoria na restrição de informações do perfil Manager"
+      },
+      {
+        "id": "#13658",
+        "type": "feat",
+        "title": "Melhorias diversas",
+        "desc": "Melhorias diversas Modificar nome de menus e sua ordenação; Adicionar sistema de abas na tela de edição de projetos para facilitar cadastro/manutenção; Resolver bug no componente Table, na ordenação de colunas; Implementar visão \"Diária\" na exibição das despesas na tela do RD; Adicionado DropDown para buscar por tipo de despesas;."
+      },
+      {
+        "id": "#13558",
+        "type": "feat",
+        "title": "Modificar o fluxo de autorização do RD",
+        "desc": "Modificar o fluxo de autorização do RD * **Adicionar configurações no projeto para determinar quais RDs terão revisão do Gestor:** (Vai permitir controlar o fluxo de pagamento quando necessário, seguindo a necessidade do Cerveira) * Adicionar coluna na entidade do `project` para definir essa configuração; * Adicionar bypass no fluxo para direcionar o RD para o gestor antes de seguir para pagamento; * Adicionar notificação no OneSignal para alertar o Gestor sobre a necessidade de conferir o RD do usuário; * Na Entidade `expense`: * Incluir coluna/relacionamento na entidade `expense` para relacionar o Gestor; * Incluir coluna com Data/hora da revisão do Gestor; * Incluir coluna com Status da aprovação do Gestor; * Incluir coluna no RD (expense-package) para marcar data/hora e uuid do gestor responsável pela conferência; * Gestor tem a possibilidade de marcar a despesa como recusada ou aprovada parcialmente (caso algum item da NF-e não seja permitido, mas os demais sim); * Adicionar painel para o Gestor poder revisar todos os RDs necessários: * Listar os RDs/RAs que precisam ser revisados, destacando a urgência de cada um; • ⁃ Ordenação: Mais Antigo primeiro (FIFO);."
+      },
+      {
+        "id": "#13674",
+        "type": "feat",
+        "title": "Segurança e validação da API",
+        "desc": "Segurança e validação da API Leitura de RDs e despesas limitada por papel (USER, MANAGER, ADMIN/FINANCIAL).  Saíram as rotas sem uso, incluindo a que tinha SQL injection, e a query users do GraphQL."
+      }
+    ]
+  },
+  "br": {
+    "name": "Elias",
+    "avClass": "av-el",
+    "avInit": "EL",
+    "nameColor": "var(--el)",
+    "cards": [
+      {
+        "id": "#13502",
+        "type": "ref",
+        "title": "Configurando conta no Meta Business / Meta Developer",
+        "desc": "Configurando conta no Meta Business / Meta Developer"
+      },
+      {
+        "id": "#13490",
+        "type": "ref",
+        "title": "Criando e configurando o workflow do n8n",
+        "desc": "Criando e configurando o workflow do n8n"
+      },
+      {
+        "id": "#13574",
+        "type": "feat",
+        "title": "Enviar nova versão para as lojas",
+        "desc": "Enviar nova versão para as lojas Solicitantes:Gustavo / ThayseObjetivo:Enviar nova versão para as lojas contendo as correções na conclusão de atendimento e de envio de form-respostas."
+      },
+      {
+        "id": "#13635",
+        "type": "feat",
+        "title": "Enviar nova versão para produção",
+        "desc": "Enviar nova versão para produção Solicitantes:Thayse / GustavoObjetivo:Enviar nova versão para as lojas contendo as alterações mais recentes da sprint recém finalizada."
+      },
+      {
+        "id": "#13611",
+        "type": "ref",
+        "title": "Erro ao enviar anexos dos dados complementares",
+        "desc": "Erro ao enviar anexos dos dados complementares Solicitantes: IohanContexto:Técnico reportou que algumas respostas do questionário não estavam sendo enviadas e permaneciam na fila; Após investigações, foi descoberto que o problema é que o aplicativo não está encontrando os arquivos anexados. Objetivo:Investigar o motivo do aplicativo não encontrar os arquivos anexados e resolver o problema para que no futuro não venha acontecer novamente."
+      },
+      {
+        "id": "#13560",
+        "type": "ref",
+        "title": "Erro para desmarcar item de lista composta",
+        "desc": "Erro para desmarcar item de lista composta Solicitante: Thayse Contexto: Ao testar o app, quando respondi a pergunta Qual adubo foliar, selecionei um item da lista composta, salvei e depois tentei tirar ele, até desmarquei e salvei, mas o item permanece selecionado.  Caso eu marque errado e depois queira deletar, não é possível Video enviado no discord."
+      },
+      {
+        "id": "#13636",
+        "type": "ref",
+        "title": "Gerar nova versão para beta testes",
+        "desc": "Gerar nova versão para beta testes"
+      },
+      {
+        "id": "#13187",
+        "type": "feat",
+        "title": "Interação no WhatsApp",
+        "desc": "Interação no WhatsApp Solicitante Ricardo Descrição Permitir que o Produtor possa usar o WhatsAPP para visualizar algumas informações do Agrotrace.  Objetivos O produtor poderá obter informações sobre: - Atendimento  - Consultar agendamentos   - Consultar infos Atendimentos realizados     - RAT com Anexos, Sit."
+      },
+      {
+        "id": "#13544",
+        "type": "ref",
+        "title": "Itens pendentes de envio",
+        "desc": "Itens pendentes de envio Solicitante:Edson Contexto: Itens pendentes de envio mesmo após o sincronismo Tem possui itens que aparentemente enviaram, mas parece que foi enviado a resposta 0 Bando servidor PROD."
+      },
+      {
+        "id": "#13297",
+        "type": "feat",
+        "title": "Melhora de performance em componente do formulário dinâmico.",
+        "desc": "Melhora de performance em componente do formulário dinâmico.  Solicitantes:Carlos / EliasContexto:Após a correção de uma melhoria no formulário dinâmico, foi percebido uma queda de performance no sistema que avança para a próxima pergunta automaticamente."
+      },
+      {
+        "id": "#13315",
+        "type": "ref",
+        "title": "Talhões duplicando no envio dos dados",
+        "desc": "Talhões duplicando no envio dos dados Solicitante: Thayse Contexto: Foi notado que alguns formulários do projeto Citros, estavam com as perguntas de Talhões duplicadas, havia o Talhão 1 com respostas e Talhão 1 sem respostas.  Pelo banco, manualmente foi desativado o duplicado sem resposta, porém precisaria identificar em que momento ocorre essa duplicação, pois quando ocorre algum problema com o envio de respostas do bloco repetível, depois quando consegue enviar, fica duplicado no sistema Ontem peguei o caso do técnico Manoel que não conseguia enviar as respostas dos talhões, porque a pergunta principal sobre a quantidade de talhões havia sido desativada, eu reativei, enviei, subiu só ela, ao tentar enviar novamente os dados, subiu as respostas, mas na web duplicou."
+      },
+      {
+        "id": "#13203",
+        "type": "feat",
+        "title": "Utilizar dados de respostas de perfil da safra anterior",
+        "desc": "Utilizar dados de respostas de perfil da safra anterior Solicitante: Thayse Contexto: Com a virada da safra 2025 para 2026 dos projetos de Biodiesel, Soja e Cacau, foi necessário realizar a duplicação dos dados das respostas dos Perfis existentes na safra 2025 para a safra 2026. Como melhoria, verificar a possibilidade de implementar essa funcionalidade diretamente no aplicativo."
+      },
+      {
+        "id": "#13202",
+        "type": "feat",
+        "title": "Utilizar dados do croqui da safra anterior",
+        "desc": "Utilizar dados do croqui da safra anterior Solicitante: Thayse Contexto: Com a virada da safra 2025 para 2026 dos projetos de Biodiesel, Soja e Cacau, foi necessário realizar a duplicação dos dados de croqui existentes na safra 2025 para a safra 2026, envolvendo as tabelas croqui_propriedade e croqui_coordenada. Como melhoria, verificar a possibilidade de implementar essa funcionalidade diretamente no aplicativo."
+      }
+    ]
+  },
+  "th": {
+    "name": "Matheus",
+    "avClass": "av-ma",
+    "avInit": "MA",
+    "nameColor": "var(--ma)",
+    "cards": [
+      {
+        "id": "#13523",
+        "type": "feat",
+        "title": "Adequação da assinatura nos relatórios",
+        "desc": "Adequação da assinatura nos relatórios Solicitante:Márcia Contexto: Foi solicitado pela Márcia que o cadastro de documentos dos técnicos seguisse o mesmo padrão utilizado anteriormente no sistema Biodiesel.  O cadastro já foi ajustado pelo time Web por meio do card #13445."
+      },
+      {
+        "id": "#13414",
+        "type": "feat",
+        "title": "Adicionar cadastro de etiquetas de amostra de solo",
+        "desc": "Adicionar cadastro de etiquetas de amostra de solo Adicionar cadastro de etiquetas de amostra de solo."
+      },
+      {
+        "id": "#13433",
+        "type": "feat",
+        "title": "Adicionar data de validade na CAF",
+        "desc": "Adicionar data de validade na CAF Solicitante Matheus M.  Objetivo Adicionar campo para informar a data de validade da CAF na plataforma (não obrigatório por enquanto): Adicionar campo `validade` na tabela CAF (dap); Adicionar campo `validade` do tipo DatePicker na tela de cadastro da propriedade (aba Documentos/CAR);."
+      },
+      {
+        "id": "#13427",
+        "type": "feat",
+        "title": "Adicionar reprodutores por certificadora no IATF",
+        "desc": "Adicionar reprodutores por certificadora no IATF Adicionar reprodutores por certificadora no IATF."
+      },
+      {
+        "id": "#13642",
+        "type": "feat",
+        "title": "Ajuste no RELATÓRIO DE ACOMPANHAMENTO IATF",
+        "desc": "Ajuste no RELATÓRIO DE ACOMPANHAMENTO IATF Solicitante Carlos Descrição No RELATÓRIO DE ACOMPANHAMENTO IATF, o nome do reprodutor não está saindo corretamente, aparentemente ele está repetindo nome/brinco da vaca."
+      },
+      {
+        "id": "#13633",
+        "type": "fix",
+        "title": "Ajuste tipo de carteira identidade profissional no login inicial",
+        "desc": "Ajuste tipo de carteira identidade profissional no login inicial Adicionado cascade para trazer os dados da tabela de tipo de carteira de trabalho junto com a pessoa, e nao dar erro de cascade."
+      },
+      {
+        "id": "#13494",
+        "type": "feat",
+        "title": "Baixar dados do PEC",
+        "desc": "Baixar dados do PEC Solicitante Isabelle/Matheus M Descrição Adicionar recurso para que o usuário possa baixar os dados do PEC, da semana inteira, sem precisar selecionar produtor a produtor."
+      },
+      {
+        "id": "#13434",
+        "type": "feat",
+        "title": "Deixar nome obrigatório ao invés de brinco em cadastro de animal",
+        "desc": "Deixar nome obrigatório ao invés de brinco em cadastro de animal Solicitante: Isabelle / Matheusao Contexto; Em cadastro de animais eles disseram que seria melhor e mais rápido deixar o nome do animal obrigatorio ao invés do brinco, dessa forma o processo de cadastro de animais seria mais rápido e organizado Verificar se implementar isso no codigo ou usar registros para deixar dessa forma para o projeto Pecuaria e Gentica."
+      },
+      {
+        "id": "#13596",
+        "type": "feat",
+        "title": "Enviar versão com novos testes para Beta",
+        "desc": "Enviar versão com novos testes para Beta Enviar versão com novos testes para Beta."
+      },
+      {
+        "id": "#12836",
+        "type": "feat",
+        "title": "Incluir quadros para interagir com variaveis",
+        "desc": "Incluir quadros para interagir com variaveis Solicitante: Boni Contexto; Incluir os quadros que interagem com as variáveis nos campos de sit encontrada e recomendação igual existe hoje no CheckMilk Anexo; Video mostrando os quadros do atendimento REPRODUTIVO no app CheckMilk, mas o ideal é ja pegar todos os quadros de todos os tipos de atendimento e ja deixas disponivel no Agrotrace."
+      },
+      {
+        "id": "#13542",
+        "type": "feat",
+        "title": "Procurando forma de utilizar o JEV AI no Mobile, Offline.",
+        "desc": "Procurando forma de utilizar o JEV AI no Mobile, Offline.  Procurando forma de utilizar o JEV AI no Mobile, Offline."
+      },
+      {
+        "id": "#13499",
+        "type": "feat",
+        "title": "RAT protocolo",
+        "desc": "RAT protocolo Solicitante: Gustavo Contexto; Ao gerar o rat protocolo esta saindo igual ao botao do rat.  Gerar de acordo com o texto padrao criado no CMS com titulo de \"protocolo\"."
+      },
+      {
+        "id": "#13331",
+        "type": "feat",
+        "title": "Recomendação de Solo",
+        "desc": "Recomendação de Solo Solicitante Carlos Descrição Trabalhar calculadora para recomendação de melhoria de solo, semelhante ao que temos na WEB.  A intenção é permitir que o técnico execute o trabalho de recomendação durante o atendimento de forma offline."
+      },
+      {
+        "id": "#13466",
+        "type": "feat",
+        "title": "Relatório de Acompanhamento de Diagnóstico",
+        "desc": "Relatório de Acompanhamento de Diagnóstico Solicitate Matheus M/Carlos Objetivos No Relatório de Acompanhamento de Diagnóstico, no quadro 'Resultado Analítico', separar a contagem de IAs: IAE - Conta apenas as inseminações externas; IATF - Conta apenas as inseminações realizadas pelo processo de IATF."
+      },
+      {
+        "id": "#13465",
+        "type": "feat",
+        "title": "Relatórios Pectrace",
+        "desc": "Relatórios Pectrace Solicitante Matheus M/Carlos Objetivo Nos relatórios trazidos do CheckMilk que foram construídos no Pectrace: Trocar a logo do CheckMilk (cabeçalho e outros) pela logo do PECTRACE.  Trocar a paleta de cores para ficar com a 'Laranja', padrão do Pectrace."
+      }
+    ]
+  }
+};
+
+const members = ['ro','br','th'];
+let activeType   = 'all';
+let activeMember = 'all';
+
+function badgeClass(type) {
+  return { feat:'badge-feat', fix:'badge-fix', ref:'badge-ref', test:'badge-test' }[type];
+}
+
+function badgeLabel(type) {
+  return { feat:'feature', fix:'fix', ref:'refactor', test:'teste' }[type];
+}
+
+function isAzureCard(id) {
+  return /^#\d+/.test(id);
+}
+
+function render() {
+  const root = document.getElementById('content');
+  root.innerHTML = '';
+
+  members.forEach(m => {
+    const d = DATA[m];
+    const section = document.createElement('div');
+    section.className = 'member-section';
+    section.id = 'sec-' + m;
+
+    section.innerHTML = `
+      <div class="member-header">
+        <div class="member-avatar ${d.avClass}">${d.avInit}</div>
+        <span class="member-name" style="color:${d.nameColor}">${d.name}</span>
+        <span class="member-meta" id="meta-${m}">${d.cards.length} cards</span>
+        <div class="member-bar"></div>
+      </div>
+      <table class="cards-table" id="tbl-${m}">
+        <thead>
+          <tr>
+            <th style="width:110px">#Card</th>
+            <th>Título &amp; Descrição</th>
+            <th style="width:90px">Tipo</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-${m}"></tbody>
+      </table>
+      <div class="empty-state" id="empty-${m}">Nenhum card encontrado.</div>
+    `;
+
+    root.appendChild(section);
+
+    const tbody = document.getElementById('tbody-' + m);
+    d.cards.forEach(c => {
+      const tr = document.createElement('tr');
+      tr.dataset.type   = c.type;
+      tr.dataset.member = m;
+      tr.dataset.search = (c.id + ' ' + c.title + ' ' + c.desc).toLowerCase();
+
+      const idCell = isAzureCard(c.id)
+        ? `<a href="https://dev.azure.com/ibsbiosistemico/AGROTRACE/_workitems/edit/${c.id.replace('#','')}" target="_blank" title="Abrir no Azure DevOps">${c.id}</a>`
+        : `<span class="no-link" title="Marco interno (sem card Azure)">${c.id}</span>`;
+
+      tr.innerHTML = `
+        <td class="col-id">${idCell}</td>
+        <td>
+          <div class="col-title">${c.title}</div>
+          <div class="col-desc">${c.desc}</div>
+        </td>
+        <td class="col-type"><span class="badge ${badgeClass(c.type)}">${badgeLabel(c.type)}</span></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  });
+
+  applyFilters();
+}
+
+function setFilter(group, val, btn) {
+  document.querySelectorAll(`[data-filter="${group}"]`).forEach(b => {
+    b.className = 'fbtn';
+  });
+  btn.classList.add('on-' + (val === 'all' ? 'all' : val));
+
+  if (group === 'type')   activeType   = val;
+  if (group === 'member') activeMember = val;
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  let total = 0, feat = 0, fix = 0, ref = 0, test = 0;
+  const perM = { ro:0, br:0, th:0 };
+
+  members.forEach(m => {
+    const sec   = document.getElementById('sec-' + m);
+    const empty = document.getElementById('empty-' + m);
+    const memberMatch = activeMember === 'all' || activeMember === m;
+
+    if (!memberMatch) {
+      sec.classList.add('hidden');
+      return;
+    }
+    sec.classList.remove('hidden');
+
+    let vis = 0;
+    sec.querySelectorAll('tbody tr').forEach(row => {
+      const typeOk   = activeType === 'all' || row.dataset.type === activeType;
+      const searchOk = !q || row.dataset.search.includes(q);
+      const show = typeOk && searchOk;
+      row.classList.toggle('hidden', !show);
+      if (show) {
+        vis++;
+        total++;
+        const t = row.dataset.type;
+        if (t === 'feat') feat++;
+        if (t === 'fix')  fix++;
+        if (t === 'ref')  ref++;
+        if (t === 'test') test++;
+        perM[m]++;
+      }
+    });
+
+    document.getElementById('meta-' + m).textContent = vis + ' card' + (vis !== 1 ? 's' : '');
+    empty.classList.toggle('visible', vis === 0);
+  });
+
+  document.getElementById('resultCount').textContent = total + ' card' + (total !== 1 ? 's' : '');
+  document.getElementById('s-total').textContent = total;
+  document.getElementById('s-feat').textContent  = feat;
+  document.getElementById('s-fix').textContent   = fix;
+  document.getElementById('s-ref').textContent   = ref;
+  document.getElementById('s-test').textContent  = test;
+  document.getElementById('s-ro').textContent    = perM.ro;
+  document.getElementById('s-br').textContent    = perM.br;
+  document.getElementById('s-th').textContent    = perM.th;
+}
+
+render();
+</script>
+</body>
+</html>

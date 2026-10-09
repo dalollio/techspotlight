@@ -1,0 +1,342 @@
+**[Mobile] Standup - 21/09/2026**
+📅 Briefing Inicial
+📅 Reunião Mobile
+
+**Agrotrace**
+- [Carlos] In Progress: 12672 - Modelar a ferramenta considerando características identificadas.
+- [Elias] In Progress: #13187 - Integração no WhatsApp
+  - In Progress: #13490 - Criando e configurando o workflow na plataforma do N8N.
+- [Matheus] In Progress: #13465 - Relatórios Pectrace - Alterar propriedade de design
+- [Carlos] Done: #13491 - Ajuda com tamanho da assinatura
+- [Matheus] Done: #12836 - Incluir quadros para interagir com variaveis
+
+☎️ [Carlos] Com Thayse sobre tamanho da assinatura digital no Recibo.
+☎️ [Carlos] Com Regina sobre detalhes da GAFFFF.
+☎️ [Elias] Com Gustavo para ajudar nos testes do workflow do chatbot.
+☎️ [Matheus] Com Thielson, sobre coluna nova de sincronizado_em nas tableas PEC, Agrotrace.
+☎️ [Matheus] Com Brenda, sobre logos e imagens do Pectrace.
+
+**[Mobile] Standup - 22/09/2026**
+📅 [Carlos] Syncup CheckMilk
+📅 Planning Mobile
+
+
+**Agrotrace**
+- [Carlos] In Progress: #13502 - Configurando conta no Meta Business / Meta Developer
+- [Carlos] In Progress: 12672 - Modelar a ferramenta considerando características identificadas.
+- [Elias] In Progress: #13187 - Integração no WhatsApp
+  - Done: #13490 - Criando e configurando o workflow na plataforma do N8N.
+  - In Progress: #13502 - Criando e configurando a conta na Meta Developer.
+- [Matheus] In Progress: #13494 - Baixar dados do PEC por semana
+- [Matheus] Done: #13465 - Relatórios Pectrace - Alterar propriedade de design
+- [Matheus] Done: #13466 - Relatório de Acompanhamento de Diagnóstico
+- [Matheus] Done: #13499 - RAT protocolo
+
+☎️ [Carlos] Com Gustavo sobre atendimentos do tipo Protocolo.
+☎️ [Carlos] Com Brenda sobre apresentação da GAFFFF.
+☎️ [Carlos] Com Matheus sobre detalhes na composição do relatório de diagnóstico.
+☎️ [Elias] Com Carlos para ajuda em configuração da conta Meta.
+☎️ [Matheus] Com Thielson, sobre problema de envio de Inseminações PEC, Agrotrace.
+☎️ [Matheus] Com Thayse, sobre problema com envio e cadastro de Inseminações PEC, Agrotrace.
+☎️ [Matheus] Com Carlos, sobre ajustes no modulo PEC e relatorios, Agrotrace
+☎️ [Matheus] Com Gustavo, sobre cadastro de descrição de atendimento Protocolo no RAT, Agrotrace.
+☎️ [Matheus] Com Brenda, sobre logos e imagens do Pectrace.
+
+**[MOBILE] Standup 23/09/2026**
+
+**Agrotrace:**
+- [Elias] In Progress: #13187 - Integração no WhatsApp
+  - In Progress: #13490 - Criando e configurando o workflow na plataforma do N8N.
+    - Realizado ajustes no workflow para se adaptar a chamadas da Meta.
+    - Finalizado a configuração inicial com a ajuda do Carlos.
+    - Aguardando a plataforma da Meta finalizar verificação da conta.
+- [Matheus] In Progress #13433 - Adicionar data de validade na CAF
+- [Matheus] Done #13494 - Baixar dados do PEC por semana
+
+☎️ [Elias] Com Carlos para ajuda com configuração do Meta Developer / Meta Business
+☎️ [Matheus] Com Thielson, sobre problema de envio de Inseminações PEC, Agrotrace.
+☎️ [Matheus] Com Thayse, sobre problema com envio e cadastro de Inseminações PEC, Agrotrace.
+
+** [MOBILE] Standup 24/09/2026**
+
+**Agrotrace:**
+- [Elias] Stand by: #13187 - Integração no WhatsApp
+  - Criado versão do workflow que usa modelos de IAs para tomar decisões e criar mensagem final.
+  - In Progress: #13490 - Criando e configurando o workflow na plataforma do N8N.
+    - Aguardando a plataforma da Meta finalizar verificação da conta.
+- [Elias] Stand by: #12939 - Migrar app para Expo.
+  - Movido lógica de splash screen para utilizar a biblioteca nativa de splash screen do Expo.
+  - Corrigido dificuldade de não iniciar o aplicativo depois de usuário logado.
+- [Elias] In Progress: #13533 - Verificar atendimentos que não conseguem ser concluídos.
+  - Tentando replicar problema relatado pelos produtos utilizando o backup de um dos mesmos.
+- [Matheus] In Progress - Procurando forma de utilizar o JEV AI no Mobile, Offline.
+- [Matheus] Done #13433 - Adicionar data de validade na CAF.
+
+☎️ [Elias] Com Gustavo sobre dificuldade em concluir atendimentos no aplicativo.
+☎️ [Elias] Com Matheus sobre workflow n8n com JEV e dúvidas de uso no mobile.
+☎️ [Matheus] Com Elias, sobre workflow com JEV e possivel uso no mobile
+
+**[Mobile] Standup 25/09/2026**
+📆 Web Spotlight
+
+**Agrotrace:**
+- [Elias] Done: #13533 - Verificar atendimentos que não conseguem ser concluídos.
+  - Replicado os problemas reportados, aplicado a correção e enviado para revisão.
+- [Matheus] In Progress: - Procurando forma de utilizar o JEV AI no Mobile, Offline.
+  - Adicionado lib onnxruntime-react-native ✅
+  - Instalado modelo laya-int8 no IOS ✅
+
+☎️ [Elias] Com Gustavo sobre feedback da dificuldade em concluir atendimentos no aplicativo.
+☎️ [Elias] Com Matheus sobre fluxo do N8N com Jev e DeepSeek.
+☎️ [Elias] Com Thayse para ajuda com dúvida sobre nova funcionalidade do app.
+☎️ [Matheus] Com Elias, sobre fluxo do N8N com JEV.
+
+**[Mobile] Standup 25/09/2026**
+📆 Web Spotlight
+
+**Agrotrace:**
+- [Elias] Done: #13533 - Verificar atendimentos que não conseguem ser concluídos.
+  - Replicado os problemas reportados, aplicado a correção e enviado para revisão.
+- [Matheus] In Progress: - Procurando forma de utilizar o JEV AI no Mobile, Offline.
+  - Adicionado lib onnxruntime-react-native ✅
+  - Instalado modelo laya-int8 no IOS ✅
+
+☎️ [Elias] Com Gustavo sobre feedback da dificuldade em concluir atendimentos no aplicativo.
+☎️ [Elias] Com Matheus sobre fluxo do N8N com Jev e DeepSeek.
+☎️ [Elias] Com Thayse para ajuda com dúvida sobre nova funcionalidade do app.
+☎️ [Matheus] Com Elias, sobre fluxo do N8N com JEV.
+
+**[Mobile] Standup 28/09/2026**
+📅 Briefing Inicial
+
+**Agrotrace**
+- [Matheus] In Progress: #13523 - Adequação da assinatura nos relatórios
+- [Elias] Done: #13544 - Respostas do formulário dinâmico com dificuldade no envio.
+  - Solicitado alteração do status code 400 para 409, assim o aplicativo irá desativar e tirar da fila de envio as form-respostas que já existirem;
+  - Alterado o tipo da coluna `quantidade` de INTEIRO para DECIMAL da tabela `form_resposta_item_lista`;
+  - Trabalhado em união com Thielson para corrigir registros já existentes que foram enviados como decimal porém foram convertidos para inteiro ao salvar no banco de dados.
+- [Matheus] Stand By: #13542 - Procurando forma de utilizar o JEV AI no Mobile, Offline.
+  - Testado modelo laya-int8 no IOS ( Modelo somente em ingles, ótimo, porém português pode ter mais funcionalidade para nós ) ✅
+  - Testado modelo Julia-1, em português, com menos parametros que o Laya, porem mais leve ✅
+- [Carlos] Acompanhando o Meta Business - `Autorização do Número de telefone.
+
+**CheckWork**
+- [Carlos] In Progress: #13558 - Modificar o fluxo de autorização do RD.
+
+☎️ [Carlos] Com Matheus para alinhar demandas;
+☎️ [Carlos] Com Elias sobre dificuldade no FormDinâmico;
+☎️ [Carlos] Com Sidney para atualizar a Hash com a último release (WEB+Mobile);
+☎️ [Carlos] Com Regina sobre planos de internet para o GAFFFF;
+☎️ [Elias] Com Thayse sobre dificuldades no aplicativo e web.
+☎️ [Elias] Com Carlos para alinhar dúvidas sobre tarefas e dificuldades.
+☎️ [Elias] Com Thielson para trabalhar em conjunto e encontrar maneira de recuperar dados.
+☎️ [Elias] Com Matheus sobre modelos de decisão para uso offline no Agrotrace
+☎️ [Matheus] Com Brenda, sobre opnião no design de apresentação.
+☎️ [Matheus] Com Elias, sobre modelos de decisão para uso offline no Agrotrace.
+
+**[Mobile] Standup 29/09/2026**
+📅 [Carlos] Syncup CheckMilk
+📅 Reunião Mobile
+
+**Agrotrace**
+- [Elias] In Progress: #13560 - Erro para desmarcar item de lista composta.
+  - Investigando problema e tentando reproduzir o mesmo.
+- [Matheus] In Progress: #13542 - Procurando forma de utilizar o JEV AI no Mobile, Offline.
+  - Testando Julia-1 no IOS para encontrar telas de acordo com funcionalidade passada por usuário.
+  - Realizando fine-tuning do modelo para melhorar acertividade
+- [Carlos] Done: #13578 - Cadastrar Relatório de Análise de IA do Atendimento
+- [Elias] Done: #13574 - Enviar nova versão para as lojas.
+  - Enviado nova versão para as lojas Android e iOS contendo as correções de conclusão do atendimento e envio de form-respostas.
+- [Matheus] Done: #13523 - Adequação da assinatura nos relatórios
+
+**CheckWork**
+- [Carlos] In Progress: #13579 - Análise de custo do projeto.
+- [Carlos] Done: #13558 - Modificar o fluxo de autorização do RD.
+
+☎️ [Carlos] Com Brenda sobre a apresentação do toten da GAFFFF.
+☎️ [Carlos] Com Matheus P. sobre informações do Relatório de DG - Pectrace.
+☎️ [Carlos] Com Elias sobre acompanhamento do Meta Business e a criação de um número de telefone.
+☎️ [Carlos] Com Thayse sobre ajustes necessários no Laudo do Biodiesel.
+☎️ [Elias] Com Thayse e Gustavo sobre feedback de envio de versão.
+☎️ [Elias] Com Carlos sobre atualização de análise da Meta.
+☎️ [Matheus] Com Carlos, sobre duvidas nas feats e relatorios do PEC.
+
+** [MOBILE] Standup 01/10/2026**
+
+**Agrotrace:**
+- [Elias] Done: #13560 - Erro para desmarcar item de lista composta.
+  - Adicionado correção na função responsável por remover os itens que foram desmarcados após edição.
+- [Elias] In Progress: #13581 - Criação de novas variáveis no recibo
+  - Trabalhando na adição de suporte à novas variáveis de CPF/CNPJ, Município e UF e Data por extenso.
+- [Matheus] Done - Resolvendo inúmeros conflitos pós testes, para lançamento de versão
+- [Matheus] In Progress #13595 - Treinando modelo Julia-1 para identificar telas do app
+  - Aumentando dataset de fine-tuning de 1000 para 3000, gerando o maximo manualmente possivel, para melhorar acertividade. ✅
+  - Após bateria de treinamentos para a parte PEC, acertividade de 43% para 94%. ✅
+  - Adicionado novas telas, Atendimento, Questionario e Formulario dinamico, treinando modelo para aceita-las.
+
+☎️ [Elias] Com Thayse para ajuda com envio de dados pendentes de técnico.
+☎️ [Matheus] Com Thayse, sobre feedback de testes no App, Agrotrace.
+
+** [MOBILE] Standup 02/10/2026**
+📆 DevOps Spotlight
+
+**Agrotrace:**
+- [Elias] Done: #13611 - Erro ao enviar anexos dos dados complementares.
+  - Adicionado correção na função responsável por envio dos anexos dos dados complementares.
+- [Elias] Done: #13581 - Criação de novas variáveis no recibo
+  - Adicionado as novas variáveis solicitadas e mais algumas que salvam o nome por extenso.
+- [Matheus] In Progress #13595 - Treinando modelo Julia-1 para identificar telas do app
+  - Adicionado novas telas, Atendimento, Questionario e Formulario dinamico, treinado modelo para aceita-las. ✅
+  - Treinado modelo, de 18% em acertividade para 86% ✅
+  - Adicionado botão e modal para usuário digitar e ser direcionado para tela escolhida. ✅
+  - Adicionado escolha de qual atendimento deseja ser direcionado, indo para telas PEC, formulario, questionario... ✅
+  - Melhorando experiencia do usuário e facilitando a navegação com menos informações possiveis.
+
+☎️ [Elias] Com Gustavo para ajuda em testes no aplicativo versão iOS.
+☎️ [Elias] Com Thayse para tirar dúvida sobre novas variáveis no recibo.
+☎️ [Matheus] Com Thayse, sobre feedback de testes no App, Agrotrace.
+
+**[Mobile] Standup 05/10/2026**
+📆 Briefing Inicial
+📆 Mobile meeting
+
+**Agrotrace**
+- [Elias] In Progress: #13635 - Enviar nova versão para produção
+   - Done: #13636 - Gerar versão para beta testes.
+  - Aguardando finalização de testes para prosseguir com o envio da versão para produção.
+- [Elias] Done: #13581 - Criação de novas variáveis no recibo
+  - Corrigido nome incorreto de variável responsável por exibir o valor do município da propriedade.
+- [Matheus] Done: #13633 - Ajuste tipo de carteira identidade profissional no login inicial
+- [Matheus] Done: #13582 - Conteúdo dinâmico no Laudo
+- [Matheus] Done: #13568 - DGs de Monta Natural
+- [Matheus] Stand By: #13595 - Treinando modelo Julia-1 para identificar telas do app
+  - Adicionado treinamento para identificar se o usuário quer trabalhar no mesmo atendimento ou ir para outro ✅
+
+**CheckWork**
+- [Carlos] Done: #13640 - Melhoria na restrição de informações do perfil Manager:
+  - Restrição de rotas: Tipos de Despesas, Usuários (Edição), Relatórios;
+  - Criado Guard no Backend para restringir edições.
+- [Carlos] Done: #13639 - Ajustar RD do Marcos: Desativar todas as despesas.
+- [Carlos] Done: #13638 - Ajustar menu do usuário.
+
+☎️ [Carlos] Com Ricardo, Ronaldo, Iohan e Brenda sobre novas tarefas e objetivos.
+☎️ [Carlos] Com Elias sobre configuração da conta no MetaBusines.
+☎️ [Carlos] Com Gustavo sobre ajustes necessários no CheckWork.
+☎️ [Carlos] Com Liliane sobre RD de usuário no CheckWork: Reabrir para lançamento.
+☎️ [Carlos] Com Matheus sobre PRs.
+☎️ [Elias] Com Thayse sobre feedback de testes.
+☎️ [Elias] Com Carlos para feedback de conta Meta e configuração de mac mini.
+☎️ [Matheus] Com Thayse, sobre feedback de testes no App, Agrotrace.
+☎️ [Matheus] Com Elias, sobre lançamento de versão no App, Agrotrace.
+☎️ [Matheus] Com Thielson, sobre trazer relation no login inicial, para resolver bug, Agrotrace.
+☎️ [Matheus] Com Carlos, sobre novas demandas no Agrotrace e tirar duvidas.
+
+**[Mobile] Standup 06/10/2026**
+📆 Syncup Checkmilk - Isabelle
+📆 Planning meeting
+
+**Agrotrace**
+- [Elias] In Progress: #12939 - Migrar aplicativo para Expo.
+  - Corrigido instalação de Pods no iOS.
+  - Corrigido erro de build do Sentry no iOS.
+  - Investigando erro da biblioteca FlashList que ocasiona o crash do app no iOS.
+- [Elias] In Progress: #13652 - Erro de lógica na resposta padrão do formulário dinâmico.
+  - Realizando ajustes para mover a lógica de salvar resposta padrão para quando usuário entrar em um agrupador.
+- [Matheus] In Progress #13595 - Treinando modelo Julia-1 para identificar telas do app
+  - Adicionado Full Text Search como principal buscador, e fallback usando o modelo, realizando testes para identificar melhora.
+- [Elias] Done: #13635 - Enviar nova versão para produção
+   - Enviado nova versão para produção contendo as modificações mais recentes da sprint/111
+- [Matheus] Done #13642 - Ajuste no RELATÓRIO DE ACOMPANHAMENTO IATF.
+
+**CheckWork**
+- [Carlos] Done: #13658 - Melhorias diversas
+  - Modificar nome de menus e sua ordenação;
+  - Adicionar sistema de abas na tela de edição de projetos para facilitar cadastro/manutenção;
+  - Resolver bug no componente Table, na ordenação de colunas;
+  - Implementar visão "Diária" na exibição das despesas na tela do RD;
+  - Adicionado DropDown para buscar por tipo de despesas;
+- [Carlos] Done: #13657 - Dificuldade ao salvar os dados do usuário no CheckWork:
+  - Modificado ValidationPipe para descartar propriedades não mapeadas nas DTOs.
+
+☎️ [Carlos] Com Matheus sobre ajuste no Relatório de Acompanhamento de IATF.
+☎️ [Carlos] Com Gustavo para adicionar novo projeto no DropDown da Azure Devops.
+☎️ [Carlos] Com Thayse sobre dificuldade na alteração do cadastro do usuário no CheckWork.
+☎️ [Carlos] Com Thayse sobre dúvidas no funcionamento do recibo do Agrotrace.
+☎️ [Carlos] Com Thayse sobre dúvidas no funcionamento do reset de senha do CheckWork.
+☎️ [Elias] Com Thayse sobre feedback de testes e lançamento de nova versão.
+☎️ [Elias] Com Iohan para dúvidas sobre o fechamento de sprint.
+☎️ [Elias] Com Bruno sobre dúvida em funcionalidade de resposta padrão do form dinâmico.
+☎️ [Elias] Com Carlos sobre atualização de status de análise da Meta e outras dúvidas.
+☎️ [Matheus] Com Thayse, sobre feedback de testes no App, Agrotrace.
+☎️ [Matheus] Com Elias, sobre lançamento de versão no App, Agrotrace.
+☎️ [Matheus] Com Thielson, sobre trazer relation no login inicial, para resolver bug, Agrotrace.
+☎️ [Matheus] Com Carlos, sobre ajuste no relatorio de acompanhamento PQFL, Agrotrace
+
+**[Mobile] Standup 07/10/2026**
+📅 [Carlos] Com Débora para discutir sobre centro de custo de demanda e suas particuladirades.
+
+**Agrotrace**
+- [Elias] In Progress: #12939 - Migrar aplicativo para Expo.
+  - Investigando erro da biblioteca FlashList que ocasiona o crash do app no iOS.
+- [Matheus] In Progress #13595 - Treinando modelo Julia-1 para identificar telas do app
+  - Adicionado Full Text Search como principal buscador, e fallback usando o modelo, realizando testes para identificar melhora. ✅
+  - Estudado forma de melhorar ainda mais o fine-tuning, e preparado nova switch de testes para rodar a noite ✅
+  - Gerado dataset com 50 milhões de tokens, para treinamento de vocabulário e de entendimento do contexto ✅
+- [Carlos] Done: #13509 - Criando e configurando conta na Meta Developer.
+- [Elias] Done: #13652 - Erro de lógica na resposta padrão do formulário dinâmico.
+  - Movido a lógica de gravar as respostas padrões somente quando o usuário entra em algum formulário;
+  - Agora somente as perguntas do formulário que o usuário serão automaticamente respondidas pelo aplicativo.
+**CheckWork**
+- [Carlos] In Progress: #13676 - Painel de Atendimentos do Agrotrace para o Gestor:
+  - Spec técnica aprovada e decisões de produto fechadas.
+  - Mockup com 3 telas pronto para aprovação.
+- [Carlos] Done: #13673 - Auditoria automática do RD e revisão do Gestor:
+  - RD avança sozinho após as decisões do Financeiro e do Gestor; o Gestor aprova ou recusa pelo modal da despesa.
+  - "Aprovar RD" manual só para RD fechado, sem pendências e não reprovado.
+  - A decisão do Gestor fica só nas colunas próprias (manager*), sem sobrescrever a do Financeiro.
+  - As colunas financial_* saíram de backend, web e mobile; uma migration conclui as revisões que estavam paradas.
+  - Mergeado na dev (backend e web).
+- [Carlos] Done: #13674 - Segurança e validação da API:
+  - Leitura de RDs e despesas limitada por papel (USER, MANAGER, ADMIN/FINANCIAL).
+  - Saíram as rotas sem uso, incluindo a que tinha SQL injection, e a query users do GraphQL.
+  - Validação global dos dados recebidos, descartando campos não previstos.
+- [Carlos] Done: #13675 - Ajustes gerais e documentação:
+  - Correção da paginação das tabelas no web.
+  - Ajustes de schema GraphQL e lint nas despesas.
+  - Documentação atualizada no backend, no web e no mobile.
+  - Conferência das branches em relação à dev e à main.
+
+☎️ [Carlos] Com Isabelle sobre Dashboard de Pecuária no Pectrace.
+☎️ [Carlos] Com Thayse sobre demanda do Biodiesel Cacau.
+☎️ [Carlos] Com Matheus sobre nova demanda para atender o Biodiesel Cacau.
+☎️ [Elias] Com Thayse para ajuda em dificuldades no aplicativo e feedback de envio de nova versão.
+☎️ [Matheus] Com Thielson, sobre coluna de UUID nas tabelas, Agrotrace.
+☎️ [Matheus] Com Carlos, sobre spotilight, finetuning e nova tarefa de recibo Biodiesel, Agrotrace
+
+**[Mobile] Standup 08/10/2026**
+📅 Treinamento CheckWork - Liliane
+
+**Agrotrace**
+- [Elias] In Progress: #12939 - Migrar aplicativo para Expo.
+  - Investigando erro da biblioteca FlashList que ocasiona o crash do app no iOS.
+- [Matheus] In Progress: #13595 - Treinando modelo Julia-1 para identificar telas do app
+  - Treinamento de vocabulario finalizado pós 15 horas ✅
+  - Treinamento de LoRA 1 ainda em andamento, acompanhando resultados em tempo real, resultado parcial de 98% de acuracia.
+- [Elias] Done: #13187 - Interação no WhatsApp
+  - Done: #13502 - Configurar conta developer na plataforma Meta.
+- [Matheus] Done: #13678 - Verificar dificuldade em editar sit encontrada no modulo pec
+
+**CheckWork**
+- [Carlos] In Progress: #13676 - Painel de Atendimentos do Agrotrace para o Gestor:
+  - Criação do Service na API do Agrotrace;
+  - Criação do Service na API do CheckWork;
+  - Adicionado dashboard para conferência na Plataforma;
+  - Validando uso e realizando alterações.
+
+☎️ [Carlos] Com Elias para finalização da configuração da conta Meta e automação no WhatsApp.
+☎️ [Carlos] Com Matheus M. sobre exclusão/Cancelamento do RD inteiro. Validando motivos e orientando procedimento correto.
+☎️ [Carlos] Com Liliane sobre as práticas adotadas para cancelamento/recusa de NotaFIscal.
+☎️ [Elias] Com Carlos para finalização da configuração da conta Meta e automação no WhatsApp.
+☎️ [Elias] Com Matheus sobre lançar nova versão para testes.
+☎️ [Matheus] Com Elias sobre lançamento de versão de teste do Agrotrace.
+☎️ [Matheus] Com Gustavo, sobre problema na edição da recomendação PEC, Agrotrace
