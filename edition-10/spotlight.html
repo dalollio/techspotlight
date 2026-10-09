@@ -2454,45 +2454,71 @@
           <div class="slide-title">// ai-tech-session — Matheus — 4 min ⏱</div>
           <div class="flex-row mb-8">
             <span class="badge badge-amber">🧠 AI Tech Session</span>
+            <span class="badge badge-purple">🧩 Julia-1</span>
             <span style="font-size: 14px; color: var(--text3); font-family: var(--font-mono)">ai-tech-session-matheus.md</span>
           </div>
           <div class="slide-heading" style="font-size: 28px; margin-bottom: 20px">
-            ai-tech-session — <span>Matheus</span>
+            Fine-tuning do <span>Julia-1</span> pra busca por tela na PEC
           </div>
 
-          <div style="max-width: 760px; width: 100%">
-            <div class="ai-field">
-              <div class="ai-field-label">// título</div>
-              <div class="ai-field-val">Tema a definir pelo apresentador</div>
-            </div>
-            <div class="ai-field">
-              <div class="ai-field-label">Ferramenta(s):</div>
-              <div class="ai-field-val">preencher</div>
-            </div>
-            <div class="ai-field">
-              <div class="ai-field-label">Fluxo/demo:</div>
-              <div class="ai-field-val">preencher</div>
-            </div>
-            <div class="ai-field">
-              <div class="ai-field-label">Aprendizado principal:</div>
-              <div class="ai-field-val">preencher</div>
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div class="card card-accent-coral">
+                <div class="section-label" style="color: var(--coral)">❌ problema</div>
+                <div style="font-size: 15px; color: var(--text2); line-height: 1.6">
+                  O modelo decorava os exemplos em vez de generalizar — frases citando o processo
+                  (inseminação, protocolo) perto do resultado confundiam a resposta, e treinar
+                  áreas novas sozinhas apagava o que já tinha aprendido (esquecimento catastrófico).
+                </div>
+              </div>
+
+              <div class="card card-accent-amber">
+                <div class="section-label" style="color: var(--amber)">⚡ motivação</div>
+                <div style="font-size: 15px; color: var(--text2); line-height: 1.6">
+                  O app roda <strong style="color: var(--text)">100% offline</strong> — a tela certa
+                  precisa ser decidida sem internet, e cada ponto de acerto a menos é fricção real
+                  pro usuário no campo.
+                </div>
+              </div>
+
+              <div class="card card-accent-teal">
+                <div class="section-label" style="color: var(--teal)">✓ solução</div>
+                <div style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: var(--text2)">
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span style="color: var(--teal); font-family: var(--font-mono)">01</span>
+                    <span>Pipeline próprio de <strong style="color: var(--text)">fine-tuning</strong> — dataset, treino, avaliação e export pra ONNX.</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span style="color: var(--teal); font-family: var(--font-mono)">02</span>
+                    <span>Perguntas hierárquicas + regras de negócio fixas com o usuário, em vez de uma lista única de opções.</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span style="color: var(--teal); font-family: var(--font-mono)">03</span>
+                    <span><strong style="color: var(--text)">FTS5</strong> (SQLite) como primeira camada de busca + <strong style="color: var(--text)">LoRA</strong> e pré-treino de domínio nas rodadas finais.</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div
-              style="
-                margin-top: 16px;
-                padding: 12px 16px;
-                background: var(--amber-bg);
-                border: 1px solid #78350f;
-                border-radius: var(--radius);
-                font-family: var(--font-mono);
-                font-size: 14px;
-                color: var(--amber);
-              "
-            >
-              ⚠ Edite esta sessão antes da apresentação —
-              veja <code style="color: var(--text)">resumo/ai-tech-session-matheus.md</code>.
-              Conteúdo aberto: cada apresentador escolhe a ferramenta e o tema.
+            <div class="code-block" style="height: fit-content">
+              <div class="code-block-header">🧠 fine-tuning-julia1 (PyTorch → ONNX)</div>
+              <div class="code-body">
+                <div class="line-numbers">
+                  1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13
+                </div>
+                <div class="code-lines">
+                  <span class="cmt">// 1. dataset: templates + vocabulário real da PEC</span><br />
+                  <span class="kw">const</span> <span class="prop">dataset</span> = <span class="fn">buildDataset</span>(<span class="str">"pec/readmes"</span>)<br /><br />
+                  <span class="cmt">// 2. fine-tuning: encoder congelado, LoRA nas últimas camadas</span><br />
+                  <span class="kw">const</span> <span class="prop">model</span> = <span class="kw">await</span> <span class="fn">finetune</span>(<span class="str">"julia-1"</span>, <span class="prop">dataset</span>)<br /><br />
+                  <span class="cmt">// 3. avaliação: bateria independente, escrita antes do dataset</span><br />
+                  <span class="kw">const</span> <span class="prop">score</span> = <span class="fn">evaluate</span>(<span class="prop">model</span>, <span class="prop">bateria14</span>)<br />
+                  <span class="cmt">// 57% zero-shot → <span class="ok">93%</span> na bateria de tela</span><br /><br />
+                  <span class="cmt">// 4. busca local (sem internet): FTS5 + modelo</span><br />
+                  <span class="kw">const</span> <span class="prop">tela</span> = <span class="fn">searchScreen</span>(<span class="prop">query</span>, { <span class="prop">fts5</span>: <span class="kw">true</span> })<br />
+                  <span class="cmt">// → export final: ONNX Runtime, no aparelho</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
