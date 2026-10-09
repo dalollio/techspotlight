@@ -1,4 +1,4 @@
-# TECH SPOTLIGHT #03 — WEB TEAM
+# TECH SPOTLIGHT #03 — Mobile Team
 > Periodo: 06/04 - 30/04/2026 | Apresentacao: 08/05/2026
 > Apresentadores: Ronaldo, Bruno, Thielson
 >

@@ -1,4 +1,4 @@
-# Tech Spotlight — Web Team
+# Tech Spotlight — Mobile Team
 
 Central de apresentações do time Web. Cada edição é um "deck" HTML standalone
 com tema VS Code (cada slide simula um arquivo aberto na IDE), apresentado a
