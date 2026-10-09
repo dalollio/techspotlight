@@ -1,0 +1,266 @@
+{
+  "ca": {
+    "name": "Carlos",
+    "avClass": "av-ca",
+    "avInit": "CA",
+    "nameColor": "var(--ca)",
+    "cards": [
+      {
+        "id": "#13491",
+        "type": "feat",
+        "title": "Ajuda com tamanho da assinatura",
+        "desc": "Ajuda com tamanho da assinatura Solicitante Thayse Descrição Ajudar na formatação - tamanho da assinatura digital no Recibo."
+      },
+      {
+        "id": "#13638",
+        "type": "feat",
+        "title": "Ajustar menu do usuário",
+        "desc": "Ajustar menu do usuário Adicionado edição dos dados da conta do usuário logado."
+      },
+      {
+        "id": "#13639",
+        "type": "feat",
+        "title": "Ajustar RD do Marcos: Desativar todas as despesas",
+        "desc": "Ajustar RD do Marcos: Desativar todas as despesas"
+      },
+      {
+        "id": "#13675",
+        "type": "feat",
+        "title": "Ajustes gerais e documentação",
+        "desc": "Ajustes gerais e documentação Correção da paginação das tabelas no web.  Ajustes de schema GraphQL e lint nas despesas."
+      },
+      {
+        "id": "#13673",
+        "type": "feat",
+        "title": "Auditoria automática do RD e revisão do Gestor",
+        "desc": "Auditoria automática do RD e revisão do Gestor RD avança sozinho após as decisões do Financeiro e do Gestor; o Gestor aprova ou recusa pelo modal da despesa.  \"Aprovar RD\" manual só para RD fechado, sem pendências e não reprovado."
+      },
+      {
+        "id": "#13578",
+        "type": "feat",
+        "title": "Cadastrar Relatório de Análise de IA do Atendimento",
+        "desc": "Cadastrar Relatório de Análise de IA do Atendimento Solicitante Matheus M.  Descrição O Matheus solicitou um relatório que fosse possível extrair os dados dos atendimentos junto com a análise de IA que é realizada pela plataforma."
+      },
+      {
+        "id": "#13509",
+        "type": "feat",
+        "title": "Criando e configurando conta na Meta Developer",
+        "desc": "Criando e configurando conta na Meta Developer"
+      },
+      {
+        "id": "#13657",
+        "type": "ref",
+        "title": "Dificuldade ao salvar os dados do usuário no CheckWork",
+        "desc": "Dificuldade ao salvar os dados do usuário no CheckWork"
+      },
+      {
+        "id": "#13640",
+        "type": "feat",
+        "title": "Melhoria na restrição de informações do perfil Manager",
+        "desc": "Melhoria na restrição de informações do perfil Manager"
+      },
+      {
+        "id": "#13658",
+        "type": "feat",
+        "title": "Melhorias diversas",
+        "desc": "Melhorias diversas Modificar nome de menus e sua ordenação; Adicionar sistema de abas na tela de edição de projetos para facilitar cadastro/manutenção; Resolver bug no componente Table, na ordenação de colunas; Implementar visão \"Diária\" na exibição das despesas na tela do RD; Adicionado DropDown para buscar por tipo de despesas;."
+      },
+      {
+        "id": "#13558",
+        "type": "feat",
+        "title": "Modificar o fluxo de autorização do RD",
+        "desc": "Modificar o fluxo de autorização do RD * **Adicionar configurações no projeto para determinar quais RDs terão revisão do Gestor:** (Vai permitir controlar o fluxo de pagamento quando necessário, seguindo a necessidade do Cerveira) * Adicionar coluna na entidade do `project` para definir essa configuração; * Adicionar bypass no fluxo para direcionar o RD para o gestor antes de seguir para pagamento; * Adicionar notificação no OneSignal para alertar o Gestor sobre a necessidade de conferir o RD do usuário; * Na Entidade `expense`: * Incluir coluna/relacionamento na entidade `expense` para relacionar o Gestor; * Incluir coluna com Data/hora da revisão do Gestor; * Incluir coluna com Status da aprovação do Gestor; * Incluir coluna no RD (expense-package) para marcar data/hora e uuid do gestor responsável pela conferência; * Gestor tem a possibilidade de marcar a despesa como recusada ou aprovada parcialmente (caso algum item da NF-e não seja permitido, mas os demais sim); * Adicionar painel para o Gestor poder revisar todos os RDs necessários: * Listar os RDs/RAs que precisam ser revisados, destacando a urgência de cada um; • ⁃ Ordenação: Mais Antigo primeiro (FIFO);."
+      },
+      {
+        "id": "#13674",
+        "type": "feat",
+        "title": "Segurança e validação da API",
+        "desc": "Segurança e validação da API Leitura de RDs e despesas limitada por papel (USER, MANAGER, ADMIN/FINANCIAL).  Saíram as rotas sem uso, incluindo a que tinha SQL injection, e a query users do GraphQL."
+      }
+    ]
+  },
+  "es": {
+    "name": "Elias",
+    "avClass": "av-el",
+    "avInit": "EL",
+    "nameColor": "var(--el)",
+    "cards": [
+      {
+        "id": "#13502",
+        "type": "ref",
+        "title": "Configurando conta no Meta Business / Meta Developer",
+        "desc": "Configurando conta no Meta Business / Meta Developer"
+      },
+      {
+        "id": "#13490",
+        "type": "ref",
+        "title": "Criando e configurando o workflow do n8n",
+        "desc": "Criando e configurando o workflow do n8n"
+      },
+      {
+        "id": "#13574",
+        "type": "feat",
+        "title": "Enviar nova versão para as lojas",
+        "desc": "Enviar nova versão para as lojas Solicitantes:Gustavo / ThayseObjetivo:Enviar nova versão para as lojas contendo as correções na conclusão de atendimento e de envio de form-respostas."
+      },
+      {
+        "id": "#13635",
+        "type": "feat",
+        "title": "Enviar nova versão para produção",
+        "desc": "Enviar nova versão para produção Solicitantes:Thayse / GustavoObjetivo:Enviar nova versão para as lojas contendo as alterações mais recentes da sprint recém finalizada."
+      },
+      {
+        "id": "#13611",
+        "type": "ref",
+        "title": "Erro ao enviar anexos dos dados complementares",
+        "desc": "Erro ao enviar anexos dos dados complementares Solicitantes: IohanContexto:Técnico reportou que algumas respostas do questionário não estavam sendo enviadas e permaneciam na fila; Após investigações, foi descoberto que o problema é que o aplicativo não está encontrando os arquivos anexados. Objetivo:Investigar o motivo do aplicativo não encontrar os arquivos anexados e resolver o problema para que no futuro não venha acontecer novamente."
+      },
+      {
+        "id": "#13560",
+        "type": "ref",
+        "title": "Erro para desmarcar item de lista composta",
+        "desc": "Erro para desmarcar item de lista composta Solicitante: Thayse Contexto: Ao testar o app, quando respondi a pergunta Qual adubo foliar, selecionei um item da lista composta, salvei e depois tentei tirar ele, até desmarquei e salvei, mas o item permanece selecionado.  Caso eu marque errado e depois queira deletar, não é possível Video enviado no discord."
+      },
+      {
+        "id": "#13636",
+        "type": "ref",
+        "title": "Gerar nova versão para beta testes",
+        "desc": "Gerar nova versão para beta testes"
+      },
+      {
+        "id": "#13187",
+        "type": "feat",
+        "title": "Interação no WhatsApp",
+        "desc": "Interação no WhatsApp Solicitante Ricardo Descrição Permitir que o Produtor possa usar o WhatsAPP para visualizar algumas informações do Agrotrace.  Objetivos O produtor poderá obter informações sobre: - Atendimento  - Consultar agendamentos   - Consultar infos Atendimentos realizados     - RAT com Anexos, Sit."
+      },
+      {
+        "id": "#13544",
+        "type": "ref",
+        "title": "Itens pendentes de envio",
+        "desc": "Itens pendentes de envio Solicitante:Edson Contexto: Itens pendentes de envio mesmo após o sincronismo Tem possui itens que aparentemente enviaram, mas parece que foi enviado a resposta 0 Bando servidor PROD."
+      },
+      {
+        "id": "#13297",
+        "type": "feat",
+        "title": "Melhora de performance em componente do formulário dinâmico.",
+        "desc": "Melhora de performance em componente do formulário dinâmico.  Solicitantes:Carlos / EliasContexto:Após a correção de uma melhoria no formulário dinâmico, foi percebido uma queda de performance no sistema que avança para a próxima pergunta automaticamente."
+      },
+      {
+        "id": "#13315",
+        "type": "ref",
+        "title": "Talhões duplicando no envio dos dados",
+        "desc": "Talhões duplicando no envio dos dados Solicitante: Thayse Contexto: Foi notado que alguns formulários do projeto Citros, estavam com as perguntas de Talhões duplicadas, havia o Talhão 1 com respostas e Talhão 1 sem respostas.  Pelo banco, manualmente foi desativado o duplicado sem resposta, porém precisaria identificar em que momento ocorre essa duplicação, pois quando ocorre algum problema com o envio de respostas do bloco repetível, depois quando consegue enviar, fica duplicado no sistema Ontem peguei o caso do técnico Manoel que não conseguia enviar as respostas dos talhões, porque a pergunta principal sobre a quantidade de talhões havia sido desativada, eu reativei, enviei, subiu só ela, ao tentar enviar novamente os dados, subiu as respostas, mas na web duplicou."
+      },
+      {
+        "id": "#13203",
+        "type": "feat",
+        "title": "Utilizar dados de respostas de perfil da safra anterior",
+        "desc": "Utilizar dados de respostas de perfil da safra anterior Solicitante: Thayse Contexto: Com a virada da safra 2025 para 2026 dos projetos de Biodiesel, Soja e Cacau, foi necessário realizar a duplicação dos dados das respostas dos Perfis existentes na safra 2025 para a safra 2026. Como melhoria, verificar a possibilidade de implementar essa funcionalidade diretamente no aplicativo."
+      },
+      {
+        "id": "#13202",
+        "type": "feat",
+        "title": "Utilizar dados do croqui da safra anterior",
+        "desc": "Utilizar dados do croqui da safra anterior Solicitante: Thayse Contexto: Com a virada da safra 2025 para 2026 dos projetos de Biodiesel, Soja e Cacau, foi necessário realizar a duplicação dos dados de croqui existentes na safra 2025 para a safra 2026, envolvendo as tabelas croqui_propriedade e croqui_coordenada. Como melhoria, verificar a possibilidade de implementar essa funcionalidade diretamente no aplicativo."
+      }
+    ]
+  },
+  "ma": {
+    "name": "Matheus",
+    "avClass": "av-ma",
+    "avInit": "MA",
+    "nameColor": "var(--ma)",
+    "cards": [
+      {
+        "id": "#13523",
+        "type": "feat",
+        "title": "Adequação da assinatura nos relatórios",
+        "desc": "Adequação da assinatura nos relatórios Solicitante:Márcia Contexto: Foi solicitado pela Márcia que o cadastro de documentos dos técnicos seguisse o mesmo padrão utilizado anteriormente no sistema Biodiesel.  O cadastro já foi ajustado pelo time Web por meio do card #13445."
+      },
+      {
+        "id": "#13414",
+        "type": "feat",
+        "title": "Adicionar cadastro de etiquetas de amostra de solo",
+        "desc": "Adicionar cadastro de etiquetas de amostra de solo Adicionar cadastro de etiquetas de amostra de solo."
+      },
+      {
+        "id": "#13433",
+        "type": "feat",
+        "title": "Adicionar data de validade na CAF",
+        "desc": "Adicionar data de validade na CAF Solicitante Matheus M.  Objetivo Adicionar campo para informar a data de validade da CAF na plataforma (não obrigatório por enquanto): Adicionar campo `validade` na tabela CAF (dap); Adicionar campo `validade` do tipo DatePicker na tela de cadastro da propriedade (aba Documentos/CAR);."
+      },
+      {
+        "id": "#13427",
+        "type": "feat",
+        "title": "Adicionar reprodutores por certificadora no IATF",
+        "desc": "Adicionar reprodutores por certificadora no IATF Adicionar reprodutores por certificadora no IATF."
+      },
+      {
+        "id": "#13642",
+        "type": "feat",
+        "title": "Ajuste no RELATÓRIO DE ACOMPANHAMENTO IATF",
+        "desc": "Ajuste no RELATÓRIO DE ACOMPANHAMENTO IATF Solicitante Carlos Descrição No RELATÓRIO DE ACOMPANHAMENTO IATF, o nome do reprodutor não está saindo corretamente, aparentemente ele está repetindo nome/brinco da vaca."
+      },
+      {
+        "id": "#13633",
+        "type": "fix",
+        "title": "Ajuste tipo de carteira identidade profissional no login inicial",
+        "desc": "Ajuste tipo de carteira identidade profissional no login inicial Adicionado cascade para trazer os dados da tabela de tipo de carteira de trabalho junto com a pessoa, e nao dar erro de cascade."
+      },
+      {
+        "id": "#13494",
+        "type": "feat",
+        "title": "Baixar dados do PEC",
+        "desc": "Baixar dados do PEC Solicitante Isabelle/Matheus M Descrição Adicionar recurso para que o usuário possa baixar os dados do PEC, da semana inteira, sem precisar selecionar produtor a produtor."
+      },
+      {
+        "id": "#13434",
+        "type": "feat",
+        "title": "Deixar nome obrigatório ao invés de brinco em cadastro de animal",
+        "desc": "Deixar nome obrigatório ao invés de brinco em cadastro de animal Solicitante: Isabelle / Matheusao Contexto; Em cadastro de animais eles disseram que seria melhor e mais rápido deixar o nome do animal obrigatorio ao invés do brinco, dessa forma o processo de cadastro de animais seria mais rápido e organizado Verificar se implementar isso no codigo ou usar registros para deixar dessa forma para o projeto Pecuaria e Gentica."
+      },
+      {
+        "id": "#13596",
+        "type": "feat",
+        "title": "Enviar versão com novos testes para Beta",
+        "desc": "Enviar versão com novos testes para Beta Enviar versão com novos testes para Beta."
+      },
+      {
+        "id": "#12836",
+        "type": "feat",
+        "title": "Incluir quadros para interagir com variaveis",
+        "desc": "Incluir quadros para interagir com variaveis Solicitante: Boni Contexto; Incluir os quadros que interagem com as variáveis nos campos de sit encontrada e recomendação igual existe hoje no CheckMilk Anexo; Video mostrando os quadros do atendimento REPRODUTIVO no app CheckMilk, mas o ideal é ja pegar todos os quadros de todos os tipos de atendimento e ja deixas disponivel no Agrotrace."
+      },
+      {
+        "id": "#13542",
+        "type": "feat",
+        "title": "Procurando forma de utilizar o JEV AI no Mobile, Offline.",
+        "desc": "Procurando forma de utilizar o JEV AI no Mobile, Offline.  Procurando forma de utilizar o JEV AI no Mobile, Offline."
+      },
+      {
+        "id": "#13499",
+        "type": "feat",
+        "title": "RAT protocolo",
+        "desc": "RAT protocolo Solicitante: Gustavo Contexto; Ao gerar o rat protocolo esta saindo igual ao botao do rat.  Gerar de acordo com o texto padrao criado no CMS com titulo de \"protocolo\"."
+      },
+      {
+        "id": "#13331",
+        "type": "feat",
+        "title": "Recomendação de Solo",
+        "desc": "Recomendação de Solo Solicitante Carlos Descrição Trabalhar calculadora para recomendação de melhoria de solo, semelhante ao que temos na WEB.  A intenção é permitir que o técnico execute o trabalho de recomendação durante o atendimento de forma offline."
+      },
+      {
+        "id": "#13466",
+        "type": "feat",
+        "title": "Relatório de Acompanhamento de Diagnóstico",
+        "desc": "Relatório de Acompanhamento de Diagnóstico Solicitate Matheus M/Carlos Objetivos No Relatório de Acompanhamento de Diagnóstico, no quadro 'Resultado Analítico', separar a contagem de IAs: IAE - Conta apenas as inseminações externas; IATF - Conta apenas as inseminações realizadas pelo processo de IATF."
+      },
+      {
+        "id": "#13465",
+        "type": "feat",
+        "title": "Relatórios Pectrace",
+        "desc": "Relatórios Pectrace Solicitante Matheus M/Carlos Objetivo Nos relatórios trazidos do CheckMilk que foram construídos no Pectrace: Trocar a logo do CheckMilk (cabeçalho e outros) pela logo do PECTRACE.  Trocar a paleta de cores para ficar com a 'Laranja', padrão do Pectrace."
+      }
+    ]
+  }
+}
