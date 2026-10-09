@@ -2406,45 +2406,84 @@
           <div class="slide-title">// ai-tech-session — Elias — 4 min ⏱</div>
           <div class="flex-row mb-8">
             <span class="badge badge-amber">🧠 AI Tech Session</span>
+            <span class="badge badge-blue">SDD</span>
+            <span class="badge badge-purple">AGENTS.md</span>
             <span style="font-size: 14px; color: var(--text3); font-family: var(--font-mono)">ai-tech-session-elias.md</span>
           </div>
           <div class="slide-heading" style="font-size: 28px; margin-bottom: 20px">
-            ai-tech-session — <span>Elias</span>
+            Workflow agêntico — <span>do contexto ao pull request</span>
+          </div>
+          <div style="font-size: 14px; color: var(--text2); margin-bottom: 16px">
+            Como combino SDD, skills e documentação para tornar o agente mais previsível dentro de um projeto mobile real.
           </div>
 
-          <div style="max-width: 760px; width: 100%">
-            <div class="ai-field">
-              <div class="ai-field-label">// título</div>
-              <div class="ai-field-val">Tema a definir pelo apresentador</div>
-            </div>
-            <div class="ai-field">
-              <div class="ai-field-label">Ferramenta(s):</div>
-              <div class="ai-field-val">preencher</div>
-            </div>
-            <div class="ai-field">
-              <div class="ai-field-label">Fluxo/demo:</div>
-              <div class="ai-field-val">preencher</div>
-            </div>
-            <div class="ai-field">
-              <div class="ai-field-label">Aprendizado principal:</div>
-              <div class="ai-field-val">preencher</div>
+          <div class="grid-2" style="gap: 16px; flex: 1">
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div class="card card-accent-coral">
+                <div class="section-label" style="color: var(--coral)">❌ problema</div>
+                <div style="font-size: 14px; color: var(--text2); line-height: 1.55">
+                  Em um projeto mobile, arquitetura, comandos, regras de negócio e convenções ficam espalhados.
+                  Sem guardrails, cada agente decide de um jeito e o review vira correção de processo.
+                </div>
+              </div>
+
+              <div class="card card-accent-purple">
+                <div class="section-label" style="color: var(--purple)">✓ solução · ferramentas</div>
+                <div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--text2)">
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span style="color: var(--teal); font-family: var(--font-mono)">01</span>
+                    <span><strong style="color: var(--text)">AGENTS.md + README-first</strong>: regras globais e contexto próximo do módulo.</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span style="color: var(--teal); font-family: var(--font-mono)">02</span>
+                    <span><strong style="color: var(--text)">TLC-SPEC-DRIVEN</strong>: intenção, critérios de aceite e tarefas verificáveis.</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: flex-start">
+                    <span style="color: var(--teal); font-family: var(--font-mono)">03</span>
+                    <span><strong style="color: var(--text)">Skills</strong>: qualidade, commit convencional e criação do PR no ponto certo.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-teal">
+                <div class="section-label" style="color: var(--teal)">📈 resultado</div>
+                <div style="font-size: 14px; color: var(--text2); line-height: 1.55">
+                  Mais previsibilidade, menos prompt manual e rastreabilidade entre spec, código, commit e PR.
+                  Se um check falha, o agente volta à implementação com a spec como referência.
+                </div>
+              </div>
             </div>
 
-            <div
-              style="
-                margin-top: 16px;
-                padding: 12px 16px;
-                background: var(--amber-bg);
-                border: 1px solid #78350f;
-                border-radius: var(--radius);
-                font-family: var(--font-mono);
-                font-size: 14px;
-                color: var(--amber);
-              "
-            >
-              ⚠ Edite esta sessão antes da apresentação —
-              veja <code style="color: var(--text)">resumo/ai-tech-session-elias.md</code>.
-              Conteúdo aberto: cada apresentador escolhe a ferramenta e o tema.
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div class="code-block" style="height: fit-content">
+                <div class="code-block-header">🤖 workflow-agent (mobile)</div>
+                <div class="code-body">
+                  <div class="line-numbers">
+                    1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15
+                  </div>
+                  <div class="code-lines">
+                    <span class="cmt">// 1. contexto antes de atuar</span><br />
+                    <span class="fn">read</span>(<span class="str">"AGENTS.md"</span>)<br />
+                    <span class="fn">read</span>(<span class="str">"module/README.md"</span>)<br /><br />
+                    <span class="cmt">// 2. intenção explícita</span><br />
+                    <span class="kw">const</span> <span class="prop">spec</span> = <span class="fn">tlcSpecDriven</span>(<span class="prop">task</span>)<br /><br />
+                    <span class="cmt">// 3. implementar e validar</span><br />
+                    <span class="prop">agent</span>.<span class="fn">implement</span>(<span class="prop">spec</span>)<br />
+                    <span class="fn">biomeCheck</span>() · <span class="fn">typecheck</span>() · <span class="fn">tests</span>()<br /><br />
+                    <span class="cmt">// 4. entregar para review</span><br />
+                    <span class="fn">conventionalCommit</span>() → <span class="fn">createPR</span>()<br />
+                    <span class="cmt">// review humano decide o merge</span><br />
+                    <span class="cmt">// ↺ falha → spec → implementação</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-accent-amber">
+                <div class="section-label" style="color: var(--amber)">↗ próxima evolução · JEV</div>
+                <div style="font-size: 13px; color: var(--text2); line-height: 1.5">
+                  Uma camada rápida de decisão pode rotear a próxima ação — ferramenta, skill, contexto ou validação — sem substituir a spec e os guardrails.
+                </div>
+              </div>
             </div>
           </div>
         </div>
